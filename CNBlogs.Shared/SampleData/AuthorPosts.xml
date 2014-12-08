@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">博客园_Artech</title>
+  <id>uuid:0803f68f-33d9-4b2a-a3e2-f2bd8b4cb157;id=5867</id>
+  <updated>2014-10-21T15:48:00+08:00</updated>
+  <logo>http://pic.cnitblog.com/face/u19327.jpg</logo>
+  <author>
+    <name>Artech</name>
+    <uri>http://www.cnblogs.com/artech/</uri>
+  </author>
+  <postcount>551</postcount>
+  <entry>
+    <id>3919199</id>
+    <title type="text">感恩回馈，新鲜出炉的《ASP.NET MVC 5框架揭秘》免费赠送</title>
+    <summary type="text">上次针对《ASP.NET Web API 2框架揭秘》举办了一次评论赠书活动，很多人问我相同的活动要不要针对《ASP.NET MVC 5框架揭秘》再来一次，为此我向出版社要了10本，其中5本以评论博客的形式送出，另5本则以转发微博的形式送出.</summary>
+    <published>2014-08-18T11:51:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/book-as-a-present-2.html"/>
+    <diggs>0</diggs>
+    <views>6787</views>
+    <comments>1369</comments>
+  </entry>
+  <entry>
+    <id>3913503</id>
+    <title type="text">《ASP.NET MVC 5框架揭秘》样章发布</title>
+    <summary type="text">今天算是新作《ASP.NET MVC 5框架揭秘》正式上架销售的日子（目前本书在互动网已经到货），为了让更多适合的朋友们能够阅读此书，同时也避免让不适合的读者误买此书，特将此书的样章发布出来。</summary>
+    <published>2014-08-14T21:37:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/inside-asp-net-mvc-5-framework-demo.html"/>
+    <diggs>0</diggs>
+    <views>4817</views>
+    <comments>99</comments>
+  </entry>
+  <entry>
+    <id>3897290</id>
+    <title type="text">新作《ASP.NET MVC 5框架揭秘》正式出版</title>
+    <summary type="text">本书以一个模拟ASP.NET MVC内部运行机制的“迷你版MVC框架”作为开篇，其目的在于将ASP.NET MVC真实架构的“全景”勾勒出来。接下来本书以请求消息在ASP.NET MVC框架内部的流向为主线将相关的知识点串连起来，力求将”黑盒式”的消息处理管道清晰透明地展示在读者面前。相信精读本书的...</summary>
+    <published>2014-08-07T15:28:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/inside-asp-net-mvc-5-framework.html"/>
+    <diggs>0</diggs>
+    <views>9341</views>
+    <comments>178</comments>
+  </entry>
+  <entry>
+    <id>3842017</id>
+    <title type="text">感恩回馈，《ASP.NET Web API 2框架揭秘》免费赠送</title>
+    <summary type="text">在继《WCF全面解析》、《ASP.NET MVC 4框架揭秘》之后，我的另一本书《ASP.NET Web API 2框架揭秘》于本月正式出版，《ASP.NET MVC 5框架揭秘》也即将推出。这几本上算畅销的技术书籍的出版源于多年写博客的积累，所以离不开博客园这个平台和广大网友的支持。作为回馈，我也...</summary>
+    <published>2014-07-14T08:15:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/book-as-a-present.html"/>
+    <diggs>0</diggs>
+    <views>9722</views>
+    <comments>3472</comments>
+  </entry>
+  <entry>
+    <id>3830533</id>
+    <title type="text">《ASP.NET Web API 2框架揭秘》样章（PDF版本）</title>
+    <summary type="text">《ASP.NET Web API 2框架揭秘》以实例演示的方式介绍了很多与ASP.NET Web API相关的最佳实践，同时还提供了一系列实用性的扩展。本书详细讲解了ASP.NET Web API从接收请求到响应回复的整个流程，包括路由、Http Controller的激活、Action方法的选择与...</summary>
+    <published>2014-07-07T22:21:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/inside-asp-net-web-api-2-framework-sample.html"/>
+    <diggs>0</diggs>
+    <views>6076</views>
+    <comments>113</comments>
+  </entry>
+  <entry>
+    <id>3830430</id>
+    <title type="text">新作《ASP.NET Web API 2框架揭秘》正式出版</title>
+    <summary type="text">本书以实例演示的方式介绍了很多与ASP.NET Web API相关的最佳实践，同时还提供了一系列实用性的扩展。本书详细讲解了ASP.NET Web API从接收请求到响应回复的整个流程，包括路由、Http Controller的激活、Action方法的选择与执行、参数的绑定与验证、过滤器的执行和安全...</summary>
+    <published>2014-07-07T21:07:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/inside-asp-net-web-api-2-framework.html"/>
+    <diggs>0</diggs>
+    <views>3919</views>
+    <comments>51</comments>
+  </entry>
+  <entry>
+    <id>3698441</id>
+    <title type="text">ASP.NET MVC下的四种验证编程方式[续篇]</title>
+    <summary type="text">在《ASP.NET MVC下的四种验证编程方式》一文中我们介绍了ASP.NET MVC支持的四种服务端验证的编程方式（“手工验证”、“标注ValidationAttribute特性”、“让数据类型实现IValidatableObject或者IDataErrorInfo”），那么在ASP.NET MV...</summary>
+    <published>2014-04-29T08:44:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/asp-net-mvc-4-validation.html"/>
+    <diggs>0</diggs>
+    <views>3649</views>
+    <comments>21</comments>
+  </entry>
+  <entry>
+    <id>3669916</id>
+    <title type="text">比较一下以&amp;ldquo;反射&amp;rdquo;和&amp;ldquo;表达式&amp;rdquo;执行方法的性能差异</title>
+    <summary type="text">由于频繁地使用反射会影响性能，所以ASP.NET MVC采用了表达式树的方式来执行目标Action方法。具体来说，ASP.NET MVC会构建一个表达式来体现针对目标Action方法的执行，并且将该表达式编译成可执行代码。编译后的可执行代码体现为一个委托对象，该委托对象会被缓存起来以用于针对同一个A...</summary>
+    <published>2014-04-17T08:44:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/reflect-vs-expression.html"/>
+    <diggs>0</diggs>
+    <views>4420</views>
+    <comments>29</comments>
+  </entry>
+  <entry>
+    <id>3667890</id>
+    <title type="text">[ASP.NET MVC] 利用自定义的AuthenticationFilter实现Basic认证</title>
+    <summary type="text">很多情况下目标Action方法都要求在一个安全上下文中被执行，这里所谓的安全上下文主要指的是当前请求者是一个经过授权的用户。授权的本质就是让用户在他许可的权限范围内做他能够做的事情，授权的前提是请求者是一个经过认证的用户。质询-应答（Chanllenge-Response）”是用户认证采用的一种常用...</summary>
+    <published>2014-04-16T09:21:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/authentication-filter.html"/>
+    <diggs>0</diggs>
+    <views>2937</views>
+    <comments>19</comments>
+  </entry>
+  <entry>
+    <id>3665348</id>
+    <title type="text">IoC在ASP.NET Web API中的应用</title>
+    <summary type="text">控制反转（Inversion of Control，IoC），简单地说，就是应用本身不负责依赖对象的创建和维护，而交给一个外部容器来负责。这样控制权就由应用转移到了外部IoC容器，控制权就实现了所谓的反转。比如在类型A中需要使用类型B的实例，而B实例的创建并不由A来负责，而是通过外部容器来创建。通过...</summary>
+    <published>2014-04-15T07:53:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/ioc-4-asp-net-web-api.html"/>
+    <diggs>0</diggs>
+    <views>3894</views>
+    <comments>24</comments>
+  </entry>
+  <entry>
+    <id>3663212</id>
+    <title type="text">总体介绍ASP.NET Web API下Controller的激活与释放流程</title>
+    <summary type="text">通过《ASP.NET Web API的Controller是如何被创建的？》我们已经对HttpController激活系统的核心对象有了深刻的了解，在这篇文章中，对我们对此作一个总结。除此之外，本篇文章还会涉及一个大家极易忽视的问题——Controller是如何释放的？</summary>
+    <published>2014-04-14T08:41:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/asp-net-web-api-active-release-controller.html"/>
+    <diggs>0</diggs>
+    <views>1696</views>
+    <comments>5</comments>
+  </entry>
+  <entry>
+    <id>3657622</id>
+    <title type="text">[ASP.NET Web API]如何Host定义在独立程序集中的Controller</title>
+    <summary type="text">ASP.NET Web API在Self Host寄宿模式下用于解析程序集的AssembliesResolver是一个DefaultAssembliesResolver对象，它只会提供当前应用程序域已经加载的程序集。如果我们将HttpController定义在非寄宿程序所在的程序集中，即使我们将它们...</summary>
+    <published>2014-04-10T22:50:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/custom-assembly-resolver.html"/>
+    <diggs>0</diggs>
+    <views>1497</views>
+    <comments>4</comments>
+  </entry>
+  <entry>
+    <id>3655611</id>
+    <title type="text">ASP.NET Web API的Controller是如何被创建的？</title>
+    <summary type="text">Web API调用请求的目标是定义在某个HttpController类型中的某个Action方法，所以消息处理管道最终需要激活目标HttpController对象。调用请求的URI会携带目标HttpController的名称，该名称经过路由解析之后会作为路由变量保存到一个HttpRouteData对...</summary>
+    <published>2014-04-10T07:26:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/http-controller-how-to-activate.html"/>
+    <diggs>0</diggs>
+    <views>2263</views>
+    <comments>9</comments>
+  </entry>
+  <entry>
+    <id>3651232</id>
+    <title type="text">ASP.NET MVC下的四种验证编程方式</title>
+    <summary type="text">ASP.NET MVC采用Model绑定为目标Action生成了相应的参数列表，但是在真正执行目标Action方法之前，还需要对绑定的参数实施验证以确保其有效性，我们将针对参数的验证成为Model绑定。总地来说，我们可以采用4种不同的编程模式来进行针对绑定参数的验证。</summary>
+    <published>2014-04-08T09:03:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/asp-net-mvc-validation-programming.html"/>
+    <diggs>0</diggs>
+    <views>8426</views>
+    <comments>46</comments>
+  </entry>
+  <entry>
+    <id>3639016</id>
+    <title type="text">[ASP.NET] 如果将缓存&amp;ldquo;滑动过期时间&amp;rdquo;设置为1秒会怎样？</title>
+    <summary type="text">今天编写了一个采用ASP.NET Caching的组件，在为它编写Unit Test的过程中发现了一个有趣的问题...</summary>
+    <published>2014-04-01T19:09:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/cache-sliding-time-1-second.html"/>
+    <diggs>0</diggs>
+    <views>2636</views>
+    <comments>16</comments>
+  </entry>
+  <entry>
+    <id>3615134</id>
+    <title type="text">ASP.NET Web API中的Controller</title>
+    <summary type="text">虽然通过Visual Studio向导在ASP.NET Web API项目中创建的 Controller类型默认派生与抽象类型ApiController，但是ASP.NET Web API框架本身只要求它实现IHttpController接口即可，所以我们将其统称为HttpController。</summary>
+    <published>2014-03-21T09:17:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/httpcontroller.html"/>
+    <diggs>0</diggs>
+    <views>2398</views>
+    <comments>15</comments>
+  </entry>
+  <entry>
+    <id>3613334</id>
+    <title type="text">Self Host模式下的ASP. NET Web API是如何进行请求的监听与处理的？</title>
+    <summary type="text">构成ASP.NET Web API核心框架的消息处理管道既不关心请求消息来源于何处，也不需要考虑响应消息归于何方。当我们采用Web Host模式将一个ASP.NET应用作为目标Web API的宿主时，实际上是由ASP.NET管道解决了这两个问题。具体来说，ASP.NET自身的URL路由系统借助于Ht...</summary>
+    <published>2014-03-20T11:44:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/self-host-how-to-work.html"/>
+    <diggs>0</diggs>
+    <views>1822</views>
+    <comments>5</comments>
+  </entry>
+  <entry>
+    <id>3606873</id>
+    <title type="text">如果调用ASP.NET Web API不能发送PUT/DELETE请求怎么办？</title>
+    <summary type="text">理想的RESTful Web API采用面向资源的架构，并使用请求的HTTP方法表示针对目标资源的操作类型。但是理想和现实是有距离的，虽然HTTP协议提供了一系列原生的HTTP方法，但是在具体的网络环境中，很多是不支持的。比如有的浏览器只能发送GET和POST请求，客户端发送的PUT请求也不一定能够...</summary>
+    <published>2014-03-18T08:51:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/x-http-method-override.html"/>
+    <diggs>0</diggs>
+    <views>2673</views>
+    <comments>16</comments>
+  </entry>
+  <entry>
+    <id>3604400</id>
+    <title type="text">ASP.NET Web API标准的&amp;ldquo;管道式&amp;rdquo;设计</title>
+    <summary type="text">ASP.NET Web API的核心框架是一个消息处理管道，这个管道是一组HttpMessageHandler的有序组合。这是一个双工管道，请求消息从一端流入并依次经过所有HttpMessageHandler的处理。在另一端，目标HttpController被激活，Action方法被执行，响应消息随...</summary>
+    <published>2014-03-17T07:40:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/asp-net-web-api-pipeline.html"/>
+    <diggs>0</diggs>
+    <views>2981</views>
+    <comments>14</comments>
+  </entry>
+  <entry>
+    <id>3599974</id>
+    <title type="text">在一个空ASP.NET Web项目上创建一个ASP.NET Web API 2.0应用</title>
+    <summary type="text">Visual Studio为我们提供了专门用于创建ASP.NET Web API应用的项目模板，借助于此项目模板提供的向导，我们可以“一键式”创建一个完整的ASP.NET Web API项目。在项目创建过程中，VS会自动为我们添加必要的程序集引用和配置，甚至会为我们自动生成相关的代码。对于IDE提供...</summary>
+    <published>2014-03-14T10:26:00+08:00</published>
+    <updated>2014-11-30T12:26:42Z</updated>
+    <author>
+      <name>Artech</name>
+      <uri>http://www.cnblogs.com/artech/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/p/web-api-sample.html"/>
+    <diggs>0</diggs>
+    <views>7441</views>
+    <comments>41</comments>
+  </entry>
+</feed>

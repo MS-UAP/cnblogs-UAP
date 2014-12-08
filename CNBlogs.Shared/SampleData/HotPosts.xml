@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">博客园_48小时阅读排行</title>
+  <id>uuid:0803f68f-33d9-4b2a-a3e2-f2bd8b4cb157;id=5549</id>
+  <updated>2014-11-30T11:04:09Z</updated>
+  <entry>
+    <id>4129709</id>
+    <title type="text">体验Visual Studio 2015 之 MVC6 - 视图组建</title>
+    <summary type="text">VS2015 PERVIEW中可以创建MVC6 项目。 我们可以 发现有几大亮点。首先我们看目录结构：当前项目包含两个主要的文件夹：Solution Items 、src很明显src文件夹下为当前的源码文件。 目前补不了解这个分组的用意。我们在看在MVC项目中。 摒弃了原来的许多的文件夹。 现在的目...</summary>
+    <published>2014-11-29T00:47:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>真有意思</name>
+      <uri>http://www.cnblogs.com/liuyunsheng/</uri>
+      <avatar>http://pic.cnblogs.com/face/u138839.jpg</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/liuyunsheng/p/4129709.html"/>
+    <diggs>3</diggs>
+    <views>2329</views>
+    <comments>16</comments>
+  </entry>
+  <entry>
+    <id>4126742</id>
+    <title type="text">【大型网站技术实践】初级篇：借助Nginx搭建反向代理服务器</title>
+    <summary type="text">一、反向代理：Web服务器的“经纪人”1.1 反向代理初印象 反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器。　....</summary>
+    <published>2014-11-29T01:19:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>Edison Chou</name>
+      <uri>http://www.cnblogs.com/edisonchou/</uri>
+      <avatar>http://pic.cnblogs.com/face/381412/20140608161346.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/edisonchou/p/4126742.html"/>
+    <diggs>60</diggs>
+    <views>1991</views>
+    <comments>26</comments>
+  </entry>
+  <entry>
+    <id>4132920</id>
+    <title type="text">用Qt写了一个qq客户端，采用webqq协议，发出来和大家分享一下---大神请无视</title>
+    <summary type="text">首先做以下声明： 本程序基于腾讯公司的webqq协议开发，所有相关版权归腾讯公司所有。此程序只用于技术交流和学习，不得用于其他方面。 ---开发者：雨后星辰，转载请注明出处，谢谢大家。 此程序使用qml做的界面，c++负责逻辑，名字叫：QQStars。程序理论上来讲支持windows、li...</summary>
+    <published>2014-11-30T11:46:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>☆雨后星辰☆</name>
+      <uri>http://www.cnblogs.com/AfterTheRainOfStars/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/AfterTheRainOfStars/p/4132920.html"/>
+    <diggs>24</diggs>
+    <views>1349</views>
+    <comments>29</comments>
+  </entry>
+  <entry>
+    <id>4129560</id>
+    <title type="text">.NET Web开发初学者必知的四个网站</title>
+    <summary type="text">本文面向.NET Web开发初学者推荐了4个常用网站：W3school、微软虚拟学院(MVA)、ASP.NET、博客园，并加以分析评价，并推荐了其中较优质的内容。</summary>
+    <published>2014-11-28T22:54:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>Slark.NET</name>
+      <uri>http://www.cnblogs.com/slark/</uri>
+      <avatar>http://pic.cnblogs.com/face/690811/20141130111557.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/slark/p/net-beginner-must-know-websites.html"/>
+    <diggs>2</diggs>
+    <views>1084</views>
+    <comments>10</comments>
+  </entry>
+  <entry>
+    <id>4129398</id>
+    <title type="text">JAVA中的糕富帅技术——反射（一）</title>
+    <summary type="text">前言 突然发现好久没写博客了，前面写的都是关于Android的东西，今天心血来潮突然有一种冲动想写一篇基于JAVA技术的博客，别问我为什么？有钱、任性！ 今天就来谈谈反射机制；学过JAVA的人不一定懂得反射，但是一定听说过反射，不过也仅仅是听说过而已；因为反射用的地方也不会那么多，但是反射用的妙.....</summary>
+    <published>2014-11-28T23:12:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>enjoy风铃</name>
+      <uri>http://www.cnblogs.com/net168/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/net168/p/4129398.html"/>
+    <diggs>3</diggs>
+    <views>555</views>
+    <comments>2</comments>
+  </entry>
+  <entry>
+    <id>4130190</id>
+    <title type="text">Winform开发框架之存储过程的支持--存储过程的实现和演化提炼（1）</title>
+    <summary type="text">在我前面很多篇关于框架设计和介绍的文章里面，大多数都是利用框架提供的基础性API进行各种的操作，包括增删改查、分页等各种实现和其衍生的实现，而这些实现绝大多数是基于SQL的标准操作实现的，由于框架的底层是利用了微软企业库Enterprise Library，因此框架也是很好的支持存储过程的各种调用，...</summary>
+    <published>2014-11-29T11:54:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>伍华聪</name>
+      <uri>http://www.cnblogs.com/wuhuacong/</uri>
+      <avatar>http://pic.cnblogs.com/face/u8867.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/wuhuacong/p/4130190.html"/>
+    <diggs>2</diggs>
+    <views>539</views>
+    <comments>2</comments>
+  </entry>
+  <entry>
+    <id>4116149</id>
+    <title type="text">WPF和Expression Blend开发实例:充分利用Blend实现一个探照灯的效果</title>
+    <summary type="text">本篇文章阅读的基础是在读者对于WPF有一定的了解并且有WPF相关的编码经验,对于Blend的界面布局有基础的知识.文章中对于相应的在Blend中的操作进行演示,并不会进行细致到每个属性的介绍.同时,本篇文章所用的Blend版本是5.0.40218.0,即VS2012对应的版本,对于其他版本的操作区别...</summary>
+    <published>2014-11-29T09:45:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>youngytj</name>
+      <uri>http://www.cnblogs.com/youngytj/</uri>
+      <avatar>http://pic.cnblogs.com/face/511342/20130528141850.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/youngytj/p/4116149.html"/>
+    <diggs>1</diggs>
+    <views>503</views>
+    <comments>3</comments>
+  </entry>
+  <entry>
+    <id>4067283</id>
+    <title type="text">【Android的从零单排开发日记】之入门篇（十六）——Android的动画效果</title>
+    <summary type="text">什么是动画，动画的本质是通过连续不断地显示若干图像来产生“动”起来的效果。比如说一个移动的动画，就是在一定的时间段内，以恰当的速率（起码要12帧/秒以上，才会让人产生动起来的错觉）每隔若干时间在屏幕上更新一次位置。游戏中的动画效果也是由此而来。同样还有其他属性变更所引起的动画效果，从数学的角度来看....</summary>
+    <published>2014-11-29T00:21:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>cpacm</name>
+      <uri>http://www.cnblogs.com/cpacm/</uri>
+      <avatar>http://pic.cnblogs.com/face/653760/20140727195039.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/cpacm/p/4067283.html"/>
+    <diggs>1</diggs>
+    <views>466</views>
+    <comments>0</comments>
+  </entry>
+  <entry>
+    <id>4130525</id>
+    <title type="text">Winform开发框架之存储过程的支持--存储过程的实现和演化提炼（2）</title>
+    <summary type="text">本篇继续上篇《Winform开发框架之存储过程的支持--存储过程的实现和演化提炼（1）》来对Winform开发框架之存储过程的支持进行介绍，上篇主要介绍了SQLServer和Oracle两种数据库对常规存储过程的编写和对比，本篇主要介绍如何在C#里面，如何对这些存储过程进行调用，并获取到对应的数据类...</summary>
+    <published>2014-11-29T17:27:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>伍华聪</name>
+      <uri>http://www.cnblogs.com/wuhuacong/</uri>
+      <avatar>http://pic.cnblogs.com/face/u8867.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/wuhuacong/p/4130525.html"/>
+    <diggs>1</diggs>
+    <views>435</views>
+    <comments>4</comments>
+  </entry>
+  <entry>
+    <id>4129520</id>
+    <title type="text">容易被忽略的label标签</title>
+    <summary type="text"># 容易被忽略的label标签## 原始作用`label`标签是HTML原生的标签，其原始的作用参考[这里](http://www.w3school.com.cn/tags/tag_label.asp) label 标签为 input 元素定义标注（标记）。 label ...</summary>
+    <published>2014-11-28T22:32:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>p2227</name>
+      <uri>http://www.cnblogs.com/p2227/</uri>
+      <avatar>http://pic.cnblogs.com/face/84053/20140202151105.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/p2227/p/label_tag.html"/>
+    <diggs>3</diggs>
+    <views>420</views>
+    <comments>0</comments>
+  </entry>
+  <entry>
+    <id>4132246</id>
+    <title type="text">【大四学生2015校园招聘】鸡汤总结以及前端面试技巧点</title>
+    <summary type="text">有好几个月没有写博客总结人生了，这几个月经历了很多，体会很多，主要涉及校园招聘以及实习经历总结，前端面试的万精油。四月份的时候，在学校呆着很是无聊，想摆脱学校的空闲时光，于是参加了腾讯的实习生招聘，海豚浏览器的实习生招聘，但是两家公司在二面都否定了我，其实当时还是蛮伤心的，因为之前已经在两家公司实习...</summary>
+    <published>2014-11-29T23:40:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>paxster</name>
+      <uri>http://www.cnblogs.com/paxster/</uri>
+      <avatar>http://pic.cnblogs.com/face/522856/20130429100908.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/paxster/p/4132246.html"/>
+    <diggs>1</diggs>
+    <views>419</views>
+    <comments>7</comments>
+  </entry>
+  <entry>
+    <id>4129500</id>
+    <title type="text">请用fontAwesome代替网页icon小图标</title>
+    <summary type="text">1. 引言网页小图标到处可见，如果一个网页都是干巴巴的文字和图片，而没有小图标，会显得非常简陋。下面的小图标，你是不是会经常用到？你可能说——“我们用的都是彩色的，不是黑白的”——别着急，下面会讲到。因为它们也可以变为彩色的。黑白的也好，彩色的也罢，如果用传统的“css + 图片”的方式来制作这些i...</summary>
+    <published>2014-11-28T22:19:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>王福朋</name>
+      <uri>http://www.cnblogs.com/wangfupeng1988/</uri>
+      <avatar>http://pic.cnblogs.com/face/138012/20140923142153.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/wangfupeng1988/p/4129500.html"/>
+    <diggs>5</diggs>
+    <views>418</views>
+    <comments>3</comments>
+  </entry>
+  <entry>
+    <id>4127864</id>
+    <title type="text">用持续集成工具Travis进行构建和部署</title>
+    <summary type="text">本文简单说明了如何使用持续集成工具Travis进行构建和部署的过程。</summary>
+    <published>2014-11-29T02:06:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>Black Puppy</name>
+      <uri>http://www.cnblogs.com/blackpuppy/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/blackpuppy/p/use_travis_to_build_and_deploy.html"/>
+    <diggs>1</diggs>
+    <views>407</views>
+    <comments>0</comments>
+  </entry>
+  <entry>
+    <id>4131662</id>
+    <title type="text">用Advanced Installer制作DotNetBar for Windows Forms 12.0.0.1_冰河之刃重打包版详解</title>
+    <summary type="text">用Advanced Installer制作DotNetBar for Windows Forms 12.0.0.1_冰河之刃重打包版详解</summary>
+    <published>2014-11-29T19:33:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>冰河之刃</name>
+      <uri>http://www.cnblogs.com/binghe021/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/binghe021/p/4131662.html"/>
+    <diggs>4</diggs>
+    <views>403</views>
+    <comments>3</comments>
+  </entry>
+  <entry>
+    <id>4129445</id>
+    <title type="text">Python学习 - 编写一个简单的web框架（二）</title>
+    <summary type="text">在上一篇日志中已经讨论和实现了根据url执行相应应用，在我阅读了bottle.py官方文档后，按照bottle的设计重写一遍，主要借鉴大牛们的设计思想。一个bottle.py的简单实例来看看bottle是如何使用的，代码来自http://www.bottlepy.org/docs/0.12/inde...</summary>
+    <published>2014-11-28T21:51:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>mr_zys</name>
+      <uri>http://www.cnblogs.com/mr-zys/</uri>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/mr-zys/p/4129445.html"/>
+    <diggs>1</diggs>
+    <views>392</views>
+    <comments>0</comments>
+  </entry>
+  <entry>
+    <id>4131826</id>
+    <title type="text">【工作中的Python】随机点名小脚本</title>
+    <summary type="text"/>
+    <published>2014-11-29T20:16:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>十二维向量</name>
+      <uri>http://www.cnblogs.com/wantsmorewu/</uri>
+      <avatar>http://pic.cnblogs.com/face/u368800.jpg?id=25110536</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/wantsmorewu/p/4131826.html"/>
+    <diggs>1</diggs>
+    <views>379</views>
+    <comments>0</comments>
+  </entry>
+  <entry>
+    <id>4129558</id>
+    <title type="text">c# 简易绘制C语言头文件包含关系图 v2.0</title>
+    <summary type="text">老规矩，先上图节点样式说明：1.粉色圆角，说明该节点下有循环引用2.黄色菱形，说明该节点代表的文件在项目目录下未找到。3.红色圆角，说明循环引用（从开始到最终，这种感情没变过，没有谁。。。。。——乱入的歌词君）。简单用用还行，不过可后续完善、实现的功能还是有很多的。比如项目加载和分析拆分下，就可以随...</summary>
+    <published>2014-11-28T22:53:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>geeking09</name>
+      <uri>http://www.cnblogs.com/geeking/</uri>
+      <avatar>http://pic.cnblogs.com/face/493091/20130322203122.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/geeking/p/4129558.html"/>
+    <diggs>3</diggs>
+    <views>364</views>
+    <comments>2</comments>
+  </entry>
+  <entry>
+    <id>4130493</id>
+    <title type="text">DWZ使用中遇到的坑</title>
+    <summary type="text">DWZ官方文档中关于文件上传表单的提交：因为Ajax不支持enctype=&amp;quot;multipart/form-data&amp;quot; 所以用隐藏iframe来处理无刷新表单提交.服务器端响应DWZ-v1.2版本开始服务器返回和validateCallback格式保持一致：{ &amp;quot;statusCode&amp;quot;:&amp;quot;200...</summary>
+    <published>2014-11-29T12:02:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>初行</name>
+      <uri>http://www.cnblogs.com/zxlovenet/</uri>
+      <avatar>http://pic.cnblogs.com/face/390884/20140223154652.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/zxlovenet/p/4130493.html"/>
+    <diggs>1</diggs>
+    <views>358</views>
+    <comments>1</comments>
+  </entry>
+  <entry>
+    <id>4130193</id>
+    <title type="text">数据结构基本概念和算法分析</title>
+    <summary type="text">一、数据结构基本概念1. 数据：数据是对客观事物的符号表示，在计算机科学中是指所有能输入到计算机中并被计算机程序处理的符号的总称。2. 数据元素：数据元素是数据的基本单位，在计算机程序中通常作为一个整体进行考虑和处理。一个数据元素可由若干个数据项组成。数据项是数据的不可分割的最小单位。3. 数据对象...</summary>
+    <published>2014-11-29T10:20:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>yly123</name>
+      <uri>http://www.cnblogs.com/FlySheep/</uri>
+      <avatar>http://pic.cnblogs.com/face/383948/20131111191035.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/FlySheep/p/4130193.html"/>
+    <diggs>1</diggs>
+    <views>351</views>
+    <comments>0</comments>
+  </entry>
+  <entry>
+    <id>4131774</id>
+    <title type="text">Microsoft Naive Bayes 算法——三国人物身份划分</title>
+    <summary type="text">Microsoft朴素贝叶斯是SSAS中最简单的算法，通常用作理解数据基本分组的起点。这类处理的一般特征就是分类。这个算法之所以称为“朴素”，是因为所有属性的重要性是一样的，没有谁比谁更高。贝叶斯之名则源于Thomas Bayes，他想出了一种运用算术（可能性）原则来理解数据的方法。对此算法的另.....</summary>
+    <published>2014-11-29T19:50:00+08:00</published>
+    <updated>2014-11-30T11:04:09Z</updated>
+    <author>
+      <name>Bobby0322</name>
+      <uri>http://www.cnblogs.com/Bobby0322/</uri>
+      <avatar>http://pic.cnblogs.com/face/684470/20141118135648.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/Bobby0322/p/4131774.html"/>
+    <diggs>2</diggs>
+    <views>327</views>
+    <comments>0</comments>
+  </entry>
+</feed>

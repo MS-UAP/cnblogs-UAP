@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">博客园_推荐博客</title>
+  <id>uuid:0803f68f-33d9-4b2a-a3e2-f2bd8b4cb157;id=5855</id>
+  <updated>2014-11-30T12:23:59Z</updated>
+  <entry>
+    <id>http://www.cnblogs.com/artech/</id>
+    <title type="text">Artech</title>
+    <updated>2014-10-21T15:48:00+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/artech/"/>
+    <blogapp>artech</blogapp>
+    <avatar>http://pic.cnblogs.com/face/u19327.jpg</avatar>
+    <postcount>551</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/fish-li/</id>
+    <title type="text">Fish Li</title>
+    <updated>2013-11-18T14:31:32+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/fish-li/"/>
+    <blogapp>fish-li</blogapp>
+    <avatar>http://pic.cnblogs.com/face/u281816.png?id=28134852</avatar>
+    <postcount>60</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/TomXu/</id>
+    <title type="text">汤姆大叔</title>
+    <updated>2014-10-08T09:13:37+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/TomXu/"/>
+    <blogapp>TomXu</blogapp>
+    <avatar>http://pic.cnblogs.com/face/u349491.jpg?id=02230504</avatar>
+    <postcount>142</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/KnightsWarrior/</id>
+    <title type="text">圣殿骑士</title>
+    <updated>2014-10-31T23:22:30+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/KnightsWarrior/"/>
+    <blogapp>KnightsWarrior</blogapp>
+    <avatar>http://pic.cnblogs.com/face/u47784.gif</avatar>
+    <postcount>102</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/yanyangtian/</id>
+    <title type="text">小洋（燕洋天）</title>
+    <updated>2014-09-19T09:18:07+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/yanyangtian/"/>
+    <blogapp>yanyangtian</blogapp>
+    <avatar>http://pic.cnblogs.com/face/u37134.png?id=01082525</avatar>
+    <postcount>187</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/TankXiao/</id>
+    <title type="text">小坦克</title>
+    <updated>2014-11-24T17:20:00+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/TankXiao/"/>
+    <blogapp>TankXiao</blogapp>
+    <avatar>http://pic.cnblogs.com/face/u263119.jpg?id=12093925</avatar>
+    <postcount>40</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/CareySon/</id>
+    <title type="text">CareySon</title>
+    <updated>2014-11-20T17:33:34+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/CareySon/"/>
+    <blogapp>CareySon</blogapp>
+    <avatar>http://pic.cnblogs.com/face/35368/20140115190829.png</avatar>
+    <postcount>228</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/hegezhou_hot/</id>
+    <title type="text">何戈洲</title>
+    <updated>2013-12-28T22:22:20+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/hegezhou_hot/"/>
+    <blogapp>hegezhou_hot</blogapp>
+    <avatar>http://pic.cnblogs.com/face/u46256.jpg?id=24205029</avatar>
+    <postcount>119</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/alamiye010/</id>
+    <title type="text">深蓝色右手</title>
+    <updated>2014-02-08T00:19:25+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/alamiye010/"/>
+    <blogapp>alamiye010</blogapp>
+    <avatar>http://pic.cnblogs.com/face/u71881.jpg</avatar>
+    <postcount>157</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/cyq1162/</id>
+    <title type="text">路过秋天</title>
+    <updated>2014-10-20T14:19:09+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/cyq1162/"/>
+    <blogapp>cyq1162</blogapp>
+    <avatar>http://pic.cnblogs.com/face/u17408.jpg?id=06142122</avatar>
+    <postcount>400</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/zhoujg/</id>
+    <title type="text">周 金根</title>
+    <updated>2014-11-28T11:12:41+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/zhoujg/"/>
+    <blogapp>zhoujg</blogapp>
+    <avatar>http://pic.cnblogs.com/face/14032/20140703121850.png</avatar>
+    <postcount>807</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/JimmyZhang/</id>
+    <title type="text">Jimmy Zhang</title>
+    <updated>2014-09-23T10:31:52+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/JimmyZhang/"/>
+    <blogapp>JimmyZhang</blogapp>
+    <avatar>http://pic.cnblogs.com/face/u24804.jpg?id=30073100</avatar>
+    <postcount>85</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/rubylouvre/</id>
+    <title type="text">司徒正美</title>
+    <updated>2014-11-28T14:50:03+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/rubylouvre/"/>
+    <blogapp>rubylouvre</blogapp>
+    <avatar>http://pic.cnblogs.com/face/u65123.jpg</avatar>
+    <postcount>1092</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/ryanding/</id>
+    <title type="text">ryanding</title>
+    <updated>2013-08-29T15:24:06+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/ryanding/"/>
+    <blogapp>ryanding</blogapp>
+    <avatar>http://pic.cnblogs.com/face/u102419.jpg</avatar>
+    <postcount>41</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/zhuqil/</id>
+    <title type="text">麒麟</title>
+    <updated>2013-12-04T10:10:37+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/zhuqil/"/>
+    <blogapp>zhuqil</blogapp>
+    <avatar>http://pic.cnblogs.com/face/u38542.png?id=15185941</avatar>
+    <postcount>269</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/gnielee/</id>
+    <title type="text">Gnie</title>
+    <updated>2014-05-09T19:08:26+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/gnielee/"/>
+    <blogapp>gnielee</blogapp>
+    <avatar>http://pic.cnblogs.com/face/u40474.jpg</avatar>
+    <postcount>218</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/lyj/</id>
+    <title type="text">李永京</title>
+    <updated>2014-07-16T13:39:31+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/lyj/"/>
+    <blogapp>lyj</blogapp>
+    <avatar>http://pic.cnblogs.com/face/20012/20140709190845.png</avatar>
+    <postcount>145</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/iamzhanglei/</id>
+    <title type="text">【当耐特】</title>
+    <updated>2014-09-24T11:04:02+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/iamzhanglei/"/>
+    <blogapp>iamzhanglei</blogapp>
+    <avatar>http://pic.cnblogs.com/face/105416/20130621103357.png</avatar>
+    <postcount>81</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/alexis/</id>
+    <title type="text">Alexis</title>
+    <updated>2013-10-09T16:24:59+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/alexis/"/>
+    <blogapp>alexis</blogapp>
+    <avatar>http://pic.cnblogs.com/face/u97911.jpg</avatar>
+    <postcount>167</postcount>
+  </entry>
+  <entry>
+    <id>http://www.cnblogs.com/skynet/</id>
+    <title type="text">吴秦</title>
+    <updated>2014-11-26T19:34:21+08:00</updated>
+    <link rel="alternate" href="http://www.cnblogs.com/skynet/"/>
+    <blogapp>skynet</blogapp>
+    <avatar>http://pic.cnblogs.com/face/u92071.jpg</avatar>
+    <postcount>101</postcount>
+  </entry>
+</feed>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">博客园文章评论</title>
+  <id>uuid:0803f68f-33d9-4b2a-a3e2-f2bd8b4cb157;id=5995</id>
+  <updated>2014-11-30T12:56:18Z</updated>
+  <entry>
+    <id>3074290</id>
+    <title type="text"/>
+    <published>2014-11-29T08:00:39+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>学亮</name>
+      <uri>http://home.cnblogs.com/u/345474/</uri>
+    </author>
+    <content type="text">写的不错</content>
+  </entry>
+  <entry>
+    <id>3074293</id>
+    <title type="text"/>
+    <published>2014-11-29T08:35:53+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>编程 浪子</name>
+      <uri>http://home.cnblogs.com/u/221571/</uri>
+    </author>
+    <content type="text">很好，正好可以用得上。谢谢</content>
+  </entry>
+  <entry>
+    <id>3074297</id>
+    <title type="text"/>
+    <published>2014-11-29T08:55:33+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>Treenew Lyn</name>
+      <uri>http://home.cnblogs.com/u/98297/</uri>
+    </author>
+    <content type="text">好文！感谢！</content>
+  </entry>
+  <entry>
+    <id>3074298</id>
+    <title type="text"/>
+    <published>2014-11-29T08:56:16+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>杭</name>
+      <uri>http://home.cnblogs.com/u/15232/</uri>
+    </author>
+    <content type="text">mark</content>
+  </entry>
+  <entry>
+    <id>3074321</id>
+    <title type="text"/>
+    <published>2014-11-29T09:44:56+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>田园里的蟋蟀</name>
+      <uri>http://home.cnblogs.com/u/435188/</uri>
+    </author>
+    <content type="text">赞一个！</content>
+  </entry>
+  <entry>
+    <id>3074324</id>
+    <title type="text"/>
+    <published>2014-11-29T09:53:00+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>小武子技術博客</name>
+      <uri>http://home.cnblogs.com/u/554863/</uri>
+    </author>
+    <content type="text">nginx和nodejs那个更好些啊？</content>
+  </entry>
+  <entry>
+    <id>3074393</id>
+    <title type="text"/>
+    <published>2014-11-29T12:24:23+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>通用C#系统架构</name>
+      <uri>http://home.cnblogs.com/u/35584/</uri>
+    </author>
+    <content type="text">Nginx, 的确是个好东西，老外的发明创造能力很强大！我们也需要有深入的技术分析能力。</content>
+  </entry>
+  <entry>
+    <id>3074408</id>
+    <title type="text"/>
+    <published>2014-11-29T13:25:41+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>Genius Zhang</name>
+      <uri>http://home.cnblogs.com/u/20019/</uri>
+    </author>
+    <content type="text">WIN下的Nginx就是个残废</content>
+  </entry>
+  <entry>
+    <id>3074410</id>
+    <title type="text"/>
+    <published>2014-11-29T13:27:44+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>Genius Zhang</name>
+      <uri>http://home.cnblogs.com/u/20019/</uri>
+    </author>
+    <content type="text">可以用用淘宝的Tengine，nginx的变种，优化多加了一些功能进去，不过没有WIN版的</content>
+  </entry>
+  <entry>
+    <id>3074418</id>
+    <title type="text"/>
+    <published>2014-11-29T13:39:41+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>花儿笑弯了腰</name>
+      <uri>http://home.cnblogs.com/u/365537/</uri>
+    </author>
+    <content type="text">个人感觉nginx在unix更好些吧，另外一般做负载也不会用ng，像lvs这种的东西使用蛮多，win下有NLB，或者等哪一天.NET原生支持跨平台了，才能发挥出威力。</content>
+  </entry>
+  <entry>
+    <id>3074432</id>
+    <title type="text"/>
+    <published>2014-11-29T14:22:58+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>黑豆</name>
+      <uri>http://home.cnblogs.com/u/325475/</uri>
+    </author>
+    <content type="text">写得不错！赞一个</content>
+  </entry>
+  <entry>
+    <id>3074444</id>
+    <title type="text"/>
+    <published>2014-11-29T14:56:07+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>卤水兄</name>
+      <uri>http://home.cnblogs.com/u/198500/</uri>
+    </author>
+    <content type="text">@Edison Chou&lt;br/&gt;真实环境中，多台Web服务器的文件同步是不是只有NFS方式？</content>
+  </entry>
+  <entry>
+    <id>3074445</id>
+    <title type="text"/>
+    <published>2014-11-29T15:01:52+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>幻天芒</name>
+      <uri>http://home.cnblogs.com/u/343299/</uri>
+    </author>
+    <content type="text">虽然一般算阴历，不过也祝你阳历生日快乐~</content>
+  </entry>
+  <entry>
+    <id>3074457</id>
+    <title type="text"/>
+    <published>2014-11-29T15:32:38+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>darjuan</name>
+      <uri>http://home.cnblogs.com/u/301166/</uri>
+    </author>
+    <content type="text">看贴要顶贴....</content>
+  </entry>
+  <entry>
+    <id>3074463</id>
+    <title type="text"/>
+    <published>2014-11-29T15:54:07+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>雲霏霏</name>
+      <uri>http://home.cnblogs.com/u/622439/</uri>
+    </author>
+    <content type="text">其实不用注册服务的，服务器不关机的</content>
+  </entry>
+  <entry>
+    <id>3074477</id>
+    <title type="text"/>
+    <published>2014-11-29T16:46:11+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>小菜？大神？</name>
+      <uri>http://home.cnblogs.com/u/423390/</uri>
+    </author>
+    <content type="text">学习了，谢谢楼主的分享</content>
+  </entry>
+  <entry>
+    <id>3074486</id>
+    <title type="text"/>
+    <published>2014-11-29T16:57:33+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>烧点饭</name>
+      <uri>http://home.cnblogs.com/u/362290/</uri>
+    </author>
+    <content type="text">不错，看了就可以用了，收藏了</content>
+  </entry>
+  <entry>
+    <id>3074518</id>
+    <title type="text"/>
+    <published>2014-11-29T18:35:10+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>沈赟</name>
+      <uri>http://home.cnblogs.com/u/30988/</uri>
+    </author>
+    <content type="text">mark</content>
+  </entry>
+  <entry>
+    <id>3074525</id>
+    <title type="text"/>
+    <published>2014-11-29T19:04:26+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>Jreey</name>
+      <uri>http://home.cnblogs.com/u/278758/</uri>
+    </author>
+    <content type="text">&lt;a href="#3074324" title="查看所回复的评论" onclick='commentManager.renderComments(0,50,3074324);'&gt;@&lt;/a&gt;小武子技術博客&lt;br/&gt;。。。。大哥，这是两个不同的东西，搞清楚先。</content>
+  </entry>
+  <entry>
+    <id>3074559</id>
+    <title type="text"/>
+    <published>2014-11-29T20:50:09+08:00</published>
+    <updated>2014-11-30T12:56:18Z</updated>
+    <author>
+      <name>悟心道长</name>
+      <uri>http://home.cnblogs.com/u/593068/</uri>
+    </author>
+    <content type="text">mark</content>
+  </entry>
+</feed>

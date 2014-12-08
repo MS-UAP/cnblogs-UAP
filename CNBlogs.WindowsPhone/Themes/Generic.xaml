@@ -1,0 +1,208 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CNBlogs"
+    xmlns:ControlHelper="using:CNBlogs.ControlHelper">
+
+    <ControlHelper:TimeCountDownConverter x:Key="TimeCountDownConverter"/>
+
+    <Style TargetType="local:PostControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:PostControl">
+                    <Border BorderThickness="0,0,0,1" BorderBrush="{ThemeResource CNBlogsLineColor}">
+                        <Grid Margin="15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock x:Name="tb_Title" Grid.Row="0" Text="{Binding Title}" Style="{StaticResource PostTitleFont}"/>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,5,0,0">
+                                <local:AuthorControl Grid.Column ="0" Visibility="{TemplateBinding AuthorVisiable}" NameFontSize="20" NameColor="{ThemeResource CNBlogsAttributionColor}" AvatarHeight="25" Margin="0,0,10,0" />
+                                <TextBlock Grid.Column="1" Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}" Style="{StaticResource PublishTimeFont}" VerticalAlignment="Center"/>
+                            </StackPanel>
+
+                            <!-- used for tapped anywhere on title and attribution -->
+                            <Rectangle x:Name="rect_Header" Grid.RowSpan="2" Fill="Transparent"/>
+
+                            <TextBlock x:Name="tb_Summary" Grid.Row="2" Margin="0,5" TextTrimming="CharacterEllipsis" MaxLines="4" FontSize="20" FontFamily="Segoe WP" Foreground="{ThemeResource CNBlogsSummaryColor}" TextWrapping="Wrap" Visibility="Collapsed">
+                                <Run Text="{Binding Summary}"/>
+                                <Run Text="..."/>
+                                <TextBlock.Resources>
+                                    <Storyboard x:Name="sb_Summary">
+                                        <DoubleAnimation Storyboard.TargetName="tb_Summary" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1"/>
+                                    </Storyboard>
+                                </TextBlock.Resources>
+                            </TextBlock>
+                            <local:AttributionControl Grid.Row="3" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:BloggerControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:BloggerControl">
+                    <Border BorderThickness="0,0,0,1" BorderBrush="{ThemeResource CNBlogsLineColor}">
+                        <Grid Margin="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <TextBlock Text="" FontFamily="Segoe UI Symbol" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{ThemeResource CNBlogsThemeLightColor}"/>
+                                <Rectangle StrokeThickness="1" Stroke="{ThemeResource CNBlogsLineColor}" RadiusX="10" RadiusY="10">
+                                    <Rectangle.Fill>
+                                        <ImageBrush ImageSource="{Binding Avatar}"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Grid>
+
+                            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10,0,0,0">
+                                <TextBlock Text="{Binding Name}" FontSize="24" FontFamily="Segoe WP" FontWeight="SemiBold"/>
+                                <TextBlock FontSize="16" FontFamily="Segoe WP" Margin="0,5,0,0">
+                                    <Run Text="博文数量:"/>
+                                    <Run Text="{Binding PostCount}"/>
+                                    <Run Text=" 最近更新:"/>
+                                    <Run Text="{Binding UpdateTime, Converter={StaticResource TimeCountDownConverter}}"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:CommentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:CommentControl">
+                    <Border BorderThickness="0,0,0,1" BorderBrush="{ThemeResource CNBlogsLineColor}">
+                        <StackPanel Margin="15" Orientation="Vertical">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <local:AuthorControl Grid.Column ="0" NameFontSize="20" NameColor="{ThemeResource CNBlogsAttributionColor}" AvatarHeight="20" Margin="0,0,10,0" />
+                                <TextBlock Grid.Column="1" Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}" Style="{StaticResource PublishTimeFont}" HorizontalAlignment="Right"/>
+                            </Grid>
+                            <TextBlock Text="{Binding Content}" FontFamily="Segoe WP" FontSize="20" Margin="30,10,10,0" Foreground="{ThemeResource CNBlogsSummaryColor}" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:NewsTitleTextImageControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:NewsTitleTextImageControl">
+                    <Border BorderThickness="0,0,0,1" BorderBrush="{ThemeResource CNBlogsLineColor}">
+                        <Grid Margin="15,10,5,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="85"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Orientation="Vertical" Margin="0,0,10,0">
+                                <TextBlock Text="{Binding Title}" FontSize="20" FontWeight="Normal" FontFamily="Segoe WP" TextWrapping="Wrap" MaxLines="2" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Grid.Column="0" FontFamily="Segoe WP" FontSize="14" Margin="0,5">
+                                        <Run Text="{Binding SourceName}"/>
+                                        <Run Text=" | "/>
+                                        <Run Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
+                                        <Run Text=" 浏览:"/>
+                                        <Run Text="{Binding ViewsCount}"/>
+                                </TextBlock>
+                            </StackPanel>
+                            <Border Height="80" Width ="85" Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="{ThemeResource CNBlogsLineColor}" HorizontalAlignment="Right">
+                                <Image Source="{Binding TopicIcon}" Stretch="Uniform" Margin="5,0,0,0"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:NewsTitleTextControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:NewsTitleTextControl">
+                    <Border BorderThickness="0,0,0,1" BorderBrush="{ThemeResource CNBlogsLineColor}">
+                        <StackPanel Orientation="Vertical" Margin="15,10,5,10">
+                            <TextBlock Text="{Binding Title}" FontSize="20" FontWeight="Normal" FontFamily="Segoe WP" TextWrapping="Wrap"/>
+                            <TextBlock Grid.Column="0" FontFamily="Segoe WP" FontSize="14" Margin="0,5">
+                                <Run Text="{Binding SourceName}"/>
+                                <Run Text=" | "/>
+                                <Run Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
+                                <Run Text=" 浏览:"/>
+                                <Run Text="{Binding ViewsCount}"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:ListViewHeaderControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ListViewHeaderControl">
+                    <Border BorderThickness="0,0,0,1" BorderBrush="{ThemeResource CNBlogsLineColor}">
+                        <TextBlock Style="{StaticResource ListViewHeaderFont}" Text="{TemplateBinding Name}" Margin="15,10"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:AuthorControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:AuthorControl">
+                    <Border>
+                        <StackPanel Orientation="Horizontal">
+                            <Grid>
+                                <SymbolIcon Symbol="Contact" Foreground="{ThemeResource CNBlogsThemeLightColor}"/>
+                                <Rectangle Width="{TemplateBinding AvatarHeight}" Height="{TemplateBinding AvatarHeight}" StrokeThickness="1" Stroke="{ThemeResource CNBlogsLineColor}" RadiusX="5" RadiusY="5">
+                                    <Rectangle.Fill>
+                                        <ImageBrush ImageSource="{Binding Author.Avatar}"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Grid>
+                            <TextBlock Grid.Column="1" Text="{Binding Author.Name}" Style="{StaticResource AuthorNameFont}" FontSize="{TemplateBinding NameFontSize}" Foreground="{TemplateBinding NameColor}" Margin="5,0,0,3" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:AttributionControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:AttributionControl">
+                    <Border>
+                        <TextBlock FontFamily="Segoe UI Symbol" FontSize="14" Foreground="{ThemeResource CNBlogsAttributionColor}">
+                            <Run Text=" "/>
+                            <Run Text="{Binding DiggsCount}"/>
+                            <Run Text=" "/>
+                            <Run Text="{Binding ViewsCount}"/>
+                            <Run Text=" "/>
+                            <Run Text="{Binding CommentsCount}"/>
+                        </TextBlock>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

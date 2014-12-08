@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">博客园</title>
+  <id>uuid:0803f68f-33d9-4b2a-a3e2-f2bd8b4cb157;id=4375</id>
+  <updated>2014-11-30T06:27:36Z</updated>
+  <link href="http://www.cnblogs.com/"/>
+  <entry>
+    <id>4133083</id>
+    <title type="text">C++ Primer Plus第6版18个重点笔记</title>
+    <summary type="text">下面是我看《》第版这本书后所做的笔记，作为备忘录便于以后复习。笔记部分的比语言更好的原因？首先，它能够明确指定类型，有类型检查功能。其次，可以使用的作用域规则将定义限制在特定的函数或文件中。第三，可以将用于更复杂的类型，</summary>
+    <published>2014-11-30T14:15:00+08:00</published>
+    <updated>2014-11-30T06:27:36Z</updated>
+    <author>
+      <name>Alexia(minmin)</name>
+      <uri>http://www.cnblogs.com/lanxuezaipiao/</uri>
+      <avatar>http://pic.cnblogs.com/face/390583/20130920101729.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/lanxuezaipiao/p/4133083.html"/>
+    <blogapp>lanxuezaipiao</blogapp>
+    <diggs>1</diggs>
+    <views>12</views>
+    <comments>0</comments>
+  </entry>
+  <entry>
+    <id>4132275</id>
+    <title type="text">菜鸟学Java（二十三）——Java内存分析</title>
+    <summary type="text">我们常说的内存主要分为四大块（寄存器不在考虑之内，我们无法用代码来操控它）：（栈）、（堆）、（数据区）、（代码区）。它们的主要用途如下图所示：而在上面四个当中，我们经常谈论的是右边那两个家伙——和</summary>
+    <published>2014-11-30T13:54:00+08:00</published>
+    <updated>2014-11-30T06:27:36Z</updated>
+    <author>
+      <name>刘水镜</name>
+      <uri>http://www.cnblogs.com/liushuijinger/</uri>
+      <avatar>http://pic.cnblogs.com/face/351422/20131211102403.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/liushuijinger/p/4132275.html"/>
+    <blogapp>liushuijinger</blogapp>
+    <diggs>0</diggs>
+    <views>46</views>
+    <comments>0</comments>
+  </entry>
+  <entry>
+    <id>4133063</id>
+    <title type="text">HTML5 &amp;lt;details&amp;gt; 标签</title>
+    <summary type="text">中新增的标签允许用户创建一个可展开折叠的元件，让一段文字或标题包含一些隐藏的信息。用法一般情况下，用来对显示在页面的内容做进一步骤解释。其展现出来的效果和y手风琴插件差不多。其大致写法如下：商品</summary>
+    <published>2014-11-30T13:53:00+08:00</published>
+    <updated>2014-11-30T06:27:36Z</updated>
+    <author>
+      <name>刘哇勇</name>
+      <uri>http://www.cnblogs.com/Wayou/</uri>
+      <avatar>http://pic.cnblogs.com/face/431064/20140914104240.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/Wayou/p/html5_details_tag.html"/>
+    <blogapp>Wayou</blogapp>
+    <diggs>0</diggs>
+    <views>29</views>
+    <comments>0</comments>
+  </entry>
+  <entry>
+    <id>4133022</id>
+    <title type="text">使用定制的ArrayAdapter制作ListView的Items（翻译）</title>
+    <summary type="text">使用定制的y制作的，文章翻译自国外博客文章：zy。文章中使用一个天气的小例子详细讲解具体的实现过程，项目布局，程序展示清晰，重要概念详细分</summary>
+    <published>2014-11-30T13:18:00+08:00</published>
+    <updated>2014-11-30T06:27:36Z</updated>
+    <author>
+      <name>AcerWang</name>
+      <uri>http://www.cnblogs.com/AcerWang/</uri>
+      <avatar>http://pic.cnblogs.com/face/365470/20141027232653.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/AcerWang/p/4133022.html"/>
+    <blogapp>AcerWang</blogapp>
+    <diggs>0</diggs>
+    <views>43</views>
+    <comments>0</comments>
+  </entry>
+  <entry>
+    <id>4133008</id>
+    <title type="text">使用plupload绕过服务器，批量上传图片到又拍云</title>
+    <summary type="text">论坛或者贴吧经常会需要分享很多图片，上传图片比较差的做法是上传到中央服务器上，中央服务器再转发给静态图片服务器。而这篇文章讲介绍如何使用对上传过程进行优化，并绕过服务器直接批量上传图片到又拍云上的方法。</summary>
+    <published>2014-11-30T12:55:00+08:00</published>
+    <updated>2014-11-30T06:27:36Z</updated>
+    <author>
+      <name>JerryZou</name>
+      <uri>http://www.cnblogs.com/jerryzou/</uri>
+      <avatar>http://pic.cnblogs.com/face/533041/20140225200622.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/jerryzou/p/4133008.html"/>
+    <blogapp>jerryzou</blogapp>
+    <diggs>0</diggs>
+    <views>110</views>
+    <comments>0</comments>
+  </entry>
+  <entry>
+    <id>4133000</id>
+    <title type="text">从输入 URL 到页面加载完成的过程中都发生了什么事情( by vczero)</title>
+    <summary type="text">一、引子刚刚刷微博，看到技术博客大学习发的这个微博；于是，想从研发的角度也许会偏向前端的角度来说说这个问题。如果这是面试题的话，我觉得用图来说明这个问题就好，不必说个几个小时。当然作为一名前端，角度就会有倾向。如有错误，请批评指教。二、我的想法让图说话三、总结（</summary>
+    <published>2014-11-30T12:47:00+08:00</published>
+    <updated>2014-11-30T06:27:36Z</updated>
+    <author>
+      <name>山鬼谣</name>
+      <uri>http://www.cnblogs.com/vczero/</uri>
+      <avatar>http://pic.cnblogs.com/face/659857/20140810001631.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/vczero/p/talk_web_request_response.html"/>
+    <blogapp>vczero</blogapp>
+    <diggs>2</diggs>
+    <views>125</views>
+    <comments>0</comments>
+  </entry>
+  <entry>
+    <id>4132999</id>
+    <title type="text">Android系统如何录制屏幕（录制成mp4格式）</title>
+    <summary type="text">不管是教学，还是为了演示，如果能将手机（或平板）的屏幕录制成视频文件，那是一件非常酷的事（已经提供了这一功能，能通过直接在上录制、的屏幕，没试过，不知可不可以）。不过以前的方法都是通过截屏录制的，效果极差。幸好</summary>
+    <published>2014-11-30T12:46:00+08:00</published>
+    <updated>2014-11-30T06:27:36Z</updated>
+    <author>
+      <name>银河使者</name>
+      <uri>http://www.cnblogs.com/nokiaguy/</uri>
+      <avatar>http://pic.cnblogs.com/face/u32818.jpg</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/nokiaguy/p/4132999.html"/>
+    <blogapp>nokiaguy</blogapp>
+    <diggs>0</diggs>
+    <views>67</views>
+    <comments>0</comments>
+  </entry>
+  <entry>
+    <id>4132982</id>
+    <title type="text">.Net IOC 之Unity</title>
+    <summary type="text">在码农的世界里，为了应付时常变更的客户需求，增加的架构的客扩展性，减少工作量。诞生了，它是一种可以实现依赖注入和控制对象生命周期的容器。最为一个有节操、有追求的码农来说，掌握几种以来注入的技术是必不可少的。帅的人至少要会两种以上。在世界里，如今常用的注入容器有y、</summary>
+    <published>2014-11-30T12:33:00+08:00</published>
+    <updated>2014-11-30T06:27:36Z</updated>
+    <author>
+      <name>Alvin_jstu</name>
+      <uri>http://www.cnblogs.com/alvin_xp/</uri>
+      <avatar>http://pic.cnblogs.com/face/u157872.jpg?id=04151828</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/alvin_xp/p/4132982.html"/>
+    <blogapp>alvin_xp</blogapp>
+    <diggs>1</diggs>
+    <views>64</views>
+    <comments>1</comments>
+  </entry>
+  <entry>
+    <id>4132332</id>
+    <title type="text">Larbin初试</title>
+    <summary type="text">前阵子找工作的时候经常会看到多路复用的知识点，无奈自己一点都不懂。慌忙之际也只能去了解个大概。所以最近闲下来之后想要基于机制实现一个比较有用的东西，刚好最近又想爬些东西，希望这次能够写一个高效一点的爬虫。以前只看过一点点的，自己写的就是用y的几个简单功能来爬，</summary>
+    <published>2014-11-30T12:12:00+08:00</published>
+    <updated>2014-11-30T06:27:36Z</updated>
+    <author>
+      <name>linyx</name>
+      <uri>http://www.cnblogs.com/linyx/</uri>
+      <avatar>http://pic.cnblogs.com/face/593253/20141001115451.png</avatar>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/linyx/p/4132332.html"/>
+    <blogapp>linyx</blogapp>
+    <diggs>0</diggs>
+    <views>85</views>
+    <comments>0</comments>
+  </entry>
+  <entry>
+    <id>4132920</id>
+    <title type="text">用Qt写了一个qq客户端，采用webqq协议，发出来和大家分享一下---大神请无视</title>
+    <summary type="text">首先做以下声明：本程序基于腾讯公司的协议开发，所有相关版权归腾讯公司所有。此程序只用于技术交流和学习，不得用于其他方面。开发者：雨后星辰，转载请注明出处，谢谢大家。此程序使用做的界面，负责逻辑，名字叫：。程序理论上来讲支持、</summary>
+    <published>2014-11-30T11:46:00+08:00</published>
+    <updated>2014-11-30T06:27:36Z</updated>
+    <author>
+      <name>☆雨后星辰☆</name>
+      <uri>http://www.cnblogs.com/AfterTheRainOfStars/</uri>
+      <avatar/>
+    </author>
+    <link rel="alternate" href="http://www.cnblogs.com/AfterTheRainOfStars/p/4132920.html"/>
+    <blogapp>AfterTheRainOfStars</blogapp>
+    <diggs>17</diggs>
+    <views>649</views>
+    <comments>18</comments>
+  </entry>
+</feed>
