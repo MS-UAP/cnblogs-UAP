@@ -18,8 +18,6 @@ namespace CNBlogs
         public NewsTitleTextImageControl()
         {
             this.DefaultStyleKey = typeof(NewsTitleTextImageControl);
-            this.Width = CNBlogs.DataHelper.Helper.Functions.GetWindowsWidth();
-
         }
     }
 }

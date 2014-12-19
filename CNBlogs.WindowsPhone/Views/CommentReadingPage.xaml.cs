@@ -62,18 +62,24 @@ namespace CNBlogs
             this.commentDS.OnLoadMoreStarted += commentDS_OnLoadMoreStarted;
             this.commentDS.OnLoadMoreCompleted += commentDS_OnLoadMoreCompleted;
             this.lv_Comments.ItemsSource = commentDS;
-            
+
         }
 
-        void commentDS_OnLoadMoreStarted(uint count)
+        async void commentDS_OnLoadMoreStarted(uint count)
         {
-            Functions.ShowProgressBar(this.pb_Top);
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                FunctionHelper.Functions.RefreshUIOnDataLoading(this.pb_Top, null);
+            });
         }
 
-        void commentDS_OnLoadMoreCompleted(int count)
+        async void commentDS_OnLoadMoreCompleted(int count)
         {
-            Functions.HideProgressBar(this.pb_Top);
-            this.sb_Hide.Begin();
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                FunctionHelper.Functions.RefreshUIOnDataLoaded(this.pb_Top, null);
+                this.sb_Hide.Begin();
+            });
         }
 
         private void sb_Hide_Completed(object sender, object e)

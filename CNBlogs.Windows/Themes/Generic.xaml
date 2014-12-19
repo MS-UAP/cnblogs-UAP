@@ -11,8 +11,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:PostControl">
                     <Border Width="450" Height="260" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
-                            Margin="10,20,0,0" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
-                        <Grid Margin="10,0,10,10">
+                            Margin="0,0,10,20" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
+                        <Grid Margin="0,0,10,10" x:Name="mainPostGrid">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="60"></RowDefinition>
@@ -27,14 +27,14 @@
 
                             </StackPanel>
                             <Grid Grid.Row="1" Margin="0, 0, 10, 0">
-                                
+
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="80"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
 
                                 <Grid Grid.Column="0" Height="60" Width="60">
-                                    
+
                                     <TextBlock Text="" FontFamily="Segoe UI Symbol" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{ThemeResource CNBlogsThemeLightColor}"/>
                                     <Rectangle StrokeThickness="1" Stroke="{ThemeResource CNBlogsLineColor}" RadiusX="3" RadiusY="3" >
                                         <Rectangle.Fill>
@@ -45,7 +45,7 @@
                                 </Grid>
 
                                 <Grid VerticalAlignment="Top" Grid.Column="1">
-                                    
+
                                     <TextBlock  Margin="10, 0, 0, 0" FontSize="18" VerticalAlignment="Center" Style="{StaticResource Win8PostAbstractionFont}">
                                                 <Run Text="{Binding Author.Name}" />
                                     </TextBlock>
@@ -69,56 +69,22 @@
         </Setter>
     </Style>
 
-    <Style TargetType="local:RecommendAuthorControl">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:RecommendAuthorControl">
-                    <Border Width="100" Height="100">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="4*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" HorizontalAlignment="Center">
-                                <Image Source="{Binding Avatar}" Stretch="Uniform"/>
-                            </Border>
-                            <Rectangle Grid.Row="2" Width="100" Height="20" Fill="White" Opacity="0.8"></Rectangle>
-                            <Grid Grid.Row="2" Grid.Column="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="1"  HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                       Text="{Binding PostCount}" Style="{StaticResource Win8HighlightInformationFont}"/>
-                                <TextBlock Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                       Text="{Binding Name}" Style="{StaticResource Win8HighlightInformationFont}"
-                                       FontSize="12"/>
-
-                            </Grid>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style TargetType="local:CommentControl">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:CommentControl">
                     <Border BorderThickness="0,0,0,1" BorderBrush="{ThemeResource CNBlogsLineColor}">
-                            <Grid Margin="10" MinWidth="350">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
+                        <Grid Margin="10" MinWidth="350">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <local:AuthorControl Grid.Column ="0" NameFontSize="20" NameColor="{ThemeResource CNBlogsAttributionColor}" AvatarHeight="20" Margin="0,0,10,0" />
-                                <TextBlock Grid.Column="1" Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}" Style="{StaticResource Win8HighlightInformationFont}" HorizontalAlignment="Right"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <local:AuthorControl Grid.Column ="0" NameFontSize="20" NameColor="{ThemeResource CNBlogsAttributionColor}" AvatarHeight="20" Margin="0,0,10,0" />
+                            <TextBlock Grid.Column="1" Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}" Style="{StaticResource Win8HighlightInformationFont}" HorizontalAlignment="Right"/>
                             <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Content}" Style="{StaticResource Win8PostCommentFont}" Margin="30,10,10,0" TextWrapping="Wrap"/>
                         </Grid>
                     </Border>
@@ -148,7 +114,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
 
     <Style TargetType="local:AttributionControl">
         <Setter Property="Template">
@@ -190,10 +155,12 @@
                             <TextBlock Text="cnblogs.com" Style="{StaticResource Win8PageTitleAttributionFont}" VerticalAlignment="Top" Margin="0,-10,0,0" FontFamily="Microsoft YaHei"/>
                         </StackPanel>
                         <TextBlock Grid.Column="4" Text="{TemplateBinding TitleContent}" Style="{StaticResource Win8PageSubTitleFont}" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="5" Style="{StaticResource Win8PageTitleAttributionFont}" FontFamily="Microsoft YaHei" VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <TextBlock Grid.Column="5" x:Name="CountControl"
+                                   Style="{StaticResource Win8PageTitleAttributionFont}" FontFamily="Microsoft YaHei" VerticalAlignment="Center" HorizontalAlignment="Right">
                             <Run Text="当前加载数量:"/>
                             <Run Text="{Binding Count}"/>
                         </TextBlock>
+                        <ProgressBar Grid.ColumnSpan="7" x:Name="pb_Top" IsIndeterminate="True" VerticalAlignment="Bottom"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -217,15 +184,16 @@
                                 </Grid>
                                 <TextBlock Width="200" Text="{Binding Name}" FontSize="24" FontFamily="Microsoft YaHei" FontWeight="SemiBold" TextWrapping="Wrap" MaxLines="2" VerticalAlignment="Center" Margin="10,0,0,0"/>
                             </StackPanel>
-
-                            <TextBlock FontSize="16" FontFamily="Microsoft YaHei" Margin="0,5,0,0">
+                            <StackPanel Orientation="Vertical" Visibility="{TemplateBinding AttributionVisiable}">
+                                <TextBlock FontSize="16" FontFamily="Microsoft YaHei" Margin="0,5,0,0">
                                            <Run Text="博文数量:"/>
                                            <Run Text="{Binding PostCount}"/>
-                            </TextBlock>
-                            <TextBlock FontSize="16" FontFamily="Microsoft YaHei" Margin="0,5,0,0">
+                                </TextBlock>
+                                <TextBlock FontSize="16" FontFamily="Microsoft YaHei" Margin="0,5,0,0">
                                     <Run Text="最近更新:"/>
                                     <Run Text="{Binding UpdateTime, Converter={StaticResource TimeCountDownConverter}}"/>
-                            </TextBlock>
+                                </TextBlock>
+                            </StackPanel>
                         </StackPanel>
                     </Border>
                 </ControlTemplate>
@@ -233,116 +201,16 @@
         </Setter>
     </Style>
 
-
-    <Style TargetType="local:BloggerPostControl">
+    <Style TargetType="local:CategoryControl">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="local:BloggerPostControl">
-                    <Border Width="450" Height="260" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
-                            Margin="10,20,0,0" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
-                        <Grid Margin="10,0,10,10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="7*"/>
-                                <RowDefinition Height="20"/>
-                            </Grid.RowDefinitions>
-
-                            <StackPanel Grid.Row="0">
-                                <TextBlock Text="{Binding Title}" Style="{StaticResource Win8PostTitleFont}" TextWrapping="Wrap" />
-                                <TextBlock Margin="0, 10, 0, 0" x:Name="tb_Summary" 
-                                       Text="{Binding Summary}"  TextWrapping="Wrap"  MaxLines="5"
-                                       Style="{StaticResource Win8PostAbstractionFont}"/>
-                            </StackPanel>
-
-
-                            <Grid  Grid.Row="1" >
-                                <TextBlock Style="{StaticResource Win8PostAbstractionFont}">
-                                    <Run Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
-                                </TextBlock>
-                                <local:AttributionControl HorizontalAlignment="Right" ></local:AttributionControl>
-                            </Grid>
-
-                        </Grid>
-                    </Border>
+                <ControlTemplate TargetType="local:CategoryControl">
+                    <Grid Height="100" Width="200">
+                        <TextBlock Text="{Binding Name}" Foreground="{ThemeResource CNBlogsThemeColor}" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style TargetType="local:NewsTitleTextControl">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:NewsTitleTextControl">
-                    <Border Width="450" Height="260" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
-                            Margin="10, 20, 0, 0" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
-                        <Grid Margin="10, 0, 10, 0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="30"/>
-                            </Grid.RowDefinitions>
-
-                            <StackPanel  Grid.Row="0" >
-                                <TextBlock  Text="{Binding Title}" Style="{StaticResource Win8PostTitleFont}" 
-                                        TextWrapping="Wrap" MaxLines="2"/>
-                                <TextBlock Margin="0, 20, 0, 0" Style="{StaticResource Win8PostAbstractionFont}" FontSize="18" x:Name="tb_Summary" MaxLines="5"
-                                       Text="{Binding Summary}" TextWrapping="Wrap" />
-
-                            </StackPanel>
-
-                            <TextBlock Style="{StaticResource Win8PostAbstractionFont}" Grid.Row="1">
-                                <Run Text=" 来自:"/>
-                                <Run Text="{Binding SourceName}"/>
-                                <Run Text=" | "/>
-                                <Run Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
-                            </TextBlock>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="local:NewsTitleTextImageControl">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:NewsTitleTextImageControl">
-                    <Border Width="450" Height="260" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
-                            Margin="10, 20, 0, 0" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
-                        <Grid Margin="10, 0, 10, 0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="30"/>
-                            </Grid.RowDefinitions>
-
-                            <StackPanel Grid.Row="0">
-
-                                <TextBlock Text="{Binding Title}" Style="{StaticResource Win8PostTitleFont}" 
-                                        TextWrapping="Wrap" MaxLines="2"/>
-                                <Grid Margin="0, 20, 0, 0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"></ColumnDefinition>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Column="0" FontSize="18" Style="{StaticResource Win8PostAbstractionFont}" x:Name="tb_Summary"  MaxLines="5"
-                                       Text="{Binding Summary}" TextWrapping="Wrap" />
-
-                                    <Border Grid.Column="1"  HorizontalAlignment="Left" Margin="5,5,5,5">
-                                        <Image Source="{Binding TopicIcon}" Stretch="Uniform"/>
-                                    </Border>
-                                </Grid>
-                            </StackPanel>
-
-
-                            <TextBlock Grid.Row="1" Style="{StaticResource Win8PostAbstractionFont}" >
-                                <Run Text=" 来自:"/>
-                                <Run Text="{Binding SourceName}"/>
-                                <Run Text=" | "/>
-                                <Run Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
-                            </TextBlock>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 </ResourceDictionary>

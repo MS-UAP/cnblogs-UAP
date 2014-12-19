@@ -97,14 +97,14 @@
             </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <local:PostControl AuthorVisiable="Collapsed" Tapped="PostControl_Tapped"/>
+                    <local:PostControl AuthorVisible="Collapsed" Tapped="PostControl_Tapped"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar ClosedDisplayMode="Minimal">
+        <CommandBar x:Name="cmdBar" ClosedDisplayMode="Minimal">
             <!--<AppBarButton x:Name="btn_Refresh" Label="刷新" Icon="Sync" Click="btn_Refresh_Click" />-->
             <AppBarButton x:Name="btn_ScrollToTop" Label="回到顶部" Icon="Upload" Click="btn_ScrollToTop_Click"/>
         </CommandBar>

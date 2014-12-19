@@ -1,23 +1,12 @@
 ﻿using CNBlogs.Common;
+using CNBlogs.DataHelper.CloudAPI;
+using CNBlogs.DataHelper.DataModel;
+using CNBlogs.DataHelper.Helper;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Graphics.Display;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using CNBlogs.DataHelper.DataModel;
-using CNBlogs.DataHelper.CloudAPI;
-using CNBlogs.DataHelper.Helper;
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace CNBlogs
@@ -40,8 +29,7 @@ namespace CNBlogs
         public BloggerPage()
         {
             this.InitializeComponent();
-            this.DataContext = this;
-            //this.NavigationCacheMode = NavigationCacheMode.Required;
+            this.NavigationCacheMode = NavigationCacheMode.Required;
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
@@ -110,16 +98,27 @@ namespace CNBlogs
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
-
-            this.blogger = e.Parameter as Blogger;
-            // for listview binding
-            this.Author = new Author() { Avatar = this.blogger.Avatar, Name = this.blogger.Name };
-            //TODO: here need author id
-            Functions.ShowProgressBar(this.pb_Top);
-            this.authorDS = new AuthorPostsDS(this.blogger.BlogApp);
-            this.authorDS.OnLoadMoreStarted += authorDS_OnLoadMoreStarted;
-            this.authorDS.OnLoadMoreCompleted += authorDS_OnLoadMoreCompleted;
-            this.lv_AuthorPosts.ItemsSource = this.authorDS;
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                this.authorDS = null;
+                this.DataContext = null;
+                if (e.Parameter is Blogger)
+                {
+                    this.blogger = e.Parameter as Blogger;
+                    this.Author = new Author() { Avatar = this.blogger.Avatar, Name = this.blogger.Name };
+                    this.DataContext = this;
+                    // for listview binding
+                    this.authorDS = new AuthorPostsDS(this.blogger.BlogApp);
+                }
+                else if (e.Parameter is string)
+                {
+                    string blogapp = (string)e.Parameter;
+                    this.authorDS = new AuthorPostsDS(blogapp);
+                }
+                this.authorDS.OnLoadMoreStarted += authorDS_OnLoadMoreStarted;
+                this.authorDS.OnLoadMoreCompleted += authorDS_OnLoadMoreCompleted;
+                this.lv_AuthorPosts.ItemsSource = this.authorDS;
+            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -129,15 +128,21 @@ namespace CNBlogs
 
         #endregion
 
-        void authorDS_OnLoadMoreStarted(uint count)
+        async void authorDS_OnLoadMoreStarted(uint count)
         {
-            Functions.ShowProgressBar(this.pb_Top);
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                FunctionHelper.Functions.RefreshUIOnDataLoading(this.pb_Top, this.cmdBar);
+            });
         }
 
-        void authorDS_OnLoadMoreCompleted(int count)
+        async void authorDS_OnLoadMoreCompleted(int count)
         {
-            Functions.HideProgressBar(this.pb_Top);
-            this.sb_CountMoveOut.Begin();
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                FunctionHelper.Functions.RefreshUIOnDataLoaded(this.pb_Top, this.cmdBar);
+                this.sb_CountMoveOut.Begin();
+            });
         }
 
         void scrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
@@ -166,20 +171,27 @@ namespace CNBlogs
             if (postControl.GotoReadingPage)
             {
                 Post post = postControl.DataContext as Post;
-                this.Frame.Navigate(typeof(ReadingPage), post);
+                this.Frame.Navigate(typeof(PostReadingPage), post);
             }
         }
 
         private void lv_AuthorPosts_Loaded(object sender, RoutedEventArgs e)
         {
-            this.scrollViewer = DataHelper.Helper.Functions.GetScrollViewer(this.lv_AuthorPosts);
+            this.scrollViewer = FunctionHelper.Functions.GetScrollViewer(this.lv_AuthorPosts);
             this.scrollViewer.ViewChanged += scrollViewer_ViewChanged;
 
         }
 
         private void sb_CountMoveOut_Completed(object sender, object e)
         {
-            this.tb_PostCount.Text = string.Format("{0}/{1}", this.authorDS.Count, this.blogger.PostCount);
+            var max = this.authorDS.Feed.PostCount;
+
+            //check if max less than current, prevent showing 5/2
+            if (this.authorDS.Count > max)
+            {
+                max = this.authorDS.Count;
+            }
+            this.tb_PostCount.Text = string.Format("{0}/{1}", this.authorDS.Count, max);
             this.sb_CountMoveIn.Begin();
         }
 
@@ -191,9 +203,9 @@ namespace CNBlogs
 
         private async void btn_Refresh_Click(object sender, RoutedEventArgs e)
         {
-            Functions.ShowProgressBar(this.pb_Top);
+            FunctionHelper.Functions.RefreshUIOnDataLoading(this.pb_Top, this.cmdBar);
             await this.authorDS.Refresh();
-            Functions.HideProgressBar(this.pb_Top);
+            FunctionHelper.Functions.RefreshUIOnDataLoaded(this.pb_Top, this.cmdBar);
         }
 
         private void btn_Homepage_Click(object sender, RoutedEventArgs e)

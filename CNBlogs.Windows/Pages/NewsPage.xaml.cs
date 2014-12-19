@@ -62,10 +62,12 @@ namespace CNBlogs.Pages
         private void LoadData()
         {
             this.newsDs = new NewsDS();
+            this.newsDs.OnLoadMoreStarted += TitleControl.DS_OnLoadMoreStarted;
+            this.newsDs.OnLoadMoreCompleted += TitleControl.DS_OnLoadMoreCompleted;
             this.gv_News.ItemsSource = this.newsDs;
+            this.gv_SimpleNews.ItemsSource = this.newsDs;
             this.DataContext = this.newsDs;
         }
-
 
         /// <summary>
         /// Populates the page with content passed during navigation.  Any saved state is also
@@ -116,13 +118,37 @@ namespace CNBlogs.Pages
         {
             if (this.newsDs != null)
             {
+                TitleControl.DS_OnLoadMoreStarted(0);
                 await this.newsDs.Refresh();
+                TitleControl.DS_OnLoadMoreCompleted(0);
             }
         }
 
         private void btn_ScrollToTop_Click(object sender, RoutedEventArgs e)
         {
-            CNBlogs.DataHelper.Helper.Functions.GridViewScrollToTop(this.gv_News);
+            FunctionHelper.Functions.GridViewScrollToTop(this.gv_News);
+        }
+
+        private bool isZoomOutTapped = false;
+
+        private void sz_News_ViewChangeStarted(object sender, SemanticZoomViewChangedEventArgs e)
+        {
+            e.DestinationItem.Item = e.SourceItem.Item;
+        }
+
+        private void sz_News_ViewChangeCompleted(object sender, SemanticZoomViewChangedEventArgs e)
+        {
+            if (!e.IsSourceZoomedInView & isZoomOutTapped)
+            {
+                Post post = e.DestinationItem.Item as Post;
+                isZoomOutTapped = false;
+                this.Frame.Navigate(typeof(Pages.ReadingPage), post);
+            }
+        }
+
+        private void gv_SimpleNews_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            isZoomOutTapped = true;
         }
     }
 }

@@ -12,28 +12,18 @@
     RequestedTheme="Light"
     mc:Ignorable="d">
 
-    <Page.Resources>
-        <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
-        <x:String x:Key="AppName">My Application</x:String>
-    </Page.Resources>
-
-    <!--
-        This grid acts as a root panel for the page that defines two rows:
-        * Row 0 contains the back button and page title
-        * Row 1 contains the rest of the page layout
-    -->
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <nav:PageTitleControl TitleContent="推荐 - 20位随机推荐的明星博主" Margin="50,0,0,0"/>
+        <nav:PageTitleControl x:Name="TitleControl" TitleContent="推荐 - 20位随机推荐的明星博主" Margin="50,0,0,0"/>
 
         <!--CONTENT PART-->
         <Grid Grid.Row="1">
             <GridView x:Name="gv_Bloggers" ItemClick="gv_Bloggers_ItemClick"
-                      SelectionMode="None" IsItemClickEnabled="True" VerticalAlignment="Center" Padding="40,0,0,0">
+                      SelectionMode="None" IsItemClickEnabled="True" Padding="40,0,0,0">
                 <GridView.ItemTemplate>
                     <DataTemplate>
                         <nav:BloggerControl/>
@@ -41,6 +31,13 @@
                 </GridView.ItemTemplate>
             </GridView>
         </Grid>
-        
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+
 </nav:FlatNavigationPage>

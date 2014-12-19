@@ -1,0 +1,226 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CNBlogs"
+    xmlns:ControlHelper="using:CNBlogs.ControlHelper">
+
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Default">
+            <x:String x:Key="ProgressBarIndeterminateForegroundThemeBrush">#FFa9d6f2</x:String>
+            <!--<x:String x:Key="TextBlockLanguageProperty">zh-Hans</x:String>-->
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+    <Style x:Key="BloggerPostControl" TargetType="local:PostControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:PostControl">
+                    <Border Width="450" Height="260" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
+                            Margin="10,20,0,0" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
+                        <Grid Margin="10,0,10,10" x:Name="mainPostGrid">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="7*"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0">
+                                <TextBlock Text="{Binding Title}" Style="{StaticResource Win8PostTitleFont}" TextWrapping="Wrap" />
+                                <TextBlock Margin="0, 10, 0, 0" x:Name="tb_Summary" 
+                                       Text="{Binding Summary}"  TextWrapping="Wrap"  MaxLines="5"
+                                       Style="{StaticResource Win8PostAbstractionFont}"/>
+                            </StackPanel>
+                            <Grid  Grid.Row="1" >
+                                <TextBlock Style="{StaticResource Win8PostAbstractionFont}">
+                                    <Run Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
+                                </TextBlock>
+                                <local:AttributionControl HorizontalAlignment="Right" ></local:AttributionControl>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SimplePostControl" TargetType="local:PostControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:PostControl">
+                    <Border Width="300" Height="120" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
+                            Margin="0,0,5,5" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
+                        <Grid Margin="0,0,5,5" x:Name="mainPostGrid">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="80"/>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Margin="0, 5, 0, 0" Text="{Binding Title}" Style="{StaticResource Win8PostTitleFont}" TextWrapping="Wrap" />
+                            <TextBlock Grid.Row="1" Margin="0" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource Win8PostAbstractionFont}">
+                                                    <Run Text="{Binding Author.Name}" />
+                            </TextBlock>
+                            <local:AttributionControl Grid.Row="1" Margin="0, 5, 0, 0" HorizontalAlignment="Right" VerticalAlignment="Center" ></local:AttributionControl>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="SimplePostWithoutBloggerControl" TargetType="local:PostControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:PostControl">
+                    <Border Width="300" Height="120" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
+                            Margin="0,0,5,5" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
+                        <Grid Margin="0,0,5,5" x:Name="mainPostGrid">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="80"/>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Margin="0, 5, 0, 0" Text="{Binding Title}" Style="{StaticResource Win8PostTitleFont}" TextWrapping="Wrap" />
+                            <local:AttributionControl Grid.Row="1" Margin="0, 5, 0, 0" HorizontalAlignment="Right" VerticalAlignment="Center" ></local:AttributionControl>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SimpleBloggerControl" TargetType="local:BloggerControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:BloggerControl">
+                    <Border Height="60" Width="Auto">
+                        <StackPanel Orientation="Horizontal">
+                            <Grid Height="60" Width="60">
+                                <TextBlock Text="" FontFamily="Segoe UI Symbol" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{ThemeResource CNBlogsThemeLightColor}"/>
+                                <Rectangle StrokeThickness="1" Stroke="{ThemeResource CNBlogsLineColor}" RadiusX="10" RadiusY="10" >
+                                    <Rectangle.Fill>
+                                        <ImageBrush ImageSource="{Binding Avatar}"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Grid>
+                            <TextBlock Text="{Binding Name}" FontSize="24" FontFamily="Microsoft YaHei" FontWeight="SemiBold" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="NewsTitleTextControl" TargetType="local:NewsControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:NewsControl">
+                    <Border Width="450" Height="260" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
+                            Margin="0, 0, 10, 20" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
+                        <Grid Margin="10, 0, 10, 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel  Grid.Row="0" >
+                                <TextBlock  Text="{Binding Title}" Style="{StaticResource Win8PostTitleFont}" 
+                                        TextWrapping="Wrap" MaxLines="2"/>
+                                <TextBlock Margin="0, 20, 0, 0" Style="{StaticResource Win8PostAbstractionFont}" FontSize="18" x:Name="tb_Summary" MaxLines="5"
+                                       Text="{Binding Summary}" TextWrapping="Wrap" />
+
+                            </StackPanel>
+
+                            <TextBlock Style="{StaticResource Win8PostAbstractionFont}" Grid.Row="1">
+                                <Run Text=" 来自:"/>
+                                <Run Text="{Binding SourceName}"/>
+                                <Run Text=" | "/>
+                                <Run Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="NewsTitleTextImageControl" TargetType="local:NewsControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:NewsControl">
+                    <Border Width="450" Height="260" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
+                            Margin="0,0,10,20" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
+                        <Grid Margin="10, 0, 10, 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Grid.Row="0">
+
+                                <TextBlock Text="{Binding Title}" Style="{StaticResource Win8PostTitleFont}" 
+                                        TextWrapping="Wrap" MaxLines="2"/>
+                                <Grid Margin="0, 20, 0, 0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" FontSize="18" Style="{StaticResource Win8PostAbstractionFont}" x:Name="tb_Summary"  MaxLines="5"
+                                       Text="{Binding Summary}" TextWrapping="Wrap" />
+
+                                    <Border Grid.Column="1"  HorizontalAlignment="Left" Margin="5,5,5,5">
+                                        <Image Source="{Binding TopicIcon}" Stretch="Uniform"/>
+                                    </Border>
+                                </Grid>
+                            </StackPanel>
+                            <TextBlock Grid.Row="1" Style="{StaticResource Win8PostAbstractionFont}" >
+                                <Run Text=" 来自:"/>
+                                <Run Text="{Binding SourceName}"/>
+                                <Run Text=" | "/>
+                                <Run Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SimpleNewsControl" TargetType="local:NewsControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:NewsControl">
+                    <Border Width="300" Height="120" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
+                            Margin="0,0,5,5" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
+                        <Grid Margin="0,0,5,5" x:Name="mainPostGrid">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="80"/>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Margin="0, 5, 0, 0" Text="{Binding Title}" Style="{StaticResource Win8PostTitleFont}" TextWrapping="Wrap" />
+                            <TextBlock Style="{StaticResource Win8PostAbstractionFont}" Grid.Row="1">
+                                <Run Text=" 来自:"/>
+                                <Run Text="{Binding SourceName}"/>
+                                <Run Text=" | "/>
+                                <Run Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SubCategoryStyle" TargetType="local:CategoryControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:CategoryControl">
+                    <Grid Height="200" Width="200" Background="{ThemeResource CNBlogsThemeColor}">
+                        <TextBlock Text="{Binding Name}" Foreground="White" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <ControlHelper:TimeCountDownConverter x:Key="TimeCountDownConverter"/>
+
+</ResourceDictionary>

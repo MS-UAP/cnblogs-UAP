@@ -1,0 +1,25 @@
+﻿
+/*.imgGrid {
+    width: 100%;
+}
+
+.imgGrid img {
+    display: block;
+    max-width: 100%;
+
+}
+
+.imgtable {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.imgtable-cell {
+    display: table-cell;
+    vertical-align: middle;
+}*/
+img {
+    display: block;
+    max-width: 100%;
+}

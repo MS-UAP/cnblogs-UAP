@@ -38,11 +38,16 @@ namespace CNBlogs.DataHelper.CloudAPI
             {
                 foreach (var news in items)
                 {
-                    news.Summary = Windows.Data.Html.HtmlUtilities.ConvertToText(news.Summary);
+                    if (!this.Any(n => n.ID == news.ID))
+                    {
+                        news.Title = Windows.Data.Html.HtmlUtilities.ConvertToText(news.Title);
+                        news.Summary = Windows.Data.Html.HtmlUtilities.ConvertToText(news.Summary);
+                        news.Status = CNBlogSettings.Instance.GetNewsReadState(news.ID);
+
+                        this.Add(news);
+                    }
                 }
             }
-
-            base.AddItems(items);
         }
     }
 }

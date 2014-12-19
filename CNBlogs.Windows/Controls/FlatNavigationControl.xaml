@@ -10,12 +10,12 @@
     d:DesignHeight="300"
     d:DesignWidth="800">
 
-    <StackPanel Orientation="Horizontal" Background="{ThemeResource CNBlogsThemeColor}">
-        <Image Source="ms-appx:///Assets/Logo.png" Height="80" Width="80"/>
+    <StackPanel Orientation="Horizontal" Background="{ThemeResource CNBlogsThemeLightColor}">
+        <Image Source="ms-appx:///Assets/Logo.png" Height="80" Width="80" Visibility="Collapsed"/>
         <Button Style="{StaticResource Win8TopAppBarButton}" Tag="CNBlogs.MainPage" Click="NavButton_Click" Padding="20">
             <Button.Content>
                 <TextBlock>
-                    <Run Text="" FontFamily="Segoe UI Symbol"/>
+                    <Run Text=" " FontFamily="Segoe UI Symbol"/>
                     <Run Text="首页"/>
                 </TextBlock>
             </Button.Content>
@@ -23,7 +23,7 @@
         <Button Style="{StaticResource Win8TopAppBarButton}" Tag="CNBlogs.Pages.HotPostsPage" Click="NavButton_Click" Padding="20">
             <Button.Content>
                 <TextBlock>
-                    <Run Text="" FontFamily="Segoe UI Symbol"/>
+                    <Run Text=" " FontFamily="Segoe UI Symbol"/>
                     <Run Text="热门"/>
                 </TextBlock>
             </Button.Content>
@@ -31,7 +31,7 @@
         <Button Style="{StaticResource Win8TopAppBarButton}" Tag="CNBlogs.Pages.BestPostsPage" Click="NavButton_Click" Padding="20">
             <Button.Content>
                 <TextBlock>
-                    <Run Text="" FontFamily="Segoe UI Symbol"/>
+                    <Run Text=" " FontFamily="Segoe UI Symbol"/>
                     <Run Text="精华"/>
                 </TextBlock>
             </Button.Content>
@@ -39,7 +39,7 @@
         <Button Style="{StaticResource Win8TopAppBarButton}" Tag="CNBlogs.Pages.BestBloggersPage" Click="NavButton_Click" Padding="20">
             <Button.Content>
                 <TextBlock>
-                    <Run Text="" FontFamily="Segoe UI Symbol"/>
+                    <Run Text=" " FontFamily="Segoe UI Symbol"/>
                     <Run Text="博主"/>
                 </TextBlock>
             </Button.Content>
@@ -47,11 +47,27 @@
         <Button Style="{StaticResource Win8TopAppBarButton}" Tag="CNBlogs.Pages.NewsPage" Click="NavButton_Click" Padding="20">
             <Button.Content>
                 <TextBlock>
-                    <Run Text="" FontFamily="Segoe UI Symbol"/>
+                    <Run Text=" " FontFamily="Segoe UI Symbol"/>
                     <Run Text="新闻"/>
                 </TextBlock>
             </Button.Content>
-
         </Button>
+        <Button Style="{StaticResource Win8TopAppBarButton}" Tag="CNBlogs.Pages.FavoritePage" Click="NavButton_Click" Padding="20">
+            <Button.Content>
+                <TextBlock>
+                    <Run Text="&#xE1CF; " FontFamily="Segoe UI Symbol"/>
+                    <Run Text="收藏"/>
+                </TextBlock>
+            </Button.Content>
+        </Button>
+        <Button Style="{StaticResource Win8TopAppBarButton}" Tag="CNBlogs.Pages.CategoryPage" Click="NavButton_Click" Padding="20">
+            <Button.Content>
+                <TextBlock>
+                    <Run Text="&#xE292; " FontFamily="Segoe UI Symbol"/>
+                    <Run Text="分类"/>
+                </TextBlock>
+            </Button.Content>
+        </Button>
+
     </StackPanel>
 </UserControl>

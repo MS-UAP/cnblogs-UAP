@@ -21,6 +21,7 @@
     <SccProvider>SAK</SccProvider>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -101,11 +102,43 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\CategoryControl.cs" />
+    <Compile Include="Controls\PageTitleControl.cs" />
+    <Compile Include="Views\CategoryPostsPage.xaml.cs">
+      <DependentUpon>CategoryPostsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SubCategoriesPage.xaml.cs">
+      <DependentUpon>SubCategoriesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SubCategoryControl.cs" />
+    <Compile Include="Views\BaseListPostsPage.xaml.cs">
+      <DependentUpon>BaseListPostsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CategoriesPage.xaml.cs">
+      <DependentUpon>CategoriesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Column.cs" />
+    <Compile Include="Controls\ColumnControl.cs" />
+    <Compile Include="Views\FavoritePostsPage.xaml.cs">
+      <DependentUpon>FavoritePostsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BestBloggersPage.xaml.cs">
+      <DependentUpon>BestBloggersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BestPostsPage.xaml.cs">
+      <DependentUpon>BestPostsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HotPostsPage.xaml.cs">
+      <DependentUpon>HotPostsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\BloggerPage.xaml.cs">
       <DependentUpon>BloggerPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ReadingPage.xaml.cs">
-      <DependentUpon>ReadingPage.xaml</DependentUpon>
+    <Compile Include="Views\NewsReadingPage.xaml.cs">
+      <DependentUpon>NewsReadingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PostReadingPage.xaml.cs">
+      <DependentUpon>PostReadingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\AttributionControl.cs" />
     <Compile Include="Controls\AuthorControl.cs" />
@@ -154,11 +187,51 @@
     <Content Include="Assets\WideLogo.scale-240.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Themes\CustomStyleDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CategoryPostsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SubCategoriesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BaseListPostsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CategoriesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FavoritePostsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BestBloggersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BestPostsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HotPostsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BloggerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ReadingPage.xaml">
+    <Page Include="Views\NewsReadingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PostReadingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,6 +5,7 @@
     xmlns:ControlHelper="using:CNBlogs.ControlHelper">
 
     <ControlHelper:TimeCountDownConverter x:Key="TimeCountDownConverter"/>
+    <ControlHelper:PostStatusConverter x:Key="PostStatusConverter"/>
 
     <Style TargetType="local:PostControl">
         <Setter Property="Template">
@@ -19,10 +20,16 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <TextBlock x:Name="tb_Title" Grid.Row="0" Text="{Binding Title}" Style="{StaticResource PostTitleFont}"/>
-                            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,5,0,0">
-                                <local:AuthorControl Grid.Column ="0" Visibility="{TemplateBinding AuthorVisiable}" NameFontSize="20" NameColor="{ThemeResource CNBlogsAttributionColor}" AvatarHeight="25" Margin="0,0,10,0" />
+                            <Grid Grid.Row="1" Margin="0,5,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <local:AuthorControl Grid.Column ="0" Visibility="{TemplateBinding AuthorVisible}" NameFontSize="20" NameColor="{ThemeResource CNBlogsAttributionColor}" AvatarHeight="25" Margin="0,0,10,0" />
                                 <TextBlock Grid.Column="1" Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}" Style="{StaticResource PublishTimeFont}" VerticalAlignment="Center"/>
-                            </StackPanel>
+                                <TextBlock x:Name="tb_Status" Grid.Column="2" Text="{Binding Status, Converter={StaticResource PostStatusConverter}}" FontFamily="Segoe UI Symbol" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            </Grid>
 
                             <!-- used for tapped anywhere on title and attribution -->
                             <Rectangle x:Name="rect_Header" Grid.RowSpan="2" Fill="Transparent"/>
@@ -36,7 +43,7 @@
                                     </Storyboard>
                                 </TextBlock.Resources>
                             </TextBlock>
-                            <local:AttributionControl Grid.Row="3" HorizontalAlignment="Right"/>
+                            <local:AttributionControl x:Name="control_Attribution" Grid.Row="3" HorizontalAlignment="Right" Visibility="{TemplateBinding AttributionVisible}" FontFamily="Global User Interface"/>
                         </Grid>
                     </Border>
                 </ControlTemplate>
@@ -89,7 +96,7 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <local:AuthorControl Grid.Column ="0" NameFontSize="20" NameColor="{ThemeResource CNBlogsAttributionColor}" AvatarHeight="20" Margin="0,0,10,0" />
                                 <TextBlock Grid.Column="1" Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}" Style="{StaticResource PublishTimeFont}" HorizontalAlignment="Right"/>
@@ -158,7 +165,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:ListViewHeaderControl">
                     <Border BorderThickness="0,0,0,1" BorderBrush="{ThemeResource CNBlogsLineColor}">
-                        <TextBlock Style="{StaticResource ListViewHeaderFont}" Text="{TemplateBinding Name}" Margin="15,10"/>
+                        <TextBlock Style="{StaticResource ListViewHeaderFont}" Text="{TemplateBinding Content}" Margin="15,10"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -205,4 +212,88 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="local:ColumnControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ColumnControl">
+                    <Grid Height="150" Width="150" Background="{ThemeResource CNBlogsThemeColor}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Foreground="White" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Run Text="{Binding Icon}" FontFamily="Segoe UI Symbol"/>
+                                <Run Text="{Binding Name}" FontFamily="Segoe WP"/>
+                        </TextBlock>
+                        <TextBlock Grid.Row="1" Foreground="White" FontFamily="Segoe WP" FontSize="16" Text="{Binding Desc}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:CategoryControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:CategoryControl">
+                    <Grid Height="130" Width="130" Background="{ThemeResource CNBlogsThemeColor}">
+                        <TextBlock Text="{Binding Name}" Foreground="White" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:SubCategoryControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:SubCategoryControl">
+                    <Grid Height="80" Width="280" Background="{ThemeResource CNBlogsThemeColor}">
+                        <TextBlock Text="{Binding Name}" Foreground="White" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:PageTitleControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:PageTitleControl">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{TemplateBinding TitleContent}" Style="{StaticResource PageTitleFont}"/>
+                        <TextBlock Grid.Column="1" x:Name="tb_SubTitle" Text="{TemplateBinding SubTitleContent}" Style="{StaticResource PageSubTitleFont}" HorizontalAlignment="Right">
+                            <TextBlock.Projection>
+                                <PlaneProjection/>
+                            </TextBlock.Projection>
+                            <TextBlock.Resources>
+                                <Storyboard x:Name="sb_Hide" Completed="sb_Hide_Completed">
+                                    <DoubleAnimation Storyboard.TargetName="tb_SubTitle"
+        		                        Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetY)"
+        		                        From="0" To="-50" Duration="0:0:0.5"/>
+                                    <DoubleAnimation Storyboard.TargetName="tb_SubTitle"
+        		                        Storyboard.TargetProperty="Opacity"
+        		                        From="1" To="0" Duration="0:0:0.5"/>
+                                </Storyboard>
+                                <Storyboard x:Name="sb_Show">
+                                    <DoubleAnimation Storyboard.TargetName="tb_SubTitle"
+        		                        Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetY)"
+        		                        From="50" To="0" Duration="0:0:0.5"/>
+                                    <DoubleAnimation Storyboard.TargetName="tb_SubTitle"
+        		                        Storyboard.TargetProperty="Opacity"
+        		                        From="0" To="1" Duration="0:0:0.5"/>
+                                </Storyboard>
+                            </TextBlock.Resources>
+                        </TextBlock>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

@@ -44,46 +44,58 @@
 
     <Grid>
         <Image Source="ms-appx:///Assets/Logo.100.White.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Width="100" Opacity="0.3"/>
-    <Pivot x:Name="pivot_Main" SelectionChanged="Pivot_SelectionChanged">
-        <PivotItem Margin="0" Tag="setting">
-            <PivotItem.Header>
-                <TextBlock Style="{StaticResource PivotTitleFont}" Text="设置" />
-            </PivotItem.Header>
-            <StackPanel Orientation="Vertical" Margin="20">
-                <!--<ToggleSwitch x:Name="ts_NightModeTheme" Header="光线模式" OffContent="日间模式" OnContent="夜间模式" IsOn="{Binding NightModeTheme, Mode=TwoWay}" Toggled="ts_NightModeTheme_Toggled"/>-->
-                <ToggleSwitch Header="博客标题/摘要" OffContent="只显示标题" OnContent="显示标题和摘要" IsOn="{Binding DefaultDisplaySummary, Mode=TwoWay}"/>
-                    <TextBlock Text="(刷新生效)" Foreground="{ThemeResource CNBlogsAttributionColor}" FontSize="14" Margin="0,-5,0,10"/>
-                <ToggleSwitch Header="点击博客标题时" OffContent="阅读正文" OnContent="显示/隐藏摘要" IsOn="{Binding ClickTitleForSummary, Mode=TwoWay}"/>
-                    <TextBlock Text="(刷新生效)" Foreground="{ThemeResource CNBlogsAttributionColor}" FontSize="14" Margin="0,-5,0,10"/>
-            </StackPanel>
-        </PivotItem>
+        <Pivot x:Name="pivot_Main" SelectionChanged="Pivot_SelectionChanged">
 
-        <PivotItem Margin="0" Tag="about">
-            <PivotItem.Header>
-                <TextBlock Style="{StaticResource PivotTitleFont}" Text="关于" />
-            </PivotItem.Header>
-            <StackPanel Margin="20" HorizontalAlignment="Center">
+            <PivotItem Margin="0" Tag="setting">
+                <PivotItem.Header>
+                    <TextBlock Style="{StaticResource PivotTitleFont}" Text="设置" />
+                </PivotItem.Header>
+                <StackPanel Orientation="Vertical" Margin="20">
+                    <ToggleSwitch x:Name="ts_LightMode" Header="光线模式" OffContent="日间模式" OnContent="夜间模式" IsOn="{Binding NightModeTheme, Mode=TwoWay}" Toggled="ts_LightMode_Toggled"/>
+                    <!--<TextBlock Text="博文状态显示信息" Style="{StaticResource SettingPageItemHeader}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox x:Name="cb_Status" BorderThickness="2" FontFamily="Segoe WP" HorizontalAlignment="Left" Width="120">
+                            <x:String>跳过状态</x:String>
+                            <x:String>已读状态</x:String>
+                            <x:String>收藏状态</x:String>
+                        </ComboBox>
+                        <TextBox Grid.Column="1" PlaceholderText="朕已阅"/>
+                        <HyperlinkButton Grid.Column="2" Content="修改" HorizontalAlignment="Right"/>
+                    </Grid>-->
+                </StackPanel>
+            </PivotItem>
+
+            <PivotItem Margin="0" Tag="about">
+                <PivotItem.Header>
+                    <TextBlock Style="{StaticResource PivotTitleFont}" Text="关于" />
+                </PivotItem.Header>
+                <StackPanel Margin="20" HorizontalAlignment="Center">
                     <Image x:Name="image_Logo" Height="100" Margin="0,20" Source="ms-appx:///Assets/Logo.100.Blue.png" Opacity="0">
-                    <Image.Projection>
-                        <PlaneProjection />
-                    </Image.Projection>
-                </Image>
-                <StackPanel x:Name="sp_aboutContent" Opacity="0">
+                        <Image.Projection>
+                            <PlaneProjection />
+                        </Image.Projection>
+                    </Image>
+                    <StackPanel x:Name="sp_aboutContent" Opacity="0">
                         <TextBlock Margin="0,10" HorizontalAlignment="Center" Style="{StaticResource SettingPageTextHeader}" Text="博客园" />
                         <TextBlock Margin="0,10" HorizontalAlignment="Center" Style="{StaticResource SettingPageTextHeader}" Text="Windows Phone 客户端" />
-                    <TextBlock HorizontalAlignment="Center" FontSize="14" Style="{StaticResource SettingPageTextHeader}" Text="Powered By Microsoft" />
-                    <TextBlock x:Name="tbkVersion" Text="1.0" HorizontalAlignment="Center" FontSize="14" Style="{StaticResource SettingPageTextHeader}"/>
-                    <HyperlinkButton x:Name="btn_RateMe" Margin="0,40,0,10" Content="给个好评" Style="{StaticResource SettingPageHyperlinkButtonText}" HorizontalAlignment="Center" Click="btn_RateMe_Click"/>
+                        <TextBlock HorizontalAlignment="Center" FontSize="14" Style="{StaticResource SettingPageTextHeader}" Text="Powered By Microsoft" />
+                        <TextBlock x:Name="tbkVersion" Text="1.0" HorizontalAlignment="Center" FontSize="14" Style="{StaticResource SettingPageTextHeader}"/>
+                        <HyperlinkButton x:Name="btn_RateMe" Margin="0,40,0,10" Content="给个好评" Style="{StaticResource SettingPageHyperlinkButtonText}" HorizontalAlignment="Center" Click="btn_RateMe_Click"/>
 
                         <TextBlock Margin="30" FontSize="14" FontFamily="Segoe WP" TextWrapping="Wrap" Foreground="{ThemeResource CNBlogsSummaryColor}">
-                        <Run Text="本应用为Universal App的示例应用，使用WindowsRT SDK开发，支持Windows Phone 8.1。"/>
-                        <Run Text="还有一个同名应用同时发布在Windows 8.1上，两者共用一套底层代码。"/>
-                    </TextBlock>
+                            <Run Text="本应用为Universal App的示例应用，使用WindowsRT SDK开发，支持Windows Phone 8.1。"/>
+                            <Run Text="还有一个同名应用同时发布在Windows 8.1上，两者共用一套底层代码。"/>
+                        </TextBlock>
 
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
-        </PivotItem>
-    </Pivot>
+            </PivotItem>
+        </Pivot>
     </Grid>
 
 </Page>

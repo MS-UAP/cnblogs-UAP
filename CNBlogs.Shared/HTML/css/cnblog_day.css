@@ -1,0 +1,253 @@
+
+
+body {
+    overflow-x:hidden;
+    word-break:break-all;
+    word-wrap:break-word;
+
+ 
+}
+
+.cnblogs-markdown .hljs {
+    display: block;
+    overflow-x: auto;
+    padding: .5em;
+    background: #fff;
+    color: #000
+}
+
+.xml .hljs-attribute {
+    color: red
+}
+.cnblogs-markdown code {
+    font-family: "Courier New", sans-serif!important;
+    font-size: 12px!important;
+    background-color: #f5f5f5!important;
+    border: 1px solid #ccc!important;
+    padding: 2px 5px!important;
+    border-radius: 3px!important
+}
+.cnblogs-markdown .hljs {
+    font-family: "Courier New", sans-serif!important;
+    font-size: 12px!important;
+    line-height: 1.5!important;
+    padding: 5px!important
+}
+.cnblogs-markdown pre {
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif
+}
+textarea {
+    font-family: Verdana, Arial, Helvetica, sans-serif
+}
+input[type=button] {
+    -webkit-appearance: button
+}
+img {
+    border: 0
+}
+
+.cnblogs_code {
+    background-color: #f5f5f5;
+    font-family: Courier New!important;
+    font-size: 12px!important;
+    border: 1px solid #ccc;
+    padding: 5px;
+    overflow: auto;
+    margin: 5px 0;
+    color: #000
+}
+.cnblogs_code div {
+    background-color: #f5f5f5
+}
+.cnblogs_code pre {
+    font-family: Courier New!important;
+    font-size: 12px!important;
+    word-wrap: break-word;
+    white-space: pre-wrap
+}
+.cnblogs_code span {
+    font-family: Courier New!important;
+    font-size: 12px!important;
+    line-height: 1.5!important
+}
+.cnblogs_code_Collapse {
+    border-right: gray 1px solid;
+    border-top: gray 1px solid;
+    border-left: gray 1px solid;
+    border-bottom: gray 1px solid;
+    background-color: #fff;
+    padding: 2px
+}
+.cnblogs_code_collapse {
+    border-right: gray 1px solid;
+    border-top: gray 1px solid;
+    border-left: gray 1px solid;
+    border-bottom: gray 1px solid;
+    background-color: #fff;
+    padding: 2px
+}
+.cnblogs_code_hide {
+    display: none
+}
+.code_img_closed {
+    vertical-align: middle;
+    padding-right: 5px
+}
+.code_img_opened {
+    vertical-align: middle;
+    padding-right: 5px
+}
+.cnblogs_code_open {
+    margin-top: 5px
+}
+.codeLineNumber {
+    -moz-user-select: none;
+    color: teal;
+    padding-right: 10px
+}
+.cnblogs_code ol {
+    margin-left: 0;
+    color: teal
+}
+.cnblogs_code ol li {
+    list-style-image: none
+}
+.cnblogs_code ol li span {
+    color: #000
+}
+.cnblogs_code_toolbar a:hover,
+.cnblogs_code_toolbar a:link,
+.cnblogs_code_toolbar a:visited,
+.cnblogs_code_toolbar a:active,
+.cnblogs_code_toolbar a:link img,
+.cnblogs_code_toolbar a:visited img {
+    background-color: #f5f5f5!important;
+    border: none!important
+}
+
+pre {
+    margin-top: 0;
+    margin-bottom: 0
+}
+pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap!important;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word
+}
+
+#post_next_prev {
+    line-height: 1.8;
+    font-size: 12px
+}
+.post_next_prev_date {
+    color: gray
+}
+#post_next_prev a.p_n_p_prefix:link {
+    text-decoration: none
+}
+#post_next_prev a.p_n_p_prefix:hover {
+    text-decoration: underline
+}
+#side_ing_block {
+    line-height: 1.5;
+    overflow: hidden
+}
+#side_ing_block ul li {
+    background-image: url(http://static.cnblogs.com/images/icon_voice.gif);
+    background-repeat: no-repeat;
+    padding: 0 0 0 20px
+}
+a.ing_lnk:link,
+a.ing_lnk:active,
+a.ing_lnk:visited {
+    color: gray;
+    text-decoration: none;
+    border: 0
+}
+.itnews {
+    line-height: 150%
+}
+.job_offer_list {
+    line-height: 150%
+}
+blockquote {
+    background: none;
+    border: 2px solid #efefef;
+    color: #333;
+    margin-left: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+#cnblogs_post_body blockquote ul {
+    margin-left: 25px
+}
+
+#cnblogs_post_body {
+    margin-bottom: 20px
+}
+#cnblogs_post_body ul {
+    list-style-type: disc;
+    margin-left: 45px;
+    padding-left: 0
+}
+#cnblogs_post_body ul li {
+    list-style: inherit!important
+}
+#cnblogs_post_body ol {
+    padding-left: 50px
+}
+#cnblogs_post_body ol li {
+    list-style-type: decimal
+}
+#cnblogs_post_body table,
+.cnblogs-post-body table {
+    border: 1px solid silver;
+    border-collapse: collapse
+}
+#cnblogs_post_body th,
+#cnblogs_post_body td,
+.cnblogs-post-body th,
+.cnblogs-post-body td {
+    border: 1px solid silver;
+    border-collapse: collapse;
+    padding: 3px
+}
+
+#cnblogs_post_body p {
+    margin: 10px auto;
+    text-indent: 0
+}
+#cnblogs_post_body h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+#cnblogs_post_body h2 {
+    font-size: 21px;
+    font-weight: bold
+}
+#cnblogs_post_body h3 {
+    font-size: 16px;
+    font-weight: bold
+}
+#cnblogs_post_body h4 {
+    font-size: 14px;
+    font-weight: bold
+}
+#cnblogs_post_body h5 {
+    font-size: 12px;
+    font-weight: bold
+}
+#cnblogs_post_body h6 {
+    font-size: 11px;
+    font-weight: bold
+}

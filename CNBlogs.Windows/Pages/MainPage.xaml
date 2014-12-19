@@ -4,37 +4,58 @@
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:nav="using:CNBlogs"
-    xmlns:local="using:CNBlogs"    
-    xmlns:data="using:CNBlogs.SampleData"
+    xmlns:local="using:CNBlogs.Pages"    
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     RequestedTheme="Light"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource CNBlogsBackColor}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--TITLE PART-->
-        <local:PageTitleControl TitleContent="首页 - 今日最新博客" Margin="50,0,0,0"/>
+        <nav:PageTitleControl x:Name="TitleControl" Grid.Row="0" TitleContent="首页 - 今日最新博客" Margin="50,0,0,0"/>
 
         <!--CONTENT PART-->
         <Grid Grid.Row="1">
-            <GridView x:Name="gv_HomePosts" ItemClick="gv_HomePosts_ItemClick"
+            <SemanticZoom x:Name="sz_HomePosts" ViewChangeStarted="sz_HomePosts_ViewChangeStarted" ViewChangeCompleted="sz_HomePosts_ViewChangeCompleted">
+                <SemanticZoom.ZoomedInView>
+                    <GridView x:Name="gv_HomePosts" ItemClick="gv_HomePosts_ItemClick"
                       SelectionMode="None" IsItemClickEnabled="True" Padding="30,0,0,0">
-                <GridView.ItemTemplate>
-                    <DataTemplate>
-                        <local:PostControl/>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
+                        <GridView.ItemTemplate>
+                            <DataTemplate>
+                                <nav:PostControl/>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
+                </SemanticZoom.ZoomedInView>
+
+                <SemanticZoom.ZoomedOutView>
+                    <GridView x:Name="gv_SimplePosts" Tapped="gv_SimplePosts_Tapped"
+                     SelectionMode="None" IsItemClickEnabled="True" Padding="30,0,0,0" >
+                        <GridView.ItemTemplate>
+                            <DataTemplate>
+                                <nav:PostControl Style="{StaticResource ResourceKey=SimplePostControl}"/>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
+                </SemanticZoom.ZoomedOutView>
+            </SemanticZoom>
         </Grid>
+        
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar>
+        <CommandBar  Background="{ThemeResource CNBlogsThemeLightColor}">
             <AppBarButton x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>
             <AppBarButton x:Name="btn_ScrollToTop" Icon="Previous" Label="回到开始" Click="btn_ScrollToTop_Click"/>
         </CommandBar>

@@ -40,7 +40,7 @@ namespace CNBlogs.DataHelper.CloudAPI
             }
 
             //as cnblog does not provide total of items, so we check if there is any new post
-            this._hasMoreItems = newItems != null && newItems.Count > 0;
+            //this._hasMoreItems = newItems != null && newItems.Count > 0;
 
             return newItems;
         }
@@ -50,12 +50,21 @@ namespace CNBlogs.DataHelper.CloudAPI
 
             _lastCount = this.Count;
 
+            var nextCount =_count + _increaseCount;
+
             //as this api only accept itemcount as parameter, we should remove exist posts
-            var result = await APIWrapper.Instance.GetHotPostsAsync(_count + _increaseCount);
+            var result = await APIWrapper.Instance.GetHotPostsAsync(nextCount);
 
             if (!result.IsSuccess)
             {
                 FireErrorEvent(result.Code);
+            }
+            else
+            {
+                if (result.Result != null && result.Result.Entries!=null)
+                {
+                    this._hasMoreItems = nextCount == result.Result.Entries.Count;
+                }
             }
 
             return result.Result == null ? null : result.Result.Entries;
@@ -67,10 +76,14 @@ namespace CNBlogs.DataHelper.CloudAPI
             {
                 TrimPost(posts);
 
+                var newPostList = new List<Post>();
+
                 for (var i = _lastCount; i < posts.Count; i++)
                 {
-                    this.Add(posts[i]);
+                    newPostList.Add(posts[i]);
                 }
+
+                base.AddItems(newPostList);
             }
         }
 

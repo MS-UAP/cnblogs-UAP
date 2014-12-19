@@ -22,11 +22,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ControlHelper\FavoriteToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ControlHelper\NewsControlTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ControlHelper\NightModeLabelConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ControlHelper\PostStatusConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ControlHelper\TimeCountDownConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FunctionHelper\Functions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en-US\Resources.resw" />
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\zh-CN\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
@@ -36,19 +40,44 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\TileUpdateBG_Wide_310x150.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="$(MSBuildThisFileDirectory)HTML\css\cnblog.css">
+    <Content Include="$(MSBuildThisFileDirectory)HTML\css\cnblog_night.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="$(MSBuildThisFileDirectory)HTML\css\news.css">
+    <Content Include="$(MSBuildThisFileDirectory)HTML\css\cnblog_day.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="$(MSBuildThisFileDirectory)HTML\news.html">
+    <Content Include="$(MSBuildThisFileDirectory)HTML\css\cnblog-old.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="$(MSBuildThisFileDirectory)HTML\post.html">
+    <Content Include="$(MSBuildThisFileDirectory)HTML\css\imagefix.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)HTML\css\news_night.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)HTML\css\news_day.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)HTML\js\app_news.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)HTML\news_night.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)HTML\news_day.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)HTML\post_night.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)HTML\post_day.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="$(MSBuildThisFileDirectory)SampleData\AuthorPosts.xml" />
+    <Content Include="$(MSBuildThisFileDirectory)SampleData\categories.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)SampleData\category post.html" />
     <Content Include="$(MSBuildThisFileDirectory)SampleData\HomePosts.xml" />
     <Content Include="$(MSBuildThisFileDirectory)SampleData\HotPosts.xml" />
     <Content Include="$(MSBuildThisFileDirectory)SampleData\news.xml" />
@@ -63,7 +92,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)HTML\js\app.js">
+    <Content Include="$(MSBuildThisFileDirectory)HTML\js\app_post.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

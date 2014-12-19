@@ -15,6 +15,19 @@ namespace CNBlogs
 {
     public sealed class ListViewHeaderControl : Control
     {
+
+        public string Content
+        {
+            get { return (string)GetValue(ContentProperty); }
+            set { SetValue(ContentProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Content.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ContentProperty =
+            DependencyProperty.Register("Content", typeof(string), typeof(ListViewHeaderControl), new PropertyMetadata(string.Empty));
+
+        
+
         public ListViewHeaderControl()
         {
             this.DefaultStyleKey = typeof(ListViewHeaderControl);

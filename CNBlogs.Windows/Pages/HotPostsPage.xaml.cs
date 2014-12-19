@@ -63,7 +63,10 @@ namespace CNBlogs.Pages
         private void LoadData()
         {
             this.topViewDS = new TwoDaysTopViewPostsDS();
+            this.topViewDS.OnLoadMoreStarted += TitleControl.DS_OnLoadMoreStarted;
+            this.topViewDS.OnLoadMoreCompleted += TitleControl.DS_OnLoadMoreCompleted;
             this.gv_HotPosts.ItemsSource = this.topViewDS;
+            this.gv_SimplePosts.ItemsSource = this.topViewDS;
             this.DataContext = this.topViewDS;
         }
 
@@ -127,13 +130,37 @@ namespace CNBlogs.Pages
         {
             if (this.topViewDS != null)
             {
+                TitleControl.DS_OnLoadMoreStarted(0);
                 await this.topViewDS.Refresh();
+                TitleControl.DS_OnLoadMoreCompleted(0);
             }
         }
 
         private void btn_ScrollToTop_Click(object sender, RoutedEventArgs e)
         {
-            CNBlogs.DataHelper.Helper.Functions.GridViewScrollToTop(this.gv_HotPosts);
+            FunctionHelper.Functions.GridViewScrollToTop(this.gv_HotPosts);
+        }
+
+        private bool isZoomOutTapped = false;
+
+        private void sz_HotPosts_ViewChangeStarted(object sender, SemanticZoomViewChangedEventArgs e)
+        {
+            e.DestinationItem.Item = e.SourceItem.Item;
+        }
+
+        private void sz_HotPosts_ViewChangeCompleted(object sender, SemanticZoomViewChangedEventArgs e)
+        {
+            if (!e.IsSourceZoomedInView & isZoomOutTapped)
+            {
+                Post post = e.DestinationItem.Item as Post;
+                isZoomOutTapped = false;
+                this.Frame.Navigate(typeof(Pages.ReadingPage), post);
+            }
+        }
+
+        private void gv_SimplePosts_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            isZoomOutTapped = true;
         }
     }
 }

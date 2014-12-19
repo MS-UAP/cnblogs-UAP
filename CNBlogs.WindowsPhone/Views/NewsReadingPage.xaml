@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="CNBlogs.NewsReadingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CNBlogs"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:ControlHelper="using:CNBlogs.ControlHelper"
+    IsTextScaleFactorEnabled="False"
+    RequestedTheme="Light"
+    Background="{ThemeResource CNBlogsThemeColor}">
+
+    <Page.Resources>
+        <ControlHelper:NightModeLabelConverter x:Key="NightModeLabelConverter"/>
+    </Page.Resources>
+
+    <Grid>
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <local:AuthorControl2/>-->
+        <ProgressBar x:Name="pb_Top" IsIndeterminate="True" VerticalAlignment="Top"/>
+        <WebView Grid.Row="1" x:Name="wv_WebContent" DOMContentLoaded="wv_WebContent_DOMContentLoaded" NavigationStarting="wv_WebContent_NavigationStarting"/>
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Minimal" FontFamily="Global User Interface">
+            <AppBarButton x:Name="btn_Source" Label="原文链接" Icon="Link" Click="btn_Source_Click"/>
+            <AppBarButton x:Name="btn_Setting" Label="设置" Icon="Setting" Click="btn_Setting_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

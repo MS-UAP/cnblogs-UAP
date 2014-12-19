@@ -64,7 +64,9 @@ namespace CNBlogs.Pages
         {
             this.topBloggerDS = new RecommendBloggerDS();
             this.gv_Bloggers.ItemsSource = this.topBloggerDS.Bloggers;
+            TitleControl.DS_OnLoadMoreStarted(0);
             await topBloggerDS.LoadRemoteData();
+            TitleControl.DS_OnLoadMoreCompleted(0);
             this.DataContext = this.topBloggerDS.Bloggers;
         }
 
@@ -128,13 +130,15 @@ namespace CNBlogs.Pages
         {
             if (this.topBloggerDS != null)
             {
+                TitleControl.DS_OnLoadMoreStarted(0);
                 await this.topBloggerDS.Refresh();
+                TitleControl.DS_OnLoadMoreCompleted(0);
             }
         }
 
         private void btn_ScrollToTop_Click(object sender, RoutedEventArgs e)
         {
-            CNBlogs.DataHelper.Helper.Functions.GridViewScrollToTop(this.gv_Bloggers);
+            FunctionHelper.Functions.GridViewScrollToTop(this.gv_Bloggers);
         }
 
     }

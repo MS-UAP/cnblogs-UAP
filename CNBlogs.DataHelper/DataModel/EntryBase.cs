@@ -38,6 +38,20 @@ namespace CNBlogs.DataHelper.DataModel
         [XmlElement("comments")]
         public string CommentsCount { get; set; }
 
+        private PostStatus status;
+        [XmlIgnore]
+        public PostStatus Status{ 
+            get
+            {
+                return this.status;
+            }
+            set
+            {
+                this.status = value;
+                OnPropertyChanged("Status");
+            }
+        }
+
         [XmlIgnore]
         public DateTime PublishTime
         {

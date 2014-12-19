@@ -18,7 +18,7 @@ namespace CNBlogs
         public CommentControl()
         {
             this.DefaultStyleKey = typeof(CommentControl);
-            this.Width = CNBlogs.DataHelper.Helper.Functions.GetWindowsWidth();
+            //this.Width = CNBlogs.DataHelper.Helper.Functions.GetWindowsWidth();
         }
     }
 }

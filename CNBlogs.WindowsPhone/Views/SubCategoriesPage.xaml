@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="CNBlogs.SubCategoriesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CNBlogs"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    RequestedTheme="Light"
+    IsTextScaleFactorEnabled="False"
+    Background="{ThemeResource CNBlogsThemeColor}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <local:PageTitleControl Grid.Row="0" x:Name="control_PageTitle"/>
+        
+        <ListView x:Name="lv_SubCategory" Grid.Row="1" Background="{ThemeResource CNBlogsBackColor}" IsItemClickEnabled="True" Padding="20" ItemClick="lv_SubCategory_ItemClick">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <local:SubCategoryControl Margin="10"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+
+</Page>

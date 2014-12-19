@@ -18,7 +18,6 @@ namespace CNBlogs
         public BloggerControl()
         {
             this.DefaultStyleKey = typeof(BloggerControl);
-            this.Width = CNBlogs.DataHelper.Helper.Functions.GetWindowsWidth();
         }
 
         protected override void OnApplyTemplate()

@@ -109,11 +109,23 @@ namespace CNBlogs.Pages
             //this.authorDS.OnLoadMoreStarted += authorDS_OnLoadMoreStarted;
             this.authorDS.OnLoadMoreCompleted += authorDS_OnLoadMoreCompleted;
             this.gv_AuthorPosts.ItemsSource = this.authorDS;
+            this.gv_SimplePosts.ItemsSource = this.authorDS;
         }
 
-        void authorDS_OnLoadMoreCompleted(int count)
+        async void authorDS_OnLoadMoreCompleted(int count)
         {
-            this.tb_PostCount.Text = string.Format("加载/总数 : {0}/{1}", this.authorDS.Count, this.blogger.PostCount);
+            try
+            {
+                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                    {
+                        this.tb_PostCount.Text = string.Format("加载/总数 : {0}/{1}",
+                                this.authorDS.Count, this.authorDS.Count > this.authorDS.Feed.PostCount ? this.authorDS.Count : this.authorDS.Feed.PostCount);
+                    });
+            }
+            catch (Exception ex)
+            {
+                this.tb_PostCount.Text = ex.Message;
+            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -127,6 +139,28 @@ namespace CNBlogs.Pages
         {
             Post post = e.ClickedItem as Post;
             this.Frame.Navigate(typeof(ReadingPage), post);
+        }
+
+        private bool isZoomOutTapped = false;
+
+        private void sz_AuthorPosts_ViewChangeStarted(object sender, SemanticZoomViewChangedEventArgs e)
+        {
+            e.DestinationItem.Item = e.SourceItem.Item;
+        }
+
+        private void sz_AuthorPosts_ViewChangeCompleted(object sender, SemanticZoomViewChangedEventArgs e)
+        {
+            if (!e.IsSourceZoomedInView & isZoomOutTapped)
+            {
+                Post post = e.DestinationItem.Item as Post;
+                isZoomOutTapped = false;
+                this.Frame.Navigate(typeof(Pages.ReadingPage), post);
+            }
+        }
+
+        private void gv_SimplePosts_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            isZoomOutTapped = true;
         }
     }
 }

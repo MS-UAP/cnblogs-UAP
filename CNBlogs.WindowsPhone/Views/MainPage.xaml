@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     IsTextScaleFactorEnabled="False"
     RequestedTheme="Light"
-    Background="{ThemeResource CNBlogsThemeColor}">
+    Background="{ThemeResource CNBlogsThemeColor}" FontFamily="Global User Interface">
 
     <Page.Resources>
         <Style TargetType="PivotItem">
@@ -59,70 +59,13 @@
                             <TextBlock x:Name="tb_HomeTag" Text="{Binding Count}" FontSize="16" Margin="0,2,0,0"/>
                         </StackPanel>
                     </PivotItem.Header>
-                    <ListView x:Name="lv_HomePosts">
+                    <ListView x:Name="lv_HomePosts" FontFamily="Global User Interface">
                         <ListView.Header>
-                            <local:ListViewHeaderControl Name="今日最新博客"/>
+                            <local:ListViewHeaderControl Content="今日最新博客"/>
                         </ListView.Header>
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <local:PostControl Tapped="PostControl_Tapped"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </PivotItem>
-
-                <PivotItem Margin="0" Tag="hot">
-                    <PivotItem.Header>
-                        <StackPanel Orientation="Horizontal" Height="48">
-                            <TextBlock Style="{StaticResource PivotTitleFont}" Text="热门"/>
-                            <TextBlock x:Name="tb_HotTag" Text="{Binding Count}" FontSize="16" Margin="0,2,0,0"/>
-                        </StackPanel>
-                    </PivotItem.Header>
-                    <ListView x:Name="lv_HotPosts">
-                        <ListView.Header>
-                            <local:ListViewHeaderControl Name="2日内阅读排行"/>
-                        </ListView.Header>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <local:PostControl Tapped="PostControl_Tapped"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </PivotItem>
-
-                <PivotItem Margin="0" Tag="best">
-                    <PivotItem.Header>
-                        <StackPanel Orientation="Horizontal" Height="48">
-                            <TextBlock Style="{StaticResource PivotTitleFont}" Text="精华" />
-                            <TextBlock x:Name="tb_BestTag" Text="{Binding Count}" FontSize="16" Margin="0,2,0,0"/>
-                        </StackPanel>
-                    </PivotItem.Header>
-                    <ListView x:Name="lv_BestPosts">
-                        <ListView.Header>
-                            <local:ListViewHeaderControl Name="10日内推荐排行"/>
-                        </ListView.Header>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <local:PostControl Tapped="PostControl_Tapped"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </PivotItem>
-
-                <PivotItem Margin="0" Tag="blogger">
-                    <PivotItem.Header>
-                        <StackPanel Orientation="Horizontal" Height="48">
-                            <TextBlock Style="{StaticResource PivotTitleFont}" Text="博主" />
-                            <TextBlock x:Name="tb_BloggerTag" Text="20" FontSize="16" Margin="0,2,0,0"/>
-                        </StackPanel>
-                    </PivotItem.Header>
-                    <ListView x:Name="lv_Bloggers" IsItemClickEnabled="True" ItemClick="lv_RecommendPosts_ItemClick">
-                        <ListView.Header>
-                            <local:ListViewHeaderControl Name="20位随机推荐的明星博主"/>
-                        </ListView.Header>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <local:BloggerControl/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
@@ -137,7 +80,7 @@
                     </PivotItem.Header>
                     <ListView x:Name="lv_News" IsItemClickEnabled="True" ItemClick="lv_News_ItemClick">
                         <ListView.Header>
-                            <local:ListViewHeaderControl Name="每日IT新闻"/>
+                            <local:ListViewHeaderControl Content="今日IT新闻"/>
                         </ListView.Header>
                         <ListView.ItemTemplateSelector>
                             <ControlHelper:NewsControlTemplateSelector
@@ -147,6 +90,25 @@
                         </ListView.ItemTemplateSelector>
                     </ListView>
                 </PivotItem>
+
+                <PivotItem Margin="0" Tag="column">
+                    <PivotItem.Header>
+                        <TextBlock Style="{StaticResource PivotTitleFont}" Text="栏目" />
+                    </PivotItem.Header>
+                    <ListView x:Name="lv_Column" IsItemClickEnabled="True" ItemClick="lv_Column_ItemClick">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapGrid Orientation="Horizontal" MaximumRowsOrColumns="2" Margin="10"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <local:ColumnControl Margin="10"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </PivotItem>
+
             </Pivot>
         </Grid>
         <Popup x:Name="popup_tips" IsOpen="False">
@@ -157,7 +119,7 @@
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar x:Name="appbar" ClosedDisplayMode="Minimal" Visibility="Collapsed">
+        <CommandBar x:Name="cmdBar" ClosedDisplayMode="Minimal" Visibility="Collapsed">
             <AppBarButton x:Name="btn_Refresh" Label="刷新" Icon="Sync" Click="btn_Refresh_Click"/>
             <AppBarButton x:Name="btn_Top" Label="返回顶部" Click="btn_Top_Click" >
                 <AppBarButton.Icon>

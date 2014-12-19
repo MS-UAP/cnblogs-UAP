@@ -41,10 +41,14 @@ namespace CNBlogs.DataHelper.CloudAPI
             {
                 TrimPost(posts);
 
+                var newPostsList = new List<Post>();
+
                 for (var i = _lastCount; i < posts.Count; i++)
                 {
-                    this.Add(posts[i]);
+                    newPostsList.Add(posts[i]);
                 }
+
+                base.AddItems(newPostsList);
             }
         }
 

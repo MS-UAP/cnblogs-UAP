@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="36385XiaowuHu.UAP" Publisher="CN=60BC9EB8-6EF8-44C4-817C-FCE25D428B9B" Version="1.0.0.4" />
-  <mp:PhoneIdentity PhoneProductId="a7d5db42-1fb6-4c51-9a17-1613915b80aa" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="MSNChina.54954EFD6D3B7" Publisher="CN=6F076185-A69F-4CC5-8616-73206E39DD76" Version="1.2.0.2" />
+  <mp:PhoneIdentity PhoneProductId="41697856-a933-420b-a1b4-543e2e4e70b2" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>CNBlogs.WindowsPhone</DisplayName>
-    <PublisherDisplayName>Xiaowu Hu</PublisherDisplayName>
+    <DisplayName>博客园 UAP</DisplayName>
+    <PublisherDisplayName>MSN China</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
@@ -16,7 +16,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="CNBlogs.WindowsPhone.App">
-      <m3:VisualElements DisplayName="博客园UAP" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="这是一个Microsoft Universal App的范例，" ForegroundText="light" BackgroundColor="transparent" ToastCapable="true">
+      <m3:VisualElements DisplayName="博客园 UAP" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="这是一个Microsoft Universal App的范例，" ForegroundText="light" BackgroundColor="transparent" ToastCapable="true">
         <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
           <m3:ShowNameOnTiles>
             <m3:ShowOn Tile="square150x150Logo" />

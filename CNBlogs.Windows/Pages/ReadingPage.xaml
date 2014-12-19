@@ -11,7 +11,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     RequestedTheme="Light"
     mc:Ignorable="d">
-
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
@@ -31,32 +31,43 @@
                         AutomationProperties.ItemType="Navigation Button"/>
         <TextBlock Grid.Row="0" Grid.Column="1" MaxLines="2" TextWrapping="Wrap"  
                    x:Name="pageTitle" Text="{Binding Title}" Style="{StaticResource Win8PageSubTitleFont}" 
-                       VerticalAlignment="Center"/>
-        <Grid Grid.Row="0" Grid.Column="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-            <nav:BloggerControl Grid.Row="0" x:Name="currentBlogger">                
-            </nav:BloggerControl>
-            <TextBlock Grid.Row="1" 
-                       x:Name="tb_CommentCount"
-                       HorizontalAlignment="Left">
-            </TextBlock>
-        </Grid>
-        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Grid.Row="1" Grid.Column="1" Margin="0,0,50,0">
+                       VerticalAlignment="Center" Margin="0,0,100,0"/>
+
+        <Grid Background="{ThemeResource CNBlogsThemeLightColor}" Grid.Row="1" Grid.Column="1" Margin="0,0,50,30">
             <WebView  x:Name="wv_Post" DOMContentLoaded="wv_Post_DOMContentLoaded"/>
         </Grid>
 
-        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Grid.Row="1" Grid.Column="2">
-            <ListView x:Name="lv_Comments" SelectionMode="None">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <nav:CommentControl/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Grid>
+        <TextBlock Text="评论" Grid.Row="0" Grid.Column="2" Style="{StaticResource Win8PageSubTitleFont}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" x:Name="tb_CommentCount" Text="0/0" Style="{StaticResource Win8PageSubTitleFont}" FontSize="24" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0"/>
 
+        <Border Grid.Row="1" Grid.Column="2" Margin="0,0,0,30" BorderThickness="1,0,0,0" BorderBrush="{ThemeResource CNBlogsLineColor}">
+            <Grid>
+                <TextBlock x:Name="tb_Message" Text="目前还没有评论!" FontSize="24" Foreground="Gray" Grid.Row="1" Grid.Column="2" Visibility="Collapsed" Margin="30,0,0,0"/>
+                <ListView x:Name="lv_Comments" SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <nav:CommentControl/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Border>
+        <nav:BloggerControl Style="{StaticResource SimpleBloggerControl}"
+            Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="currentBlogger" RenderTransformOrigin="1,0" 
+        	VerticalAlignment="Top" Width="500" HorizontalAlignment="Left"
+        	PointerPressed="currentBlogger_PointerPressed">
+            <nav:BloggerControl.Projection>
+                <PlaneProjection RotationZ="-90" CenterOfRotationX="0" CenterOfRotationY="0" GlobalOffsetX="100"/>
+            </nav:BloggerControl.Projection>
+        </nav:BloggerControl>
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar Background="{ThemeResource CNBlogsThemeLightColor}">
+            <AppBarButton x:Name="btn_OriginalLink" Icon="Link" Label="原文链接" Click="btn_OriginalLink_Click"/>
+            <AppBarButton x:Name="btn_Favorite" Icon="Favorite" Label="收藏" Click="btn_Favorite_Click"/>
+            <AppBarButton x:Name="btn_UnFavorite" Icon="UnFavorite" Label="取消收藏" Click="btn_UnFavorite_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
 </Page>

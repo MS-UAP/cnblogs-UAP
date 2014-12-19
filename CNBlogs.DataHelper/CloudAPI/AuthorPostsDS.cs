@@ -20,6 +20,8 @@ namespace CNBlogs.DataHelper.CloudAPI
     /// </summary>
     public class AuthorPostsDS : PostDataSource
     {
+        public BloggerFeed Feed { get; private set; }
+
         public AuthorPostsDS(string authorId)
         {
             if (string.IsNullOrWhiteSpace(authorId))
@@ -33,6 +35,18 @@ namespace CNBlogs.DataHelper.CloudAPI
         protected async override Task<IList<DataModel.Post>> LoadItemsAsync()
         {
             var result = await APIWrapper.Instance.GetAuthorPostsAsync(_authorId, _currentPage);
+
+            if (result.Result != null)
+            {
+                this.Feed = result.Result;
+            }
+            else
+            {
+                if (this.Feed == null)
+                {
+                    this.Feed = new BloggerFeed() { Entries = new List<Post>(), PostCount = 0 };
+                }
+            }
 
             if (!result.IsSuccess)
             {

@@ -1,4 +1,5 @@
 ﻿using CNBlogs.DataHelper.DataModel;
+using CNBlogs.DataHelper.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,36 @@ namespace CNBlogs.DataHelper.CloudAPI
             {
                 foreach (var post in posts)
                 {
-                    post.Summary = post.Summary.Trim();
+                    if (post != null)
+                    {
+                        if (!string.IsNullOrEmpty(post.Summary))
+                        {
+                            post.Summary = post.Summary.Trim();
+                            post.Summary = Windows.Data.Html.HtmlUtilities.ConvertToText(post.Summary);
+                        }
 
-                    // title and summary may contains special html code, convert them
-                    post.Title = Windows.Data.Html.HtmlUtilities.ConvertToText(post.Title);
-                    post.Summary = Windows.Data.Html.HtmlUtilities.ConvertToText(post.Summary);
+                        if (!string.IsNullOrEmpty(post.Title))
+                        {
+                            // title and summary may contains special html code, convert them
+                            post.Title = Windows.Data.Html.HtmlUtilities.ConvertToText(post.Title);
+                        }
+
+                        if (post.Author != null && !string.IsNullOrEmpty(post.Author.Name))
+                        {
+                            post.Author.Name = Windows.Data.Html.HtmlUtilities.ConvertToText(post.Author.Name);
+                        }
+
+                        // check blog status
+                        post.Status = CNBlogSettings.Instance.GetBlogReadState(post.ID);
+
+                        // check if author blogapp is empty
+                        if (string.IsNullOrWhiteSpace(post.BlogApp) && post.Author != null && !string.IsNullOrWhiteSpace(post.Author.Uri))
+                        {
+                            var uri = new Uri(post.Author.Uri);
+
+                            post.BlogApp = uri.LocalPath.Trim(new[] { '/' });
+                        }
+                    }
                 }
             }
         }
@@ -29,9 +55,15 @@ namespace CNBlogs.DataHelper.CloudAPI
             if (items != null)
             {
                 TrimPost(items);
-            }
 
-            base.AddItems(items);
+                foreach (var item in items)
+                {
+                    if (!this.Any(it => it.ID == item.ID))
+                    {
+                        this.Add(item);
+                    }
+                }
+            }
         }
     }
 }

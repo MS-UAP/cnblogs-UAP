@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="286c298b-4867-43d1-8d75-e09c16d4183c" Publisher="CN=xiaowuhu" Version="1.0.0.1" />
+  <Identity Name="MSNChina.54954EFD6D3B7" Publisher="CN=6F076185-A69F-4CC5-8616-73206E39DD76" Version="1.1.0.8" />
   <Properties>
-    <DisplayName>CNBlogs.Windows</DisplayName>
-    <PublisherDisplayName>xiaowuhu</PublisherDisplayName>
+    <DisplayName>博客园 UAP</DisplayName>
+    <PublisherDisplayName>Microsoft Online</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="CNBlogs.Windows.App">
-      <m2:VisualElements DisplayName="博客园UAP" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\Square30x30Logo.png" Description="博客园Universal App范例" ForegroundText="light" BackgroundColor="#297ACD">
+      <m2:VisualElements DisplayName="博客园 UAP" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\Square30x30Logo.png" Description="博客园Universal App范例" ForegroundText="light" BackgroundColor="#297ACD">
         <m2:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\Square310x310Logo.png" Square70x70Logo="Assets\Square70x70Logo.png">
           <m2:ShowNameOnTiles>
             <m2:ShowOn Tile="square150x150Logo" />

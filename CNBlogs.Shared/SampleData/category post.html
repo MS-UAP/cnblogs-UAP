@@ -1,0 +1,704 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>.NET新手区 - 第2页 - 网站分类 - 博客园</title>
+    <link rel="shortcut icon" href="http://static.cnblogs.com/favicon.ico" type="image/x-icon" />
+    <link rel="Stylesheet" type="text/css" href="/bundles/aggsite.css?v=ptDKCaNJdFvE7MJzRv8Z6-qxP_cwEWSehlMScYLQfbg1" />
+    <link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="http://feed.cnblogs.com/blog/sitecateogry/beginner/rss" />
+    <script src="http://common.cnblogs.com/script/jquery.js" type="text/javascript"></script>
+    <script src="/bundles/aggsite.js?v=VEUoR5yyf3o-4s1hgn364FBKt1bU507edRsQxigzyEc1" type="text/javascript"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="hd_info">
+            <div id="cnts">
+                <div id="site_nav_top">代码改变世界</div>
+                <div id="login_area"><span id="span_userinfo"></span></div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div id="header">
+            <p class="h_r_3"></p><p class="h_r_2"></p><p class="h_r_1"></p>
+            <div id="header_block">
+                <div id="logo">
+                    <h1><a href="http://www.cnblogs.com/" title="开发者的网上家园"><img src="http://static.cnblogs.com/images/logo_small.gif" alt="博客园Logo" width="142" height="55" /></a></h1>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <p class="h_r_1"></p><p class="h_r_2"></p><p class="h_r_3"></p>
+        </div>
+        <div id="nav_menu"><a href="http://home.cnblogs.com/">园子</a><a href="http://news.cnblogs.com">新闻</a><a href="http://q.cnblogs.com/">博问</a><a href="http://home.cnblogs.com/ing/">闪存</a><a href="http://home.cnblogs.com/group/">小组</a><a href="http://home.cnblogs.com/wz/">收藏</a><a href="http://job.cnblogs.com/">招聘</a><a href="http://kb.cnblogs.com/">知识库</a><a href="http://zzk.cnblogs.com/">找找看</a></div>
+        <div id="main">
+            <div class="post_nav_block_wrapper">
+                <ul class="post_nav_block">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/cate/beginner/" class="current_nav">.NET新手区</a></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <div class="rss_link" id="rss_block">
+                <span id="posts_refresh_tips"></span><a id="posts_refresh" href="#" class="refresh" title="刷新博文列表" onclick="aggSite.loadCategoryPostList();return false">刷新</a>        <a href="http://feed.cnblogs.com/blog/sitecateogry/beginner/rss"><img src="http://static.cnblogs.com/images/icon_rss.gif" alt="点击订阅" style="position:relative;top:2px;" title="订阅博客园文章" /></a>
+            </div>
+            <div id="headline_block" class="headline"><ul><li class="editor_pick"><a href="http://www.cnblogs.com/fangjian0423/p/mybatis-cache.html" id="editor_pick_lnk" target="_blank">【编辑推荐】通过源码分析MyBatis的缓存<span id="editor_pick_count"></span></a> <a href="/aggsite/headline" title="查看更多编辑推荐" class="right_more">»</a></li><li><a href="http://www.cnblogs.com/gaochundong/p/everyone_is_a_dba_sp_info_collection.html" target="_blank" title="阅读605, 评论11, 推荐12">[最多推荐]人人都是 DBA（XIV）存储过程信息收集脚本汇编(11/605)</a> <a href="/aggsite/topdigged24h" title="查看24小时推荐排行" class="right_more">»</a></li><li><a href="http://www.cnblogs.com/dyxd/p/4158721.html" target="_blank" title="阅读2915, 评论79, 推荐19">[最多评论]终于等到这样的一天啦，嘿嘿(79/2915)</a> <a href="/aggsite/topcommented24h" title="查看24小时评论排行" class="right_more">»</a></li><li><a href="http://news.cnblogs.com/n/510768/" target="_blank" title="阅读2586, 评论17, 推荐13">[新闻头条]知名程序员发布BPG格式图像：秒杀JPEG(17/2586)</a> <a href="http://news.cnblogs.com/" title="查看更多新闻" class="right_more">»</a></li><li><a href="http://news.cnblogs.com/n/510775/" target="_blank" title="阅读2291, 评论18, 推荐9">[推荐新闻]马云连发微博引热议 网友：竟无言以对！(18/2291)</a> <a href="http://news.cnblogs.com/n/recommend" title="查看更多推荐新闻" class="right_more">»</a></li></ul></div>
+            <div id="pager_top" style="display:none"></div>
+            <div id="post_list_tips" class="hide"></div>
+
+            <div id="post_list">
+
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('xiaoyaojian',4150018,92862,1)">
+                            <span class="diggnum" id="digg_count_4150018">0</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4150018" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/xiaoyaojian/p/4150018.html" target="_blank">WCF中操作的分界于调用顺序和会话的释放</a></h3>
+                        <p class="post_item_summary">
+                            操作分界在WCF操作契约的设计中，有时会有一些调用顺序的业务，有的操作不能最先调用，有的操作必须最后调用，比如在从一个箱子里拿出一件东西的时候，必须先要执行打开箱子的操作，而关上箱子的操作应该在一切工作完成之后再被执行。publicinterface Box{ void Open(int boxId...
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/xiaoyaojian/" class="lightblue">小白哥哥</a>
+                            发布于 2014-12-07 22:22
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/xiaoyaojian/p/4150018.html#commentform" title="" class="gray">
+                                    评论(0)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/xiaoyaojian/p/4150018.html" class="gray">阅读(458)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('tcjiaan',4149203,113198,1)">
+                            <span class="diggnum" id="digg_count_4149203">4</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4149203" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/tcjiaan/p/4149203.html" target="_blank">【.NET深呼吸】INotifyPropertyChanged接口的真故事</a></h3>
+                        <p class="post_item_summary">
+                            无论是在流氓腾的问问社区，还是在黑度贴吧，或是“厕所等你”论坛上，曾经看到过不少朋友讨论INotifyPropertyChanged接口。不少朋友认为该接口是为双向绑定而使用的，那么，真实的情况是这样的吗?INotifyPropertyChanged接口位于System.ComponentModel...
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/tcjiaan/" class="lightblue">东邪独孤</a>
+                            发布于 2014-12-07 15:45
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/tcjiaan/p/4149203.html#commentform" title="2014-12-10 16:35" class="gray">
+                                    评论(2)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/tcjiaan/p/4149203.html" class="gray">阅读(699)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('wintersun',4148223,18730,1)">
+                            <span class="diggnum" id="digg_count_4148223">0</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4148223" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/wintersun/p/4148223.html" target="_blank">Asp.net SignalR 实现服务端消息推送到Web端</a></h3>
+                        <p class="post_item_summary">
+                            之前的文章介绍过Asp.net SignalR, ASP .NET SignalR是一个ASP .NET 下的类库，可以在ASP .NET 的Web项目中实现实时通信. 今天我们来实现服务端消息推送到Web端, 首先回顾一下它抽象层次图是这样的: 实际上 Asp.net SignalR 2 实现 服...
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/wintersun/" class="lightblue">PetterLiu</a>
+                            发布于 2014-12-06 14:37
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/wintersun/p/4148223.html#commentform" title="" class="gray">
+                                    评论(0)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/wintersun/p/4148223.html" class="gray">阅读(130)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('netxiaohui',4148221,200330,1)">
+                            <span class="diggnum" id="digg_count_4148221">1</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4148221" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/netxiaohui/p/4148221.html" target="_blank">【原创】C#基础学习01</a></h3>
+                        <p class="post_item_summary">
+                            学习“传智播客视频基础”做的课堂笔记，您有幸读到，若其中有错误部分，请您务必指明。另外请给出您的宝贵建议，谢谢。**************基础知识************1：.net是一种平台【一种框架，一些编辑语言在其上面运行显示】，而c#是基于其上面的一种语言。2：Winform应用程序开发是...
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/netxiaohui/" class="lightblue">—阿辉</a>
+                            发布于 2014-12-06 14:36
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/netxiaohui/p/4148221.html#commentform" title="2014-12-08 11:31" class="gray">
+                                    评论(4)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/netxiaohui/p/4148221.html" class="gray">阅读(518)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('agony-123',4147933,188692,1)">
+                            <span class="diggnum" id="digg_count_4147933">1</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4147933" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/agony-123/p/4147933.html" target="_blank">初入社会八个月总结</a></h3>
+                        <p class="post_item_summary">
+                            今年4月份参加工作，至今已经八个月了，以前没接触过的EF、MVC等，经过项目的磨练，已经差不多了。感觉在这八个月中，自己的姿势增长很快，这是初入社会比较欣慰的一点。 总的来说，这八个月让我对身边的人，有了些新的认识：本人在青岛上学，毕业之后跟着大学的兄弟几个一起留在了青岛，我来到了市南，他们去了青....
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/agony-123/" class="lightblue">不起名也罢呀</a>
+                            发布于 2014-12-06 10:21
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/agony-123/p/4147933.html#commentform" title="2014-12-08 13:50" class="gray">
+                                    评论(6)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/agony-123/p/4147933.html" class="gray">阅读(189)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('tianzhi9885',4147524,198636,1)">
+                            <span class="diggnum" id="digg_count_4147524">0</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4147524" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/tianzhi9885/p/4147524.html" target="_blank">[原创]微软笔试经验总结</a></h3>
+                        <p class="post_item_summary">
+                            陆续收到几位将要于16日去参加微软笔试的朋友的来信，纷纷想要我提供点建议。其实我本身水平有限，心得应该说很少。但我自己也想借此机会review一下，毕竟掐指算来，距离我去笔试的时间，竟然已经一年了。当然，我的经历很有限，只能提供些信息供大家参考。我会很用力去回忆，总结，但是还请大家自己下决定，毕竟事...
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/tianzhi9885/" class="lightblue">九八八五</a>
+                            发布于 2014-12-05 21:29
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/tianzhi9885/p/4147524.html#commentform" title="" class="gray">
+                                    评论(0)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/tianzhi9885/p/4147524.html" class="gray">阅读(143)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('gc2013',4146892,170144,1)">
+                            <span class="diggnum" id="digg_count_4146892">0</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4146892" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/gc2013/p/4146892.html" target="_blank">VB.NET与C# 语法区别展示</a></h3>
+                        <p class="post_item_summary">
+                            在学习VB.NET后发现，VB.NET与C#的语法主要的不同在两个部分，这两部分搞通了，那就游刃有余，迎刃而解了。现将其对比总结如下：一、实体部分（与VB相比，在C#和VB.NET中，实体的使用很有新意，将其作为第一个对比呈现）C#实体：语法格式为?1234567891011//方式public i...
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/gc2013/" class="lightblue">GC2013</a>
+                            发布于 2014-12-05 16:01
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/gc2013/p/4146892.html#commentform" title="2014-12-08 08:05" class="gray">
+                                    评论(3)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/gc2013/p/4146892.html" class="gray">阅读(105)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('ysyn',4146691,118166,1)">
+                            <span class="diggnum" id="digg_count_4146691">0</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4146691" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/ysyn/p/4146691.html" target="_blank">设计模式（16）---原型模式</a></h3>
+                        <p class="post_item_summary">
+                            一、定义原型模式：用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。解释：有一个设计非常复杂的对象，如果需要得到多个这样对象的时候，可以先创建一个原型对象，然后使用原型对象clone出新的对象，从而实现减少内存消耗和类实例复用的目的。二、UML类图及基本代码基本代码：abstract ...
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/ysyn/" class="lightblue">lhb62232397</a>
+                            发布于 2014-12-05 14:58
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/ysyn/p/4146691.html#commentform" title="" class="gray">
+                                    评论(0)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/ysyn/p/4146691.html" class="gray">阅读(76)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('ysyn',4146090,118166,1)">
+                            <span class="diggnum" id="digg_count_4146090">0</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4146090" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/ysyn/p/4146090.html" target="_blank">设计模式（15）---享元模式</a></h3>
+                        <p class="post_item_summary">
+                            一、定义享元模式：运用共享技术有效地支持大量细粒度的对象。解释：需要大量重复new一个对象时，使用享元模式可以让你减少对象的初始化，从而减小内存开销。太苍白了，理解的不到位，希望自己以后补充吧。二、UML类图及基本代码基本代码：public abstract class Flyweight {...
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/ysyn/" class="lightblue">lhb62232397</a>
+                            发布于 2014-12-05 10:28
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/ysyn/p/4146090.html#commentform" title="" class="gray">
+                                    评论(0)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/ysyn/p/4146090.html" class="gray">阅读(65)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('renshengbuduanxuexi',4143398,207395,1)">
+                            <span class="diggnum" id="digg_count_4143398">0</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4143398" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/renshengbuduanxuexi/p/4143398.html" target="_blank">C#的OpenFileDialog和SaveFileDialog的常见用法（转）</a></h3>
+                        <p class="post_item_summary">
+                            OpenFileDialog openFileDialog1 = new OpenFileDialog(); openFileDialog1.InitialDirectory = strOpenFileFolder;//初始目录，不赋值也可以openFileDialog1.Filter = “mxm...
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/renshengbuduanxuexi/" class="lightblue">人生不断学习</a>
+                            发布于 2014-12-04 17:28
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/renshengbuduanxuexi/p/4143398.html#commentform" title="" class="gray">
+                                    评论(0)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/renshengbuduanxuexi/p/4143398.html" class="gray">阅读(75)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('brilliant',4140907,204317,1)">
+                            <span class="diggnum" id="digg_count_4140907">0</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4140907" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/brilliant/p/4140907.html" target="_blank">asp.net关于Repeater控件中的全选，批量操作</a></h3>
+                        <p class="post_item_summary">
+                            今天在Repeater控件中碰到一个全选的操作，于是上网查了一下，找到一个觉得比较好，便记录下来， 界面代码简化之后(全选操作)： ...
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/brilliant/" class="lightblue">Brilliant#</a>
+                            发布于 2014-12-03 18:17
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/brilliant/p/4140907.html#commentform" title="" class="gray">
+                                    评论(0)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/brilliant/p/4140907.html" class="gray">阅读(100)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('xie4529298',4138806,101086,1)">
+                            <span class="diggnum" id="digg_count_4138806">0</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4138806" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/xie4529298/p/linq.html" target="_blank">Linq&amp;lamda相关</a></h3>
+                        <p class="post_item_summary">
+                            1 查询
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/xie4529298/" class="lightblue">CarlosAdmin</a>
+                            发布于 2014-12-02 22:40
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/xie4529298/p/linq.html#commentform" title="" class="gray">
+                                    评论(0)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/xie4529298/p/linq.html" class="gray">阅读(115)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('tianzhi9885',4137482,198636,1)">
+                            <span class="diggnum" id="digg_count_4137482">0</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4137482" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/tianzhi9885/p/4137482.html" target="_blank">骚动吧，少年！微软2014校园招聘笔试试题</a></h3>
+                        <p class="post_item_summary">
+                            1、Which statement(s) is(are) correct about thread and process？Select all that apply.(5 Points)A、Threads share the same address space of the parent pro...
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/tianzhi9885/" class="lightblue">九八八五</a>
+                            发布于 2014-12-03 09:22
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/tianzhi9885/p/4137482.html#commentform" title="" class="gray">
+                                    评论(0)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/tianzhi9885/p/4137482.html" class="gray">阅读(241)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('rr163',4136605,192553,1)">
+                            <span class="diggnum" id="digg_count_4136605">0</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4136605" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/rr163/p/4136605.html" target="_blank">C# 6和 VB 12的最新特性列表</a></h3>
+                        <p class="post_item_summary">
+                            随着下个版本的C#发布日逐渐临近，那些还没有完成的特性必须被砍掉。最近从特性列表中被砍掉的特性包括主要构造函数（primary constructor）和声明表达式（declaration expression）。Mads Torgersen写道：正如我之前所说的一样，语言特性在这次发布中只是第二....
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/rr163/" class="lightblue">r163</a>
+                            发布于 2014-12-03 09:21
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/rr163/p/4136605.html#commentform" title="" class="gray">
+                                    评论(0)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/rr163/p/4136605.html" class="gray">阅读(187)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('hukaiyang',4138668,185340,1)">
+                            <span class="diggnum" id="digg_count_4138668">0</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4138668" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/hukaiyang/p/4138668.html" target="_blank">DotNET知识点总结四（笔记整合）</a></h3>
+                        <p class="post_item_summary">
+                            1、枚举：本质是类如果为第一个枚举赋了一个int值，那么后面的枚举项依次递增可以将枚举强转成他所代表的int值C#的枚举项都是常量（可以用Reflector查看literal的IL源码）因为枚举项都有对应的int值，所以Switch把他当成int看不能定义方法、属性、事件多个枚举有相同数值时，数值强...
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/hukaiyang/" class="lightblue">丶工林云</a>
+                            发布于 2014-12-02 22:06
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/hukaiyang/p/4138668.html#commentform" title="" class="gray">
+                                    评论(0)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/hukaiyang/p/4138668.html" class="gray">阅读(140)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('xie4529298',4138563,101086,1)">
+                            <span class="diggnum" id="digg_count_4138563">1</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4138563" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/xie4529298/p/interface.html" target="_blank">接口相关</a></h3>
+                        <p class="post_item_summary">
+                            1 查询QQ昵称和头像http://r.qzone.qq.com/cgi-bin/user/cgi_personal_card?uin=xxxx2 京东价格http://p.3.cn/prices/mgets?skuIds=J_1057746&amp;type=13 IP获取 新浪 http://...
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/xie4529298/" class="lightblue">CarlosAdmin</a>
+                            发布于 2014-12-02 21:35
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/xie4529298/p/interface.html#commentform" title="2014-12-08 21:09" class="gray">
+                                    评论(1)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/xie4529298/p/interface.html" class="gray">阅读(93)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('FourLeafCloverZc',4138484,193332,1)">
+                            <span class="diggnum" id="digg_count_4138484">0</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4138484" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/FourLeafCloverZc/p/4138484.html" target="_blank">C#基础----Linq之List&lt;T&gt;篇</a></h3>
+                        <p class="post_item_summary">
+                            最近有用到List处理排序以及分页的问题.想想还是写一个博客记录一下。以下围绕Person类实现，Person类只有Name和Age两个属性 一.List排序 1.1 List提供了很多排序方法，sort(),Orderby(),OrderByDescending(). lstPe...
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/FourLeafCloverZc/" class="lightblue">我有一颗四叶草</a>
+                            发布于 2014-12-02 21:09
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/FourLeafCloverZc/p/4138484.html#commentform" title="" class="gray">
+                                    评论(0)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/FourLeafCloverZc/p/4138484.html" class="gray">阅读(161)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('quejuwen',4135401,21787,1)">
+                            <span class="diggnum" id="digg_count_4135401">0</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4135401" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/quejuwen/p/github.html" target="_blank">使用GitHub for Windows客户端管理京东代码库项目</a></h3>
+                        <p class="post_item_summary">
+                            1、下载并安装 GitHub for Windows 客户端https://windows.github.com/2、在京东代码库中新的代码库，可以创建私有的代码库https://code.jd.com/3、全选地址，并拖动到GitHub客户端空白处4、同步完成即可！
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/quejuwen/" class="lightblue">阿炬</a>
+                            发布于 2014-12-01 16:34
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/quejuwen/p/github.html#commentform" title="" class="gray">
+                                    评论(0)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/quejuwen/p/github.html" class="gray">阅读(138)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('tianzhi9885',4134363,198636,1)">
+                            <span class="diggnum" id="digg_count_4134363">0</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4134363" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/tianzhi9885/p/4134363.html" target="_blank">程序员面试不完全指南</a></h3>
+                        <p class="post_item_summary">
+                            程序员找工作难，想要被成功聘用更难。最常见的办法是经历一次又一次的面试失败后自己琢磨出面试技巧，当然也可以花钱到一些培训机构去接受专业的书面简历和模拟面试的指导。这些方法可能都会奏效，但是却并不是时间和金钱利用率最高的。软件行业的工作期望比其他大多数岗位都要来得高。在这严格的选拔人才的机制下，只要我...
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/tianzhi9885/" class="lightblue">九八八五</a>
+                            发布于 2014-12-01 10:00
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/tianzhi9885/p/4134363.html#commentform" title="" class="gray">
+                                    评论(0)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/tianzhi9885/p/4134363.html" class="gray">阅读(245)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="post_item">
+                    <div class="digg">
+                        <div class="diggit" onclick="DiggPost('gc2013',4134288,170144,1)">
+                            <span class="diggnum" id="digg_count_4134288">1</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="digg_tip_4134288" class="digg_tip"></div>
+                    </div>
+                    <div class="post_item_body">
+                        <h3><a class="titlelnk" href="http://www.cnblogs.com/gc2013/p/4134288.html" target="_blank">C# 6.0 的那些事</a></h3>
+                        <p class="post_item_summary">
+                            这两天期中考试没时间去看Connect();直播，挺可惜的，考完后补看了Connect(); 把C#6.0的新东西总结一下。 自动属性初始化 (Initializers for auto-properties) 以前我们是这么写的 为一个默认值加一个后台字段是不是很不爽，现在我们可以这样写...
+                        </p>
+                        <div class="post_item_foot">
+                            <a href="http://www.cnblogs.com/gc2013/" class="lightblue">GC2013</a>
+                            发布于 2014-12-01 09:25
+                            <span class="article_comment">
+                                <a href="http://www.cnblogs.com/gc2013/p/4134288.html#commentform" title="2014-12-01 09:57" class="gray">
+                                    评论(0)
+                                </a>
+                            </span><span class="article_view"><a href="http://www.cnblogs.com/gc2013/p/4134288.html" class="gray">阅读(243)</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+
+            </div>
+            <script>editorPickStat();aggSite.user.getUserInfo();</script>
+            <script type="text/javascript">
+        var aggSiteModel = {"CategoryType":"SiteCategory","ParentCategoryId":108698,"CategoryId":18156,"PageIndex":2,"ItemListActionName":"PostList"};
+            </script>
+            <div id="pager_bottom">
+                <div id="paging_block"><div class="pager"><a href="/cate/beginner/" onclick="aggSite.loadCategoryPostList(1,20);buildPaging(1);return false;">&lt; Prev</a><a href="/cate/beginner/" class="p_1" onclick="aggSite.loadCategoryPostList(1,20);buildPaging(1);return false;">1</a><a href="/cate/beginner/2" class="p_2 current" onclick="aggSite.loadCategoryPostList(2,20);buildPaging(2);return false;">2</a><a href="/cate/beginner/3" class="p_3" onclick="aggSite.loadCategoryPostList(3,20);buildPaging(3);return false;">3</a><a href="/cate/beginner/4" class="p_4" onclick="aggSite.loadCategoryPostList(4,20);buildPaging(4);return false;">4</a><a href="/cate/beginner/5" class="p_5" onclick="aggSite.loadCategoryPostList(5,20);buildPaging(5);return false;">5</a><a href="/cate/beginner/6" class="p_6" onclick="aggSite.loadCategoryPostList(6,20);buildPaging(6);return false;">6</a><a href="/cate/beginner/7" class="p_7" onclick="aggSite.loadCategoryPostList(7,20);buildPaging(7);return false;">7</a><a href="/cate/beginner/8" class="p_8" onclick="aggSite.loadCategoryPostList(8,20);buildPaging(8);return false;">8</a><a href="/cate/beginner/9" class="p_9" onclick="aggSite.loadCategoryPostList(9,20);buildPaging(9);return false;">9</a><a href="/cate/beginner/10" class="p_10" onclick="aggSite.loadCategoryPostList(10,20);buildPaging(10);return false;">10</a><a href="/cate/beginner/11" class="p_11" onclick="aggSite.loadCategoryPostList(11,20);buildPaging(11);return false;">11</a>···<a href="/cate/beginner/47" class="p_47" onclick="aggSite.loadCategoryPostList(47,20);buildPaging(47);return false;">47</a><a href="/cate/beginner/3" onclick="aggSite.loadCategoryPostList(3,20);buildPaging(3);return false;">Next &gt;</a></div></div>
+                <script type="text/javascript">var pagingBuider={"OnlyLinkText":false,"TotalCount":927,"PageIndex":2,"PageSize":20,"ShowPageCount":5,"SkipCount":20,"UrlFormat":"/cate/beginner/{0}","OnlickJsFunc":"aggSite.loadCategoryPostList()","FirstPageLink":"/cate/beginner/","AjaxUrl":"/mvc/ToolkitPaging/load.aspx","AjaxCallbak":null,"TopPagerId":"pager_top","IsRenderScript":true};function buildPaging(pageIndex){pagingBuider.PageIndex=pageIndex;$.ajax({url:pagingBuider.AjaxUrl,data:JSON.stringify(pagingBuider),type:'post',dataType:'text',contentType:'application/json; charset=utf-8',success:function (data) { $('#paging_block').html(data); var pagerTop=$('#pager_top');if(pageIndex>1){$(pagerTop).html(data).show();}else{$(pagerTop).hide();}}});}</script>
+            </div>
+            <div id="side_nav">
+
+                <div id="cate_title_block">
+                    <div id="cate_title_title"><div class="cate_title">网站分类</div></div>
+                    <ul id="cate_item">
+                        <li id="cate_item_108698" onmouseover="cateShow(108698)" onmouseout="cateHidden(108698)">
+                            <a href="/cate/108698/">.NET技术(17)</a>
+                        </li>
+                        <li id="cate_item_2" onmouseover="cateShow(2)" onmouseout="cateHidden(2)">
+                            <a href="/cate/2/">编程语言(12)</a>
+                        </li>
+                        <li id="cate_item_108701" onmouseover="cateShow(108701)" onmouseout="cateHidden(108701)">
+                            <a href="/cate/108701/">软件设计(1)</a>
+                        </li>
+                        <li id="cate_item_108703" onmouseover="cateShow(108703)" onmouseout="cateHidden(108703)">
+                            <a href="/cate/108703/">Web前端(10)</a>
+                        </li>
+                        <li id="cate_item_108704" onmouseover="cateShow(108704)" onmouseout="cateHidden(108704)">
+                            <a href="/cate/108704/">企业信息化(9)</a>
+                        </li>
+                        <li id="cate_item_108705" onmouseover="cateShow(108705)" onmouseout="cateHidden(108705)">
+                            <a href="/cate/108705/">手机开发(8)</a>
+                        </li>
+                        <li id="cate_item_108709" onmouseover="cateShow(108709)" onmouseout="cateHidden(108709)">
+                            <a href="/cate/108709/">软件工程(0)</a>
+                        </li>
+                        <li id="cate_item_108712" onmouseover="cateShow(108712)" onmouseout="cateHidden(108712)">
+                            <a href="/cate/108712/">数据库技术(2)</a>
+                        </li>
+                        <li id="cate_item_108724" onmouseover="cateShow(108724)" onmouseout="cateHidden(108724)">
+                            <a href="/cate/108724/">操作系统(2)</a>
+                        </li>
+                        <li id="cate_item_4" onmouseover="cateShow(4)" onmouseout="cateHidden(4)">
+                            <a href="/cate/4/">其他分类(6)</a>
+                        </li>
+                        <li id="cate_item_0" onmouseover="cateShow(0)" onmouseout="cateHidden(0)">
+                            <a href="/cate/all/">所有随笔(842)</a>
+                        </li>
+                        <li id="cate_item_-1" onmouseover="cateShow(-1)" onmouseout="cateHidden(-1)">
+                            <a href="/comment/">所有评论(533)</a>
+                        </li>
+                    </ul>
+                    <div class="cate_bottom"></div>
+                    <div id="cate_sub_block"></div>
+                    <script type="text/javascript">var cateIdList = '108698,2,108701,108703,108704,108705,108709,108712,108724,4';aggSite.loadSubCategories();</script>
+                </div>
+                <div class="l_s"></div>
+                <p class="r_l_3" /><p class="r_l_2" /><p class="r_l_1" />
+                <div class="w_l">
+                    <h4>相关分类</h4>
+                    <ul>
+                        <li><a href="/cate/aspnet/">ASP.NET</a></li>
+                        <li><a href="/cate/csharp/">C#</a></li>
+                        <li><a href="/cate/winform/">WinForm</a></li>
+                        <li><a href="/cate/silverlight/">Silverlight</a></li>
+                        <li><a href="/cate/wcf/">WCF</a></li>
+                        <li><a href="/cate/clr/">CLR</a></li>
+                        <li><a href="/cate/wpf/">WPF</a></li>
+                        <li><a href="/cate/xna/">XNA</a></li>
+                        <li><a href="/cate/vs2010/">Visual Studio</a></li>
+                        <li><a href="/cate/mvc/">ASP.NET MVC</a></li>
+                        <li><a href="/cate/control/">控件开发</a></li>
+                        <li><a href="/cate/ef/">Entity Framework</a></li>
+                        <li><a href="/cate/winrt_metro/">WinRT/Metro</a></li>
+                    </ul>
+                </div>
+                <p class="r_l_1" /><p class="r_l_2" /><p class="r_l_3" />    <div class="l_s"></div>
+                <p class="r_l_3"></p><p class="r_l_2"></p><p class="r_l_1"></p>
+                <div class="w_l">
+                    <h4>链接</h4>
+                    <ul>
+                        <li><a href="http://space.cnblogs.com/forum/public" target="_blank">反馈或建议</a></li>
+                        <li><a href="http://www.cnblogs.com/cmt/" target="_blank">官方博客</a></li>
+                        <li><a href="/skins.aspx" target="_blank">博客模板</a></li>
+                        <li><a href="http://www.blogjava.net/">Java博客</a></li>
+                        <li><a href="http://www.cppblog.com/">C++博客</a></li>
+                        <li><a href="http://www.cnblogs.com/cmt/archive/2009/09/26/1574616.html">手机版</a></li>
+                    </ul>
+                </div>
+                <p class="r_l_1"></p><p class="r_l_2"></p><p class="r_l_3"></p>
+                <div class="l_s"></div>
+                <div id="user_stats"></div>
+                <div class="l_s"></div>
+                <p class="r_l_3"></p><p class="r_l_2"></p><p class="r_l_1"></p>
+                <div class="w_l">
+                    <h4>统计信息</h4>
+                    <div id="site_stats"></div>
+                </div>
+                <p class="r_l_1"></p><p class="r_l_2"></p><p class="r_l_3"></p>
+
+            </div>
+            <div id="side_right">
+                <div id="search_block">
+                    <div class="side_search">
+                        <input type="text" id="zzk_q" class="search_input" onkeydown="return zzk_go_enter(event);" tabindex="3" /><input onclick="zzk_go()" type="button" class="search_btn" value="找找看" />
+                    </div>
+                    <div id="google_search" class="side_search">
+                        <input type="text" id="google_search_q" class="search_input" onkeydown="return google_search_enter(event);" /><input type="button" value="Google" class="search_btn" onclick="return google_search();" />
+                    </div>
+                </div>
+                <div class="ad_right">
+                    <!-- cnblogs_home_B1 -->
+                    <div id='div-gpt-ad-1320928704644-1' style='width:300px; height:250px;'>
+                        <script type='text/javascript'>
+            try {
+                googletag.cmd.push(function () { googletag.display('div-gpt-ad-1320928704644-1'); });
+            } catch (e) { }
+                        </script>
+                    </div>
+                </div>
+                <div id="banner_right">
+                    <!-- cnblogs_home_A1 -->
+                    <div id='div-gpt-ad-1320928704644-0' style='width:468px; height:60px;'>
+                        <script type='text/javascript'>
+            try {
+                googletag.cmd.push(function () { googletag.display('div-gpt-ad-1320928704644-0'); });
+            } catch (e) { }
+                        </script>
+                    </div>
+                </div>
+                <div id="ad_right_text" class="ad_right_text"></div>
+                <div id="side_right_block"></div>
+                <script>
+            aggSite.loadSideRight();
+            aggSite.loadUserStats();
+            aggSite.loadAggStats();
+            google_ga();
+                </script>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="footer_block">
+                <p class="r_b_3"></p><p class="r_b_2"></p><p class="r_b_1"></p><div id="friend_link">
+                    站内导航：<a href="http://zzk.cnblogs.com">找找看</a><a href="http://kb.cnblogs.com">知识库</a><a href="http://kb.cnblogs.com/zt/">技术专题</a><a href="http://job.cnblogs.com">程序员招聘</a><a href="http://job.cnblogs.com/cate-.net/" target="_blank">.NET招聘</a><a href="http://job.cnblogs.com/cate-java_programmer/" target="_blank">Java招聘</a><a href="http://job.cnblogs.com/cate-cpp_programmer/" target="_blank">C++招聘</a><a href="http://job.cnblogs.com/cate-php_programmer/" target="_blank">PHP招聘</a><a href="http://job.cnblogs.com/cate-front_end_engineer/" target="_blank">Web前端招聘</a><br />
+                    友情连接：<a href="http://click.aliyun.com/m/335/" target="_blank"><img src="http://static.cnblogs.com/images/friend_link/logo_aliyun.jpg" alt="阿里云" /></a><a href="http://www.hujiang.com" target="_blank">沪江网</a><a href="http://www.hjenglish.com " target="_blank">沪江英语</a><a href="http://www.chinaz.com/" target="_blank">站长之家</a><a href="http://dev.yesky.com" target="_blank">天极网</a><a href="http://down.admin5.com" target="_blank">A5源码下载</a><a href="http://www.gcpowertools.com.cn" target="_blank">葡萄城控件</a><a href="https://www.upyun.com/?md=cnblogs" target="_blank">又拍云存储</a><a href="http://gaokao.xdf.cn/" target="_blank">高考查分</a><a href="http://zt.cnblogs.com/tingyun/" target="_blank">听云APP性能监测</a>
+                    <a href="http://www.ya-jing.cn/" target="_blank">股票配资</a>
+                </div><p class="r_b_1"></p><p class="r_b_2"></p><p class="r_b_3"></p>
+            </div>
+        </div>
+        <div id="footer_bottom">
+            <a href="/AboutUS.aspx">关于博客园</a><a href="/ContactUs.aspx">联系我们</a><a href="/about/ad.aspx">广告服务</a><a href="http://www.miitbeian.gov.cn" target="_blank">沪ICP备09004260号</a>&copy;2004-2014 <a href="http://www.cnblogs.com/">博客园</a>保留所有权利 <a href="https://ss.knet.cn/verifyseal.dll?sn=e131108110100433392itm000000&amp;ct=df&amp;a=1&amp;pa=0.25787803245785335" rel="nofollow" target="_blank"><img id="cnnic_img" src="http://static.cnblogs.com/images/cnnic.png" alt="" width="64" height="23" /></a>
+        </div>
+    </div>
+</body>
+</html>

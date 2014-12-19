@@ -1,0 +1,69 @@
+﻿<SettingsFlyout
+    x:Class="CNBlogs.AboutSettingsFlyout"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CNBlogs"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    IconSource="Assets/Logo.100.Blue.png"
+    Title="关于"
+    RequestedTheme="Light"
+    HeaderBackground="#FF297ACD"
+    d:DesignWidth="346">
+    
+    <SettingsFlyout.Resources>
+        <Storyboard x:Name="sb_LogoMoveUp">
+            <DoubleAnimation Duration="0:0:0.8"
+                             From="200"
+                             Storyboard.TargetName="image_Logo"
+                             Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetY)"
+                             To="0" />
+            <DoubleAnimation Duration="0:0:0.8"
+                             From="360"
+                             Storyboard.TargetName="image_Logo"
+                             Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationZ)"
+                             To="0" />
+            <DoubleAnimation Duration="0:0:0.8"
+                             From="0"
+                             Storyboard.TargetName="image_Logo"
+                             Storyboard.TargetProperty="Opacity"
+                             To="1" />
+            <DoubleAnimation BeginTime="0:0:0.5"
+                             Duration="0:0:1"
+                             From="0"
+                             Storyboard.TargetName="sp_aboutContent"
+                             Storyboard.TargetProperty="Opacity"
+                             To="1" />
+        </Storyboard>
+
+    </SettingsFlyout.Resources>
+
+    <!-- This StackPanel acts as a root panel for vertical layout of the content sections -->
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+
+        <!-- The StackPanel(s) below define individual content sections -->
+
+        <!-- Content Section 1-->
+        <StackPanel HorizontalAlignment="Center">
+            <Image x:Name="image_Logo" Height="100" Margin="0,20" Source="ms-appx:///Assets/Logo.100.Blue.png" Opacity="0">
+                <Image.Projection>
+                    <PlaneProjection />
+                </Image.Projection>
+            </Image>
+            <StackPanel Margin="10" x:Name="sp_aboutContent" Opacity="0">
+                <TextBlock Margin="0,10" HorizontalAlignment="Center" Style="{StaticResource SettingPageTextHeader}" Text="博客园" />
+                <TextBlock Margin="0,10" HorizontalAlignment="Center" Style="{StaticResource SettingPageTextHeader}" Text="Windows 客户端" />
+                <TextBlock HorizontalAlignment="Center" FontSize="14" Style="{StaticResource SettingPageTextHeader}" Text="Powered By Microsoft" />
+                <TextBlock x:Name="tbkVersion" Text="1.0" HorizontalAlignment="Center" FontSize="14" Style="{StaticResource SettingPageTextHeader}"/>
+                <TextBlock Margin="10,30,10,30" FontSize="14" FontFamily="Segoe WP" TextWrapping="Wrap" Foreground="{ThemeResource CNBlogsSummaryColor}">
+                        <Run Text="本应用为Universal App的示例应用，使用WindowsRT SDK开发。"/>
+                        <Run Text="还有一个同名应用同时发布在Windows Phone上，两者共用一套底层代码。"/>
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Define more Content Sections below as necessary -->
+
+    </StackPanel>
+</SettingsFlyout>

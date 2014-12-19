@@ -15,15 +15,20 @@ namespace CNBlogs
 {
     public sealed class BloggerControl : Control
     {
+
+        public Visibility AttributionVisiable
+        {
+            get { return (Visibility)GetValue(AttributionVisiableProperty); }
+            set { SetValue(AttributionVisiableProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for AttributionVisiable.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty AttributionVisiableProperty =
+            DependencyProperty.Register("AttributionVisiable", typeof(Visibility), typeof(BloggerControl), new PropertyMetadata(Visibility.Visible));
+
         public BloggerControl()
         {
             this.DefaultStyleKey = typeof(BloggerControl);
-        }
-
-        protected override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-
         }
     }
 }

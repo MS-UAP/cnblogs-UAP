@@ -41,23 +41,6 @@ namespace CNBlogs
         {
         }
 
-        /// <summary>
-        /// because we set 'TwoWay' mode in xaml, so don't change Settings.Instance.NightModeTheme value here
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ts_NightModeTheme_Toggled(object sender, RoutedEventArgs e)
-        {
-            if (CNBlogs.DataHelper.DataModel.CNBlogSettings.Instance.NightModeTheme)
-            {
-                this.RequestedTheme = ElementTheme.Dark;
-            }
-            else
-            {
-                this.RequestedTheme = ElementTheme.Light;
-            }
-
-        }
 
         private async void btn_RateMe_Click(object sender, RoutedEventArgs e)
         {
@@ -72,6 +55,23 @@ namespace CNBlogs
             {
                 this.sp_aboutContent.Opacity = 0;
                 this.sb_LogoMoveUp.Begin();
+            }
+        }
+
+        /// <summary>
+        /// because we set 'TwoWay' mode in xaml, so don't change Settings.Instance.NightModeTheme value here
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ts_LightMode_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (CNBlogs.DataHelper.DataModel.CNBlogSettings.Instance.NightModeTheme)
+            {
+                this.RequestedTheme = ElementTheme.Dark;
+            }
+            else
+            {
+                this.RequestedTheme = ElementTheme.Light;
             }
         }
     }

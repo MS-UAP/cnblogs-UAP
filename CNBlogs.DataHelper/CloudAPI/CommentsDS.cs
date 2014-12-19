@@ -54,15 +54,38 @@ namespace CNBlogs.DataHelper.CloudAPI
             {
                 foreach (var comment in result.Result.Entries)
                 {
-                    // convert html content to string
-                    comment.Content = Windows.Data.Html.HtmlUtilities.ConvertToText(comment.Content);
+                    if (comment != null)
+                    {
+                        if (!string.IsNullOrEmpty(comment.Content))
+                        {
+                            // convert html content to string
+                            comment.Content = Windows.Data.Html.HtmlUtilities.ConvertToText(comment.Content);
+                        }
 
-                    // name of some authors contains special characters, convert it
-                    comment.Author.Name = Windows.Data.Html.HtmlUtilities.ConvertToText(comment.Author.Name);
+                        if (comment.Author != null && !string.IsNullOrEmpty(comment.Author.Name))
+                        {
+                            // name of some authors contains special characters, convert it
+                            comment.Author.Name = Windows.Data.Html.HtmlUtilities.ConvertToText(comment.Author.Name);
+                        }
+                    }
                 }
             }
 
             return result.Result == null ? null : result.Result.Entries;
+        }
+
+        protected override void AddItems(IList<Comment> items)
+        {
+            if (items != null)
+            {
+                foreach (var item in items)
+                {
+                    if (!this.Any(it => it.ID == item.ID))
+                    {
+                        this.Add(item);
+                    }
+                }
+            }
         }
 
         private string _category = string.Empty;

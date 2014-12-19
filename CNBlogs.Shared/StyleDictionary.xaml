@@ -1,12 +1,13 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:CNBlogs">
+    xmlns:local="using:CNBlogs"
+    xmlns:ControlHelper="using:CNBlogs.ControlHelper">
+
     
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
             <SolidColorBrush x:Key="CNBlogsThemeColor" Color="#FF297ACD"/>
-            <SolidColorBrush x:Key="CNBlogsThemeColorReverse" Color="#FF3b3b3b"/>
             <SolidColorBrush x:Key="CNBlogsThemeLightColor" Color="#FFa9d6f2"/>
             <SolidColorBrush x:Key="CNBlogsThemeRedColor" Color="#ffE33E06"/>
             
@@ -29,8 +30,7 @@
         
         <ResourceDictionary x:Key="Dark">
             <SolidColorBrush x:Key="CNBlogsThemeColor" Color="#FF3b3b3b"/>
-            <SolidColorBrush x:Key="CNBlogsThemeColorReverse" Color="Blue"/>
-            <SolidColorBrush x:Key="CNBlogsThemeLightColor" Color="#FF0000AA"/>
+            <SolidColorBrush x:Key="CNBlogsThemeLightColor" Color="#FF6E6E6E"/>
             <SolidColorBrush x:Key="CNBlogsThemeRedColor" Color="#ffE33E06"/>
 
             <SolidColorBrush x:Key="CNBlogsBackColor" Color="#FF2d2d2d"/>
@@ -108,6 +108,16 @@
         <Setter Property="Foreground" Value="{ThemeResource CNBlogsThemeColor}"/>
     </Style>
 
+    <Style TargetType="ListViewItem">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+    </Style>
+    
+    <Style x:Key="SettingPageItemHeader" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe WP"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="Gray"/>
+    </Style>
+
     <Style x:Key="SettingPageHyperlinkButtonText" TargetType="HyperlinkButton">
         <Setter Property="FontFamily" Value="Segoe WP"/>
         <Setter Property="FontSize" Value="18"/>
@@ -115,30 +125,35 @@
     </Style>
 
     <Style x:Key="Win8PageTitleFont" TargetType="TextBlock">
+        <Setter Property="Language" Value="zh-Hans"/>
         <Setter Property="FontFamily" Value="Microsoft Yahei"/>
         <Setter Property="FontSize" Value="48"/>
         <Setter Property="Foreground" Value="{ThemeResource CNBlogsThemeRedColor}"/>
     </Style>
 
     <Style x:Key="Win8PageSubTitleFont" TargetType="TextBlock">
+        <Setter Property="Language" Value="zh-Hans"/>
         <Setter Property="FontFamily" Value="Microsoft Yahei"/>
         <Setter Property="FontSize" Value="36"/>
         <Setter Property="Foreground" Value="{ThemeResource CNBlogsThemeColor}"/>
     </Style>
 
     <Style x:Key="Win8PageTitleAttributionFont" TargetType="TextBlock">
+        <Setter Property="Language" Value="zh-Hans"/>
         <Setter Property="FontFamily" Value="Microsoft Yahei"/>
         <Setter Property="FontSize" Value="22"/>
         <Setter Property="Foreground" Value="Gray"/>
     </Style>
 
     <Style x:Key="Win8GroupHeaderFont" TargetType="TextBlock">
+        <Setter Property="Language" Value="zh-Hans"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize" Value="40"/>
         <Setter Property="Foreground" Value="{ThemeResource CNBlogsThemeColor}"/>
     </Style>
 
     <Style x:Key="Win8PostTitleFont" TargetType="TextBlock">
+        <Setter Property="Language" Value="zh-Hans"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize" Value="23"/>
         <Setter Property="FontWeight" Value="Normal"/>
@@ -148,6 +163,7 @@
     </Style>
 
     <Style x:Key="Win8PostAbstractionFont" TargetType="TextBlock">
+        <Setter Property="Language" Value="zh-Hans"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="FontWeight" Value="Normal"/>
@@ -157,6 +173,7 @@
     </Style>
 
     <Style x:Key="Win8PostCommentFont" TargetType="TextBlock">
+        <Setter Property="Language" Value="zh-Hans"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="FontWeight" Value="Normal"/>
@@ -167,6 +184,7 @@
 
 
     <Style x:Key="Win8PostAttributionFont" TargetType="TextBlock">
+        <Setter Property="Language" Value="zh-Hans"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="FontWeight" Value="Normal"/>
@@ -174,6 +192,7 @@
     </Style>
 
     <Style x:Key="Win8HighlightInformationFont" TargetType="TextBlock">
+        <Setter Property="Language" Value="zh-Hans"/>
         <Setter Property="FontFamily" Value="Candara"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontWeight" Value="Normal"/>

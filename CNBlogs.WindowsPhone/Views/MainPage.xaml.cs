@@ -21,10 +21,8 @@ namespace CNBlogs
     {
         private Common.NavigationHelper navigationHelper;
         private LatestPostsDS recentDS;
-        private TenDaysTopLikePostsDS topLikeDS;
-        private TwoDaysTopViewPostsDS topViewDS;
-        private RecommendBloggerDS topBloggerDS;
         private NewsDS newsDs;
+        private List<Column> listColumn;
 
         public MainPage()
         {
@@ -38,48 +36,42 @@ namespace CNBlogs
         private async void LoadData()
         {
             // hide splash screen after 2 seconds
-            ThreadPoolTimer.CreateTimer(SplashTimeOut, new TimeSpan(0, 0, 2));
+            //ThreadPoolTimer.CreateTimer(SplashTimeOut, new TimeSpan(0, 0, 2));
 
             this.recentDS = new LatestPostsDS();
             this.recentDS.DataRequestError += recentDS_DataRequestError;
+            this.recentDS.OnLoadMoreStarted += recentDS_OnLoadMoreStarted;
             this.recentDS.OnLoadMoreCompleted += recentDS_OnLoadMoreCompleted;
             this.lv_HomePosts.ItemsSource = this.recentDS;
             this.tb_HomeTag.DataContext = this.recentDS;
-
-            this.topViewDS = new DataHelper.CloudAPI.TwoDaysTopViewPostsDS();
-            this.topViewDS.DataRequestError += recentDS_DataRequestError;
-            this.lv_HotPosts.ItemsSource = this.topViewDS;
-            this.tb_HotTag.DataContext = this.topViewDS;
-
-            this.topLikeDS = new TenDaysTopLikePostsDS();
-            this.topLikeDS.DataRequestError += recentDS_DataRequestError;
-            this.lv_BestPosts.ItemsSource = this.topLikeDS;
-            this.tb_BestTag.DataContext = this.topLikeDS;
-
-            this.topBloggerDS = new RecommendBloggerDS();
-            this.topBloggerDS.DataRequestError += recentDS_DataRequestError;
-            this.lv_Bloggers.ItemsSource = this.topBloggerDS.Bloggers;
-            await topBloggerDS.LoadRemoteData();
+            await this.recentDS.LoadMoreItemsAsync(20);
 
             this.newsDs = new NewsDS();
             this.newsDs.DataRequestError += recentDS_DataRequestError;
             this.lv_News.ItemsSource = this.newsDs;
             this.tb_NewsTag.DataContext = this.newsDs;
+            await this.newsDs.LoadMoreItemsAsync(20);
+
+            CreateColumnData();
+            this.lv_Column.ItemsSource = this.listColumn;
         }
 
-        void recentDS_OnLoadMoreCompleted(int count)
+        async void recentDS_OnLoadMoreStarted(uint count)
         {
-            Functions.HideProgressBar(this.pb_Top);
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                FunctionHelper.Functions.RefreshUIOnDataLoading(this.pb_Top, this.cmdBar);
+            });
         }
-        
-        private async void SplashTimeOut(ThreadPoolTimer timer)
+
+        async void recentDS_OnLoadMoreCompleted(int count)
         {
-            await this.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-                {
-                    this.grid_Splash.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                    this.grid_Main.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                    this.appbar.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                });
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                this.grid_Splash.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                this.grid_Main.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                FunctionHelper.Functions.RefreshUIOnDataLoaded(this.pb_Top, this.cmdBar);
+            });
         }
 
         void recentDS_DataRequestError(int code)
@@ -127,7 +119,7 @@ namespace CNBlogs
             if (postControl.GotoReadingPage)
             {
                 Post post = postControl.DataContext as Post;
-                this.Frame.Navigate(typeof(ReadingPage), post);
+                this.Frame.Navigate(typeof(PostReadingPage), post);
             }
             else
             {
@@ -150,7 +142,7 @@ namespace CNBlogs
         private void lv_News_ItemClick(object sender, ItemClickEventArgs e)
         {
             News news = e.ClickedItem as News;
-            this.Frame.Navigate(typeof(ReadingPage), news);
+            this.Frame.Navigate(typeof(NewsReadingPage), news);
         }
 
         #endregion
@@ -164,36 +156,25 @@ namespace CNBlogs
 
         private async void btn_Refresh_Click(object sender, RoutedEventArgs e)
         {
-            Functions.ShowProgressBar(this.pb_Top);
-            
+            FunctionHelper.Functions.RefreshUIOnDataLoading(this.pb_Top, this.cmdBar);
+
             await this.recentDS.Refresh();
-            await this.topLikeDS.Refresh();
-            await this.topViewDS.Refresh();
-            await this.topBloggerDS.Refresh();
             await this.newsDs.Refresh();
 
-            Functions.HideProgressBar(this.pb_Top);
+            FunctionHelper.Functions.RefreshUIOnDataLoaded(this.pb_Top, this.cmdBar);
         }
 
         private void btn_Top_Click(object sender, RoutedEventArgs e)
         {
             PivotItem pi = this.pivot_Main.SelectedItem as PivotItem;
-            switch((string)pi.Tag)
+            switch ((string)pi.Tag)
             {
                 case "home":
-                    Functions.ListViewScrollToTop(this.lv_HomePosts);
+                    FunctionHelper.Functions.ListViewScrollToTop(this.lv_HomePosts);
                     break;
-                case "hot":
-                    Functions.ListViewScrollToTop(this.lv_HotPosts);
-                    break;
-                case "best":
-                    Functions.ListViewScrollToTop(this.lv_BestPosts);
-                    break;
-                case "blogger":
-                    Functions.ListViewScrollToTop(this.lv_Bloggers);
-                    break;
+
                 case "news":
-                    Functions.ListViewScrollToTop(this.lv_News);
+                    FunctionHelper.Functions.ListViewScrollToTop(this.lv_News);
                     break;
             }
         }
@@ -204,9 +185,6 @@ namespace CNBlogs
         private void CreateDictionaryData()
         {
             this.dict.Add("home", this.tb_HomeTag);
-            this.dict.Add("hot", this.tb_HotTag);
-            this.dict.Add("best", this.tb_BestTag);
-            this.dict.Add("blogger", this.tb_BloggerTag);
             this.dict.Add("news", this.tb_NewsTag);
         }
 
@@ -219,7 +197,7 @@ namespace CNBlogs
         {
             PivotItem piCurrent = this.pivot_Main.SelectedItem as PivotItem;
             string currentTag = (string)piCurrent.Tag;
-            foreach(KeyValuePair<string,TextBlock> kvp in this.dict)
+            foreach (KeyValuePair<string, TextBlock> kvp in this.dict)
             {
                 if (kvp.Key == currentTag)
                 {
@@ -227,10 +205,70 @@ namespace CNBlogs
                 }
                 else
                 {
-                    kvp.Value.Visibility = Windows.UI.Xaml.Visibility.Collapsed;                    
+                    kvp.Value.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 }
             }
         }
+
+        private void lv_Column_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Column column = e.ClickedItem as Column;
+            Type pageType = Type.GetType(column.Page);
+            if (pageType != null)
+            {
+                this.Frame.Navigate(pageType);
+            }
+        }
+        private void CreateColumnData()
+        {
+            this.listColumn = new List<Column>();
+            
+            Column column = new Column()
+            {
+                Icon = "",
+                Name = "热门",
+                Desc = "2日内阅读排行",
+                Page = "CNBlogs.HotPostsPage"
+            };
+            this.listColumn.Add(column);
+            
+            column = new Column()
+            {
+                Icon = "",
+                Name = "精华",
+                Desc = "10日内推荐排行",
+                Page = "CNBlogs.BestPostsPage"
+            };
+            this.listColumn.Add(column);
+            
+            column = new Column()
+            {
+                Icon = "",
+                Name = "博主",
+                Desc = "20位明星博主",
+                Page = "CNBlogs.BestBloggersPage"
+            };
+            this.listColumn.Add(column);
+
+            column = new Column()
+            {
+                Icon = "",
+                Name = "收藏",
+                Desc = "N篇我喜欢的博文",
+                Page = "CNBlogs.FavoritePostsPage"
+            };
+            this.listColumn.Add(column);
+
+            column = new Column()
+            {
+                Icon = "",
+                Name = "分类",
+                Desc = "所有博文分类索引",
+                Page = "CNBlogs.CategoriesPage"
+            };
+            this.listColumn.Add(column);
+        }
+
 
     }
 }

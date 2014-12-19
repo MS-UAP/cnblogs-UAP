@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="CNBlogs.PostReadingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CNBlogs"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:ControlHelper="using:CNBlogs.ControlHelper"
+    IsTextScaleFactorEnabled="False"
+    RequestedTheme="Light"
+    Background="{ThemeResource CNBlogsThemeColor}">
+
+    <Page.Resources>
+        <ControlHelper:NightModeLabelConverter x:Key="NightModeLabelConverter"/>
+    </Page.Resources>
+
+    <Grid>
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <local:AuthorControl2/>-->
+        <ProgressBar x:Name="pb_Top" IsIndeterminate="True" VerticalAlignment="Top"/>
+        <WebView Grid.Row="1" x:Name="wv_WebContent" DOMContentLoaded="wv_WebContent_DOMContentLoaded" NavigationStarting="wv_WebContent_NavigationStarting" DefaultBackgroundColor="White"/>
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="cmdBar" ClosedDisplayMode="Minimal" FontFamily="Global User Interface">
+            <AppBarButton x:Name="btn_Comment" Icon="Comment" Label="{Binding _commentButtonLabel}" Click="btn_Comment_Click"/>
+            <AppBarButton x:Name="btn_Favorite" Icon="Favorite" Label="收藏" Click="btn_Favorite_Click" />
+            <AppBarButton x:Name="btn_UnFavorite" Icon="UnFavorite" Label="取消收藏" Click="btn_UnFavorite_Click"  />
+            <AppBarButton x:Name="btn_Source" Label="原文链接" Icon="Link" Click="btn_Source_Click"/>
+            <AppBarButton x:Name="btn_Author" Label="博主信息" Click="btn_Author_Click" Icon="ContactInfo"/>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Name="btn_Setting" Label="设置" Icon="Setting" Click="btn_Setting_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

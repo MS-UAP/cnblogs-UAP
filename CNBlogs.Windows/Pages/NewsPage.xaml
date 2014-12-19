@@ -16,11 +16,11 @@
 
     <Page.Resources>
         <DataTemplate x:Key="NewsNoImageTemplate">
-            <nav:NewsTitleTextControl/>
+            <nav:NewsControl Style="{StaticResource NewsTitleTextControl}"/>
         </DataTemplate>
 
         <DataTemplate x:Key="NewsHasImageTemplate">
-            <nav:NewsTitleTextImageControl/>
+            <nav:NewsControl Style="{StaticResource NewsTitleTextImageControl}"/>
         </DataTemplate>
     </Page.Resources>
 
@@ -30,19 +30,36 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <nav:PageTitleControl TitleContent="新闻 - 每日IT新闻" Margin="50,0,0,0"/>
+        <nav:PageTitleControl x:Name="TitleControl" TitleContent="新闻 - 每日IT新闻" Margin="50,0,0,0"/>
 
         <!--CONTENT PART-->
         <Grid Grid.Row="1">
-            <GridView x:Name="gv_News" ItemClick="gv_News_ItemClick"
-                SelectionMode="None" IsItemClickEnabled="True" VerticalAlignment="Center" Padding="30,0,0,0">
-                <GridView.ItemTemplateSelector>
-                    <ControlHelper:NewsControlTemplateSelector
+            <SemanticZoom x:Name="sz_News" 
+                          ViewChangeStarted="sz_News_ViewChangeStarted" 
+                          ViewChangeCompleted="sz_News_ViewChangeCompleted">
+                <SemanticZoom.ZoomedInView>
+                    <GridView x:Name="gv_News" ItemClick="gv_News_ItemClick"
+                SelectionMode="None" IsItemClickEnabled="True" Padding="30,0,0,0">
+                        <GridView.ItemTemplateSelector>
+                            <ControlHelper:NewsControlTemplateSelector
                             dtHasImage="{StaticResource NewsHasImageTemplate}"
-                            dtNoImage="{StaticResource NewsNoImageTemplate}"
-                            />
-                </GridView.ItemTemplateSelector>
-            </GridView>
+                            dtNoImage="{StaticResource NewsNoImageTemplate}"/>
+                        </GridView.ItemTemplateSelector>
+                    </GridView>
+                </SemanticZoom.ZoomedInView>
+
+                <SemanticZoom.ZoomedOutView>
+                    <GridView x:Name="gv_SimpleNews" Tapped="gv_SimpleNews_Tapped"
+                     SelectionMode="None" IsItemClickEnabled="True" Padding="30,0,0,0" >
+                        <GridView.ItemTemplate>
+                            <DataTemplate>
+                                <nav:NewsControl Style="{StaticResource ResourceKey=SimpleNewsControl}"/>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
+                </SemanticZoom.ZoomedOutView>
+            </SemanticZoom>
+
         </Grid>
     </Grid>
 

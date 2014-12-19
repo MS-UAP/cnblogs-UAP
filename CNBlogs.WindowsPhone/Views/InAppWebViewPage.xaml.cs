@@ -128,12 +128,12 @@ namespace CNBlogs
 
         private void wv_Content_NavigationStarting(WebView sender, WebViewNavigationStartingEventArgs args)
         {
-            Functions.ShowProgressBar(this.pb_Top);
+            FunctionHelper.Functions.RefreshUIOnDataLoading(this.pb_Top, null);
         }
 
         private void wv_Content_NavigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs args)
         {
-            Functions.HideProgressBar(this.pb_Top);
+            FunctionHelper.Functions.RefreshUIOnDataLoaded(this.pb_Top, null);
         }
     }
 }

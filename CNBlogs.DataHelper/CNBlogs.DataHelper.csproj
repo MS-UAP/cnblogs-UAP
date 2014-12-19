@@ -42,8 +42,10 @@
     <TargetPlatform Include="Windows, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APIWrapper.cs" />
+    <Compile Include="CloudAPI\APIWrapper.cs" />
+    <Compile Include="CloudAPI\CategoryPostDS.cs" />
     <Compile Include="CloudAPI\CommentsDS.cs" />
+    <Compile Include="CloudAPI\FavoritePostsDS.cs" />
     <Compile Include="CloudAPI\HotPostsDS.cs" />
     <Compile Include="CloudAPI\IncrementalLoadingBase.cs" />
     <Compile Include="CloudAPI\LatestPostsDS.cs" />
@@ -54,7 +56,9 @@
     <Compile Include="CloudAPI\TenDaysTopLikePostsDS.cs" />
     <Compile Include="CloudAPI\TwoDaysTopViewPostsDS.cs" />
     <Compile Include="DataModel\Author.cs" />
+    <Compile Include="DataModel\BloggerFeed.cs" />
     <Compile Include="DataModel\Blogger.cs" />
+    <Compile Include="DataModel\Category.cs" />
     <Compile Include="DataModel\Comment.cs" />
     <Compile Include="DataModel\DataModelBase.cs" />
     <Compile Include="DataModel\Feed.cs" />
@@ -66,10 +70,12 @@
     <Compile Include="CloudAPI\AuthorPostsDS.cs" />
     <Compile Include="CloudAPI\DataSourceBase.cs" />
     <Compile Include="CloudAPI\RecommendBloggerDS.cs" />
+    <Compile Include="DataModel\PostStatus.cs" />
     <Compile Include="DataModel\RequestResult.cs" />
     <Compile Include="DataModel\Settings.cs" />
-    <Compile Include="Helper\BackgroundTaskHelper.cs" />
-    <Compile Include="Helper\Functions.cs" />
+    <Compile Include="FunctionHelper\BackgroundTaskHelper.cs" />
+    <Compile Include="FunctionHelper\Functions.cs" />
+    <Compile Include="FunctionHelper\PostHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

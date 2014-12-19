@@ -16,6 +16,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+#if WINDOWS_APP
+using Windows.UI.ApplicationSettings;
+#endif
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -108,7 +111,33 @@ namespace CNBlogs
             Window.Current.Activate();
 
             Init();
+
+#if WINDOWS_APP
+            // Add commands to the settings pane
+            SettingsPane.GetForCurrentView().CommandsRequested += (s, args) =>
+            {
+                //var preference = new SettingsCommand("选项", "选项", (handler) =>
+                //new PreferenceSettingsFlyout().Show());
+                //args.Request.ApplicationCommands.Add(preference);
+
+                var about = new SettingsCommand("关于", "关于", (handler) =>
+                new AboutSettingsFlyout().Show());
+                args.Request.ApplicationCommands.Add(about);
+
+                var privacy = new SettingsCommand("隐私声明", "隐私声明", GetPrivacyPolicyAsync);
+                args.Request.ApplicationCommands.Add(privacy);
+
+            };
+#endif
         }
+
+
+#if WINDOWS_APP
+        private async void GetPrivacyPolicyAsync(Windows.UI.Popups.IUICommand command)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("http://www.microsoft.com/privacystatement/zh-cn/core/default.aspx"));
+        }
+#endif
 
         private async void Init()
         {
