@@ -3,12 +3,17 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CNBlogs"
+    xmlns:ControlHelper="using:CNBlogs.ControlHelper"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     RequestedTheme="Light"
     IsTextScaleFactorEnabled="False"
     Background="{ThemeResource CNBlogsThemeColor}">
+
+    <Page.Resources>
+        <ControlHelper:NightModeLabelConverter x:Key="NightModeLabelConverter"/>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -21,6 +26,9 @@
         <local:PageTitleControl Grid.Row="0" x:Name="control_PageTitle" TitleContent="精华"/>
         
         <ListView x:Name="lv_BestPosts" Grid.Row="1" Background="{ThemeResource CNBlogsBackColor}">
+            <ListView.Header>
+                <local:ListViewHeaderControl Content="10日内推荐排行"/>
+            </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <local:PostControl Tapped="PostControl_Tapped"/>
@@ -37,6 +45,7 @@
                     <FontIcon Glyph="&#xE11C;"/>
                 </AppBarButton.Icon>
             </AppBarButton>
+            <AppBarButton x:Name="btn_NightMode" Icon="View" Label="{Binding Converter={StaticResource NightModeLabelConverter}, Path=NightModeTheme}" Click="btn_NightMode_Click"/>
             <AppBarButton x:Name="btn_Setting" Label="设置" Icon="Setting" Click="btn_Setting_Click"/>
         </CommandBar>
     </Page.BottomAppBar>

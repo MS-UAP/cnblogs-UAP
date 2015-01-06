@@ -1,12 +1,13 @@
 ﻿using CNBlogs.Common;
 using CNBlogs.DataHelper.CloudAPI;
 using CNBlogs.DataHelper.DataModel;
-using CNBlogs.DataHelper.Helper;
+using CNBlogs.DataHelper.Function;
 using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
+using System.Linq;
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace CNBlogs
@@ -97,6 +98,7 @@ namespace CNBlogs
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            FunctionHelper.Functions.SetTheme(this);
             this.navigationHelper.OnNavigatedTo(e);
             if (e.NavigationMode == NavigationMode.New)
             {
@@ -105,7 +107,12 @@ namespace CNBlogs
                 if (e.Parameter is Blogger)
                 {
                     this.blogger = e.Parameter as Blogger;
-                    this.Author = new Author() { Avatar = this.blogger.Avatar, Name = this.blogger.Name };
+                    this.Author = new Author() 
+                    { 
+                        Avatar = this.blogger.Avatar, 
+                        Name = this.blogger.Name,
+                        BlogApp = this.blogger.BlogApp
+                    };
                     this.DataContext = this;
                     // for listview binding
                     this.authorDS = new AuthorPostsDS(this.blogger.BlogApp);
@@ -211,6 +218,24 @@ namespace CNBlogs
         private void btn_Homepage_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(InAppWebViewPage), this.blogger.Link.Href);
+        }
+
+        private async void btn_focus_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(this.Author.Uri) && this.blogger != null && this.blogger.Link != null)
+            {
+                this.Author.Uri = this.blogger.Link.Href;
+            }
+
+            var latestPostId = "";
+
+            if (this.authorDS.Count > 0)
+            {
+                latestPostId = this.authorDS.First().ID;
+            }
+
+            await FavoriteAuthorDS.Instance.Follow(this.Author, latestPostId);
+            await Functions.ShowMessage("收藏博主成功");
         }
 
     }

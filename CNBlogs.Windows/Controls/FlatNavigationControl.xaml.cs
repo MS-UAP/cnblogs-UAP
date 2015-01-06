@@ -45,5 +45,19 @@ namespace CNBlogs
                 }
             }
         }
+
+        private void StackPanel_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (this.RenderSize.Width >= 1366)
+            {
+                WideLayout.Visibility = Visibility.Visible;
+                NarrowLayout.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                WideLayout.Visibility = Visibility.Collapsed;
+                NarrowLayout.Visibility = Visibility.Visible;
+            }
+        }
     }
 }

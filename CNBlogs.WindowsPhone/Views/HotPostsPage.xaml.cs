@@ -17,7 +17,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using CNBlogs.DataHelper.CloudAPI;
 using CNBlogs.DataHelper.DataModel;
-using CNBlogs.DataHelper.Helper;
+using CNBlogs.DataHelper.Function;
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace CNBlogs
@@ -102,6 +102,8 @@ namespace CNBlogs
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            FunctionHelper.Functions.SetTheme(this);
+            this.btn_NightMode.DataContext = CNBlogs.DataHelper.DataModel.CNBlogSettings.Instance;
             this.navigationHelper.OnNavigatedTo(e);
             if (e.NavigationMode == NavigationMode.New)
             {
@@ -177,6 +179,11 @@ namespace CNBlogs
         private void btn_Top_Click(object sender, RoutedEventArgs e)
         {
             FunctionHelper.Functions.ListViewScrollToTop(this.lv_HotPosts);
+        }
+
+        private void btn_NightMode_Click(object sender, RoutedEventArgs e)
+        {
+            FunctionHelper.Functions.btn_NightMode_Click(this);
         }
     }
 }

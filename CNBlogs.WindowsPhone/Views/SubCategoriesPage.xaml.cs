@@ -17,7 +17,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using CNBlogs.DataHelper.DataModel;
 using CNBlogs.DataHelper.CloudAPI;
-using CNBlogs.DataHelper.Helper;
+using CNBlogs.DataHelper.Function;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 

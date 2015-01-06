@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using CNBlogs.DataHelper.DataModel;
-using CNBlogs.DataHelper.Helper;
+using CNBlogs.DataHelper.Function;
 using Windows.System;
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -86,6 +86,7 @@ namespace CNBlogs
         /// serializable state.</param>
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
+
         }
 
         #region NavigationHelper registration
@@ -110,12 +111,12 @@ namespace CNBlogs
             var pageFile = string.Empty;
             if (!CNBlogs.DataHelper.DataModel.CNBlogSettings.Instance.NightModeTheme)
             {
-                pageFile = "ms-appx-web:///HTML/news_day.html";
+                pageFile = "ms-appx-web:///HTML/news_day.html#width={0}&height={1}";
                 this.wv_WebContent.DefaultBackgroundColor = Windows.UI.Colors.White;
             }
             else
             {
-                pageFile = "ms-appx-web:///HTML/news_night.html";
+                pageFile = "ms-appx-web:///HTML/news_night.html#width={0}&height={1}";
                 this.wv_WebContent.DefaultBackgroundColor = Windows.UI.Colors.Black;
             }
 
@@ -130,7 +131,10 @@ namespace CNBlogs
                     content = ncDS.News.Content;
                 }
 
-                this.wv_WebContent.Navigate(new Uri(pageFile));
+                string width = Window.Current.Bounds.Width.ToString();
+                string height = Window.Current.Bounds.Height.ToString();
+
+                this.wv_WebContent.Navigate(new Uri(string.Format(pageFile, width, height)));
             }
         }
 
@@ -145,10 +149,15 @@ namespace CNBlogs
         {
             try
             {
+                var newSize = CNBlogSettings.Instance.FontSize / 100;
+
+                await this.wv_WebContent.InvokeScriptAsync("changeFontSize", new[] { newSize.ToString() });
+
                 var text = Windows.Data.Html.HtmlUtilities.ConvertToText(content);
 
                 // fill post content using javascript
                 await this.wv_WebContent.InvokeScriptAsync("setContent", new[] { content });
+
             }
             catch (Exception ex)
             {

@@ -9,7 +9,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.IO;
-using CNBlogs.DataHelper.Helper;
+using CNBlogs.DataHelper.Function;
 
 namespace CNBlogs.DataHelper
 {

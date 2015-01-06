@@ -17,8 +17,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using CNBlogs.DataHelper.CloudAPI;
 using CNBlogs.DataHelper.DataModel;
-using CNBlogs.DataHelper.Helper;
-
+using CNBlogs.DataHelper.Function;
+using CNBlogs.DataHelper.Function;
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace CNBlogs
@@ -139,7 +139,7 @@ namespace CNBlogs
             {
                 this.control_PageTitle.ChangeSubTitleContent(this.categoryDS.Count.ToString());
                 FunctionHelper.Functions.RefreshUIOnDataLoaded(this.pb_Top, this.appbar);
-            });            
+            });
         }
 
         async void categoryDS_OnLoadMoreStarted(uint count)
@@ -147,7 +147,7 @@ namespace CNBlogs
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
                 FunctionHelper.Functions.RefreshUIOnDataLoading(this.pb_Top, this.appbar);
-            });          
+            });
         }
 
         private void PostControl_Tapped(object sender, TappedRoutedEventArgs e)
@@ -171,7 +171,7 @@ namespace CNBlogs
         private async void btn_Refresh_Click(object sender, RoutedEventArgs e)
         {
             //FunctionHelper.Functions.RefreshUIOnDataLoading(this.pb_Top, this.appbar);
-            
+
             await this.categoryDS.Refresh();
 
             //FunctionHelper.Functions.RefreshUIOnDataLoaded(this.pb_Top, this.appbar);
@@ -180,6 +180,19 @@ namespace CNBlogs
         private void btn_Top_Click(object sender, RoutedEventArgs e)
         {
             FunctionHelper.Functions.ListViewScrollToTop(this.lv_CategoryPosts);
+        }
+
+        private async void btn_focus_Click(object sender, RoutedEventArgs e)
+        {
+            var latestPostId = "";
+            if (this.categoryDS.Count > 0)
+            {
+                latestPostId = this.categoryDS.First().ID;
+
+            }
+
+            await FavoriteCategoryDS.Instance.Follow(this.Category, latestPostId);
+            await Functions.ShowMessage("收藏分类成功");
         }
 
     }

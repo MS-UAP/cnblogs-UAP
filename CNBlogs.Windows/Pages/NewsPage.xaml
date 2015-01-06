@@ -8,7 +8,6 @@
     xmlns:local="using:CNBlogs.Pages"
     xmlns:common="using:CNBlogs.Common"
     xmlns:ControlHelper="using:CNBlogs.ControlHelper"
-    xmlns:data="using:CNBlogs.SampleData"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     RequestedTheme="Light"
@@ -16,11 +15,11 @@
 
     <Page.Resources>
         <DataTemplate x:Key="NewsNoImageTemplate">
-            <nav:NewsControl Style="{StaticResource NewsTitleTextControl}"/>
+            <nav:NewsControl Style="{StaticResource NewsTitleTextControl}" Tapped="NewsControl_Tapped"/>
         </DataTemplate>
 
         <DataTemplate x:Key="NewsHasImageTemplate">
-            <nav:NewsControl Style="{StaticResource NewsTitleTextImageControl}"/>
+            <nav:NewsControl Style="{StaticResource NewsTitleTextImageControl}" Tapped="NewsControl_Tapped"/>
         </DataTemplate>
     </Page.Resources>
 
@@ -30,7 +29,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <nav:PageTitleControl x:Name="TitleControl" TitleContent="新闻 - 每日IT新闻" Margin="50,0,0,0"/>
+        <nav:PageTitleControl x:Name="TitleControl" TitleContent="每日IT新闻" Margin="50,0,0,0"/>
 
         <!--CONTENT PART-->
         <Grid Grid.Row="1">
@@ -39,7 +38,7 @@
                           ViewChangeCompleted="sz_News_ViewChangeCompleted">
                 <SemanticZoom.ZoomedInView>
                     <GridView x:Name="gv_News" ItemClick="gv_News_ItemClick"
-                SelectionMode="None" IsItemClickEnabled="True" Padding="30,0,0,0">
+                SelectionMode="None" IsItemClickEnabled="True" Padding="20,0,0,0">
                         <GridView.ItemTemplateSelector>
                             <ControlHelper:NewsControlTemplateSelector
                             dtHasImage="{StaticResource NewsHasImageTemplate}"
@@ -50,7 +49,7 @@
 
                 <SemanticZoom.ZoomedOutView>
                     <GridView x:Name="gv_SimpleNews" Tapped="gv_SimpleNews_Tapped"
-                     SelectionMode="None" IsItemClickEnabled="True" Padding="30,0,0,0" >
+                     SelectionMode="None" IsItemClickEnabled="True" Padding="20,0,0,0" >
                         <GridView.ItemTemplate>
                             <DataTemplate>
                                 <nav:NewsControl Style="{StaticResource ResourceKey=SimpleNewsControl}"/>
@@ -64,9 +63,10 @@
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar>
+        <CommandBar Style="{StaticResource Win8AppbarStyle}">
             <AppBarButton x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>
             <AppBarButton x:Name="btn_ScrollToTop" Icon="Previous" Label="回到开始" Click="btn_ScrollToTop_Click"/>
+            <AppBarButton x:Name="btn_ZoomChange" Icon="Zoom" Label="视图缩放" Click="btn_ZoomChange_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 

@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using CNBlogs.DataHelper.CloudAPI;
 using CNBlogs.DataHelper.DataModel;
-using CNBlogs.DataHelper.Helper;
+using CNBlogs.DataHelper.Function;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
@@ -29,8 +29,7 @@ namespace CNBlogs.Pages
 
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
-
-        private FavoritePostsDS favoriteDS;
+        private FavoritePostDS favoriteDS;
 
         /// <summary>
         /// This can be changed to a strongly typed view model.
@@ -62,7 +61,7 @@ namespace CNBlogs.Pages
 
         private async void LoadData()
         {
-            this.favoriteDS = new FavoritePostsDS();
+            this.favoriteDS = new FavoritePostDS();
             this.favoriteDS.OnLoadMoreStarted += TitleControl.DS_OnLoadMoreStarted;
             this.favoriteDS.OnLoadMoreCompleted += TitleControl.DS_OnLoadMoreCompleted;
             this.gv_FavoritePosts.ItemsSource = this.favoriteDS;
@@ -112,6 +111,7 @@ namespace CNBlogs.Pages
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
+            Frame.BackStack.Clear();
             await this.favoriteDS.Refresh();
         }
 
@@ -125,7 +125,7 @@ namespace CNBlogs.Pages
         private void gv_FavoritePosts_ItemClick(object sender, ItemClickEventArgs e)
         {
             Post post = e.ClickedItem as Post;
-            this.Frame.Navigate(typeof(ReadingPage), post);
+            this.Frame.Navigate(typeof(PostReadingPage), post);
         }
 
         private async void btn_Refresh_Click(object sender, RoutedEventArgs e)
@@ -140,7 +140,10 @@ namespace CNBlogs.Pages
 
         private void btn_ScrollToTop_Click(object sender, RoutedEventArgs e)
         {
-            FunctionHelper.Functions.GridViewScrollToTop(this.gv_FavoritePosts);
+            if (sz_FavoritePosts.IsZoomedInViewActive)
+                FunctionHelper.Functions.GridViewScrollToTop(this.gv_FavoritePosts);
+            else
+                FunctionHelper.Functions.GridViewScrollToTop(this.gv_SimplePosts);
         }
 
         private bool isZoomOutTapped = false;
@@ -156,13 +159,31 @@ namespace CNBlogs.Pages
             {
                 Post post = e.DestinationItem.Item as Post;
                 isZoomOutTapped = false;
-                this.Frame.Navigate(typeof(Pages.ReadingPage), post);
+                this.Frame.Navigate(typeof(PostReadingPage), post);
+                sz_FavoritePosts.ToggleActiveView();
             }
         }
 
         private void gv_SimplePosts_Tapped(object sender, TappedRoutedEventArgs e)
         {
             isZoomOutTapped = true;
+        }
+
+        private void btn_ZoomChange_Click(object sender, RoutedEventArgs e)
+        {
+            sz_FavoritePosts.ToggleActiveView();
+        }
+
+        private void PostControl_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            try
+            {
+                PostControl postControl = sender as PostControl;
+                postControl.ShowStoryBoard();
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

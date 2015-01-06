@@ -104,6 +104,15 @@
   <ItemGroup>
     <Compile Include="Controls\CategoryControl.cs" />
     <Compile Include="Controls\PageTitleControl.cs" />
+    <Compile Include="Controls\FavoriteGroupControl.cs" />
+    <Compile Include="Controls\FavoriteAuthorControl.cs" />
+    <Compile Include="Controls\FavoriteCategoryControl.cs" />
+    <Compile Include="Views\EasterEggPage.xaml.cs">
+      <DependentUpon>EasterEggPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelpClass\FavoriteGroup.cs" />
+    <Compile Include="HelpClass\Snow.cs" />
+    <Compile Include="Controls\TitleWithNumberControl.cs" />
     <Compile Include="Views\CategoryPostsPage.xaml.cs">
       <DependentUpon>CategoryPostsPage.xaml</DependentUpon>
     </Compile>
@@ -117,7 +126,6 @@
     <Compile Include="Views\CategoriesPage.xaml.cs">
       <DependentUpon>CategoriesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\Column.cs" />
     <Compile Include="Controls\ColumnControl.cs" />
     <Compile Include="Views\FavoritePostsPage.xaml.cs">
       <DependentUpon>FavoritePostsPage.xaml</DependentUpon>
@@ -172,6 +180,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Image\bg_footer.png" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\Logo.scale-240.png" />
     <Content Include="Assets\Logo300x300.png" />
@@ -187,6 +196,10 @@
     <Content Include="Assets\WideLogo.scale-240.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\EasterEggPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\CustomStyleDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

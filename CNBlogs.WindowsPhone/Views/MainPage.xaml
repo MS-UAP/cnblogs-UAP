@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Page x:Name="page"
     x:Class="CNBlogs.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -9,14 +9,16 @@
     mc:Ignorable="d"
     IsTextScaleFactorEnabled="False"
     RequestedTheme="Light"
-    Background="{ThemeResource CNBlogsThemeColor}" FontFamily="Global User Interface">
+    Background="{ThemeResource CNBlogsThemeColor}" >
 
     <Page.Resources>
+        <ControlHelper:TimeCountDownConverter x:Key="TimeCountDownConverter"/>
+        <ControlHelper:NightModeLabelConverter x:Key="NightModeLabelConverter"/>
+        <ControlHelper:BoolToVisibilityConverter x:Key="BoolToVisiblityConverter"></ControlHelper:BoolToVisibilityConverter>
+
         <Style TargetType="PivotItem">
             <Setter Property="Background" Value="{ThemeResource CNBlogsBackColor}"/>
         </Style>
-
-        <ControlHelper:NightModeLabelConverter x:Key="NightModeLabelConverter"/>
 
         <DataTemplate x:Key="NewsNoImageTemplate">
             <local:NewsTitleTextControl/>
@@ -26,10 +28,21 @@
             <local:NewsTitleTextImageControl/>
         </DataTemplate>
 
+        <CollectionViewSource x:Name="cv_focus" IsSourceGrouped="True" ItemsPath="Items"></CollectionViewSource>
+
+        <MenuFlyout x:Key="mf_focus">
+            <MenuFlyout.MenuFlyoutPresenterStyle>
+                <Style TargetType="MenuFlyoutPresenter">
+                    <Setter Property="Background" Value="{ThemeResource CNBlogsBackColor}"></Setter>
+                    <Setter Property="Foreground" Value="White"></Setter>
+                </Style>
+            </MenuFlyout.MenuFlyoutPresenterStyle>
+            <MenuFlyoutItem Text="取消收藏" DataContext="{Binding}" Click="MenuFlyoutItem_Click"></MenuFlyoutItem>
+        </MenuFlyout>
+
     </Page.Resources>
 
     <Grid>
-
         <Grid x:Name="grid_Splash">
             <Grid.RowDefinitions>
                 <RowDefinition />
@@ -54,10 +67,11 @@
             <Pivot x:Name="pivot_Main" SelectionChanged="pivot_Main_SelectionChanged">
                 <PivotItem Margin="0" Tag="home">
                     <PivotItem.Header>
-                        <StackPanel Orientation="Horizontal" Height="48">
+                        <!--<StackPanel Orientation="Horizontal" Height="48">
                             <TextBlock Style="{StaticResource PivotTitleFont}" Text="首页" />
                             <TextBlock x:Name="tb_HomeTag" Text="{Binding Count}" FontSize="16" Margin="0,2,0,0"/>
-                        </StackPanel>
+                        </StackPanel>-->
+                        <local:TitleWithNumberControl x:Name="tn_Home" TitleContent="首页"/>
                     </PivotItem.Header>
                     <ListView x:Name="lv_HomePosts" FontFamily="Global User Interface">
                         <ListView.Header>
@@ -73,10 +87,11 @@
 
                 <PivotItem Margin="0" Tag="news">
                     <PivotItem.Header>
-                        <StackPanel Orientation="Horizontal" Height="48">
+                        <!--<StackPanel Orientation="Horizontal" Height="48">
                             <TextBlock Style="{StaticResource PivotTitleFont}" Text="新闻" />
                             <TextBlock x:Name="tb_NewsTag" Text="{Binding Count}" FontSize="16" Margin="0,2,0,0"/>
-                        </StackPanel>
+                        </StackPanel>-->
+                        <local:TitleWithNumberControl x:Name="tn_News" TitleContent="新闻"/>
                     </PivotItem.Header>
                     <ListView x:Name="lv_News" IsItemClickEnabled="True" ItemClick="lv_News_ItemClick">
                         <ListView.Header>
@@ -84,17 +99,21 @@
                         </ListView.Header>
                         <ListView.ItemTemplateSelector>
                             <ControlHelper:NewsControlTemplateSelector
-                            dtHasImage="{StaticResource NewsHasImageTemplate}"
-                            dtNoImage="{StaticResource NewsNoImageTemplate}"
-                            />
+                                dtHasImage="{StaticResource NewsHasImageTemplate}"
+                                dtNoImage="{StaticResource NewsNoImageTemplate}"/>
                         </ListView.ItemTemplateSelector>
                     </ListView>
                 </PivotItem>
 
                 <PivotItem Margin="0" Tag="column">
                     <PivotItem.Header>
-                        <TextBlock Style="{StaticResource PivotTitleFont}" Text="栏目" />
+                        <!--<StackPanel Orientation="Horizontal" Height="48">
+                            <TextBlock Style="{StaticResource PivotTitleFont}" Text="栏目" />
+                            <TextBlock x:Name="tb_ColumnTag" Text="{Binding Count}" FontSize="16" Margin="0,2,0,0"/>
+                        </StackPanel>-->
+                        <local:TitleWithNumberControl x:Name="tn_Column" TitleContent="栏目"/>
                     </PivotItem.Header>
+
                     <ListView x:Name="lv_Column" IsItemClickEnabled="True" ItemClick="lv_Column_ItemClick">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -107,6 +126,80 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+
+                </PivotItem>
+
+                <PivotItem Margin="0" Tag="favorite">
+                    <PivotItem.Header>
+                        <local:TitleWithNumberControl x:Name="tn_Favorite" TitleContent="收藏"/>
+                    </PivotItem.Header>
+                    <ScrollViewer x:Name="sv_Favorite">
+                        <StackPanel Orientation="Vertical" Margin="20,10">
+                            <local:FavoriteGroupControl x:Name="fgc_Category" Tapped="sp_category_Tapped" Margin="0,10"/>
+                            <ListView x:Name="lv_category" IsItemClickEnabled="True" ItemClick="lv_category_ItemClick">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <local:FavoriteCategoryControl FlyoutBase.AttachedFlyout="{StaticResource mf_focus}" Holding="category_Holding"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                                <ListView.Resources>
+                                    <Storyboard x:Name="sb_lv1_show">
+                                        <DoubleAnimation Storyboard.TargetName="lv_category"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="0" To="1" Duration="0:0:1"/>
+                                    </Storyboard>
+                                    <Storyboard x:Name="sb_lv1_hide">
+                                        <DoubleAnimation Storyboard.TargetName="lv_category"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="1" To="0" Duration="0:0:1"/>
+                                    </Storyboard>
+                                </ListView.Resources>
+                            </ListView>
+
+                            <local:FavoriteGroupControl x:Name="fgc_Author" Tapped="sp_author_Tapped" Margin="0,10"/>
+                            <ListView x:Name="lv_author" IsItemClickEnabled="True" ItemClick="lv_author_ItemClick">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <local:FavoriteAuthorControl FlyoutBase.AttachedFlyout="{StaticResource mf_focus}" Holding="author_Holding"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                                <ListView.Resources>
+                                    <Storyboard x:Name="sb_lv2_show">
+                                        <DoubleAnimation Storyboard.TargetName="lv_author"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="0" To="1" Duration="0:0:1"/>
+                                    </Storyboard>
+                                    <Storyboard x:Name="sb_lv2_hide">
+                                        <DoubleAnimation Storyboard.TargetName="lv_author"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="1" To="0" Duration="0:0:1"/>
+                                    </Storyboard>
+                                </ListView.Resources>
+                            </ListView>
+
+                            <local:FavoriteGroupControl x:Name="fgc_Post" Tapped="sp_blog_Tapped" Margin="0,10"/>
+                            <ListView x:Name="lv_blog" IsItemClickEnabled="True">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <local:PostControl Tapped="PostControl_Tapped" FlyoutBase.AttachedFlyout="{StaticResource mf_focus}" Holding="post_Holding"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                                <ListView.Resources>
+                                    <Storyboard x:Name="sb_lv3_show">
+                                        <DoubleAnimation Storyboard.TargetName="lv_blog"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="0" To="1" Duration="0:0:1"/>
+                                    </Storyboard>
+                                    <Storyboard x:Name="sb_lv3_hide">
+                                        <DoubleAnimation Storyboard.TargetName="lv_blog"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="1" To="0" Duration="0:0:1"/>
+                                    </Storyboard>
+                                </ListView.Resources>
+                            </ListView>
+
+                        </StackPanel>
+                    </ScrollViewer>
                 </PivotItem>
 
             </Pivot>
@@ -126,6 +219,7 @@
                     <FontIcon Glyph="&#xE11C;"/>
                 </AppBarButton.Icon>
             </AppBarButton>
+            <AppBarButton x:Name="btn_NightMode" Icon="View" Label="{Binding Converter={StaticResource NightModeLabelConverter}, Path=NightModeTheme}" Click="btn_NightMode_Click"/>
             <AppBarButton x:Name="btn_Setting" Label="设置" Icon="Setting" Click="btn_Setting_Click"/>
         </CommandBar>
     </Page.BottomAppBar>

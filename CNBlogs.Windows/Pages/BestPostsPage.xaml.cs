@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using CNBlogs.DataHelper.CloudAPI;
 using CNBlogs.DataHelper.DataModel;
-using CNBlogs.DataHelper.Helper;
+using CNBlogs.DataHelper.Function;
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
 namespace CNBlogs.Pages
@@ -108,6 +108,7 @@ namespace CNBlogs.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
+            Frame.BackStack.Clear();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -120,7 +121,7 @@ namespace CNBlogs.Pages
         private void gv_BestPosts_ItemClick(object sender, ItemClickEventArgs e)
         {
             Post post = e.ClickedItem as Post;
-            this.Frame.Navigate(typeof(ReadingPage), post);
+            this.Frame.Navigate(typeof(PostReadingPage), post);
         }
 
         private async void btn_Refresh_Click(object sender, RoutedEventArgs e)
@@ -135,7 +136,10 @@ namespace CNBlogs.Pages
 
         private void btn_ScrollToTop_Click(object sender, RoutedEventArgs e)
         {
-            FunctionHelper.Functions.GridViewScrollToTop(this.gv_BestPosts);
+            if (sz_BestPosts.IsZoomedInViewActive)
+                FunctionHelper.Functions.GridViewScrollToTop(this.gv_BestPosts);
+            else
+                FunctionHelper.Functions.GridViewScrollToTop(this.gv_SimplePosts);
         }
 
         private bool isZoomOutTapped = false;
@@ -151,7 +155,8 @@ namespace CNBlogs.Pages
             {
                 Post post = e.DestinationItem.Item as Post;
                 isZoomOutTapped = false;
-                this.Frame.Navigate(typeof(Pages.ReadingPage), post);
+                this.Frame.Navigate(typeof(Pages.PostReadingPage), post);
+                sz_BestPosts.ToggleActiveView();
             }
         }
 
@@ -160,5 +165,21 @@ namespace CNBlogs.Pages
             isZoomOutTapped = true;
         }
 
+        private void btn_ZoomChange_Click(object sender, RoutedEventArgs e)
+        {
+            sz_BestPosts.ToggleActiveView();
+        }
+
+        private void PostControl_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            try
+            {
+                PostControl postControl = sender as PostControl;
+                postControl.ShowStoryBoard();
+            }
+            catch (Exception)
+            {
+            }
+        }
     }
 }

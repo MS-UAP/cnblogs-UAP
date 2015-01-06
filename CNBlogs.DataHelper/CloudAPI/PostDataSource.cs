@@ -1,5 +1,5 @@
 ﻿using CNBlogs.DataHelper.DataModel;
-using CNBlogs.DataHelper.Helper;
+using CNBlogs.DataHelper.Function;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +36,7 @@ namespace CNBlogs.DataHelper.CloudAPI
                         }
 
                         // check blog status
-                        post.Status = CNBlogSettings.Instance.GetBlogReadState(post.ID);
+                        post.Status =( post.Status == PostStatus.None || post.Status == 0) ? CNBlogSettings.Instance.GetBlogReadState(post.ID) : post.Status;
 
                         // check if author blogapp is empty
                         if (string.IsNullOrWhiteSpace(post.BlogApp) && post.Author != null && !string.IsNullOrWhiteSpace(post.Author.Uri))

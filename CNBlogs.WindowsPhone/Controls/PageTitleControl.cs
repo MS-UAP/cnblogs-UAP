@@ -52,15 +52,23 @@ namespace CNBlogs
         {
             this.newContent = newContent;
             Storyboard sbHide = this.GetTemplateChild("sb_Hide") as Storyboard;
-            sbHide.Completed += sbHide_Completed;
-            sbHide.Begin();
+
+            if (sbHide != null)
+            {
+                sbHide.Completed += this.sbHide_Completed;
+                sbHide.Begin();
+            }
         }
 
         void sbHide_Completed(object sender, object e)
         {
             this.SubTitleContent = this.newContent;
             Storyboard sbShow = this.GetTemplateChild("sb_Show") as Storyboard;
-            sbShow.Begin();
+
+            if (sbShow != null)
+            {
+                sbShow.Begin();
+            }
         }
     }
 }

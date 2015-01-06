@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Windows.Data.Xml.Dom;
-using CNBlogs.DataHelper.Helper;
+using CNBlogs.DataHelper.Function;
 using System.Xml.Serialization;
 
 namespace CNBlogs.DataHelper.DataModel
@@ -21,5 +21,8 @@ namespace CNBlogs.DataHelper.DataModel
 
         [XmlElement("uri")]
         public string Uri { get; set; }
+
+        [XmlIgnore]
+        public string BlogApp { get; set; }
     }
 }

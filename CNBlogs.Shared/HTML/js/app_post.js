@@ -34,6 +34,18 @@
         $(element).replaceWith("<div class='imgGrid'><div class='imgtable'><div class='imgtable-cell'>" +
             element.outerHTML + "</div></div></div>");
     });
+
+    // remove custom style
+    $("span[style]:not(pre span), p[style]").each(function (index, element) {
+        element.style.removeProperty('color');
+        element.style.removeProperty('font-size');
+
+    });
+}
+
+function changeFontSize(size) {
+    document.getElementsByTagName('html')[0].style.fontSize = size + 'em';
+
 }
 
 //function removeImageFix()

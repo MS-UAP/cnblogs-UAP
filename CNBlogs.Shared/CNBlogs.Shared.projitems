@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ControlHelper\BoolToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ControlHelper\FavoriteToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ControlHelper\NewsControlTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ControlHelper\NightModeLabelConverter.cs" />
@@ -34,12 +35,18 @@
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\zh-CN\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\ms-uap.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\TileUpdateBG_Square_150x150.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="$(MSBuildThisFileDirectory)Assets\TileUpdateBG_Wide_310x150.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Data\Categories.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Data\Favorites.xml" />
+    <Content Include="$(MSBuildThisFileDirectory)Data\Columns.xml" />
     <Content Include="$(MSBuildThisFileDirectory)HTML\css\cnblog_night.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -73,10 +80,8 @@
     <Content Include="$(MSBuildThisFileDirectory)HTML\post_day.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="$(MSBuildThisFileDirectory)HTML\sample.html" />
     <Content Include="$(MSBuildThisFileDirectory)SampleData\AuthorPosts.xml" />
-    <Content Include="$(MSBuildThisFileDirectory)SampleData\categories.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="$(MSBuildThisFileDirectory)SampleData\category post.html" />
     <Content Include="$(MSBuildThisFileDirectory)SampleData\HomePosts.xml" />
     <Content Include="$(MSBuildThisFileDirectory)SampleData\HotPosts.xml" />
@@ -98,6 +103,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)HTML\js\jquery-2.1.1.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)HTML\js\viewport-adjust.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

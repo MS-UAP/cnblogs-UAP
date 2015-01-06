@@ -75,7 +75,7 @@
                 <Border.Projection>
                     <PlaneProjection GlobalOffsetY="50"/>
                 </Border.Projection>
-                <local:AuthorControl Margin="15,0" AvatarHeight="36" NameColor="{ThemeResource CNBlogsPageTitleColor}"/>
+                <local:AuthorControl x:Name="authorControl0" Margin="15,0" AvatarHeight="36" NameColor="{ThemeResource CNBlogsPageTitleColor}"/>
             </Border>
         </Grid>
 
@@ -90,7 +90,7 @@
             <ListView.Header>
                 <Border x:Name="border_AuthorControl" BorderThickness="0,0,0,1" BorderBrush="{ThemeResource CNBlogsLineColor}">
                     <Grid>
-                        <local:AuthorControl Margin="20" AvatarHeight="36"/>
+                        <local:AuthorControl x:Name="authorControl1" Margin="20" AvatarHeight="36" NameColor="{ThemeResource CNBlogsSummaryColor}"/>
                         <Button x:Name="btn_Homepage" Content="博主主页" FontSize="18" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{ThemeResource CNBlogsThemeColor}" Foreground="{ThemeResource CNBlogsThemeColor}" Margin="0,0,20,0" Click="btn_Homepage_Click"/>
                     </Grid>
                 </Border>
@@ -105,8 +105,12 @@
 
     <Page.BottomAppBar>
         <CommandBar x:Name="cmdBar" ClosedDisplayMode="Minimal">
-            <!--<AppBarButton x:Name="btn_Refresh" Label="刷新" Icon="Sync" Click="btn_Refresh_Click" />-->
             <AppBarButton x:Name="btn_ScrollToTop" Label="回到顶部" Icon="Upload" Click="btn_ScrollToTop_Click"/>
+            <AppBarButton x:Name="btn_focus" Click="btn_focus_Click" Label="收藏博主">
+                <AppBarButton.Icon>
+                    <SymbolIcon Symbol="Favorite"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
         </CommandBar>
     </Page.BottomAppBar>
 

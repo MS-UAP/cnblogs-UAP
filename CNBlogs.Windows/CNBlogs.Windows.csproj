@@ -128,11 +128,24 @@
   <ItemGroup>
     <Compile Include="Controls\CategoryControl.cs" />
     <Compile Include="Controls\AuthorControl.cs" />
+    <Compile Include="Controls\NotifyBlock.cs" />
+    <Compile Include="Pages\CategoryPostsPage.xaml.cs">
+      <DependentUpon>CategoryPostsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CategoryPage.xaml.cs">
       <DependentUpon>CategoryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\NewFavoritePage.xaml.cs">
+      <DependentUpon>NewFavoritePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FavoritePage.xaml.cs">
       <DependentUpon>FavoritePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NewsReadingPage.xaml.cs">
+      <DependentUpon>NewsReadingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TestPage.xaml.cs">
+      <DependentUpon>TestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="SettingFlyouts\AboutSettingsFlyout.xaml.cs">
       <DependentUpon>AboutSettingsFlyout.xaml</DependentUpon>
@@ -169,8 +182,8 @@
       <DependentUpon>NewsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\PageTitleControl.cs" />
-    <Compile Include="Pages\ReadingPage.xaml.cs">
-      <DependentUpon>ReadingPage.xaml</DependentUpon>
+    <Compile Include="Pages\PostReadingPage.xaml.cs">
+      <DependentUpon>PostReadingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="SettingFlyouts\PreferenceSettingsFlyout.xaml.cs">
       <DependentUpon>PreferenceSettingsFlyout.xaml</DependentUpon>
@@ -206,13 +219,29 @@
     <Content Include="Assets\Wide310x150Logo.scale-180.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Pages\CategoryPostsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\CategoryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\NewFavoritePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\FavoritePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\NewsReadingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\TestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SettingFlyouts\AboutSettingsFlyout.xaml">
       <SubType>Designer</SubType>
@@ -246,7 +275,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ReadingPage.xaml">
+    <Page Include="Pages\PostReadingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

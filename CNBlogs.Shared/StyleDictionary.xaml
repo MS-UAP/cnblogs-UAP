@@ -26,6 +26,7 @@
             <SolidColorBrush x:Key="ToggleSwitchCurtainBackgroundThemeBrush" Color="#FF297ACD" />
             <SolidColorBrush x:Key="ToggleSwitchThumbBorderThemeBrush" Color="#FF297ACD" />
             <SolidColorBrush x:Key="ToggleSwitchThumbBackgroundThemeBrush" Color="#FFFFFFFF" />
+
         </ResourceDictionary>
         
         <ResourceDictionary x:Key="Dark">
@@ -48,6 +49,7 @@
             <SolidColorBrush x:Key="ToggleSwitchCurtainBackgroundThemeBrush" Color="#FF6E6E6E" />
             <SolidColorBrush x:Key="ToggleSwitchThumbBorderThemeBrush" Color="#FF6E6E6E" />
             <SolidColorBrush x:Key="ToggleSwitchThumbBackgroundThemeBrush" Color="#FFFFFFFF" />
+
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 
@@ -74,7 +76,7 @@
     <Style x:Key="SettingPageTextHeader" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="Segoe WP"/>
         <Setter Property="FontSize" Value="20"/>
-        <Setter Property="Foreground" Value="{ThemeResource CNBlogsPageTextColor}"/>
+        <Setter Property="Foreground" Value="{ThemeResource CNBlogsSummaryColor}"/>
     </Style>
 
     <Style x:Key="AuthorNameFont" TargetType="TextBlock">
@@ -99,7 +101,13 @@
 
     <Style x:Key="ListViewHeaderFont" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="Segoe WP"/>
-        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Foreground" Value="{ThemeResource CNBlogsSummaryColor}"/>
+    </Style>
+
+    <Style x:Key="ListViewItemFontForFavorite" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe WP"/>
+        <Setter Property="FontSize" Value="24"/>
         <Setter Property="Foreground" Value="{ThemeResource CNBlogsAttributionColor}"/>
     </Style>
 
@@ -128,14 +136,23 @@
         <Setter Property="Language" Value="zh-Hans"/>
         <Setter Property="FontFamily" Value="Microsoft Yahei"/>
         <Setter Property="FontSize" Value="48"/>
+        <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Foreground" Value="{ThemeResource CNBlogsThemeRedColor}"/>
     </Style>
 
     <Style x:Key="Win8PageSubTitleFont" TargetType="TextBlock">
         <Setter Property="Language" Value="zh-Hans"/>
         <Setter Property="FontFamily" Value="Microsoft Yahei"/>
-        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="FontSize" Value="40"/>
+        <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Foreground" Value="{ThemeResource CNBlogsThemeColor}"/>
+    </Style>
+
+    <Style x:Key="Win8CategoryTitleFont" TargetType="TextBlock">
+        <Setter Property="Language" Value="zh-Hans"/>
+        <Setter Property="FontFamily" Value="Microsoft Yahei"/>
+        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="FontWeight" Value="SemiLight"/>
     </Style>
 
     <Style x:Key="Win8PageTitleAttributionFont" TargetType="TextBlock">
@@ -155,17 +172,17 @@
     <Style x:Key="Win8PostTitleFont" TargetType="TextBlock">
         <Setter Property="Language" Value="zh-Hans"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
-        <Setter Property="FontSize" Value="23"/>
-        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="28"/>
+        <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="MaxLines" Value="2"/>
+        <Setter Property="MaxLines" Value="3"/>
         <Setter Property="Foreground" Value="{ThemeResource CNBlogsTitleColor}"/>
     </Style>
 
     <Style x:Key="Win8PostAbstractionFont" TargetType="TextBlock">
         <Setter Property="Language" Value="zh-Hans"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
-        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
@@ -206,95 +223,28 @@
         <Setter Property="MinWidth" Value="45"></Setter>
     </Style>
 
-    <Style x:Key="Win8NavigationBackButtonStyle" TargetType="Button">
-        <Setter Property="Foreground" Value="{ThemeResource CNBlogsThemeColor}"/>
-        <Setter Property="VerticalAlignment" Value="Top"/>
-        <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
-        <Setter Property="FontWeight" Value="Normal"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Grid Background="Transparent" x:Name="RootGrid">
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal"/>
-                                <VisualState x:Name="PointerOver">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="Ellipse">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CNBlogsThemeLightColor}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Content">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CNBlogsThemeColor}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="Ellipse">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CNBlogsThemeColor}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="Ellipse">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CNBlogsThemeColor}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Content">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource AppBarItemPressedForegroundThemeBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Disabled">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Visibility">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                            <VisualStateGroup x:Name="FocusStates">
-                                <VisualState x:Name="Focused">
-                                    <Storyboard>
-                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualWhite"/>
-                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualBlue"/>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Unfocused"/>
-                                <VisualState x:Name="PointerFocused"/>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                        <Grid 
-                            Height="41" 
-                            Width="41">
-                            <Ellipse
-                                x:Name="Ellipse"
-                                Fill="{ThemeResource AppBarItemBackgroundThemeBrush}"
-                                Stroke="{TemplateBinding Foreground}"
-                                StrokeThickness="2"
-                                UseLayoutRounding="False" />
-                            <ContentPresenter 
-                                x:Name="Content" 
-                                Foreground="{TemplateBinding Foreground}" 
-                                HorizontalAlignment="Stretch" 
-                                VerticalAlignment="Stretch">
-                                <PathIcon Data="F1 M 17.4126,18L 24.0752,11L 17.6558,11L 8.77931,20.4678L 8.77931,20.5322L 17.6558,30L 24.0752,30L 17.4126,23L 32,23L 32,18L 17.4126,18 Z " />
-                            </ContentPresenter>
-                        </Grid>
-                        <Rectangle x:Name="FocusVisualWhite" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="1.5" StrokeEndLineCap="Square" Stroke="{ThemeResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashArray="1,1"/>
-                        <Rectangle x:Name="FocusVisualBlue" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="0.5" StrokeEndLineCap="Square" Stroke="{TemplateBinding Foreground}" StrokeDashArray="1,1"/>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
 
     <Style x:Key="Win8TopAppBarButton" TargetType="Button">
         <Setter Property="FontFamily" Value="Microsoft YaHei"/>
         <Setter Property="FontSize" Value="32"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="{ThemeResource CNBlogsThemeLightColor}"/>
+        <Setter Property="Background" Value="{ThemeResource CNBlogsThemeColor}"/>
         <Setter Property="FontWeight" Value="Normal"/>
     </Style>
 
+    <Style x:Key="Win8NotifyBlockFont" TargetType="TextBlock">
+        <Setter Property="Language" Value="zh-Hans"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="42"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="MaxLines" Value="2"/>
+        <Setter Property="Foreground" Value="{ThemeResource CNBlogsBackColor}"/>
+    </Style>
+
+    <Style x:Key="Win8AppbarStyle" TargetType="CommandBar">
+        <Setter Property="Background" Value="{ThemeResource CNBlogsThemeColor}"/>
+    </Style>
 
 </ResourceDictionary>

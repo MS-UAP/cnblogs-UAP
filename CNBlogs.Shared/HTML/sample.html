@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="js/viewport-adjust.js"></script>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/cnblog_day.css">
+    <link rel="stylesheet" href="css/imagefix.css" />
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/app_post.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <h3>
+        博客园客户端(Universal App)开发随笔 - Hello, Universal
+    </h3>
+
+    <p>
+
+        在移动和云成为微软的主题之后，Windows Phone 8.1 手机和Windows 8.1平板也渐渐成熟，吸引了越来越多的开发者。为了让开发者们高效的开发一款跨手机和平板的应用，微软顺势推出了Universal应用的概念。
+    </p>
+    <p>
+        今天我们想向大家分享怎样用C#和XAML语言开始开发一个跨Windows 8.1和 Windows Phone 8.1 的 Universal 应用。
+    </p>
+    <h4>
+        准备
+    </h4>
+    <p>
+        首先硬件方面我们的计算机要支持Hyper-V功能或者有一部运行Windows Phone 8.1 操作系统的手机。
+    </p>
+
+    <p>
+        软件则需要在计算机上安装Windows 8.1 和 Visual Studio 2013 update 2 及以上的版本。免费的面向 Windows 的 Microsoft Visual Studio Express 2013 with Update 4 就可以，在http://www.visualstudio.com/zh-cn/downloads#d-express-windows-8 能够找到。
+    </p>
+    <p>
+        启动Visual Studio 2013，首次启动会需要注册一个Microsoft账号，有了的话直接登录就可以
+    </p>
+
+    <h4>
+        Hello Universal
+
+    </h4>
+    <p>
+
+        现在我们就可以创建 Windows Universal App 了。
+    </p>
+
+    <p>
+
+        在start界面上点击新建项目或者在菜单栏上点击文件->新建->项目
+    </p>
+
+    <p>
+
+        选择已安装->Visual C＃->应用商店应用->通用应用程序->空白应用程序
+    </p>
+
+    <p>
+
+        选择保存文件夹并输入项目名称，比如“my Universal”
+    </p>
+
+    <p>
+
+
+        点击确定。
+    </p>
+
+    <p>
+
+        好了，Visual Studio 已经自动为我们创建了Universal解决方案：
+    </p>
+
+    <p>
+
+        在解决方案资源管理器中可以看到我们的Universal解决方案包含3个项目，my Universal.Windows，my Universal.WindowsPhone，my Universal.Shared...
+    </p>
+</body>
+</html>

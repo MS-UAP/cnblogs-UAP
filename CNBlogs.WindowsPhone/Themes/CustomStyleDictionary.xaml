@@ -4,5 +4,26 @@
     xmlns:local="using:CNBlogs"
     xmlns:ControlHelper="using:CNBlogs.ControlHelper">
 
-
+    <Style x:Key="AuthorControl2" TargetType="local:AuthorControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:AuthorControl">
+                    <Border>
+                        <StackPanel Orientation="Horizontal">
+                            <Grid>
+                                <SymbolIcon Symbol="Contact" Foreground="{ThemeResource CNBlogsThemeLightColor}"/>
+                                <Rectangle Width="{TemplateBinding AvatarHeight}" Height="{TemplateBinding AvatarHeight}" StrokeThickness="1" Stroke="{ThemeResource CNBlogsLineColor}" RadiusX="5" RadiusY="5">
+                                    <Rectangle.Fill>
+                                        <ImageBrush ImageSource="{Binding Item.Avatar}"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Grid>
+                            <TextBlock Grid.Column="1" Text="{Binding Item.Name}" Style="{StaticResource ListViewItemFontForFavorite}" Margin="5,0,0,3" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
 </ResourceDictionary>

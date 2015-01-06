@@ -18,7 +18,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <nav:PageTitleControl x:Name="TitleControl" TitleContent="推荐 - 20位随机推荐的明星博主" Margin="50,0,0,0"/>
+        <nav:PageTitleControl x:Name="TitleControl" TitleContent="明星博主推荐" Margin="50,0,0,0"/>
 
         <!--CONTENT PART-->
         <Grid Grid.Row="1">
@@ -34,7 +34,7 @@
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar>
+        <CommandBar Style="{StaticResource Win8AppbarStyle}">
             <AppBarButton x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>
         </CommandBar>
     </Page.BottomAppBar>

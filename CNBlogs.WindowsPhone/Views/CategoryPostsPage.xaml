@@ -42,6 +42,11 @@
                     <FontIcon Glyph="&#xE11C;"/>
                 </AppBarButton.Icon>
             </AppBarButton>
+            <AppBarButton x:Name="btn_focus" Click="btn_focus_Click" Label="收藏此类">
+                <AppBarButton.Icon>
+                    <SymbolIcon Symbol="Favorite" ></SymbolIcon>
+                </AppBarButton.Icon>
+            </AppBarButton>
             <AppBarButton x:Name="btn_Setting" Label="设置" Icon="Setting" Click="btn_Setting_Click"/>
         </CommandBar>
     </Page.BottomAppBar>

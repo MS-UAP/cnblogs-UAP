@@ -20,6 +20,9 @@ namespace CNBlogs.DataHelper.DataModel
         [XmlElement("name")]
         public string Name { get; set; }
 
+        [XmlElement("id")]
+        public string Id { get; set; }
+
         [XmlElement("href")]
         public string Href { get; set; }
 

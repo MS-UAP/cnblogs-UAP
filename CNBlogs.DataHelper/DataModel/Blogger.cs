@@ -1,4 +1,4 @@
-﻿using CNBlogs.DataHelper.Helper;
+﻿using CNBlogs.DataHelper.Function;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +40,8 @@ namespace CNBlogs.DataHelper.DataModel
         {
             get { return Functions.ParseDateTime(this.UpdateTimeString); }
         }
+
+
     }
 
 }

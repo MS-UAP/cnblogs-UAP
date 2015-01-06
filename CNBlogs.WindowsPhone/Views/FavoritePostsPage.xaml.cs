@@ -17,7 +17,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using CNBlogs.DataHelper.CloudAPI;
 using CNBlogs.DataHelper.DataModel;
-using CNBlogs.DataHelper.Helper;
+using CNBlogs.DataHelper.Function;
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace CNBlogs
@@ -29,7 +29,7 @@ namespace CNBlogs
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
-        private FavoritePostsDS favoritePostsDS;
+        private FavoritePostDS favoritePostsDS;
 
         public FavoritePostsPage()
         {
@@ -120,7 +120,7 @@ namespace CNBlogs
         {
             //FunctionHelper.Functions.RefreshUIOnDataLoading(this.pb_Top, this.appbar);
 
-            this.favoritePostsDS = new FavoritePostsDS();
+            this.favoritePostsDS = new FavoritePostDS();
             this.favoritePostsDS.OnLoadMoreStarted += favoritePostsDS_OnLoadMoreStarted;
             this.favoritePostsDS.OnLoadMoreCompleted += favoritePostsDS_OnLoadMoreCompleted;
             this.lv_Favorites.ItemsSource = this.favoritePostsDS;

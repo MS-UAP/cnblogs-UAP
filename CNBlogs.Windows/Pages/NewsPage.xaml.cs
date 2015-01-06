@@ -99,6 +99,7 @@ namespace CNBlogs.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
+            Frame.BackStack.Clear();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -111,7 +112,7 @@ namespace CNBlogs.Pages
         private void gv_News_ItemClick(object sender, ItemClickEventArgs e)
         {
             News news = e.ClickedItem as News;
-            this.Frame.Navigate(typeof(ReadingPage), news);
+            this.Frame.Navigate(typeof(NewsReadingPage), news);
         }
 
         private async void btn_Refresh_Click(object sender, RoutedEventArgs e)
@@ -126,7 +127,10 @@ namespace CNBlogs.Pages
 
         private void btn_ScrollToTop_Click(object sender, RoutedEventArgs e)
         {
-            FunctionHelper.Functions.GridViewScrollToTop(this.gv_News);
+            if (sz_News.IsZoomedInViewActive)
+                FunctionHelper.Functions.GridViewScrollToTop(this.gv_News);
+            else
+                FunctionHelper.Functions.GridViewScrollToTop(this.gv_SimpleNews);
         }
 
         private bool isZoomOutTapped = false;
@@ -140,15 +144,33 @@ namespace CNBlogs.Pages
         {
             if (!e.IsSourceZoomedInView & isZoomOutTapped)
             {
-                Post post = e.DestinationItem.Item as Post;
+                News news = e.DestinationItem.Item as News;
                 isZoomOutTapped = false;
-                this.Frame.Navigate(typeof(Pages.ReadingPage), post);
+                this.Frame.Navigate(typeof(NewsReadingPage), news);
+                sz_News.ToggleActiveView();
             }
         }
 
         private void gv_SimpleNews_Tapped(object sender, TappedRoutedEventArgs e)
         {
             isZoomOutTapped = true;
+        }
+
+        private void btn_ZoomChange_Click(object sender, RoutedEventArgs e)
+        {
+            sz_News.ToggleActiveView();
+        }
+
+        private void NewsControl_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            try
+            {
+                NewsControl newsControl = sender as NewsControl;
+                newsControl.ShowStoryBoard();
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ using Windows.ApplicationModel.Background;
 using Windows.UI.Notifications;
 using NotificationsExtensions.TileContent;
 using CNBlogs.DataHelper;
-using CNBlogs.DataHelper.Helper;
+using CNBlogs.DataHelper.Function;
 
 namespace BackgroundTask
 {

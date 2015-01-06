@@ -19,5 +19,33 @@ namespace CNBlogs
         {
             this.DefaultStyleKey = typeof(CategoryControl);
         }
+
+        private TextBlock textBlock;
+
+        private void GetTextBlockControl(string tb_name)
+        {
+            this.textBlock = this.GetTemplateChild(tb_name) as TextBlock;
+        }
+
+        private void SetTextBlockVisibility(string tb_name, bool isVisible)
+        {
+            GetTextBlockControl(tb_name);
+            if (textBlock != null)
+            {
+                textBlock.Visibility = isVisible ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+
+        public void SetLeftVisible()
+        {
+            SetTextBlockVisibility("LeftSymbol", true);
+            SetTextBlockVisibility("RightSymbol", false);
+        }
+
+        public void SetRightVisible()
+        {
+            SetTextBlockVisibility("LeftSymbol", false);
+            SetTextBlockVisibility("RightSymbol", true);
+        }
     }
 }

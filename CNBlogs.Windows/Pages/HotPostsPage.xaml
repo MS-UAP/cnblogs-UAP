@@ -18,7 +18,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <nav:PageTitleControl x:Name="TitleControl" TitleContent="热门 - 2日内阅读排行" Margin="50,0,0,0"/>
+        <nav:PageTitleControl x:Name="TitleControl" TitleContent="热门阅读排行" Margin="50,0,0,0"/>
 
         <Grid Grid.Row="1">
             <SemanticZoom x:Name="sz_HotPosts" 
@@ -26,10 +26,10 @@
                       ViewChangeCompleted="sz_HotPosts_ViewChangeCompleted">
                 <SemanticZoom.ZoomedInView>
                     <GridView x:Name="gv_HotPosts" ItemClick="gv_HotPosts_ItemClick"
-                      SelectionMode="None" IsItemClickEnabled="True" Padding="30,0,0,0">
+                      SelectionMode="None" IsItemClickEnabled="True" Padding="20,0,0,0">
                         <GridView.ItemTemplate>
                             <DataTemplate>
-                                <nav:PostControl/>
+                                <nav:PostControl Tapped="PostControl_Tapped"/>
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>
@@ -37,7 +37,7 @@
 
                 <SemanticZoom.ZoomedOutView>
                     <GridView x:Name="gv_SimplePosts" Tapped="gv_SimplePosts_Tapped"
-                     SelectionMode="None" IsItemClickEnabled="True" Padding="30,0,0,0" >
+                     SelectionMode="None" IsItemClickEnabled="True" Padding="20,0,0,0" >
                         <GridView.ItemTemplate>
                             <DataTemplate>
                                 <nav:PostControl Style="{StaticResource ResourceKey=SimplePostControl}"/>
@@ -50,9 +50,10 @@
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar>
+        <CommandBar Style="{StaticResource Win8AppbarStyle}">
             <AppBarButton x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>
             <AppBarButton x:Name="btn_ScrollToTop" Icon="Previous" Label="回到开始" Click="btn_ScrollToTop_Click"/>
+            <AppBarButton x:Name="btn_ZoomChange" Icon="Zoom" Label="视图缩放" Click="btn_ZoomChange_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 

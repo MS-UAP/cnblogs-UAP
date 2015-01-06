@@ -15,8 +15,90 @@ namespace CNBlogs.DataHelper.DataModel
         const string SettingKey_DefaultDisplaySummary = "cnblog_default_display_summary";
         const string SettingKey_ClickTitleForSummary = "cnblog_click_title_for_summary";
         const string SettingKey_NightModeTheme = "cnblog_night_mode_theme";
+        const string SettingKey_AddDefaultFollowingCategory = "cnblog_add_default_follow_category";
+        const string SettingKey_AddDefaultFollowingAuthor = "cnblog_add_default_follow_author";
+
         const string SettingKeyFormat_BlogReaded = "cnblog_blog_readed_{0}";
         const string SettingKeyFormat_NewsReaded = "cnblog_news_readed_{0}";
+        const string SettingKeyFormat_Follow_Category = "follow_category_{0}";
+        const string SettingKeyFormat_Follow_Author = "follow_author_{0}";
+        const string SettingKey_FontSize = "cnblog_font_size";
+
+        public double FontSize
+        {
+            get
+            {
+                var value = settings.Values[SettingKey_FontSize];
+                return value == null ? 100  : (double)value ;
+            }
+            set {
+                settings.Values[SettingKey_FontSize] = value ;
+            }
+        }
+
+        public bool AddDefaultFollowedAuthorItem
+        {
+            get
+            {
+                var value = settings.Values[SettingKey_AddDefaultFollowingAuthor];
+                return value == null ? true : (bool)value;
+            }
+            set
+            {
+                settings.Values[SettingKey_AddDefaultFollowingAuthor] = value;
+            }
+        }
+
+        public bool AddDefaultFollowedCategoryItem
+        {
+            get
+            {
+                var value = settings.Values[SettingKey_AddDefaultFollowingCategory];
+                return value == null ? true : (bool)value;
+            }
+            set
+            {
+                settings.Values[SettingKey_AddDefaultFollowingCategory] = value;
+            }
+        }
+
+        /// <summary>
+        /// get lastest post id of specified category since last time, saved in roaming
+        /// </summary>
+        public string GetCategoryLastPostId(string categoryId)
+        {
+            var key = string.Format(SettingKeyFormat_Follow_Category, categoryId);
+
+            return this.settings.Values.ContainsKey(key) ? this.roaming.Values[key] as string : string.Empty;
+        }
+
+        /// <summary>
+        /// save latest post id of category, saved in roaming
+        /// </summary>
+        public void SetCategoryLastPostId(string categoryId, string postId)
+        {
+            var key = string.Format(SettingKeyFormat_Follow_Category, categoryId);
+            this.settings.Values[key] = postId;
+        }
+
+        /// <summary>
+        /// get latest post id of author, saved in roaming
+        /// </summary>
+        public string GetAuthorLastPostId(string authorId)
+        {
+            var key = string.Format(SettingKeyFormat_Follow_Author, authorId);
+
+            return this.settings.Values.ContainsKey(key) ? this.roaming.Values[key] as string : string.Empty;
+        }
+
+        /// <summary>
+        /// save latest post id of author, saved in roaming
+        /// </summary>
+        public void SetAuthorLastPostId(string authorId, string postId)
+        {
+            var key = string.Format(SettingKeyFormat_Follow_Author, authorId);
+            this.settings.Values[key] = postId;
+        }
 
         private PostStatus GetPostReadState(string format, string id)
         {

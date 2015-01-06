@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.ApplicationModel.Store;
+using CNBlogs.DataHelper.DataModel;
+using Windows.ApplicationModel;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace CNBlogs
@@ -39,7 +41,37 @@ namespace CNBlogs
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            var file = "ms-appx-web:///HTML/sample.html#width={0}&height={1}";
+
+            this.wv_sample.DOMContentLoaded += wv_sample_DOMContentLoaded;
+
+            // set slider value
+            this.slider_fontsize.Value = CNBlogSettings.Instance.FontSize;
+
+            _isDomReady = false;
+            string width = Window.Current.Bounds.Width.ToString();
+            string height = Window.Current.Bounds.Height.ToString();
+            this.wv_sample.Navigate(new Uri(string.Format(file, width, height)));
         }
+
+        async void wv_sample_DOMContentLoaded(WebView sender, WebViewDOMContentLoadedEventArgs args)
+        {
+            _isDomReady = true;
+
+            var newSize = CNBlogSettings.Instance.FontSize / 100;
+
+            await this.wv_sample.InvokeScriptAsync("changeFontSize", new[] { newSize.ToString() });
+
+
+            string appVersion = string.Format("{0}.{1}.{2}.{3}",
+                    Package.Current.Id.Version.Major,
+                    Package.Current.Id.Version.Minor,
+                    Package.Current.Id.Version.Build,
+                    Package.Current.Id.Version.Revision);
+            this.tb_Version.Text = appVersion;
+        }
+
+        bool _isDomReady = false;
 
 
         private async void btn_RateMe_Click(object sender, RoutedEventArgs e)
@@ -72,6 +104,18 @@ namespace CNBlogs
             else
             {
                 this.RequestedTheme = ElementTheme.Light;
+            }
+        }
+
+        private async void slider_fontsize_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            if (_isDomReady)
+            {
+                var newSize = e.NewValue / 100;
+
+                await this.wv_sample.InvokeScriptAsync("changeFontSize", new[] { newSize.ToString() });
+
+                CNBlogSettings.Instance.FontSize = e.NewValue;
             }
         }
     }

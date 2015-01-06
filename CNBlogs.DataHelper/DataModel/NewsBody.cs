@@ -1,4 +1,4 @@
-﻿using CNBlogs.DataHelper.Helper;
+﻿using CNBlogs.DataHelper.Function;
 using System;
 using System.Collections.Generic;
 using System.Linq;

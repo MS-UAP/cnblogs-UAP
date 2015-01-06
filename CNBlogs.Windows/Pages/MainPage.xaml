@@ -10,7 +10,13 @@
     RequestedTheme="Light"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource CNBlogsBackColor}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!--<Grid.Background>
+            <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                <GradientStop Color="#FF90BED9" Offset="0"/>
+                <GradientStop Color="#FFCAB7D0" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>-->
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
@@ -23,17 +29,17 @@
         </Grid.RowDefinitions>
 
         <!--TITLE PART-->
-        <nav:PageTitleControl x:Name="TitleControl" Grid.Row="0" TitleContent="首页 - 今日最新博客" Margin="50,0,0,0"/>
+        <nav:PageTitleControl x:Name="TitleControl" Grid.Row="0" TitleContent="今日最新博客" Margin="50,0,0,0"/>
 
         <!--CONTENT PART-->
         <Grid Grid.Row="1">
             <SemanticZoom x:Name="sz_HomePosts" ViewChangeStarted="sz_HomePosts_ViewChangeStarted" ViewChangeCompleted="sz_HomePosts_ViewChangeCompleted">
                 <SemanticZoom.ZoomedInView>
                     <GridView x:Name="gv_HomePosts" ItemClick="gv_HomePosts_ItemClick"
-                      SelectionMode="None" IsItemClickEnabled="True" Padding="30,0,0,0">
+                      SelectionMode="None" IsItemClickEnabled="True" Padding="20,0,0,0">
                         <GridView.ItemTemplate>
                             <DataTemplate>
-                                <nav:PostControl/>
+                                <nav:PostControl Tapped="PostControl_Tapped"/>
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>
@@ -41,7 +47,7 @@
 
                 <SemanticZoom.ZoomedOutView>
                     <GridView x:Name="gv_SimplePosts" Tapped="gv_SimplePosts_Tapped"
-                     SelectionMode="None" IsItemClickEnabled="True" Padding="30,0,0,0" >
+                     SelectionMode="None" IsItemClickEnabled="True" Padding="20,0,0,0">
                         <GridView.ItemTemplate>
                             <DataTemplate>
                                 <nav:PostControl Style="{StaticResource ResourceKey=SimplePostControl}"/>
@@ -51,13 +57,14 @@
                 </SemanticZoom.ZoomedOutView>
             </SemanticZoom>
         </Grid>
-        
+
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar  Background="{ThemeResource CNBlogsThemeLightColor}">
+        <CommandBar Style="{StaticResource Win8AppbarStyle}">
             <AppBarButton x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>
             <AppBarButton x:Name="btn_ScrollToTop" Icon="Previous" Label="回到开始" Click="btn_ScrollToTop_Click"/>
+            <AppBarButton x:Name="btn_ZoomChange" Icon="Zoom" Label="视图缩放" Click="btn_ZoomChange_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 

@@ -16,8 +16,10 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using CNBlogs.DataHelper.DataModel;
-using CNBlogs.DataHelper.Helper;
+using CNBlogs.DataHelper.Function;
 using Windows.System;
+using CNBlogs.DataHelper.Function;
+using CNBlogs.DataHelper.CloudAPI;
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace CNBlogs
@@ -110,12 +112,12 @@ namespace CNBlogs
             var pageFile = string.Empty;
             if (!CNBlogs.DataHelper.DataModel.CNBlogSettings.Instance.NightModeTheme)
             {
-                pageFile = "ms-appx-web:///HTML/post_day.html";
+                pageFile = "ms-appx-web:///HTML/post_day.html#width={0}&height={1}";
                 this.wv_WebContent.DefaultBackgroundColor = Windows.UI.Colors.White;
             }
             else
             {
-                pageFile = "ms-appx-web:///HTML/post_night.html";
+                pageFile = "ms-appx-web:///HTML/post_night.html#width={0}&height={1}";
                 this.wv_WebContent.DefaultBackgroundColor = Windows.UI.Colors.Black;
             }
 
@@ -131,7 +133,11 @@ namespace CNBlogs
                 }
 
                 UpdateUI();
-                this.wv_WebContent.Navigate(new Uri(pageFile));
+
+                string width = Window.Current.Bounds.Width.ToString();
+                string height = Window.Current.Bounds.Height.ToString();
+
+                this.wv_WebContent.Navigate(new Uri(string.Format(pageFile, width, height)));
             }
         }
 
@@ -141,15 +147,19 @@ namespace CNBlogs
         }
 
         #endregion
-
         private async void wv_WebContent_DOMContentLoaded(WebView sender, WebViewDOMContentLoadedEventArgs args)
         {
             try
             {
+                var newSize = CNBlogSettings.Instance.FontSize / 100;
+
+                await this.wv_WebContent.InvokeScriptAsync("changeFontSize", new[] { newSize.ToString() });
+
                 var text = Windows.Data.Html.HtmlUtilities.ConvertToText(content);
 
                 // fill post content using javascript
                 await this.wv_WebContent.InvokeScriptAsync("setContent", new[] { content });
+
             }
             catch (Exception ex)
             {
@@ -170,8 +180,8 @@ namespace CNBlogs
                 // using launcher to open links in IE
                 await Launcher.LaunchUriAsync(args.Uri);
             }
-        }        
-        
+        }
+
         private void btn_Comment_Click(object sender, RoutedEventArgs e)
         {
             if (this.post != null)
@@ -195,16 +205,16 @@ namespace CNBlogs
             {
                 this.btn_Comment.Label = string.Format("{0}条评论", this.commentsCount);
             }
-            if(this.post.Status == PostStatus.Favorite)
-            {
-                this.btn_Favorite.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                this.btn_UnFavorite.Visibility = Windows.UI.Xaml.Visibility.Visible;
-            }
-            else
-            {
-                this.btn_Favorite.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                this.btn_UnFavorite.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            }
+            //if (this.post.Status == PostStatus.Favorite)
+            //{
+            //    this.btn_Favorite.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            //    this.btn_UnFavorite.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            //}
+            //else
+            //{
+            //    this.btn_Favorite.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            //    this.btn_UnFavorite.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            //}
         }
 
         private void btn_Author_Click(object sender, RoutedEventArgs e)
@@ -230,14 +240,14 @@ namespace CNBlogs
 
         private async void btn_Favorite_Click(object sender, RoutedEventArgs e)
         {
-            await this.post.AsFavorite();
-            this.UpdateUI();
+            await FavoritePostDS.Instance.AddFavPost(this.post);
+            await Functions.ShowMessage("收藏博文成功");
         }
 
-        private async void btn_UnFavorite_Click(object sender, RoutedEventArgs e)
+        private async void btn_FavAuthor_Click(object sender, RoutedEventArgs e)
         {
-            await this.post.UnFavorite();
-            this.UpdateUI();
+            await FavoriteAuthorDS.Instance.Follow(this.Author);
+            await Functions.ShowMessage("收藏博主成功");
         }
     }
 }

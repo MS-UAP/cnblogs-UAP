@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using CNBlogs.DataHelper.Helper;
+using CNBlogs.DataHelper.Function;
 using System.Xml.Serialization;
 
 namespace CNBlogs.DataHelper.DataModel

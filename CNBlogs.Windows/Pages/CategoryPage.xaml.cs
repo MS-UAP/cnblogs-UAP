@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using CNBlogs.DataHelper.CloudAPI;
 using CNBlogs.DataHelper.DataModel;
-using CNBlogs.DataHelper.Helper;
+using CNBlogs.DataHelper.Function;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
@@ -30,7 +30,6 @@ namespace CNBlogs.Pages
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         private List<Category> listCategory = null;
-        private CategoryPostDS categoryDS = null;
 
         /// <summary>
         /// This can be changed to a strongly typed view model.
@@ -64,7 +63,9 @@ namespace CNBlogs.Pages
         {
             this.listCategory = await PostHelper.GetCategories();
             Categories.Source = this.listCategory;
+            SubCategories.Source = this.listCategory;
             this.TitleControl.SetTopProgressBarVisibility(false);
+            this.DataContext = null;
         }
 
         /// <summary>
@@ -105,10 +106,10 @@ namespace CNBlogs.Pages
         /// The navigation parameter is available in the LoadState method 
         /// in addition to page state preserved during an earlier session.
 
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
-            this.LoadData();
+            Frame.BackStack.Clear();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -118,63 +119,53 @@ namespace CNBlogs.Pages
 
         #endregion
 
-        private async void btn_Refresh_Click(object sender, RoutedEventArgs e)
+        private void sz_Category_ViewChangeStarted(object sender, SemanticZoomViewChangedEventArgs e)
         {
-            if (sz_FavoritePosts.IsZoomedInViewActive)
+            if (!e.IsSourceZoomedInView)
             {
-                if (this.categoryDS != null)
-                {
-                    TitleControl.DS_OnLoadMoreStarted(0);
-                    await this.categoryDS.Refresh();
-                    TitleControl.DS_OnLoadMoreCompleted(0);
-                }
+                e.DestinationItem.Item = e.SourceItem.Item;
             }
         }
 
-        private bool isZoomOutTapped = false;
-
-        private void sz_FavoritePosts_ViewChangeStarted(object sender, SemanticZoomViewChangedEventArgs e)
+        private void sz_Category_ViewChangeCompleted(object sender, SemanticZoomViewChangedEventArgs e)
         {
-            if (e.IsSourceZoomedInView)
-                this.DataContext = null;
-            e.DestinationItem.Item = e.SourceItem.Item;
+
         }
 
-        private async void sz_FavoritePosts_ViewChangeCompleted(object sender, SemanticZoomViewChangedEventArgs e)
+        private void CategoryControl_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (!e.IsSourceZoomedInView & isZoomOutTapped)
-            {                
-
-                Category category = e.DestinationItem.Item as Category;
-                this.categoryDS = new CategoryPostDS(category);
-                this.categoryDS.OnLoadMoreStarted += TitleControl.DS_OnLoadMoreStarted;
-                this.categoryDS.OnLoadMoreCompleted += TitleControl.DS_OnLoadMoreCompleted;
-                gv_CategoryPosts.ItemsSource = this.categoryDS;
-                this.DataContext = categoryDS;
-
-                //change the topic
-                this.TitleControl.TitleContent = "全站 - 分类 - " + category.Name;
-
-                //get data
-                await this.categoryDS.LoadMoreItemsAsync(20);
-
-                //ensure is tapped
-                isZoomOutTapped = false;
+            try
+            {
+                Category category = (sender as CategoryControl).DataContext as Category;
+                this.Frame.Navigate(typeof(CategoryPostsPage), category);
+            }
+            catch (Exception)
+            {
+                
             }
         }
 
-        private void gv_CategoryPosts_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            Post post = e.ClickedItem as Post;
-            this.Frame.Navigate(typeof(ReadingPage), post);
-        }
+        private bool isZoomOutTapped { get; set; }
 
         private void btn_ScrollToTop_Click(object sender, RoutedEventArgs e)
         {
-            CNBlogs.DataHelper.Helper.Functions.GridViewScrollToTop(this.gv_CategoryPosts);
+            if (sz_Category.IsZoomedInViewActive)
+                FunctionHelper.Functions.GridViewScrollToTop(this.gv_SubCategory);
+            else
+                FunctionHelper.Functions.GridViewScrollToTop(this.gv_Category);
         }
 
-        private void gv_Category_Tapped(object sender, TappedRoutedEventArgs e)
+        private void btn_ZoomChange_Click(object sender, RoutedEventArgs e)
+        {
+            sz_Category.ToggleActiveView();
+        }
+
+        private void HeaderCategoryControl_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            sz_Category.ToggleActiveView();
+        }
+
+        private void MainCategoryControl_Tapped(object sender, TappedRoutedEventArgs e)
         {
             isZoomOutTapped = true;
         }

@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using CNBlogs.DataHelper.DataModel;
 using CNBlogs.DataHelper.CloudAPI;
-using CNBlogs.DataHelper.Helper;
+using CNBlogs.DataHelper.Function;
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
 namespace CNBlogs.Pages
@@ -23,7 +23,7 @@ namespace CNBlogs.Pages
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    public sealed partial class BloggerPage : Page
+    public sealed partial class BloggerPage : FlatNavigationPage
     {
         public Author Author { get; set; }
 
@@ -55,6 +55,7 @@ namespace CNBlogs.Pages
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
+            this.NavigationCacheMode = NavigationCacheMode.Required;
         }
 
         /// <summary>
@@ -102,30 +103,15 @@ namespace CNBlogs.Pages
             this.blogger = e.Parameter as Blogger;
             // for listview binding
             this.Author = new Author() { Avatar = this.blogger.Avatar, Name = this.blogger.Name };
-            this.DataContext = this;
+            AuthorAvatar.DataContext = this.Author;
+            TitleControl.TitleContent = this.Author.Name;
 
-            //Functions.ShowProgressBar(this.pb_Top);
             this.authorDS = new AuthorPostsDS(this.blogger.BlogApp);
-            //this.authorDS.OnLoadMoreStarted += authorDS_OnLoadMoreStarted;
-            this.authorDS.OnLoadMoreCompleted += authorDS_OnLoadMoreCompleted;
+            this.authorDS.OnLoadMoreStarted += TitleControl.DS_OnLoadMoreStarted;
+            this.authorDS.OnLoadMoreCompleted += TitleControl.DS_OnLoadMoreCompleted;
             this.gv_AuthorPosts.ItemsSource = this.authorDS;
             this.gv_SimplePosts.ItemsSource = this.authorDS;
-        }
-
-        async void authorDS_OnLoadMoreCompleted(int count)
-        {
-            try
-            {
-                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-                    {
-                        this.tb_PostCount.Text = string.Format("加载/总数 : {0}/{1}",
-                                this.authorDS.Count, this.authorDS.Count > this.authorDS.Feed.PostCount ? this.authorDS.Count : this.authorDS.Feed.PostCount);
-                    });
-            }
-            catch (Exception ex)
-            {
-                this.tb_PostCount.Text = ex.Message;
-            }
+            this.DataContext = this.authorDS;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -138,7 +124,9 @@ namespace CNBlogs.Pages
         private void gv_AuthorPosts_ItemClick(object sender, ItemClickEventArgs e)
         {
             Post post = e.ClickedItem as Post;
-            this.Frame.Navigate(typeof(ReadingPage), post);
+            if (post.Author.Avatar == null)
+                post.Author.Avatar = this.blogger.Avatar;
+            this.Frame.Navigate(typeof(PostReadingPage), post);
         }
 
         private bool isZoomOutTapped = false;
@@ -154,13 +142,49 @@ namespace CNBlogs.Pages
             {
                 Post post = e.DestinationItem.Item as Post;
                 isZoomOutTapped = false;
-                this.Frame.Navigate(typeof(Pages.ReadingPage), post);
+                this.Frame.Navigate(typeof(Pages.PostReadingPage), post);
+                sz_AuthorPosts.ToggleActiveView();
             }
         }
 
         private void gv_SimplePosts_Tapped(object sender, TappedRoutedEventArgs e)
         {
             isZoomOutTapped = true;
+        }
+
+        private async void btn_Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.authorDS != null)
+            {
+                TitleControl.DS_OnLoadMoreStarted(0);
+                await this.authorDS.Refresh();
+                TitleControl.DS_OnLoadMoreCompleted(0);
+            }
+        }
+
+        private void btn_ScrollToTop_Click(object sender, RoutedEventArgs e)
+        {
+            if (sz_AuthorPosts.IsZoomedInViewActive)
+                FunctionHelper.Functions.GridViewScrollToTop(this.gv_AuthorPosts);
+            else
+                FunctionHelper.Functions.GridViewScrollToTop(this.gv_SimplePosts);
+        }
+
+        private void btn_ZoomChange_Click(object sender, RoutedEventArgs e)
+        {
+            sz_AuthorPosts.ToggleActiveView();
+        }
+
+        private void PostControl_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            try
+            {
+                PostControl postControl = sender as PostControl;
+                postControl.ShowStoryBoard();
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }
