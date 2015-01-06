@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Favorites>
+  <Favorite>
+    <Icon></Icon>
+    <Name>博主</Name>
+    <Desc>我收藏的博主</Desc>
+    <Page>CNBlogs.BestBloggersPage</Page>
+  </Favorite>
+
+  <Favorite>
+    <Icon></Icon>
+    <Name>分类</Name>
+    <Desc>我收藏的分类</Desc>
+    <Page>CNBlogs.CategoriesPage</Page>
+  </Favorite>
+
+  <Favorite>
+    <Icon></Icon>
+    <Name>博文</Name>
+    <Desc>我收藏的博文</Desc>
+    <Page>CNBlogs.FavoritePostsPage</Page>
+  </Favorite>
+</Favorites>
