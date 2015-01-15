@@ -20,11 +20,12 @@
         
         
         <!--<TextBlock x:Name="tb_Title" Grid.Row="0" Text="" Style="{StaticResource PageTitleFont}"/>-->
-        <local:PageTitleControl x:Name="control_PageTitle" TitleContent="{Binding Name}" SubTitleContent=""/>
+        <local:PageTitleControl x:Name="control_PageTitle" Text="{Binding Name}" SubTitleContent=""/>
+        <!--<local:PageTitleControl x:Name="control_PageTitle" TitleContent="{Binding Name}" SubTitleContent=""/>-->
 
         <ListView x:Name="lv_CategoryPosts" Grid.Row="1" Background="{ThemeResource CNBlogsBackColor}" FontFamily="Global User Interface">
             <ListView.Header>
-                <local:ListViewHeaderControl Content="博客园服务器只提供最近20条记录" />
+                <local:ListViewHeaderControl x:Uid="CategoryPostCount"/>
             </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -36,8 +37,8 @@
 
     <Page.BottomAppBar>
         <CommandBar x:Name="appbar" ClosedDisplayMode="Minimal" Visibility="Collapsed">
-            <AppBarButton x:Name="btn_Refresh" Label="刷新" Icon="Sync" Click="btn_Refresh_Click"/>
-            <AppBarButton x:Name="btn_Top" Label="返回顶部" Click="btn_Top_Click" >
+            <AppBarButton x:Name="btn_Refresh" x:Uid="RefreshButton" Label="刷新" Icon="Sync" Click="btn_Refresh_Click"/>
+            <AppBarButton x:Name="btn_Top" x:Uid="ToTopButton" Label="返回顶部" Click="btn_Top_Click" >
                 <AppBarButton.Icon>
                     <FontIcon Glyph="&#xE11C;"/>
                 </AppBarButton.Icon>
@@ -47,7 +48,7 @@
                     <SymbolIcon Symbol="Favorite" ></SymbolIcon>
                 </AppBarButton.Icon>
             </AppBarButton>
-            <AppBarButton x:Name="btn_Setting" Label="设置" Icon="Setting" Click="btn_Setting_Click"/>
+            <AppBarButton x:Name="btn_Setting" x:Uid="SettingButton" Label="设置" Icon="Setting" Click="btn_Setting_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
     

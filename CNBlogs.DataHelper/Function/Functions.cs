@@ -19,6 +19,14 @@ namespace CNBlogs.DataHelper.Function
 {
     public static class Functions
     {
+        static Windows.ApplicationModel.Resources.ResourceLoader loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
+        public static string LoadResourceString(string resourceName)
+        {
+            string str = loader.GetString(resourceName);
+            return str;
+        }
+
         public static void CreateTile(Post post)
         {
             TileUpdater updater = TileUpdateManager.CreateTileUpdaterForApplication();
@@ -142,7 +150,7 @@ namespace CNBlogs.DataHelper.Function
 
         public static string ParseBlogAppFromURL(string url)
         {
-            if (Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
+            if (!string.IsNullOrWhiteSpace(url) && Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
             {
                 var uri = new Uri(url);
 

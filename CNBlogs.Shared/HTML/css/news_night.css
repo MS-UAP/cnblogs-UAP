@@ -26,3 +26,10 @@ font-size:0.7em;
 img{
     margin:0 auto;
 }
+.title {
+    color:#ccc;
+    display:block;
+    font-size:1.1em;
+    margin: 0 auto 1em auto ;
+    text-align:center;
+}

@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CNBlogs"
+    xmlns:ControlHelper="using:CNBlogs.ControlHelper"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -11,6 +12,9 @@
     Background="{ThemeResource CNBlogsThemeColor}">
 
     <Page.Resources>
+
+        <ControlHelper:NightModeLabelConverter x:Key="NightModeLabelConverter"/>
+
         <Storyboard x:Name="sb_AuthorMoveUp">
             <DoubleAnimation Storyboard.TargetName="border_Text"
                              Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetY)"
@@ -69,7 +73,7 @@
                 <Border.Projection>
                     <PlaneProjection/>
                 </Border.Projection>
-                <TextBlock Grid.Row="0" Text="博客列表" Style="{StaticResource PageTitleFont}"/>
+                <TextBlock Grid.Row="0" x:Uid="BloggerInfoTitle" Style="{StaticResource PageTitleFont}"/>
             </Border>
             <Border x:Name="border_Author">
                 <Border.Projection>
@@ -91,7 +95,7 @@
                 <Border x:Name="border_AuthorControl" BorderThickness="0,0,0,1" BorderBrush="{ThemeResource CNBlogsLineColor}">
                     <Grid>
                         <local:AuthorControl x:Name="authorControl1" Margin="20" AvatarHeight="36" NameColor="{ThemeResource CNBlogsSummaryColor}"/>
-                        <Button x:Name="btn_Homepage" Content="博主主页" FontSize="18" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{ThemeResource CNBlogsThemeColor}" Foreground="{ThemeResource CNBlogsThemeColor}" Margin="0,0,20,0" Click="btn_Homepage_Click"/>
+                        <Button x:Name="btn_Homepage" x:Uid="BloggerHomePage" FontSize="18" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{ThemeResource CNBlogsThemeColor}" Foreground="{ThemeResource CNBlogsThemeColor}" Margin="0,0,20,0" Click="btn_Homepage_Click"/>
                     </Grid>
                 </Border>
             </ListView.Header>
@@ -105,12 +109,14 @@
 
     <Page.BottomAppBar>
         <CommandBar x:Name="cmdBar" ClosedDisplayMode="Minimal">
-            <AppBarButton x:Name="btn_ScrollToTop" Label="回到顶部" Icon="Upload" Click="btn_ScrollToTop_Click"/>
-            <AppBarButton x:Name="btn_focus" Click="btn_focus_Click" Label="收藏博主">
+            <AppBarButton x:Name="btn_ScrollToTop" x:Uid="ToTopButton" Label="回到顶部" Icon="Upload" Click="btn_ScrollToTop_Click"/>
+            <AppBarButton x:Name="btn_focus" x:Uid="FavoriteBloggerButton" Click="btn_focus_Click" Label="收藏博主">
                 <AppBarButton.Icon>
                     <SymbolIcon Symbol="Favorite"/>
                 </AppBarButton.Icon>
             </AppBarButton>
+            <AppBarButton x:Name="btn_NightMode" Icon="View" Label="{Binding Converter={StaticResource NightModeLabelConverter}, Path=NightModeTheme}" Click="btn_NightMode_Click"/>
+            <AppBarButton x:Name="btn_Setting" x:Uid="SettingButton" Label="设置" Icon="Setting" Click="btn_Setting_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 

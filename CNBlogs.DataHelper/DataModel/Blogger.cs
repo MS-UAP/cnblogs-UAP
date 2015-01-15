@@ -12,7 +12,7 @@ namespace CNBlogs.DataHelper.DataModel
     /// this model is used to get blogger list
     /// </summary>
     [XmlRoot("entry")]
-    public class Blogger
+    public class Blogger:DataModelBase
     {
         [XmlElement("id")]
         public string Id { get; set; }
@@ -29,8 +29,17 @@ namespace CNBlogs.DataHelper.DataModel
         [XmlElement("blogapp")]
         public string BlogApp { get; set; }
 
+
+        private string _avatar = string.Empty;
+
         [XmlElement("avatar")]
-        public string Avatar { get; set; }
+        public string Avatar {
+            get { return _avatar; }
+            set {
+                _avatar = value;
+                this.OnPropertyChanged();
+            }
+        }
 
         [XmlElement("postcount")]
         public string PostCount { get; set; }

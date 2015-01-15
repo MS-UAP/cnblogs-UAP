@@ -21,7 +21,7 @@ namespace CNBlogs.DataHelper.CloudAPI
         public FavoritePostDS()
         {
             this.Icon = "";
-            this.Title = "博文";
+            this.Title = Functions.LoadResourceString("FavoriteBlogText");
         }
 
         public async Task AddFavPost(Post post)

@@ -14,252 +14,6 @@
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 
-    <Style x:Key="OldBloggerPostControl" TargetType="local:PostControl">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:PostControl">
-                    <Border Width="450" Height="260" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
-                            Margin="10,20,0,0" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
-                        <Grid Margin="10,0,10,10" x:Name="mainPostGrid">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="7*"/>
-                                <RowDefinition Height="20"/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Grid.Row="0">
-                                <TextBlock Text="{Binding Title}" Style="{StaticResource Win8PostTitleFont}" TextWrapping="Wrap" />
-                                <TextBlock Margin="0, 10, 0, 0" x:Name="tb_Summary" 
-                                       Text="{Binding Summary}"  TextWrapping="Wrap"  MaxLines="5"
-                                       Style="{StaticResource Win8PostAbstractionFont}"/>
-                            </StackPanel>
-                            <Grid  Grid.Row="1" >
-                                <TextBlock Style="{StaticResource Win8PostAbstractionFont}">
-                                    <Run Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
-                                </TextBlock>
-                                <local:AttributionControl HorizontalAlignment="Right" ></local:AttributionControl>
-                            </Grid>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="OldSimplePostControl" TargetType="local:PostControl">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:PostControl">
-                    <Border Width="300" Height="120" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
-                            Margin="0,0,5,5" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
-                        <Grid Margin="0,0,5,5" x:Name="mainPostGrid">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="80"/>
-                                <RowDefinition Height="40"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Margin="0, 5, 0, 0" Text="{Binding Title}" Style="{StaticResource Win8PostTitleFont}" TextWrapping="Wrap" />
-                            <TextBlock Grid.Row="1" Margin="0" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource Win8PostAbstractionFont}">
-                                                    <Run Text="{Binding Author.Name}" />
-                            </TextBlock>
-                            <local:AttributionControl Grid.Row="1" Margin="0, 5, 0, 0" HorizontalAlignment="Right" VerticalAlignment="Center" ></local:AttributionControl>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="OldSimplePostWithoutBloggerControl" TargetType="local:PostControl">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:PostControl">
-                    <Border Width="300" Height="120" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
-                            Margin="0,0,5,5" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
-                        <Grid Margin="0,0,5,5" x:Name="mainPostGrid">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="80"/>
-                                <RowDefinition Height="40"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Margin="0, 5, 0, 0" Text="{Binding Title}" Style="{StaticResource Win8PostTitleFont}" TextWrapping="Wrap" />
-                            <local:AttributionControl Grid.Row="1" Margin="0, 5, 0, 0" HorizontalAlignment="Right" VerticalAlignment="Center" ></local:AttributionControl>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="OldPostControl" TargetType="local:PostControl">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:PostControl">
-                    <Border Width="450" Height="260" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
-                            Margin="0,0,10,20" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
-                        <Grid Margin="0,0,10,10" x:Name="mainPostGrid">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="60"></RowDefinition>
-                            </Grid.RowDefinitions>
-
-                            <StackPanel Grid.Row="0" Margin="10, 0,10, 0">
-                                <TextBlock Margin="0, 10, 0, 0" Text="{Binding Title}" Style="{StaticResource Win8PostTitleFont}" TextWrapping="Wrap" />
-
-                                <TextBlock Margin="0, 10, 0, 0" x:Name="tb_Summary" 
-                                       Text="{Binding Summary}"  TextWrapping="Wrap"  MaxLines="5"
-                                       Style="{StaticResource Win8PostAbstractionFont}"/>
-
-                            </StackPanel>
-                            <Grid Grid.Row="1" Margin="0, 0, 10, 0">
-
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="80"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-
-                                <Grid Grid.Column="0" Height="60" Width="60">
-
-                                    <TextBlock Text="" FontFamily="Segoe UI Symbol" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{ThemeResource CNBlogsThemeLightColor}"/>
-                                    <Rectangle StrokeThickness="1" Stroke="{ThemeResource CNBlogsLineColor}" RadiusX="3" RadiusY="3" >
-                                        <Rectangle.Fill>
-                                            <ImageBrush ImageSource="{Binding Author.Avatar}"/>
-                                        </Rectangle.Fill>
-                                    </Rectangle>
-
-                                </Grid>
-
-                                <Grid VerticalAlignment="Top" Grid.Column="1">
-
-                                    <TextBlock  Margin="10, 0, 0, 0" FontSize="18" VerticalAlignment="Center" Style="{StaticResource Win8PostAbstractionFont}">
-                                                <Run Text="{Binding Author.Name}" />
-                                    </TextBlock>
-
-                                    <StackPanel HorizontalAlignment="Right" >
-                                        <Grid>
-                                            <TextBlock Margin="0, 5, 0, 0"
-                                               HorizontalAlignment="Right"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource Win8PostAbstractionFont}" 
-                                               Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}" />
-                                        </Grid>
-                                        <local:AttributionControl Margin="0, 10, 0, 0" ></local:AttributionControl>
-                                    </StackPanel>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="OldNewsTitleTextControl" TargetType="local:NewsControl">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:NewsControl">
-                    <Border Width="450" Height="260" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
-                            Margin="0, 0, 10, 20" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
-                        <Grid Margin="10, 0, 10, 0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="30"/>
-                            </Grid.RowDefinitions>
-
-                            <StackPanel  Grid.Row="0" >
-                                <TextBlock  Text="{Binding Title}" Style="{StaticResource Win8PostTitleFont}" 
-                                        TextWrapping="Wrap" MaxLines="2"/>
-                                <TextBlock Margin="0, 20, 0, 0" Style="{StaticResource Win8PostAbstractionFont}" FontSize="18" x:Name="tb_Summary" MaxLines="5"
-                                       Text="{Binding Summary}" TextWrapping="Wrap" />
-
-                            </StackPanel>
-
-                            <TextBlock Style="{StaticResource Win8PostAbstractionFont}" Grid.Row="1">
-                                <Run Text=" 来自:"/>
-                                <Run Text="{Binding SourceName}"/>
-                                <Run Text=" | "/>
-                                <Run Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
-                            </TextBlock>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="OldNewsTitleTextImageControl" TargetType="local:NewsControl">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:NewsControl">
-                    <Border Width="450" Height="260" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
-                            Margin="0,0,10,20" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
-                        <Grid Margin="10, 0, 10, 0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="30"/>
-                            </Grid.RowDefinitions>
-
-                            <StackPanel Grid.Row="0">
-
-                                <TextBlock Text="{Binding Title}" Style="{StaticResource Win8PostTitleFont}" 
-                                        TextWrapping="Wrap" MaxLines="2"/>
-                                <Grid Margin="0, 20, 0, 0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"></ColumnDefinition>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Column="0" FontSize="18" Style="{StaticResource Win8PostAbstractionFont}" x:Name="tb_Summary"  MaxLines="5"
-                                       Text="{Binding Summary}" TextWrapping="Wrap" />
-
-                                    <Border Grid.Column="1"  HorizontalAlignment="Left" Margin="5,5,5,5">
-                                        <Image Source="{Binding TopicIcon}" Stretch="Uniform"/>
-                                    </Border>
-                                </Grid>
-                            </StackPanel>
-                            <TextBlock Grid.Row="1" Style="{StaticResource Win8PostAbstractionFont}" >
-                                <Run Text=" 来自:"/>
-                                <Run Text="{Binding SourceName}"/>
-                                <Run Text=" | "/>
-                                <Run Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
-                            </TextBlock>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="OldBloggerControl" TargetType="local:BloggerControl">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:BloggerControl">
-                    <Border BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="5">
-                        <StackPanel Orientation="Vertical" Margin="10">
-                            <StackPanel Orientation="Horizontal" >
-                                <Grid Height="60" Width="60">
-                                    <TextBlock Text="" FontFamily="Segoe UI Symbol" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{ThemeResource CNBlogsThemeLightColor}"/>
-                                    <Rectangle StrokeThickness="1" Stroke="{ThemeResource CNBlogsLineColor}" RadiusX="10" RadiusY="10" >
-                                        <Rectangle.Fill>
-                                            <ImageBrush ImageSource="{Binding Avatar}"/>
-                                        </Rectangle.Fill>
-                                    </Rectangle>
-                                </Grid>
-                                <TextBlock Width="200" Text="{Binding Name}" FontSize="24" Style="{StaticResource Win8PageSubTitleFont}" TextWrapping="Wrap" MaxLines="2" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Vertical" Visibility="{TemplateBinding AttributionVisiable}">
-                                <TextBlock FontSize="16" Style="{StaticResource Win8PostAbstractionFont }" Margin="0,5,0,0">
-                                           <Run Text="博文数量:"/>
-                                           <Run Text="{Binding PostCount}"/>
-                                </TextBlock>
-                                <TextBlock FontSize="16" Style="{StaticResource Win8PostAbstractionFont }" Margin="0,5,0,0">
-                                    <Run Text="最近更新:"/>
-                                    <Run Text="{Binding UpdateTime, Converter={StaticResource TimeCountDownConverter}}"/>
-                                </TextBlock>
-                            </StackPanel>
-                        </StackPanel>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style x:Key="SimpleBloggerControl" TargetType="local:BloggerControl">
         <Setter Property="Template">
             <Setter.Value>
@@ -267,8 +21,8 @@
                     <Border Height="60" Width="Auto">
                         <StackPanel Orientation="Horizontal">
                             <Grid Height="60" Width="60">
-                                <TextBlock Text="" FontFamily="Segoe UI Symbol" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{ThemeResource CNBlogsThemeLightColor}"/>
-                                <Rectangle StrokeThickness="1" Stroke="{ThemeResource CNBlogsLineColor}" RadiusX="10" RadiusY="10" >
+                                <TextBlock Text="" FontFamily="Segoe UI Symbol" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{ThemeResource Win8CNBlogsThemeLightColor}"/>
+                                <Rectangle StrokeThickness="1" Stroke="{ThemeResource Win8CNBlogsLineColor}" RadiusX="10" RadiusY="10" >
                                     <Rectangle.Fill>
                                         <ImageBrush ImageSource="{Binding Avatar}"/>
                                     </Rectangle.Fill>
@@ -282,38 +36,13 @@
         </Setter>
     </Style>
 
-    <Style x:Key="OldSimpleNewsControl" TargetType="local:NewsControl">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:NewsControl">
-                    <Border Width="300" Height="120" BorderThickness="0,0,2,2" BorderBrush="{ThemeResource CNBlogsThemeLightColor}" CornerRadius="10" 
-                            Margin="0,0,5,5" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
-                        <Grid Margin="0,0,5,5" x:Name="mainPostGrid">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="80"/>
-                                <RowDefinition Height="40"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Margin="0, 5, 0, 0" Text="{Binding Title}" Style="{StaticResource Win8PostTitleFont}" TextWrapping="Wrap" />
-                            <TextBlock Style="{StaticResource Win8PostAbstractionFont}" Grid.Row="1">
-                                <Run Text=" 来自:"/>
-                                <Run Text="{Binding SourceName}"/>
-                                <Run Text=" | "/>
-                                <Run Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
-                            </TextBlock>
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    
     <Style x:Key="NewsTitleTextControl" TargetType="local:NewsControl">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:NewsControl">
                     <Grid Width="600" Height="240" x:Name="FirstViewGrid"
                           Margin="20,10"
-                          Background="{ThemeResource CNBlogsThemeColor}"            
+                          Background="{ThemeResource Win8CNBlogsThemeColor}"            
                           IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
                         <Grid.Clip>
                             <RectangleGeometry Rect="0,0,600,240"/>
@@ -325,40 +54,28 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition x:Name="Column1" Width="*"/>
-                            <ColumnDefinition x:Name="Column2" Width="3*"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Grid.Resources>
 
                             <Storyboard x:Name="sb_Button_in">
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="panelTrans"
+                                <DoubleAnimation Storyboard.TargetName="panelTrans"
                                 Storyboard.TargetProperty="X"
-                                BeginTime="0:0:0">
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.00" Value="480"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.10" Value="460"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.20" Value="400"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.30" Value="300"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.40" Value="170"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.50" Value="0"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.54" Value="32"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.58" Value="60"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.62" Value="80"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.66" Value="92"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.70" Value="96"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.74" Value="92"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.78" Value="80"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.82" Value="60"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.86" Value="32"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.90" Value="0"/>
-                                </DoubleAnimationUsingKeyFrames>
+                                BeginTime="0:0:0"
+                                 Duration="0:0:0.5" To="0" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <ExponentialEase  EasingMode="EaseIn"  />
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
                             </Storyboard>
-
+                            
                             <Storyboard x:Name="sb_Button_out">
                                 <DoubleAnimation Storyboard.TargetName="panelTrans" 
                                 Storyboard.TargetProperty="X"
                                 BeginTime="0:0:0"
-                                Duration="0:0:0.5" To="480" >
+                                Duration="0:0:0.5" To="500" >
                                     <DoubleAnimation.EasingFunction>
                                         <ExponentialEase  EasingMode="EaseOut"  />
                                     </DoubleAnimation.EasingFunction>
@@ -368,48 +85,64 @@
 
                         </Grid.Resources>
 
-                        <TextBlock Grid.ColumnSpan="2" Margin="30,20"
+                        <TextBlock Grid.ColumnSpan="2" Margin="45,40,45,30"
                                    Text="{Binding Title}" 
                                    Style="{StaticResource Win8PostTitleFont}" 
-                                   Foreground="{ThemeResource CNBlogsBackColor}"
+                                   Foreground="{ThemeResource Win8CNBlogsBackColor}"
                                    TextWrapping="Wrap" MaxLines="3"/>
                         <Rectangle Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center"
-                       Margin="0,0,0,20"
-                       Width="420" Height="2"  Fill="{ThemeResource CNBlogsThemeLightColor}" />
+                       Margin="45,0,45,10"
+                       Width="410" Height="1"  Fill="{ThemeResource Win8CNBlogsThemeWhiteColor}" />
                         <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center"
-                       Margin="0,0,30,0"
-                       Style="{StaticResource Win8PostAbstractionFont}" FontSize="20" Foreground="{ThemeResource CNBlogsThemeLightColor}"
+                       Margin="0,0,45,0"
+                       Style="{StaticResource Win8PostAbstractionFont}" FontSize="18" Foreground="{ThemeResource Win8CNBlogsThemeLightColor}"
                        >
-                                <Run Text=" 来自:"/>
+                                <Run x:Uid="NewsPostSource" Text=" 来自:"/>
                                 <Run Text="{Binding SourceName}"/>
                         </TextBlock>
                         <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center"
-                       Margin="0,0,30,0"                       
-                       Style="{StaticResource Win8PostAbstractionFont}" FontSize="18" Foreground="{ThemeResource CNBlogsThemeLightColor}"
+                       Margin="0,0,45,0"                       
+                       Style="{StaticResource Win8PostAbstractionFont}" FontSize="18" Foreground="{ThemeResource Win8CNBlogsThemeLightColor}"
                        Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
                         <Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" 
                               Width="600" Height="240" 
                               x:Name="SecondViewGrid"
                               Background="AliceBlue">
                             <Grid.RenderTransform>
-                                <TranslateTransform x:Name="panelTrans" X="480"></TranslateTransform>
+                                <TranslateTransform x:Name="panelTrans" X="500"></TranslateTransform>
                             </Grid.RenderTransform>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0"  x:Name="NaviButton"
-                        Width="140" Height="260" HorizontalAlignment="Center" VerticalAlignment="Center"
-                    Background="{ThemeResource CNBlogsThemeLightColor}"
-                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                    Content="&#xE09E;" Foreground="{ThemeResource CNBlogsThemeColor}" 
-                    FontFamily="Segoe UI Symbol" FontSize="72" FontWeight="ExtraBlack">
+                                    Width="106" Height="246" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Background="{ThemeResource Win8CNBlogsLineColor}"
+                                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                    Content="&#xE09E;" Foreground="{ThemeResource Win8CNBlogsThemeWhiteColor}" 
+                                    FontFamily="Segoe UI Symbol" FontSize="72" FontWeight="ExtraBlack" BorderThickness="1" BorderBrush="{ThemeResource Win8CNBlogsThemeColor}">
                             </Button>
-                            <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Margin="20"
-                       Text="{Binding Summary}"
-                       Style="{StaticResource Win8PostAbstractionFont}" FontSize="20"
-                       TextWrapping="Wrap" MaxLines="8"/>
+                            <Grid Grid.Column="1" Grid.ColumnSpan="2" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="80"/>
+                                    <RowDefinition Height="5"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Margin="45,30,45,10"
+                                           Text="{Binding Title}"
+                                           Style="{StaticResource Win8HighlightInformationFont}"
+                                           FontSize="18"
+                                           TextWrapping="Wrap" MaxLines="2"/>
+                                <Rectangle Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                           Margin="45,0,45,0"
+                                           Width="410" Height="1"  Fill="{ThemeResource Win8CNBlogsThemeLightColor}" />
+                                <TextBlock Grid.Row="2" Margin="45,10,45,30"
+                                           Text="{Binding Summary}"
+                                           Style="{StaticResource Win8PostAbstractionFont}"
+                                           FontSize="18"
+                                           TextWrapping="Wrap" MaxLines="6"/>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </ControlTemplate>
@@ -423,7 +156,7 @@
                 <ControlTemplate TargetType="local:NewsControl">
                     <Grid Width="600" Height="240" x:Name="FirstViewGrid"
                           Margin="20,10"
-                          Background="{ThemeResource CNBlogsThemeColor}"            
+                          Background="{ThemeResource Win8CNBlogsThemeColor}"            
                           IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
                         <Grid.Clip>
                             <RectangleGeometry Rect="0,0,600,240"/>
@@ -435,40 +168,28 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition x:Name="Column1" Width="*"/>
-                            <ColumnDefinition x:Name="Column2" Width="3*"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Grid.Resources>
 
                             <Storyboard x:Name="sb_Button_in">
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="panelTrans"
+                                <DoubleAnimation Storyboard.TargetName="panelTrans"
                                 Storyboard.TargetProperty="X"
-                                BeginTime="0:0:0">
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.00" Value="480"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.10" Value="460"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.20" Value="400"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.30" Value="300"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.40" Value="170"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.50" Value="0"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.54" Value="32"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.58" Value="60"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.62" Value="80"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.66" Value="92"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.70" Value="96"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.74" Value="92"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.78" Value="80"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.82" Value="60"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.86" Value="32"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.90" Value="0"/>
-                                </DoubleAnimationUsingKeyFrames>
+                                BeginTime="0:0:0"
+                                 Duration="0:0:0.5" To="0" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <ExponentialEase  EasingMode="EaseIn"  />
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
                             </Storyboard>
 
                             <Storyboard x:Name="sb_Button_out">
                                 <DoubleAnimation Storyboard.TargetName="panelTrans" 
                                 Storyboard.TargetProperty="X"
                                 BeginTime="0:0:0"
-                                Duration="0:0:0.5" To="480" >
+                                Duration="0:0:0.5" To="500" >
                                     <DoubleAnimation.EasingFunction>
                                         <ExponentialEase  EasingMode="EaseOut"  />
                                     </DoubleAnimation.EasingFunction>
@@ -478,54 +199,77 @@
 
                         </Grid.Resources>
 
-                        <TextBlock Grid.ColumnSpan="2" Margin="30,20"
+                        <TextBlock Grid.ColumnSpan="2" Margin="45,40,45,30"
                                    Text="{Binding Title}" 
                                    Style="{StaticResource Win8PostTitleFont}" 
-                                   Foreground="{ThemeResource CNBlogsBackColor}"
+                                   Foreground="{ThemeResource Win8CNBlogsBackColor}"
                                    TextWrapping="Wrap" MaxLines="3"/>
                         <Rectangle Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center"
-                       Margin="0,0,0,20"
-                       Width="420" Height="2"  Fill="{ThemeResource CNBlogsThemeLightColor}" />
+                       Margin="45,0,45,10"
+                       Width="410" Height="1"  Fill="{ThemeResource Win8CNBlogsThemeWhiteColor}" />
                         <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center"
-                       Margin="0,0,30,0"
-                       Style="{StaticResource Win8PostAbstractionFont}" FontSize="20" Foreground="{ThemeResource CNBlogsThemeLightColor}"
+                       Margin="0,0,45,0"
+                       Style="{StaticResource Win8PostAbstractionFont}" FontSize="18" Foreground="{ThemeResource Win8CNBlogsThemeLightColor}"
                        >
-                                <Run Text=" 来自:"/>
+                                <Run x:Uid="NewsPostSource" Text=" 来自:"/>
                                 <Run Text="{Binding SourceName}"/>
                         </TextBlock>
                         <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center"
-                       Margin="0,0,30,0"                       
-                       Style="{StaticResource Win8PostAbstractionFont}" FontSize="18" Foreground="{ThemeResource CNBlogsThemeLightColor}"
+                       Margin="0,0,45,0"                       
+                       Style="{StaticResource Win8PostAbstractionFont}" FontSize="18" Foreground="{ThemeResource Win8CNBlogsThemeLightColor}"
                        Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
                         <Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" 
                               Width="600" Height="240" 
                               x:Name="SecondViewGrid"
                               Background="AliceBlue">
                             <Grid.RenderTransform>
-                                <TranslateTransform x:Name="panelTrans" X="480"></TranslateTransform>
+                                <TranslateTransform x:Name="panelTrans" X="500"></TranslateTransform>
                             </Grid.RenderTransform>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0"  x:Name="NaviButton"
-                        Width="140" Height="260" HorizontalAlignment="Center" VerticalAlignment="Center"
-                    Background="{ThemeResource CNBlogsThemeLightColor}"
-                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                    Content="&#xE09E;" Foreground="{ThemeResource CNBlogsThemeColor}" 
-                    FontFamily="Segoe UI Symbol" FontSize="72" FontWeight="ExtraBlack">
+                                    Width="106" Height="246" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Background="{ThemeResource Win8CNBlogsLineColor}"
+                                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                    Content="&#xE09E;" Foreground="{ThemeResource Win8CNBlogsThemeWhiteColor}" 
+                                    FontFamily="Segoe UI Symbol" FontSize="72" FontWeight="ExtraBlack" BorderThickness="1" BorderBrush="{ThemeResource Win8CNBlogsThemeColor}">
                             </Button>
-                            <TextBlock Grid.Column="1" Margin="20"
-                       Text="{Binding Summary}"
-                       Style="{StaticResource Win8PostAbstractionFont}" FontSize="20"
-                       TextWrapping="Wrap" MaxLines="8"/>
-                            <Rectangle Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
-                       Width="100" Height="220">
-                                <Rectangle.Fill>
-                                    <ImageBrush ImageSource="{Binding TopicIcon}" Stretch="Uniform"/>
-                                </Rectangle.Fill>
-                            </Rectangle>
+                            <Grid Grid.Column="1" Grid.ColumnSpan="2" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="80"/>
+                                    <RowDefinition Height="5"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Margin="45,30,45,10"
+                                           Grid.ColumnSpan="2"
+                                           Text="{Binding Title}"
+                                           Style="{StaticResource Win8HighlightInformationFont}"
+                                           FontSize="18"
+                                           TextWrapping="Wrap" MaxLines="2"/>
+                                <Rectangle Grid.Row="1" Grid.ColumnSpan="2"
+                                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                                           Margin="45,0,45,0"
+                                           Width="410" Height="1"  Fill="{ThemeResource Win8CNBlogsThemeLightColor}" />
+                                <TextBlock Grid.Row="2" Margin="45,10,10,30"
+                                           Text="{Binding Summary}"
+                                           Style="{StaticResource Win8PostAbstractionFont}"
+                                           FontSize="18"
+                                           TextWrapping="Wrap" MaxLines="6"/>
+                                <Rectangle Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           Margin="10,10,45,30"
+                                           Width="80" Height="150">
+                                    <Rectangle.Fill>
+                                        <ImageBrush ImageSource="{Binding TopicIcon}" Stretch="Uniform"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </ControlTemplate>
@@ -537,34 +281,34 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:NewsControl">
-                    <Grid Width="400" Height="160"
-                          Margin="20,10"
-                          Background="{ThemeResource CNBlogsThemeColor}"            
+                    <Grid Width="360" Height="120"
+                          Margin="10,10"
+                          Background="{ThemeResource Win8CNBlogsThemeColor}"            
                           IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="12*"/>
-                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="2*"/>
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.ColumnSpan="2" Margin="20,20"
+                        <TextBlock Grid.ColumnSpan="2" Margin="30,20,30,5"
                                    Text="{Binding Title}" 
-                                   Style="{StaticResource Win8PostTitleFont}" FontSize="24"
-                                   Foreground="{ThemeResource CNBlogsBackColor}"
+                                   Style="{StaticResource Win8PostTitleFont}" FontSize="20"
+                                   Foreground="{ThemeResource Win8CNBlogsBackColor}"
                                    TextWrapping="Wrap" MaxLines="2"/>
                         <Rectangle Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center"
                        Margin="0,0,0,10"
-                       Width="360" Height="2"  Fill="{ThemeResource CNBlogsThemeLightColor}" />
+                       Width="300" Height="1"  Fill="{ThemeResource Win8CNBlogsThemeLightColor}" />
                         <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"
-                                   Margin="20,0,0,0"
-                                   Style="{StaticResource Win8PostAbstractionFont}" FontSize="20" Foreground="{ThemeResource CNBlogsThemeLightColor}"
+                                   Margin="30,0,0,0"
+                                   Style="{StaticResource Win8PostAbstractionFont}" FontSize="16" Foreground="{ThemeResource Win8CNBlogsThemeLightColor}"
                                    >
-                                <Run Text=" 来自:"/>
+                                <Run x:Uid="NewsPostSource" Text=" 来自:"/>
                                 <Run Text="{Binding SourceName}"/>
                         </TextBlock>
                         <TextBlock Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"
-                                   Margin="20,0"
-                                   Style="{StaticResource Win8PostAbstractionFont}" FontSize="20" Foreground="{ThemeResource CNBlogsThemeLightColor}"
+                                   Margin="10,0,30,0"
+                                   Style="{StaticResource Win8PostAbstractionFont}" FontSize="16" Foreground="{ThemeResource Win8CNBlogsThemeLightColor}"
                                    >
                                 <Run Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
                         </TextBlock>
@@ -578,8 +322,35 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:CategoryControl">
-                    <Grid Height="120" Width="200" Background="{ThemeResource CNBlogsThemeColor}">
-                        <TextBlock Text="{Binding Name}" Foreground="White" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Grid Height="120" Width="200" Background="{ThemeResource Win8CNBlogsThemeColor}">
+                        <TextBlock Text="{Binding Name}" 
+                                   Style="{ThemeResource Win8SubCategoryBlockFont}"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="FavoriteSubCategoryStyle" TargetType="local:CategoryControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:CategoryControl">
+                    <Grid Height="120" Width="200" Background="{ThemeResource Win8CNBlogsThemeColor}"
+                          IsRightTapEnabled="True" IsHoldingEnabled="False">
+                        <Grid.Clip>
+                            <RectangleGeometry Rect="-20,-30,250,200"/>
+                        </Grid.Clip>
+                        <TextBlock Text="{Binding Item.Name}" 
+                                   Style="{ThemeResource Win8SubCategoryBlockFont}"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="FavoriteIcon" Width="40" HorizontalAlignment="Left"
+                                    Style="{StaticResource Win8PostAbstractionFont}" Foreground="Gold" FontSize="42" 
+                                    FontFamily="Segoe UI Symbol" Text="&#xE0B4;">
+                            <TextBlock.RenderTransform>
+                                <CompositeTransform Rotation="-30" TranslateX="-25" TranslateY="-10"/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -590,8 +361,10 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:CategoryControl">
-                    <Grid Height="200" Width="250" Background="{ThemeResource CNBlogsThemeColor}">
-                        <TextBlock Text="{Binding Name}" Foreground="White" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Grid Height="200" Width="250" Background="{ThemeResource Win8CNBlogsThemeColor}">
+                        <TextBlock Text="{Binding Name}" 
+                                   Style="{ThemeResource Win8CategoryBlockFont}"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -609,7 +382,7 @@
                         <Rectangle
                             x:Name="FocusVisualWhite"
                             IsHitTestVisible="False"
-                            Stroke="{ThemeResource CNBlogsBackColor}"
+                            Stroke="{ThemeResource Win8CNBlogsBackColor}"
                             StrokeEndLineCap="Square"
                             StrokeDashArray="1,1"
                             Opacity="0"
@@ -617,7 +390,7 @@
                         <Rectangle
                             x:Name="FocusVisualBlack"
                             IsHitTestVisible="False"
-                            Stroke="{ThemeResource CNBlogsThemeColor}"
+                            Stroke="{ThemeResource Win8CNBlogsThemeColor}"
                             StrokeEndLineCap="Square"
                             StrokeDashArray="1,1"
                             Opacity="0"
@@ -628,21 +401,21 @@
                                 <VisualState x:Name="PointerOver">
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Text" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CNBlogsThemeLightColor}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource Win8CNBlogsThemeLightColor}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Text" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CNBlogsThemeColor}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource Win8CNBlogsThemeColor}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Text" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CNBlogsLineColor}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource Win8CNBlogsLineColor}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -661,7 +434,7 @@
                                 <VisualState x:Name="Unchecked">
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Text" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CNBlogsLineColor}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource Win8CNBlogsLineColor}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -675,7 +448,7 @@
     </Style>
 
     <Style x:Key="Win8NavigationBackButtonStyle" TargetType="Button">
-        <Setter Property="Foreground" Value="{ThemeResource CNBlogsThemeColor}"/>
+        <Setter Property="Foreground" Value="{ThemeResource Win8CNBlogsThemeColor}"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
@@ -690,20 +463,20 @@
                                 <VisualState x:Name="PointerOver">
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="Ellipse">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CNBlogsThemeLightColor}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource Win8CNBlogsThemeLightColor}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Content">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CNBlogsThemeColor}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource Win8CNBlogsThemeColor}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="Ellipse">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CNBlogsThemeColor}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource Win8CNBlogsThemeColor}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="Ellipse">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CNBlogsThemeColor}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource Win8CNBlogsThemeColor}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Content">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource AppBarItemPressedForegroundThemeBrush}"/>
@@ -761,14 +534,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:AttributionControl">
                     <Border>
-                        <TextBlock FontFamily="Segoe UI Symbol"  FontSize="20"
-                                   Style="{StaticResource Win8PostAbstractionFont}" Foreground="{ThemeResource CNBlogsThemeLightColor}">
-                        <Run Text=" "/>
-                        <Run Text="{Binding DiggsCount}"/>
-                        <Run Text=" "/>
-                        <Run Text="{Binding ViewsCount}"/>
-                        <Run Text=" "/>
-                        <Run Text="{Binding CommentsCount}"/>
+                        <TextBlock FontFamily="Segoe UI Symbol"  FontSize="16"
+                                   Style="{StaticResource Win8PostAbstractionFont}">
+                        <Run Foreground="{ThemeResource Win8CNBlogsThemeWhiteColor}" Text=" "/>
+                        <Run Foreground="{ThemeResource Win8CNBlogsThemeLightColor}" Text="{Binding DiggsCount}"/>
+                        <Run Foreground="{ThemeResource Win8CNBlogsThemeWhiteColor}" Text=" "/>
+                        <Run Foreground="{ThemeResource Win8CNBlogsThemeLightColor}" Text="{Binding ViewsCount}"/>
+                        <Run Foreground="{ThemeResource Win8CNBlogsThemeWhiteColor}" Text=" "/>
+                        <Run Foreground="{ThemeResource Win8CNBlogsThemeLightColor}" Text="{Binding CommentsCount}"/>
                         </TextBlock>
                     </Border>
                 </ControlTemplate>
@@ -783,7 +556,6 @@
 
                     <Grid Width="600" Height="240" x:Name="MainGrid"
                           Margin="20,10"
-                          Background="{ThemeResource CNBlogsThemeColor}"            
                           IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
                         <Grid.Clip>
                             <RectangleGeometry Rect="-20,-30,620,270"/>
@@ -797,31 +569,19 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <Grid.Resources>
 
                             <Storyboard x:Name="sb_Button_in">
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="SecondViewTrans"
+                                <DoubleAnimation Storyboard.TargetName="SecondViewTrans"
                                 Storyboard.TargetProperty="X"
-                                BeginTime="0:0:0">
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.00" Value="480"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.10" Value="460"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.20" Value="400"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.30" Value="300"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.40" Value="170"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.50" Value="0"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.54" Value="32"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.58" Value="60"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.62" Value="80"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.66" Value="92"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.70" Value="96"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.74" Value="92"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.78" Value="80"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.82" Value="60"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.86" Value="32"/>
-                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.90" Value="0"/>
-                                </DoubleAnimationUsingKeyFrames>
+                                BeginTime="0:0:0"
+                                 Duration="0:0:0.5" To="0" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <ExponentialEase  EasingMode="EaseIn"  />
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="FirstViewGrid"
                                 Storyboard.TargetProperty="Opacity"
                                 BeginTime="0:0:0">
@@ -830,7 +590,7 @@
                                 </DoubleAnimationUsingKeyFrames>
 
                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FirstViewTrans" Storyboard.TargetProperty="X">
-                                    <DiscreteObjectKeyFrame KeyTime="00:00:00.90" Value="-480"/>
+                                    <DiscreteObjectKeyFrame KeyTime="00:00:00.90" Value="-500"/>
                                 </ObjectAnimationUsingKeyFrames>
                             </Storyboard>
 
@@ -838,7 +598,7 @@
                                 <DoubleAnimation Storyboard.TargetName="SecondViewTrans" 
                                 Storyboard.TargetProperty="X"
                                 BeginTime="0:0:0"
-                                Duration="0:0:0.5" To="480" >
+                                Duration="0:0:0.5" To="500" >
                                     <DoubleAnimation.EasingFunction>
                                         <ExponentialEase  EasingMode="EaseOut"  />
                                     </DoubleAnimation.EasingFunction>
@@ -857,7 +617,79 @@
 
 
                         </Grid.Resources>
-                        
+
+                        <Grid Grid.RowSpan="4" Grid.ColumnSpan="2" x:Name="FirstViewGrid" Background="{ThemeResource Win8CNBlogsThemeColor}"            
+>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="16*"/>
+                                <RowDefinition Height="2.5*"/>
+                                <RowDefinition Height="2.5*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RenderTransform>
+                                <TranslateTransform x:Name="FirstViewTrans" X="0"></TranslateTransform>
+                            </Grid.RenderTransform>
+                            <TextBlock Grid.ColumnSpan="2" Margin="45,40,45,30"
+                                   Text="{Binding Title}" 
+                                   Style="{StaticResource Win8PostTitleFont}" 
+                                   Foreground="{ThemeResource Win8CNBlogsBackColor}"
+                                   TextWrapping="Wrap" MaxLines="3"/>
+                            <Rectangle Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                       Margin="45,0,45,10"
+                       Width="410" Height="1"  Fill="{ThemeResource Win8CNBlogsThemeWhiteColor}" />
+                            <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                       Style="{StaticResource Win8PostAbstractionFont}" FontSize="16" Margin="0,0,45,0" 
+                                       Foreground="{ThemeResource Win8CNBlogsThemeLightColor}"
+                                       Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
+                            <local:AttributionControl x:Name="AttributionControl" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,45,0"
+                                                  Style="{StaticResource NewAttributionControl}"/>
+                        </Grid>
+                        <Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" 
+                              Width="600" Height="240" 
+                              x:Name="SecondViewGrid"
+                            Background="{ThemeResource Win8CNBlogsThemeWhiteColor}">
+                            <Grid.RenderTransform>
+                                <TranslateTransform x:Name="SecondViewTrans" X="500"></TranslateTransform>
+                            </Grid.RenderTransform>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0"  x:Name="NaviButton"
+                                    Width="106" Height="246" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Background="{ThemeResource Win8CNBlogsLineColor}"
+                                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                    Content="&#xE09E;" Foreground="{ThemeResource Win8CNBlogsThemeWhiteColor}" 
+                                    FontFamily="Segoe UI Symbol" FontSize="72" FontWeight="ExtraBlack" BorderThickness="1" BorderBrush="{ThemeResource Win8CNBlogsThemeColor}">
+                            </Button>
+                            <Grid Grid.Column="1" Grid.ColumnSpan="2" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="80"/>
+                                    <RowDefinition Height="5"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Margin="45,30,45,10"
+                                           Text="{Binding Title}"
+                                           Style="{StaticResource Win8HighlightInformationFont}"
+                                           FontSize="18"
+                                           TextWrapping="Wrap" MaxLines="2"/>
+                                <Rectangle Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                           Margin="45,0,45,0"
+                                           Width="410" Height="1"  Fill="{ThemeResource Win8CNBlogsThemeLightColor}" />
+                                <TextBlock Grid.Row="2" Margin="45,10,45,30"
+                                           Text="{Binding Summary}"
+                                           Style="{StaticResource Win8PostAbstractionFont}"
+                                           FontSize="18"
+                                           TextWrapping="Wrap" MaxLines="6"/>
+                            </Grid>
+
+                        </Grid>
+
                         <TextBlock x:Name="FavoriteIcon" Visibility="Collapsed"
                                     Style="{StaticResource Win8PostAbstractionFont}" Foreground="Gold" FontSize="42" 
                                     FontFamily="Segoe UI Symbol" Text="&#xE0B4;">
@@ -865,62 +697,6 @@
                                 <CompositeTransform Rotation="-30" TranslateX="-25" TranslateY="-10"/>
                             </TextBlock.RenderTransform>
                         </TextBlock>
-
-                        <Grid Grid.RowSpan="4" Grid.ColumnSpan="2" x:Name="FirstViewGrid">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="12*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="3*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RenderTransform>
-                                <TranslateTransform x:Name="FirstViewTrans" X="0"></TranslateTransform>
-                            </Grid.RenderTransform>
-
-                            <TextBlock Grid.ColumnSpan="2" Margin="30,20"
-                                   Text="{Binding Title}" 
-                                   Style="{StaticResource Win8PostTitleFont}" 
-                                   Foreground="{ThemeResource CNBlogsBackColor}"
-                                   TextWrapping="Wrap" MaxLines="3"/>
-                        <Rectangle Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center"
-                       Margin="0,0,0,20"
-                       Width="420" Height="2"  Fill="{ThemeResource CNBlogsThemeLightColor}" />
-                        <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,0,0"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                                   Style="{StaticResource Win8PostAbstractionFont}" FontSize="18" Foreground="{ThemeResource CNBlogsThemeLightColor}"
-                                   Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
-                            <local:AttributionControl x:Name="AttributionControl" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0"
-                                                  Style="{StaticResource NewAttributionControl}"/>
-                        </Grid>
-                        <Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" 
-                              Width="600" Height="240" 
-                              x:Name="SecondViewGrid"
-                              Background="AliceBlue">
-                            <Grid.RenderTransform>
-                                <TranslateTransform x:Name="SecondViewTrans" X="480"></TranslateTransform>
-                            </Grid.RenderTransform>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0"  x:Name="NaviButton"
-                        Width="140" Height="260" HorizontalAlignment="Center" VerticalAlignment="Center"
-                    Background="{ThemeResource CNBlogsThemeLightColor}"
-                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                    Content="&#xE09E;" Foreground="{ThemeResource CNBlogsThemeColor}" 
-                    FontFamily="Segoe UI Symbol" FontSize="72" FontWeight="ExtraBlack">
-                            </Button>
-                            <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Margin="20"
-                       Text="{Binding Summary}"
-                       Style="{StaticResource Win8PostAbstractionFont}"
-                       TextWrapping="Wrap" MaxLines="6"/>
-
-                        </Grid>
                     </Grid>
 
                 </ControlTemplate>
@@ -932,17 +708,20 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:PostControl">
-                    <Grid Width="400" Height="160" x:Name="MainGrid"
-                          Margin="20,10"
-                          Background="{ThemeResource CNBlogsThemeColor}"            
+                    <Grid Width="360" Height="120" x:Name="MainGrid"
+                          Margin="10,10"
+                          Background="{ThemeResource Win8CNBlogsThemeColor}"            
                           IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
+                        <Grid.Clip>
+                            <RectangleGeometry Rect="-20,-30,380,150"/>
+                        </Grid.Clip>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="12*"/>
-                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="2*"/>
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock x:Name="FavoriteIcon" Visibility="Collapsed"
+                        <TextBlock x:Name="FavoriteIcon" Visibility="Collapsed" Width="40" HorizontalAlignment="Left"
                                     Style="{StaticResource Win8PostAbstractionFont}" Foreground="Gold" FontSize="42" 
                                     FontFamily="Segoe UI Symbol" Text="&#xE0B4;">
                             <TextBlock.RenderTransform>
@@ -950,20 +729,22 @@
                             </TextBlock.RenderTransform>
                         </TextBlock>
 
-                        <TextBlock Grid.ColumnSpan="2" Margin="20,20"
+                        <TextBlock Grid.ColumnSpan="2" Margin="30,20,30,5"
                                    Text="{Binding Title}" 
-                                   Style="{StaticResource Win8PostTitleFont}" FontSize="24"
-                                   Foreground="{ThemeResource CNBlogsBackColor}"
+                                   Style="{StaticResource Win8PostTitleFont}" FontSize="20"
+                                   Foreground="{ThemeResource Win8CNBlogsBackColor}"
                                    TextWrapping="Wrap" MaxLines="2"/>
                         <Rectangle Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center"
                        Margin="0,0,0,10"
-                       Width="360" Height="2"  Fill="{ThemeResource CNBlogsThemeLightColor}" />
+                       Width="300" Height="1"  Fill="{ThemeResource Win8CNBlogsThemeLightColor}" />
                         <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"
-                                   Margin="20,0,0,0"
-                                   Style="{StaticResource Win8PostAbstractionFont}" FontSize="20" Foreground="{ThemeResource CNBlogsThemeLightColor}"
+                                   Margin="30,0,0,0"
+                                   Style="{StaticResource Win8PostAbstractionFont}" FontSize="16" Foreground="{ThemeResource Win8CNBlogsThemeLightColor}"
                                    Text="{Binding Author.Name}"/>
-                        <local:AttributionControl Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" 
-                                                  Margin="0,0,20,0"
+                        <local:AttributionControl x:Name="AttributionControl"
+                            Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                                  FontSize="16"
+                                                  Margin="10,0,30,10"
                                                   Style="{StaticResource NewAttributionControl}"/>
                     </Grid>
                 </ControlTemplate>
@@ -975,17 +756,20 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:PostControl">
-                    <Grid Width="400" Height="160" x:Name="MainGrid"
-                          Margin="20,10"
-                          Background="{ThemeResource CNBlogsThemeColor}"            
+                    <Grid Width="360" Height="120" x:Name="MainGrid"
+                          Margin="10,10"
+                          Background="{ThemeResource Win8CNBlogsThemeColor}"            
                           IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
+                        <Grid.Clip>
+                            <RectangleGeometry Rect="-20,-30,380,150"/>
+                        </Grid.Clip>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="12*"/>
-                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="2*"/>
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock x:Name="FavoriteIcon" Visibility="Collapsed"
+                        <TextBlock x:Name="FavoriteIcon" Visibility="Collapsed" Width="40" HorizontalAlignment="Left"
                                     Style="{StaticResource Win8PostAbstractionFont}" Foreground="Gold" FontSize="42" 
                                     FontFamily="Segoe UI Symbol" Text="&#xE0B4;">
                             <TextBlock.RenderTransform>
@@ -993,20 +777,17 @@
                             </TextBlock.RenderTransform>
                         </TextBlock>
 
-                        <TextBlock Grid.ColumnSpan="2" Margin="20,20"
+                        <TextBlock Grid.ColumnSpan="2" Margin="30,20,30,5"
                                    Text="{Binding Title}" 
-                                   Style="{StaticResource Win8PostTitleFont}"  FontSize="24"
-                                   Foreground="{ThemeResource CNBlogsBackColor}"
+                                   Style="{StaticResource Win8PostTitleFont}" FontSize="20"
+                                   Foreground="{ThemeResource Win8CNBlogsBackColor}"
                                    TextWrapping="Wrap" MaxLines="2"/>
                         <Rectangle Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center"
                        Margin="0,0,0,10"
-                       Width="360" Height="2"  Fill="{ThemeResource CNBlogsThemeLightColor}" />
-                        <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"
-                                   Margin="20,0,0,0"
-                                   Style="{StaticResource Win8PostAbstractionFont}" FontSize="20" Foreground="{ThemeResource CNBlogsThemeLightColor}"
-                                   Text="{Binding PublishTime, Converter={StaticResource TimeCountDownConverter}}"/>
-                        <local:AttributionControl Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" 
-                                                  Margin="0,0,20,0"
+                       Width="300" Height="1"  Fill="{ThemeResource Win8CNBlogsThemeLightColor}" />
+                        <local:AttributionControl Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                                  FontSize="16"
+                                                  Margin="10,0,30,10"
                                                   Style="{StaticResource NewAttributionControl}"/>
                     </Grid>
                 </ControlTemplate>
@@ -1021,7 +802,7 @@
                     <Grid Height="90">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition Width="Auto"/>
@@ -1030,17 +811,94 @@
                             <ColumnDefinition Width="30"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="2" Grid.ColumnSpan="4" Text="{TemplateBinding TitleContent}" Style="{StaticResource Win8PageSubTitleFont}" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Grid.ColumnSpan="4" Text="{TemplateBinding Text}" Style="{StaticResource Win8PageSubTitleFont}" VerticalAlignment="Center"/>
                         <Ellipse Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Height="50"
-                                 Stroke="{ThemeResource CNBlogsThemeColor}" StrokeThickness="3"
+                                 Stroke="{ThemeResource Win8CNBlogsThemeColor}" StrokeThickness="1"
                                  Visibility="{Binding ElementName=CountControl, Path=Visibility}"/>
                         <TextBlock Grid.Column="6" x:Name="CountControl"
                                    Style="{StaticResource Win8PageTitleAttributionFont}" FontSize="24"
                                    VerticalAlignment="Center" HorizontalAlignment="Center"
-                                   Foreground="{ThemeResource CNBlogsThemeColor}">
+                                   Foreground="{ThemeResource Win8CNBlogsThemeColor}">
                             <Run Text="{Binding Count}"/>
                         </TextBlock>
                         <ProgressBar Grid.ColumnSpan="8" x:Name="pb_Top" IsIndeterminate="True" VerticalAlignment="Bottom"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="FavoriteBloggerControl" TargetType="local:BloggerControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:BloggerControl">
+                    <Grid Width="360" Height="100"
+                          Margin="20,10"
+                          Background="{ThemeResource Win8CNBlogsThemeColor}"            
+                          IsRightTapEnabled="True" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="8*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Clip>
+                            <RectangleGeometry Rect="-20,-30,420,130"/>
+                        </Grid.Clip>
+
+                        <TextBlock Grid.Row="1" Margin="0,0,0,-5"
+                                   Text="" FontFamily="Segoe UI Symbol" FontSize="48"
+                                   HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                   Foreground="{ThemeResource Win8CNBlogsThemeLightColor}"/>
+                        <Rectangle Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"
+                       Width="55" Height="55"
+                       StrokeThickness="2" Stroke="{ThemeResource Win8CNBlogsThemeLightColor}" RadiusX="6" RadiusY="6" >
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="{Binding Item.Avatar}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+
+                        <TextBlock Grid.Column="1" Grid.Row="1" Margin="20,10" VerticalAlignment="Center"
+                                   Text="{Binding Item.Name}" 
+                                   Style="{StaticResource Win8PostTitleFont}" 
+                                   Foreground="{ThemeResource Win8CNBlogsBackColor}"/>
+                        <TextBlock x:Name="FavoriteIcon" Grid.RowSpan="3" Width="40" HorizontalAlignment="Left"
+                                    Style="{StaticResource Win8PostAbstractionFont}" Foreground="Gold" FontSize="42" 
+                                    FontFamily="Segoe UI Symbol" Text="&#xE0B4;">
+                            <TextBlock.RenderTransform>
+                                <CompositeTransform Rotation="-30" TranslateX="-25" TranslateY="-10"/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PageTitleWithoutCountControl" TargetType="local:PageTitleControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:PageTitleControl">
+                    <Grid Height="90">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0" Source="ms-appx:///Assets/Logo.100.blue.png" Height="80" Width="80" VerticalAlignment="Center"/>
+                        <StackPanel Grid.Column="2" Orientation="Vertical" VerticalAlignment="Center">
+                            <TextBlock x:Uid="Title" Text="博客园" Style="{StaticResource Win8PageTitleFont}" VerticalAlignment="Bottom"/>
+                            <TextBlock Text=" cnblogs.com " Style="{StaticResource Win8PageTitleAttributionFont}" VerticalAlignment="Top" Margin="0,-10,0,0"/>
+                        </StackPanel>
+                        <TextBlock Grid.Column="4" Text="{TemplateBinding Text}" Style="{StaticResource Win8PageSubTitleFont}" VerticalAlignment="Center"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

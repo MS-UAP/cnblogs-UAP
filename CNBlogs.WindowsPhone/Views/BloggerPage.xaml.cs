@@ -8,6 +8,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 using System.Linq;
+using CNBlogs.DataHelper;
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace CNBlogs
@@ -96,8 +97,14 @@ namespace CNBlogs
         /// </summary>
         /// <param name="e">Provides data for navigation methods and event
         /// handlers that cannot cancel the navigation request.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                Logger.LogAgent.GetInstance().WriteLog(this.GetType().ToString());
+            }
+
+            this.btn_NightMode.DataContext = CNBlogs.DataHelper.DataModel.CNBlogSettings.Instance;
             FunctionHelper.Functions.SetTheme(this);
             this.navigationHelper.OnNavigatedTo(e);
             if (e.NavigationMode == NavigationMode.New)
@@ -107,12 +114,23 @@ namespace CNBlogs
                 if (e.Parameter is Blogger)
                 {
                     this.blogger = e.Parameter as Blogger;
-                    this.Author = new Author() 
-                    { 
-                        Avatar = this.blogger.Avatar, 
+                    this.Author = new Author()
+                    {
+                        Avatar = this.blogger.Avatar,
                         Name = this.blogger.Name,
-                        BlogApp = this.blogger.BlogApp
+                        BlogApp = this.blogger.BlogApp,
+                        Uri = this.blogger.Link == null ? string.Empty : this.blogger.Link.Href
                     };
+
+                    var detailedBlogger = await APIWrapper.Instance.GetBloggerByAuthorAsync(this.Author);
+
+                    if (detailedBlogger != null)
+                    {
+                        this.blogger = detailedBlogger;
+                        this.Author.Avatar = detailedBlogger.Avatar;
+                        this.Author.Uri = detailedBlogger.Link == null ? string.Empty : detailedBlogger.Link.Href;
+                    }
+
                     this.DataContext = this;
                     // for listview binding
                     this.authorDS = new AuthorPostsDS(this.blogger.BlogApp);
@@ -208,13 +226,6 @@ namespace CNBlogs
             this.lv_AuthorPosts.ScrollIntoView(item0, ScrollIntoViewAlignment.Leading);
         }
 
-        private async void btn_Refresh_Click(object sender, RoutedEventArgs e)
-        {
-            FunctionHelper.Functions.RefreshUIOnDataLoading(this.pb_Top, this.cmdBar);
-            await this.authorDS.Refresh();
-            FunctionHelper.Functions.RefreshUIOnDataLoaded(this.pb_Top, this.cmdBar);
-        }
-
         private void btn_Homepage_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(InAppWebViewPage), this.blogger.Link.Href);
@@ -238,5 +249,14 @@ namespace CNBlogs
             await Functions.ShowMessage("收藏博主成功");
         }
 
+        private void btn_Setting_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(SettingsPage));
+        }
+
+        private void btn_NightMode_Click(object sender, RoutedEventArgs e)
+        {
+            FunctionHelper.Functions.btn_NightMode_Click(this);
+        }
     }
 }

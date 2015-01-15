@@ -11,7 +11,7 @@ namespace CNBlogs.DataHelper.Function
 {
     public static class FollowHelper
     {
-        public static async Task<Post> GetLatestFollowedPost()
+        public static Task<Post> GetLatestFollowedPost()
         {
             throw new NotImplementedException();
         }
@@ -127,10 +127,9 @@ namespace CNBlogs.DataHelper.Function
                 var roamingFolder = Windows.Storage.ApplicationData.Current.RoamingFolder;
                 var destFolder = await roamingFolder.CreateFolderAsync(FOLLOW_AUTHOR_FOLDER, Windows.Storage.CreationCollisionOption.OpenIfExists);
                 string blogApp = string.Empty;
-                if (string.IsNullOrEmpty(author.BlogApp))
+                if (string.IsNullOrWhiteSpace(author.BlogApp))
                 {
-                    var uri = new Uri(author.Uri);
-                    blogApp = uri.LocalPath.Trim(new[] { '/' });
+                    blogApp = Functions.ParseBlogAppFromURL(author.Uri);
                 }
                 else
                 {

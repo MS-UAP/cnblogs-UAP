@@ -31,6 +31,7 @@ namespace CNBlogs
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         private News news = null;
         private string content = string.Empty;
+        private string commentsCount = string.Empty;
 
         public Author Author { get; set; }
 
@@ -106,8 +107,12 @@ namespace CNBlogs
         /// handlers that cannot cancel the navigation request.</param>
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                Logger.LogAgent.GetInstance().WriteLog(this.GetType().ToString());
+            }
+
             this.navigationHelper.OnNavigatedTo(e);
-            string commentsCount = string.Empty;
             var pageFile = string.Empty;
             if (!CNBlogs.DataHelper.DataModel.CNBlogSettings.Instance.NightModeTheme)
             {
@@ -123,14 +128,15 @@ namespace CNBlogs
             if (e.Parameter is News)
             {
                 this.news = e.Parameter as News;
-                commentsCount = news.CommentsCount;
+                this.commentsCount = news.CommentsCount;
                 CNBlogs.DataHelper.CloudAPI.NewsContentDS ncDS = new DataHelper.CloudAPI.NewsContentDS(news.ID);
                 if (await ncDS.LoadRemoteData())
                 {
                     //this.wv_Post.NavigateToString(ncDS.News.Content);
-                    content = ncDS.News.Content;
+                    // add title to news
+                    content = "<h2 class='title'>" + this.news.Title + "</h2>" + ncDS.News.Content;
                 }
-
+                this.UpdateUI();
                 string width = Window.Current.Bounds.Width.ToString();
                 string height = Window.Current.Bounds.Height.ToString();
 
@@ -145,11 +151,12 @@ namespace CNBlogs
 
         #endregion
 
+
         private async void wv_WebContent_DOMContentLoaded(WebView sender, WebViewDOMContentLoadedEventArgs args)
         {
             try
             {
-                var newSize = CNBlogSettings.Instance.FontSize / 100;
+                var newSize = CNBlogSettings.Instance.FontSize / 100 + 1;
 
                 await this.wv_WebContent.InvokeScriptAsync("changeFontSize", new[] { newSize.ToString() });
 
@@ -168,10 +175,16 @@ namespace CNBlogs
             FunctionHelper.Functions.RefreshUIOnDataLoaded(this.pb_Top, null);
         }
 
-
-        private void btn_Setting_Click(object sender, RoutedEventArgs e)
+        private void UpdateUI()
         {
-            this.Frame.Navigate(typeof(SettingsPage));
+            if (this.commentsCount == "0" || string.IsNullOrEmpty(this.commentsCount))
+            {
+                this.btn_Comment.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            }
+            else
+            {
+                this.btn_Comment.Label = string.Format("{0}条评论", this.commentsCount);
+            }
         }
 
 
@@ -187,9 +200,26 @@ namespace CNBlogs
             }
         }
 
+        #region command bar
+
         private void btn_Source_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(InAppWebViewPage), this.news.Link.Href);
         }
+
+        private void btn_Comment_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.news != null)
+            {
+                this.Frame.Navigate(typeof(CommentReadingPage), this.news);
+            }
+        }
+
+        private void btn_FontSize_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(SettingsPage), SettingPagePivotItemTags.FontSize);
+        }
+
+        #endregion
     }
 }

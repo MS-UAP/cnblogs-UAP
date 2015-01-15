@@ -7,6 +7,7 @@ body {
     -ms-word-wrap: break-word;
     word-wrap: break-word;
     font-family: Verdana, Arial, Helvetica, sans-serif;
+    background-color:rgb(243,243,244);
 }
 
 .cnblogs-markdown .hljs {
@@ -27,7 +28,7 @@ body {
 
 .cnblogs-markdown code {
     font-family: "Courier New", sans-serif !important;
-    font-size: 1em ;
+    font-size: 1em;
     background-color: #f5f5f5 !important;
     border: 1px solid #ccc !important;
     padding: 2px 5px !important;
@@ -132,10 +133,55 @@ blockquote {
     font-size: 0.7em;
 }
 
-ul , ol{
+ul, ol {
     font-size: 0.7em;
 }
 
 #cnblogs_post_body blockquote ul {
     margin-left: 25px;
 }
+
+h1 {
+    font-size: 1.5em;
+}
+
+.h2 {
+    font-size: 1.4em;
+}
+
+.h3 {
+    font-size: 1.3em;
+}
+
+.h4 {
+    font-size: 1.2em;
+}
+
+.info{
+    margin-top:0.5em;
+}
+
+.info .title {
+    color: #297ACD;
+    font-size: 1.1em;
+}
+
+.info .author a {
+    text-decoration: none;
+    color: #297ACD;
+}
+
+    .info .author a img {
+        border: 1px solid gray;
+        border-radius: 5px;
+        float: left;
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    .info .author a span {
+        font-size: 1em;
+        clear: left;
+        margin-left: 5px;
+        line-height: 1.5em;
+    }

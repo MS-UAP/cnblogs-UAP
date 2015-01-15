@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CNBlogs.DataHelper.DataModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,24 @@ namespace CNBlogs
         public PreferenceSettingsFlyout()
         {
             this.InitializeComponent();
+            SetUILanguageComboBox();
+            LanguageNoteTextbox.Visibility = Visibility.Collapsed;
+        }
+
+        private void SetUILanguageComboBox()
+        {
+            switch (CNBlogSettings.Instance.UILanguage)
+            {
+                case "zh-CN":
+                    UILanguageComboBox.SelectedItem = UILanguageComboItem_zh_CN;
+                    break;
+                case "en-US":
+                    UILanguageComboBox.SelectedItem = UILanguageComboItem_en_US;
+                    break;
+                default:
+                    UILanguageComboBox.SelectedItem = UILanguageComboItem_zh_CN;
+                    break;
+            }
         }
 
         private void ReadingModeToggle_Toggled(object sender, RoutedEventArgs e)
@@ -35,6 +54,20 @@ namespace CNBlogs
                 this.RequestedTheme = ElementTheme.Light;
             }
 
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = ((sender as ComboBox).SelectedItem as ComboBoxItem).Tag.ToString();
+                CNBlogSettings.Instance.UILanguage = Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride;
+                LanguageNoteTextbox.Visibility = Visibility.Visible;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

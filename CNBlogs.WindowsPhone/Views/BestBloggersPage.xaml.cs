@@ -103,6 +103,11 @@ namespace CNBlogs
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                Logger.LogAgent.GetInstance().WriteLog(this.GetType().ToString());
+            }
+
             FunctionHelper.Functions.SetTheme(this);
             this.btn_NightMode.DataContext = CNBlogs.DataHelper.DataModel.CNBlogSettings.Instance;
 

@@ -12,7 +12,7 @@
     RequestedTheme="Light"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource CNBlogsBackColor}">
+    <Grid Background="{ThemeResource Win8CNBlogsBackColor}">
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
@@ -63,11 +63,12 @@
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar Style="{StaticResource Win8AppbarStyle}">
-            <AppBarButton x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>
-            <AppBarButton x:Name="btn_ScrollToTop" Icon="Previous" Label="回到开始" Click="btn_ScrollToTop_Click"/>
-            <AppBarButton x:Name="btn_ZoomChange" Icon="Zoom" Label="视图缩放" Click="btn_ZoomChange_Click"/>
-            <!--<AppBarButton x:Name="btn_Favorite" Icon="Favorite" Label="收藏分类" Click="btn_Favorite_Click"/>-->
+        <CommandBar Style="{StaticResource Win8AppbarStyle}" Opened="CommandBar_Opened">
+            <AppBarButton x:Uid="AppButton_Refresh" x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>
+            <AppBarButton x:Uid="AppButton_GoToStart" x:Name="btn_ScrollToTop" Icon="Previous" Label="回到开始" Click="btn_ScrollToTop_Click"/>
+            <AppBarButton x:Uid="AppButton_Zoom" x:Name="btn_ZoomChange" Icon="Zoom" Label="视图缩放" Click="btn_ZoomChange_Click"/>
+            <AppBarButton x:Uid="AppButton_FavoriteCategory" x:Name="btn_Favorite" Icon="Favorite" Label="收藏此类" Click="btn_Favorite_Click"/>
+            <AppBarButton x:Uid="AppButton_UnFavoriteCategory" x:Name="btn_UnFavorite" Icon="UnFavorite" Label="取消收藏" Click="btn_UnFavorite_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 

@@ -17,7 +17,7 @@ namespace CNBlogs.DataHelper.CloudAPI
         {
             this.Items = new ObservableCollection<FavoriteItem<Author>>();
             this.Icon = "";
-            this.Title = "博主";
+            this.Title = Functions.LoadResourceString("FavoriteBloggerText");
         }
 
         public static FavoriteAuthorDS Instance

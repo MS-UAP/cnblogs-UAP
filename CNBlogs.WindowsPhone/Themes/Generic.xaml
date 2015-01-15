@@ -166,7 +166,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:ListViewHeaderControl">
                     <Border BorderThickness="0,0,0,1" BorderBrush="{ThemeResource CNBlogsLineColor}">
-                        <TextBlock Style="{StaticResource ListViewHeaderFont}" Text="{TemplateBinding Content}" Margin="15,10"/>
+                        <TextBlock Style="{StaticResource ListViewHeaderFont}" Text="{TemplateBinding Text}" Margin="15,10" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -220,14 +220,26 @@
                 <ControlTemplate TargetType="local:ColumnControl">
                     <Grid Height="150" Width="150" Background="{ThemeResource CNBlogsThemeColor}">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Foreground="White" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                                <Run Text="{Binding Icon}" FontFamily="Segoe UI Symbol"/>
+                        </TextBlock>
+                        <TextBlock Grid.Row="1" Foreground="White" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                <Run Text="{Binding Name}" FontFamily="Segoe WP"/>
+                        </TextBlock>
+                        <TextBlock Grid.Row="2" Foreground="White" FontFamily="Segoe WP" FontSize="16" Text="{Binding Desc}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0"/>
+                        <!--<Grid.RowDefinitions>
                             <RowDefinition Height="2*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Foreground="White" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Grid.Row="0" Foreground="White" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Run Text="{Binding Icon}" FontFamily="Segoe UI Symbol"/>
                                 <Run Text="{Binding Name}" FontFamily="Segoe WP"/>
                         </TextBlock>
-                        <TextBlock Grid.Row="1" Foreground="White" FontFamily="Segoe WP" FontSize="16" Text="{Binding Desc}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                        <TextBlock Grid.Row="1" Foreground="White" FontFamily="Segoe WP" FontSize="16" Text="{Binding Desc}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0"/>-->
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -267,7 +279,7 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{TemplateBinding TitleContent}" Style="{StaticResource PageTitleFont}"/>
+                        <TextBlock Grid.Column="0" Text="{TemplateBinding Text}" Style="{StaticResource PageTitleFont}"/>
                         <TextBlock Grid.Column="1" x:Name="tb_SubTitle" Text="{TemplateBinding SubTitleContent}" Style="{StaticResource PageSubTitleFont}" HorizontalAlignment="Right">
                             <TextBlock.Projection>
                                 <PlaneProjection/>
@@ -339,6 +351,7 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="" FontFamily="Segoe UI Symbol" Foreground="Red" Visibility="{Binding Converter={StaticResource BoolToVisiblityConverter}, Path=HasNew}"/>
                             <local:AuthorControl Grid.Column="1" AvatarHeight="36" Style="{StaticResource AuthorControl2}"/>
+                            <Rectangle Grid.ColumnSpan="2" Fill="Transparent"/>
                         </Grid>
                     </Border>
                 </ControlTemplate>
@@ -370,7 +383,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:TitleWithNumberControl">
                     <StackPanel Orientation="Horizontal" Height="48">
-                        <TextBlock Style="{StaticResource PivotTitleFont}" Text="{TemplateBinding TitleContent}" />
+                        <TextBlock Style="{StaticResource PivotTitleFont}" Text="{TemplateBinding Text}"/>
                         <TextBlock x:Name="tb_Number" Text="{Binding Count}" FontSize="16" Margin="0,2,0,0"/>
                     </StackPanel>
                 </ControlTemplate>

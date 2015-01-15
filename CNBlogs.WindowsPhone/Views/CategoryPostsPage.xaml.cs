@@ -18,7 +18,6 @@ using Windows.UI.Xaml.Navigation;
 using CNBlogs.DataHelper.CloudAPI;
 using CNBlogs.DataHelper.DataModel;
 using CNBlogs.DataHelper.Function;
-using CNBlogs.DataHelper.Function;
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace CNBlogs
@@ -104,6 +103,11 @@ namespace CNBlogs
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                Logger.LogAgent.GetInstance().WriteLog(this.GetType().ToString());
+            }
+
             this.Category = e.Parameter as Category;
             this.navigationHelper.OnNavigatedTo(e);
             if (e.NavigationMode == NavigationMode.New)

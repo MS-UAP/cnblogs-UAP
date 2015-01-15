@@ -162,7 +162,7 @@ namespace CNBlogs
             this.Frame.Navigate(typeof(SettingsPage));
         }
 
-        private async void btn_Refresh_Click(object sender, RoutedEventArgs e)
+        private void btn_Refresh_Click(object sender, RoutedEventArgs e)
         {
             this.BeforeLoadData();
             //await this.bestPostsDS.Refresh();

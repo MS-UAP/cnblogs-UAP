@@ -18,15 +18,15 @@ namespace CNBlogs
     {
 
 
-        public string TitleContent
+        public string Text
         {
-            get { return (string)GetValue(TitleContentProperty); }
-            set { SetValue(TitleContentProperty, value); }
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for TitleContent.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TitleContentProperty =
-            DependencyProperty.Register("TitleContent", typeof(string), typeof(PageTitleControl), new PropertyMetadata("Default Title"));
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(PageTitleControl), new PropertyMetadata("Title"));
 
 
         public string SubTitleContent

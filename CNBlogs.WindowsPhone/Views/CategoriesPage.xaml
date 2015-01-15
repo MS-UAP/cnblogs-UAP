@@ -16,7 +16,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <local:PageTitleControl Grid.Row="0" x:Name="control_PageTitle" TitleContent="分类"/>
+        <local:PageTitleControl Grid.Row="0" x:Name="control_PageTitle" x:Uid="CategoryTitle"/>
 
         <ListView x:Name="lv_Category" Grid.Row="1" Background="{ThemeResource CNBlogsBackColor}" IsItemClickEnabled="True" Padding="20" ItemClick="lv_Category_ItemClick">
             <ListView.ItemsPanel>

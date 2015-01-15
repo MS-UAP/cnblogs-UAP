@@ -44,14 +44,16 @@ namespace CNBlogs
 
             this.recentDS = new LatestPostsDS();
             this.recentDS.DataRequestError += recentDS_DataRequestError;
-            this.recentDS.OnLoadMoreStarted += recentDS_OnLoadMoreStarted;
-            this.recentDS.OnLoadMoreCompleted += recentDS_OnLoadMoreCompleted;
+            this.recentDS.OnLoadMoreStarted += newsDs_OnLoadMoreStarted;
+            this.recentDS.OnLoadMoreCompleted += newsDs_OnLoadMoreCompleted;
             this.lv_HomePosts.ItemsSource = this.recentDS;
             this.tn_Home.DataContext = this.recentDS;
             await this.recentDS.LoadMoreItemsAsync(20);
 
             this.newsDs = new NewsDS();
             this.newsDs.DataRequestError += recentDS_DataRequestError;
+            //this.newsDs.OnLoadMoreStarted += newsDs_OnLoadMoreStarted;
+            //this.newsDs.OnLoadMoreCompleted += newsDs_OnLoadMoreCompleted;
             this.lv_News.ItemsSource = this.newsDs;
             this.tn_News.DataContext = this.newsDs;
             await this.newsDs.LoadMoreItemsAsync(20);
@@ -63,18 +65,35 @@ namespace CNBlogs
             await FavoriteCategoryDS.Instance.LoadData();
             this.fgc_Category.DataContext = FavoriteCategoryDS.Instance;
             this.lv_category.ItemsSource = FavoriteCategoryDS.Instance.Items;
-            this.fg_Category = new FavoriteGroup(this.lv_category, this.sb_lv1_show, this.sb_lv1_hide);
+            this.fg_Category = new FavoriteGroup(this.lv_category);
 
             await FavoriteAuthorDS.Instance.LoadData();
             this.fgc_Author.DataContext = FavoriteAuthorDS.Instance;
             this.lv_author.ItemsSource = FavoriteAuthorDS.Instance.Items;
-            this.fg_Author = new FavoriteGroup(this.lv_author, this.sb_lv2_show, this.sb_lv2_hide);
+            this.fg_Author = new FavoriteGroup(this.lv_author);
 
             this.lv_blog.ItemsSource = FavoritePostDS.Instance;
             await FavoritePostDS.Instance.LoadMoreItemsAsync(20);
             this.fgc_Post.DataContext = FavoritePostDS.Instance;
-            this.fg_Blog = new FavoriteGroup(this.lv_blog, this.sb_lv3_show, this.sb_lv3_hide);
+            this.fg_Blog = new FavoriteGroup(this.lv_blog);
 
+            // check updates for first time
+            var updateTasks = new List<Task>(2);
+
+            updateTasks.Add(FavoriteAuthorDS.Instance.CheckUpdateForAll());
+            updateTasks.Add(FavoriteCategoryDS.Instance.CheckUpdateForAll());
+
+            //this.recentDS_OnLoadMoreCompleted(20);
+
+            // we do not need to wait for the result, let's update UI when the tasks finished
+           await Task.Run(async () =>
+            {
+                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+                {
+                    await FavoriteAuthorDS.Instance.CheckUpdateForAll();
+                    await FavoriteCategoryDS.Instance.CheckUpdateForAll();
+                });
+            });
 
             // with DispatcherTimer, we can update UI without using Dispatcher.RunAsync
             var timer = new DispatcherTimer();
@@ -85,17 +104,11 @@ namespace CNBlogs
 
             // start the timer
             timer.Start();
+
+            FunctionHelper.Functions.RefreshUIOnDataLoaded(this.pb_Top, this.cmdBar);
         }
 
-        async void timer_Tick(object sender, object e)
-        {
-            await FavoriteCategoryDS.Instance.CheckUpdateForAll();
-            await FavoriteAuthorDS.Instance.CheckUpdateForAll();
-
-            System.Diagnostics.Debug.WriteLine("timer tick.");
-        }
-
-        async void recentDS_OnLoadMoreStarted(uint count)
+        private async void newsDs_OnLoadMoreStarted(uint count)
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
@@ -103,7 +116,7 @@ namespace CNBlogs
             });
         }
 
-        async void recentDS_OnLoadMoreCompleted(int count)
+        private async void newsDs_OnLoadMoreCompleted(int count)
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
@@ -113,7 +126,33 @@ namespace CNBlogs
             });
         }
 
-        void recentDS_DataRequestError(int code)
+        private async void timer_Tick(object sender, object e)
+        {
+            await FavoriteCategoryDS.Instance.CheckUpdateForAll();
+            await FavoriteAuthorDS.Instance.CheckUpdateForAll();
+
+            System.Diagnostics.Debug.WriteLine("timer tick.");
+        }
+
+        //private async void recentDS_OnLoadMoreStarted(uint count)
+        //{
+        //    await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+        //    {
+        //        FunctionHelper.Functions.RefreshUIOnDataLoading(this.pb_Top, this.cmdBar);
+        //    });
+        //}
+
+        //private async void recentDS_OnLoadMoreCompleted(int count)
+        //{
+        //    await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+        //    {
+        //        this.grid_Splash.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+        //        this.grid_Main.Visibility = Windows.UI.Xaml.Visibility.Visible;
+        //        FunctionHelper.Functions.RefreshUIOnDataLoaded(this.pb_Top, this.cmdBar);
+        //    });
+        //}
+
+        private void recentDS_DataRequestError(int code)
         {
             if (code == -1 && !this.popup_tips.IsOpen && this.ActualWidth > 0)
             {
@@ -140,6 +179,11 @@ namespace CNBlogs
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                Logger.LogAgent.GetInstance().WriteLog(this.GetType().ToString());
+            }
+
             // TODO: Prepare page for display here.
 
             // TODO: If your application contains multiple pages, ensure that you are
@@ -192,6 +236,7 @@ namespace CNBlogs
 
             await this.recentDS.Refresh();
             await this.newsDs.Refresh();
+            this.timer_Tick(sender, e);
 
             FunctionHelper.Functions.RefreshUIOnDataLoaded(this.pb_Top, this.cmdBar);
         }
@@ -210,8 +255,7 @@ namespace CNBlogs
                     break;
 
                 case "favorite":
-                    //this.sv_Favorite.ScrollToVerticalOffset(0);
-                    this.sv_Favorite.ChangeView(0, 0, 0, true);
+                    this.sv_Favorite.ChangeView(0, 0, null, true);
                     break;
             }
         }
@@ -270,7 +314,7 @@ namespace CNBlogs
 
         #region Favorite pivot page
 
-        
+
 
         private async void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {

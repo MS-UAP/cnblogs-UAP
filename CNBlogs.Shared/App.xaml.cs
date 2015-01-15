@@ -98,6 +98,8 @@ namespace CNBlogs
                 rootFrame.Navigated += this.RootFrame_FirstNavigated;
 #endif
 
+                Init();
+
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
@@ -110,21 +112,23 @@ namespace CNBlogs
             // Ensure the current window is active
             Window.Current.Activate();
 
-            Init();
+            
 
 #if WINDOWS_APP
             // Add commands to the settings pane
             SettingsPane.GetForCurrentView().CommandsRequested += (s, args) =>
             {
-                //var preference = new SettingsCommand("选项", "选项", (handler) =>
-                //new PreferenceSettingsFlyout().Show());
-                //args.Request.ApplicationCommands.Add(preference);
+                Windows.ApplicationModel.Resources.ResourceLoader loader = new Windows.ApplicationModel.Resources.ResourceLoader();
 
-                var about = new SettingsCommand("关于", "关于", (handler) =>
+                var preference = new SettingsCommand("Preference", loader.GetString("SettingPane_Item_Preference"), (handler) =>
+                new PreferenceSettingsFlyout().Show());
+                args.Request.ApplicationCommands.Add(preference);
+
+                var about = new SettingsCommand("About", loader.GetString("SettingPane_Item_About"), (handler) =>
                 new AboutSettingsFlyout().Show());
                 args.Request.ApplicationCommands.Add(about);
 
-                var privacy = new SettingsCommand("隐私声明", "隐私声明", GetPrivacyPolicyAsync);
+                var privacy = new SettingsCommand("PrivacyStatements", loader.GetString("SettingPane_Item_Privacy"), GetPrivacyPolicyAsync);
                 args.Request.ApplicationCommands.Add(privacy);
 
             };
@@ -142,7 +146,12 @@ namespace CNBlogs
         private async void Init()
         {
             await BackgroundTaskHelper.Register();
-
+#if WINDOWS_APP
+            Logger.LogAgent.GetInstance().Register("MS-UAP", "CNBlogs-Win8.1");
+#endif
+#if WINDOWS_PHONE_APP
+            Logger.LogAgent.GetInstance().Register("MS-UAP", "CNBlogs-WP8.1");
+#endif
         }
 
 #if WINDOWS_PHONE_APP

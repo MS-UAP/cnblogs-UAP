@@ -18,6 +18,18 @@
             <SolidColorBrush x:Key="CNBlogsSummaryColor" Color="#FF5F5F5F"/>
             <SolidColorBrush x:Key="CNBlogsPageTitleColor" Color="#FFfffeff"/>
             <SolidColorBrush x:Key="CNBlogsPageTextColor" Color="#FF4f4f4f"/>
+
+            <SolidColorBrush x:Key="Win8CNBlogsThemeColor" Color="#FF45AFE6"/>
+            <SolidColorBrush x:Key="Win8CNBlogsThemeLightColor" Color="#FFBDEBFF"/>
+            <SolidColorBrush x:Key="Win8CNBlogsThemeRedColor" Color="#ffE33E06"/>
+            <SolidColorBrush x:Key="Win8CNBlogsThemeWhiteColor" Color="White"/>
+            <SolidColorBrush x:Key="Win8CNBlogsBackColor" Color="#FFF3F3F4"/>
+            <SolidColorBrush x:Key="Win8CNBlogsLineColor" Color="#FFE0EDF8"/>
+            <SolidColorBrush x:Key="Win8CNBlogsTitleColor" Color="White"/>
+            <SolidColorBrush x:Key="Win8CNBlogsAttributionColor" Color="White"/>
+            <SolidColorBrush x:Key="Win8CNBlogsSummaryColor" Color="#FF666666"/>
+            <SolidColorBrush x:Key="Win8CNBlogsPageTitleColor" Color="#FFfffeff"/>
+            <SolidColorBrush x:Key="Win8CNBlogsPageTextColor" Color="#FF4f4f4f"/>
             
             <SolidColorBrush x:Key="PivotHeaderForegroundSelectedBrush" Color="#FFFFFFFF" />
             <SolidColorBrush x:Key="PivotHeaderForegroundUnselectedBrush" Color="#FFAFDAD1" />
@@ -41,6 +53,18 @@
             <SolidColorBrush x:Key="CNBlogsSummaryColor" Color="#FF7C7C7C"/>
             <SolidColorBrush x:Key="CNBlogsPageTitleColor" Color="#FFfffeff"/>
             <SolidColorBrush x:Key="CNBlogsPageTextColor" Color="#FF4f4f4f"/>
+
+            <SolidColorBrush x:Key="Win8CNBlogsThemeColor" Color="#FF00B0F0"/>
+            <SolidColorBrush x:Key="Win8CNBlogsThemeLightColor" Color="#FF94D7F4"/>
+            <SolidColorBrush x:Key="Win8CNBlogsThemeRedColor" Color="#ffE33E06"/>
+            <SolidColorBrush x:Key="Win8CNBlogsThemeWhiteColor" Color="White"/>
+            <SolidColorBrush x:Key="Win8CNBlogsBackColor" Color="#FFF3F3F4"/>
+            <SolidColorBrush x:Key="Win8CNBlogsLineColor" Color="#FFE0EDF8"/>
+            <SolidColorBrush x:Key="Win8CNBlogsTitleColor" Color="White"/>
+            <SolidColorBrush x:Key="Win8CNBlogsAttributionColor" Color="White"/>
+            <SolidColorBrush x:Key="Win8CNBlogsSummaryColor" Color="#FF666666"/>
+            <SolidColorBrush x:Key="Win8CNBlogsPageTitleColor" Color="#FFfffeff"/>
+            <SolidColorBrush x:Key="Win8CNBlogsPageTextColor" Color="#FF4f4f4f"/>
             
             <SolidColorBrush x:Key="PivotHeaderForegroundSelectedBrush" Color="#FFFFFFFF" />
             <SolidColorBrush x:Key="PivotHeaderForegroundUnselectedBrush" Color="#FFB6B6B6" />
@@ -101,7 +125,7 @@
 
     <Style x:Key="ListViewHeaderFont" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="Segoe WP"/>
-        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontSize" Value="22"/>
         <Setter Property="Foreground" Value="{ThemeResource CNBlogsSummaryColor}"/>
     </Style>
 
@@ -134,86 +158,89 @@
 
     <Style x:Key="Win8PageTitleFont" TargetType="TextBlock">
         <Setter Property="Language" Value="zh-Hans"/>
-        <Setter Property="FontFamily" Value="Microsoft Yahei"/>
+        <Setter Property="FontFamily" Value="Microsoft Yahei UI Light"/>
         <Setter Property="FontSize" Value="48"/>
-        <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Foreground" Value="{ThemeResource CNBlogsThemeRedColor}"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Foreground" Value="{ThemeResource Win8CNBlogsThemeRedColor}"/>
     </Style>
 
     <Style x:Key="Win8PageSubTitleFont" TargetType="TextBlock">
         <Setter Property="Language" Value="zh-Hans"/>
-        <Setter Property="FontFamily" Value="Microsoft Yahei"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize" Value="40"/>
-        <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Foreground" Value="{ThemeResource CNBlogsThemeColor}"/>
+        <Setter Property="FontStretch" Value="Condensed"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Foreground" Value="{ThemeResource Win8CNBlogsThemeColor}"/>
     </Style>
 
     <Style x:Key="Win8CategoryTitleFont" TargetType="TextBlock">
         <Setter Property="Language" Value="zh-Hans"/>
-        <Setter Property="FontFamily" Value="Microsoft Yahei"/>
-        <Setter Property="FontSize" Value="36"/>
-        <Setter Property="FontWeight" Value="SemiLight"/>
+        <Setter Property="FontFamily" Value="Microsoft Yahei UI Light"/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="FontWeight" Value="Light"/>
     </Style>
 
     <Style x:Key="Win8PageTitleAttributionFont" TargetType="TextBlock">
         <Setter Property="Language" Value="zh-Hans"/>
-        <Setter Property="FontFamily" Value="Microsoft Yahei"/>
-        <Setter Property="FontSize" Value="22"/>
-        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="FontFamily" Value="Microsoft Yahei UI Light"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Foreground" Value="{ThemeResource Win8CNBlogsSummaryColor}"/>
     </Style>
 
     <Style x:Key="Win8GroupHeaderFont" TargetType="TextBlock">
         <Setter Property="Language" Value="zh-Hans"/>
-        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontFamily" Value="Microsoft Yahei UI Light"/>
         <Setter Property="FontSize" Value="40"/>
-        <Setter Property="Foreground" Value="{ThemeResource CNBlogsThemeColor}"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Foreground" Value="{ThemeResource Win8CNBlogsThemeColor}"/>
     </Style>
 
     <Style x:Key="Win8PostTitleFont" TargetType="TextBlock">
         <Setter Property="Language" Value="zh-Hans"/>
-        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontFamily" Value="Microsoft Yahei UI Light"/>
         <Setter Property="FontSize" Value="28"/>
-        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="MaxLines" Value="3"/>
-        <Setter Property="Foreground" Value="{ThemeResource CNBlogsTitleColor}"/>
+        <Setter Property="Foreground" Value="{ThemeResource Win8CNBlogsTitleColor}"/>
     </Style>
 
     <Style x:Key="Win8PostAbstractionFont" TargetType="TextBlock">
         <Setter Property="Language" Value="zh-Hans"/>
-        <Setter Property="FontFamily" Value="Segoe UI"/>
-        <Setter Property="FontSize" Value="24"/>
-        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontFamily" Value="Microsoft Yahei UI Light"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
-        <Setter Property="Foreground" Value="{ThemeResource CNBlogsSummaryColor}"/>
+        <Setter Property="Foreground" Value="{ThemeResource Win8CNBlogsSummaryColor}"/>
     </Style>
 
     <Style x:Key="Win8PostCommentFont" TargetType="TextBlock">
         <Setter Property="Language" Value="zh-Hans"/>
-        <Setter Property="FontFamily" Value="Segoe UI"/>
-        <Setter Property="FontSize" Value="16"/>
-        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontFamily" Value="Microsoft Yahei UI Light"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
-        <Setter Property="Foreground" Value="{ThemeResource CNBlogsSummaryColor}"/>
+        <Setter Property="Foreground" Value="{ThemeResource Win8CNBlogsSummaryColor}"/>
     </Style>
 
 
     <Style x:Key="Win8PostAttributionFont" TargetType="TextBlock">
         <Setter Property="Language" Value="zh-Hans"/>
-        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontFamily" Value="Microsoft Yahei UI Light"/>
         <Setter Property="FontSize" Value="12"/>
-        <Setter Property="FontWeight" Value="Normal"/>
-        <Setter Property="Foreground" Value="{ThemeResource CNBlogsAttributionColor}"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Foreground" Value="{ThemeResource Win8CNBlogsAttributionColor}"/>
     </Style>
 
     <Style x:Key="Win8HighlightInformationFont" TargetType="TextBlock">
         <Setter Property="Language" Value="zh-Hans"/>
-        <Setter Property="FontFamily" Value="Candara"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="FontWeight" Value="Normal"/>
-        <Setter Property="Foreground" Value="{ThemeResource CNBlogsThemeColor}"/>
+        <Setter Property="FontFamily" Value="Microsoft Yahei UI Light"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Foreground" Value="{ThemeResource Win8CNBlogsThemeColor}"/>
     </Style>
 
     <Style TargetType="ProgressRing">
@@ -225,26 +252,47 @@
 
 
     <Style x:Key="Win8TopAppBarButton" TargetType="Button">
-        <Setter Property="FontFamily" Value="Microsoft YaHei"/>
+        <Setter Property="Language" Value="zh-Hans"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize" Value="32"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="{ThemeResource CNBlogsThemeColor}"/>
-        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Background" Value="{ThemeResource Win8CNBlogsThemeColor}"/>
+        <Setter Property="FontWeight" Value="Light"/>
     </Style>
 
     <Style x:Key="Win8NotifyBlockFont" TargetType="TextBlock">
         <Setter Property="Language" Value="zh-Hans"/>
-        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontFamily" Value="Microsoft Yahei UI Light"/>
         <Setter Property="FontSize" Value="42"/>
-        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="MaxLines" Value="2"/>
-        <Setter Property="Foreground" Value="{ThemeResource CNBlogsBackColor}"/>
+        <Setter Property="Foreground" Value="{ThemeResource Win8CNBlogsBackColor}"/>
+    </Style>
+
+    <Style x:Key="Win8SubCategoryBlockFont" TargetType="TextBlock">
+        <Setter Property="Language" Value="zh-Hans"/>
+        <Setter Property="FontFamily" Value="Microsoft Yahei UI Light"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="MaxLines" Value="2"/>
+        <Setter Property="Foreground" Value="{ThemeResource Win8CNBlogsBackColor}"/>
+    </Style>
+
+    <Style x:Key="Win8CategoryBlockFont" TargetType="TextBlock">
+        <Setter Property="Language" Value="zh-Hans"/>
+        <Setter Property="FontFamily" Value="Microsoft Yahei UI Light"/>
+        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="MaxLines" Value="2"/>
+        <Setter Property="Foreground" Value="{ThemeResource Win8CNBlogsBackColor}"/>
     </Style>
 
     <Style x:Key="Win8AppbarStyle" TargetType="CommandBar">
-        <Setter Property="Background" Value="{ThemeResource CNBlogsThemeColor}"/>
+        <Setter Property="Background" Value="{ThemeResource Win8CNBlogsThemeColor}"/>
     </Style>
 
 </ResourceDictionary>

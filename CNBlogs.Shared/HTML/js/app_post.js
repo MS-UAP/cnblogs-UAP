@@ -44,7 +44,7 @@
 }
 
 function changeFontSize(size) {
-    document.getElementsByTagName('html')[0].style.fontSize = size + 'em';
+    document.getElementsByTagName('html')[0].style.fontSize = size  + 'em';
 
 }
 

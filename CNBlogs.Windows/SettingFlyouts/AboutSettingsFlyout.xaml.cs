@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel;
 using Windows.ApplicationModel.Store;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -25,6 +26,17 @@ namespace CNBlogs
             this.InitializeComponent();
             this.sp_aboutContent.Opacity = 0;
             this.sb_LogoMoveUp.Begin();
+            SetVersionText();
+        }
+
+        private void SetVersionText()
+        {
+            string appVersion = string.Format("{0}.{1}.{2}.{3}",
+            Package.Current.Id.Version.Major,
+            Package.Current.Id.Version.Minor,
+            Package.Current.Id.Version.Build,
+            Package.Current.Id.Version.Revision);
+            this.tbkVersion.Text = appVersion;
         }
 
         private async void btn_RateMe_Click(object sender, RoutedEventArgs e)

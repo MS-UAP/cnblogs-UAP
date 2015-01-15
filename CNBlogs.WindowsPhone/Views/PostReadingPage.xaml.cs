@@ -18,8 +18,8 @@ using Windows.UI.Xaml.Navigation;
 using CNBlogs.DataHelper.DataModel;
 using CNBlogs.DataHelper.Function;
 using Windows.System;
-using CNBlogs.DataHelper.Function;
 using CNBlogs.DataHelper.CloudAPI;
+using CNBlogs.DataHelper;
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace CNBlogs
@@ -108,6 +108,11 @@ namespace CNBlogs
         /// handlers that cannot cancel the navigation request.</param>
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                Logger.LogAgent.GetInstance().WriteLog(this.GetType().ToString());
+            }
+
             this.navigationHelper.OnNavigatedTo(e);
             var pageFile = string.Empty;
             if (!CNBlogs.DataHelper.DataModel.CNBlogSettings.Instance.NightModeTheme)
@@ -129,7 +134,15 @@ namespace CNBlogs
                 CNBlogs.DataHelper.CloudAPI.PostContentDS pcDS = new DataHelper.CloudAPI.PostContentDS(post.ID);
                 if (await pcDS.LoadRemoteData())
                 {
-                    content = pcDS.Content;
+                    // combine author part to add to content
+                    var authorElement = string.Format(AUTHOR_PART_FORMAT,
+                        this.post.Title,
+                        this.Author == null ? string.Empty : this.Author.Uri,
+                        this.Author == null ? string.Empty : this.Author.Name,
+                        this.Author == null || string.IsNullOrWhiteSpace(this.Author.Avatar) ?
+                            string.Empty : string.Format("<img src='{0}' />", this.Author.Avatar));
+
+                    content = authorElement + pcDS.Content;
                 }
 
                 UpdateUI();
@@ -151,7 +164,7 @@ namespace CNBlogs
         {
             try
             {
-                var newSize = CNBlogSettings.Instance.FontSize / 100;
+                var newSize = CNBlogSettings.Instance.FontSize / 100 + 1;
 
                 await this.wv_WebContent.InvokeScriptAsync("changeFontSize", new[] { newSize.ToString() });
 
@@ -182,39 +195,28 @@ namespace CNBlogs
             }
         }
 
-        private void btn_Comment_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.post != null)
-            {
-                this.Frame.Navigate(typeof(CommentReadingPage), this.post);
-            }
-        }
 
-        private void btn_Setting_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(SettingsPage));
-        }
 
         private void UpdateUI()
         {
-            if (this.commentsCount == "0" || string.IsNullOrEmpty(this.commentsCount))
-            {
-                this.btn_Comment.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            }
-            else
-            {
-                this.btn_Comment.Label = string.Format("{0}条评论", this.commentsCount);
-            }
-            //if (this.post.Status == PostStatus.Favorite)
+            //if (this.commentsCount == "0" || string.IsNullOrEmpty(this.commentsCount))
             //{
-            //    this.btn_Favorite.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            //    this.btn_UnFavorite.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            //    //this.btn_Comment.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             //}
             //else
             //{
-            //    this.btn_Favorite.Visibility = Windows.UI.Xaml.Visibility.Visible;
-            //    this.btn_UnFavorite.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            //    this.btn_Comment.Label = string.Format("{0}条评论", this.commentsCount);
             //}
+            ////if (this.post.Status == PostStatus.Favorite)
+            ////{
+            ////    this.btn_Favorite.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            ////    this.btn_UnFavorite.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            ////}
+            ////else
+            ////{
+            ////    this.btn_Favorite.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            ////    this.btn_UnFavorite.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            ////}
         }
 
         private void btn_Author_Click(object sender, RoutedEventArgs e)
@@ -230,6 +232,16 @@ namespace CNBlogs
                 };
 
                 this.Frame.Navigate(typeof(BloggerPage), blogger);
+            }
+        }
+
+        #region command bar
+
+        private void btn_Comment_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.post != null)
+            {
+                this.Frame.Navigate(typeof(CommentReadingPage), this.post);
             }
         }
 
@@ -249,5 +261,14 @@ namespace CNBlogs
             await FavoriteAuthorDS.Instance.Follow(this.Author);
             await Functions.ShowMessage("收藏博主成功");
         }
+
+        private void btn_FontSize_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(SettingsPage), SettingPagePivotItemTags.FontSize);
+        }
+
+        #endregion
+
+        private const string AUTHOR_PART_FORMAT = "<div class='info'><h2 class='title'>{0}</h2><div class='author'><a href='{1}'>{3}<span>{2}</span></a></div></div>";
     }
 }

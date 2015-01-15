@@ -9,6 +9,7 @@ namespace CNBlogs.ControlHelper
     {
         public object Convert(object value, Type targetType, object parameter, string culture)
         {
+            Windows.ApplicationModel.Resources.ResourceLoader loader = new Windows.ApplicationModel.Resources.ResourceLoader();
             DateTime dateTimeToConvert = (DateTime)value;
             string commentTimeString = "";
             TimeSpan commentTimeLag = System.DateTime.Now - dateTimeToConvert;
@@ -16,21 +17,24 @@ namespace CNBlogs.ControlHelper
             {
                 if (TimeSpan.FromHours(1) > commentTimeLag)
                 {
-                    commentTimeString = string.Format("{0}分钟前", commentTimeLag.Minutes);
+                    if (commentTimeLag.Minutes <= 1)
+                        commentTimeString = string.Format("{0}" + loader.GetString("TimeConverter_Recent_1"), commentTimeLag.Minutes);
+                    else
+                        commentTimeString = string.Format("{0}" + loader.GetString("TimeConverter_Recent"), commentTimeLag.Minutes);
                 }
                 else
                 {
-                    commentTimeString = string.Format("今天{0}:{1:d2}", dateTimeToConvert.Hour, dateTimeToConvert.Minute);
+                    commentTimeString = string.Format(loader.GetString("TimeConverter_Today") + "{0}:{1:d2}", dateTimeToConvert.Hour, dateTimeToConvert.Minute);
                 }
             }
             else if (dateTimeToConvert.AddDays(1).Date == System.DateTime.Now.Date)
             {
-                commentTimeString = string.Format("昨天{0}:{1:d2}", dateTimeToConvert.Hour, dateTimeToConvert.Minute);
+                commentTimeString = string.Format(loader.GetString("TimeConverter_Yesterday") + "{0}:{1:d2}", dateTimeToConvert.Hour, dateTimeToConvert.Minute);
             }
-            else if (dateTimeToConvert.AddDays(2).Date == System.DateTime.Now.Date)
-            {
-                commentTimeString = string.Format("前天{0}:{1:d2}", dateTimeToConvert.Hour, dateTimeToConvert.Minute);
-            }
+            //else if (dateTimeToConvert.AddDays(2).Date == System.DateTime.Now.Date)
+            //{
+            //    commentTimeString = string.Format(loader.GetString("TimeConverter_DayBeforeYesterday") + "{0}:{1:d2}", dateTimeToConvert.Hour, dateTimeToConvert.Minute);
+            //}
             else
             {
                 commentTimeString = dateTimeToConvert.ToString("yyyy-MM-dd");

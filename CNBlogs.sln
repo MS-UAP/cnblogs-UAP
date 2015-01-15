@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CNBlogs", "CNBlogs", "{F642F366-AD5E-4CFA-95B9-981EF0D8CB6A}"
 EndProject
@@ -76,9 +76,9 @@ Global
 		{EF23BA57-BB34-423F-BFE3-A7A7FE07D2DF}.Debug|ARM.ActiveCfg = Debug|ARM
 		{EF23BA57-BB34-423F-BFE3-A7A7FE07D2DF}.Debug|ARM.Build.0 = Debug|ARM
 		{EF23BA57-BB34-423F-BFE3-A7A7FE07D2DF}.Debug|ARM.Deploy.0 = Debug|ARM
-		{EF23BA57-BB34-423F-BFE3-A7A7FE07D2DF}.Debug|Win32.ActiveCfg = Debug|x86
-		{EF23BA57-BB34-423F-BFE3-A7A7FE07D2DF}.Debug|Win32.Build.0 = Debug|x86
-		{EF23BA57-BB34-423F-BFE3-A7A7FE07D2DF}.Debug|Win32.Deploy.0 = Debug|x86
+		{EF23BA57-BB34-423F-BFE3-A7A7FE07D2DF}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{EF23BA57-BB34-423F-BFE3-A7A7FE07D2DF}.Debug|Win32.Build.0 = Debug|Any CPU
+		{EF23BA57-BB34-423F-BFE3-A7A7FE07D2DF}.Debug|Win32.Deploy.0 = Debug|Any CPU
 		{EF23BA57-BB34-423F-BFE3-A7A7FE07D2DF}.Debug|x64.ActiveCfg = Debug|x64
 		{EF23BA57-BB34-423F-BFE3-A7A7FE07D2DF}.Debug|x64.Build.0 = Debug|x64
 		{EF23BA57-BB34-423F-BFE3-A7A7FE07D2DF}.Debug|x64.Deploy.0 = Debug|x64

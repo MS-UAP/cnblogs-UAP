@@ -38,6 +38,9 @@ namespace CNBlogs.DataHelper
             }
         }
 
+        /// <summary>
+        /// TODO: test method to simulat sign-in
+        /// </summary>
         public async Task<bool> Signin(string username, string password)
         {
             var isSignin = false;
@@ -50,7 +53,7 @@ namespace CNBlogs.DataHelper
                 var response = await _client.SendRequestAsync(request);
                 var cookie = string.Empty;
 
-                if (response.StatusCode == HttpStatusCode.Ok 
+                if (response.StatusCode == HttpStatusCode.Ok
                     && response.Headers.TryGetValue("Set-Cookie", out cookie))
                 {
                     isSignin = true;
@@ -61,14 +64,25 @@ namespace CNBlogs.DataHelper
                 {
                     System.Diagnostics.Debug.WriteLine("fail to get cookie, can not use it");
                 }
-
-                //request.Headers.Cookie.TryParseAdd("ASP.NET_SessionId=04oawm1g05w23so40u0e31nb; path=/; HttpOnly, SERVERID=9b2e527de1fc6430919cfb3051ec3e6c|1418716636|1418716636;Path=/");
             }
             catch
             {
             }
 
             return isSignin;
+        }
+
+        /// <summary>
+        /// get blogger details by author name, and match using author blogapp
+        /// </summary>
+        /// <returns></returns>
+        public async Task<Blogger> GetBloggerByAuthorAsync(Author author)
+        {
+            var result = await APIWrapper.Instance.SearchBloggerAsync(author.Name);
+
+            return result.IsSuccess ?
+                result.Result.Entries.Where(a => a.BlogApp == author.BlogApp).FirstOrDefault() :
+                null;
         }
 
         /// <summary>

@@ -23,7 +23,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ControlHelper\BoolToVisibilityConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ControlHelper\FavoriteToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ControlHelper\GridviewCountToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ControlHelper\NewsControlTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ControlHelper\NightModeLabelConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ControlHelper\PostStatusConverter.cs" />
@@ -45,8 +45,6 @@
     <Content Include="$(MSBuildThisFileDirectory)Data\Categories.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="$(MSBuildThisFileDirectory)Data\Favorites.xml" />
-    <Content Include="$(MSBuildThisFileDirectory)Data\Columns.xml" />
     <Content Include="$(MSBuildThisFileDirectory)HTML\css\cnblog_night.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -89,6 +87,8 @@
     <Content Include="$(MSBuildThisFileDirectory)SampleData\PostComments.xml" />
     <Content Include="$(MSBuildThisFileDirectory)SampleData\PostContent.xml" />
     <Content Include="$(MSBuildThisFileDirectory)SampleData\RecommendAuthors.xml" />
+    <Content Include="$(MSBuildThisFileDirectory)Strings\en-US\Columns.xml" />
+    <Content Include="$(MSBuildThisFileDirectory)Strings\zh-CN\Columns.xml" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)StyleDictionary.xaml">
@@ -110,5 +110,8 @@
     <Content Include="$(MSBuildThisFileDirectory)HTML\js\viewport-adjust.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)External\Logger.dll" />
   </ItemGroup>
 </Project>

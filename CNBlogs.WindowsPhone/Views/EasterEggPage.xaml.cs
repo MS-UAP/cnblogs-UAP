@@ -41,6 +41,7 @@ namespace CNBlogs
         private int elapseSecond = 0;
         private int _snowHeight = 0;
         private int[] sizeOfSnow = new int[3] { 15, 20, 30 };
+        private int year = 2000;
 
         public EasterEggPage()
         {
@@ -61,6 +62,7 @@ namespace CNBlogs
             this.elapseSecond = 0;
             this._snowHeight = 0;
             this.pb_Progress.Value = 0;
+            this.year = 2000;
 
             this.timerToShowProgress = ThreadPoolTimer.CreatePeriodicTimer(TimeToShowProgress, TimeSpan.FromSeconds(1));
             this.timerToCreateSnow = ThreadPoolTimer.CreatePeriodicTimer(TimeToAddSnow, TimeSpan.FromMilliseconds(100));
@@ -73,7 +75,8 @@ namespace CNBlogs
                 {
                     this.elapseSecond++;
                     this.pb_Progress.Value = this.elapseSecond;
-
+                    this.year ++;
+                    this.control_PageTitle.ChangeSubTitleContent(this.year.ToString(), true);
                     if (this.elapseSecond >= this.pb_Progress.Maximum)
                     {
                         this.timerToShowProgress.Cancel();
@@ -197,6 +200,11 @@ namespace CNBlogs
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                Logger.LogAgent.GetInstance().WriteLog(this.GetType().ToString());
+            }
+
             this.navigationHelper.OnNavigatedTo(e);
         }
 

@@ -107,6 +107,7 @@
     <Compile Include="Controls\FavoriteGroupControl.cs" />
     <Compile Include="Controls\FavoriteAuthorControl.cs" />
     <Compile Include="Controls\FavoriteCategoryControl.cs" />
+    <Compile Include="HelpClass\SettingPagePivotItemTags.cs" />
     <Compile Include="Views\EasterEggPage.xaml.cs">
       <DependentUpon>EasterEggPage.xaml</DependentUpon>
     </Compile>
@@ -127,9 +128,6 @@
       <DependentUpon>CategoriesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ColumnControl.cs" />
-    <Compile Include="Views\FavoritePostsPage.xaml.cs">
-      <DependentUpon>FavoritePostsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\BestBloggersPage.xaml.cs">
       <DependentUpon>BestBloggersPage.xaml</DependentUpon>
     </Compile>
@@ -220,10 +218,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\FavoritePostsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\BestBloggersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -268,6 +262,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Logger, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CNBlogs.Shared\External\Logger.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

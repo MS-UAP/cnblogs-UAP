@@ -8,7 +8,8 @@ body {
     -ms-word-wrap: break-word;
     word-wrap: break-word;
         font-family: Verdana, Arial, Helvetica, sans-serif;
-        
+            background-color:rgb(243,243,244);
+
 }
 
 img{
@@ -19,4 +20,10 @@ ol, ul{
 font-size:0.7em;
 }
 
+.title {
+    color:#297ACD;
+    font-size:1.1em;
+    margin: 0 auto 1em auto ;
+    text-align:center;
+}
 

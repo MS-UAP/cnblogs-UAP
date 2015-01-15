@@ -1,5 +1,6 @@
 ﻿<SettingsFlyout
     x:Class="CNBlogs.PreferenceSettingsFlyout"
+    x:Uid="SettingsFlyout_Preference"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CNBlogs"
@@ -9,7 +10,7 @@
     IconSource="Assets/SmallLogo.png"
     Title="设置"    
     RequestedTheme="Light"
-    HeaderBackground="{ThemeResource CNBlogsThemeColor}"
+    HeaderBackground="{ThemeResource Win8CNBlogsThemeColor}"
     d:DesignWidth="346">
 
 
@@ -20,10 +21,16 @@
 
         <!-- Content Section 1-->
         <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}">
-            <TextBlock Text="阅读设置" Style="{StaticResource TitleTextBlockStyle}"/>
-            <TextBlock Margin="0,0,0,10" Text="在阅读设置部分，可以进行所有和阅读相关的设置" Style="{StaticResource BodyTextBlockStyle}"/>
-            <ToggleSwitch Margin="-6,0,0,0" x:Name="ReadingModeToggle"
-                          Header = "阅读模式" HorizontalAlignment="Left" HorizontalContentAlignment="Left" OffContent="日间模式" OnContent="夜间模式" Toggled="ReadingModeToggle_Toggled"/>
+            <!--<TextBlock Text="阅读设置" Style="{StaticResource TitleTextBlockStyle}"/>-->
+            <!--<ToggleSwitch Margin="-6,0,0,0" x:Name="ReadingModeToggle"
+                          Header = "阅读模式" HorizontalAlignment="Left" HorizontalContentAlignment="Left" OffContent="日间模式" OnContent="夜间模式" Toggled="ReadingModeToggle_Toggled"/>-->
+            <ComboBox x:Uid="SettingsFlyout_Preference_Language" x:Name="UILanguageComboBox" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem x:Uid="SettingsFlyout_Preference_Language_CHI" x:Name="UILanguageComboItem_zh_CN" Tag="zh-CN"></ComboBoxItem>
+                <ComboBoxItem x:Uid="SettingsFlyout_Preference_Language_ENG" x:Name="UILanguageComboItem_en_US" Tag="en-US"></ComboBoxItem>
+            </ComboBox>
+            <TextBlock x:Uid="SettingsFlyout_Preference_Language_Note" x:Name="LanguageNoteTextbox" 
+                       Visibility="Collapsed"
+                       Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
         </StackPanel>
 
         <!-- Define more Content Sections below as necessary -->

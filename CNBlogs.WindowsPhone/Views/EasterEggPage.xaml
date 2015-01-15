@@ -17,10 +17,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        
-        <local:PageTitleControl Grid.Row="0" x:Name="control_PageTitle" TitleContent="新年"/>
-        <ProgressBar x:Name="pb_Progress" Grid.Row="0" Foreground="White" Opacity="0.85" VerticalAlignment="Bottom" Maximum="16"/>
-        <TextBlock Grid.Row="1" Foreground="White" VerticalAlignment="Top" FontSize="15" Text="(本页展示UAP中如何制作简单的移动和动画)" Margin="15,0"/>
+
+        <local:PageTitleControl Grid.Row="0" x:Name="control_PageTitle" x:Uid="NewYearTitle" SubTitleContent="2000"/>
+        <ProgressBar x:Name="pb_Progress" Grid.Row="0" Foreground="White" Opacity="0.85" VerticalAlignment="Bottom" Maximum="15"/>
+        <TextBlock Grid.Row="1" Foreground="White" VerticalAlignment="Top" FontSize="15" x:Uid="HappyContent" Text="(本页展示UAP中的简单移动和动画)" Margin="15,0"/>
         
         <Canvas Grid.Row="1" x:Name="canvas">
             <TextBlock x:Name="tb_Star1" Text="✨" FontFamily="Segoe UI Symbol" Foreground="White" FontSize="30" Canvas.Left="295" Canvas.Top="56">
@@ -111,7 +111,7 @@
 
     <Page.BottomAppBar>
         <CommandBar x:Name="appbar">
-            <AppBarButton x:Name="btn_Refresh" Label="再看一次" Icon="Rotate" Click="btn_Refresh_Click"/>
+            <AppBarButton x:Name="btn_Refresh" x:Uid="OneMoreButton" Label="再看一次" Icon="Rotate" Click="btn_Refresh_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

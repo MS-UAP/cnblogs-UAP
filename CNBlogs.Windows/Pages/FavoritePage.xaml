@@ -8,52 +8,103 @@
     xmlns:local="using:CNBlogs.Pages"
     xmlns:common="using:CNBlogs.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:converter="using:CNBlogs.ControlHelper"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     RequestedTheme="Light"
     mc:Ignorable="d">
+    <Page.Resources>
+        <CollectionViewSource x:Name="Categories"/>
+        <CollectionViewSource x:Name="Posts"/>
+        <CollectionViewSource x:Name="Bloggers"/>
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </Page.Resources>
 
-    <Grid Background="{ThemeResource CNBlogsBackColor}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="140"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <Hub Grid.Row="1" Background="{ThemeResource Win8CNBlogsBackColor}" x:Name="FavoriteHub">
+            <Hub.Header>
+            <nav:PageTitleControl x:Uid="FavoriteTitleComment" x:Name="TitleControl" Style="{StaticResource PageTitleWithoutCountControl}" Margin="10,-35,0,0"/>
+            </Hub.Header>
+            <HubSection x:Uid="FavoriteSection1" x:Name="FavoriteCategory" Margin="-15">
+                <HubSection.Header>
+                    <TextBlock Style="{StaticResource Win8CategoryTitleFont}" Foreground="{ThemeResource Win8CNBlogsThemeColor}" Padding="20,0,0,0">
+                        <Run Text="&#xE179;" FontFamily="Segoe UI Symbol"/>
+                        <Run x:Uid="FavoriteHubSectionHeaderCategory" Text="分类"/>
+                    </TextBlock>
+                </HubSection.Header>
+                <DataTemplate>
+                    <GridView x:Name="gv_Category" 
+                                  SelectionMode="None" 
+                                  IsItemClickEnabled="True"                              
+                                  Padding="20,20,0,0"
+                                  ItemsSource="{Binding Source={StaticResource Categories}}"
+                                  ItemClick="gv_Category_ItemClick">
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+                                    <nav:CategoryControl 
+                                        Style="{StaticResource FavoriteSubCategoryStyle}" 
+                                        Foreground="White"
+                                        RightTapped="CategoryControl_RightTapped"/>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+                </DataTemplate>
+            </HubSection>
 
-        <nav:PageTitleControl x:Name="TitleControl" TitleContent="收藏夹" Margin="50,0,0,0"/>
-
-        <Grid Grid.Row="1">
-            <SemanticZoom x:Name="sz_FavoritePosts" 
-                      ViewChangeStarted="sz_FavoritePosts_ViewChangeStarted" 
-                      ViewChangeCompleted="sz_FavoritePosts_ViewChangeCompleted">
-                <SemanticZoom.ZoomedInView>
-                    <GridView x:Name="gv_FavoritePosts" ItemClick="gv_FavoritePosts_ItemClick"
-                      SelectionMode="None" IsItemClickEnabled="True" Padding="20,0,0,0">
+        <HubSection x:Uid="FavoriteSection2" x:Name="FavoriteBlogger" Margin="-15">
+            <HubSection.Header>
+                <TextBlock Style="{StaticResource Win8CategoryTitleFont}" Foreground="{ThemeResource Win8CNBlogsThemeColor}" Padding="20,0,0,0">
+                        <Run Text="" FontFamily="Segoe UI Symbol"/>
+                        <Run x:Uid="FavoriteHubSectionHeaderBlogger" Text="博主"/>
+                </TextBlock>
+            </HubSection.Header>
+                <DataTemplate>
+                    <GridView x:Name="gv_Bloggers"
+                              SelectionMode="None" 
+                              IsItemClickEnabled="True" 
+                              Padding="0,10,0,0"
+                              ItemsSource="{Binding Source={StaticResource Bloggers}}" ItemClick="gv_Bloggers_ItemClick">
                         <GridView.ItemTemplate>
                             <DataTemplate>
-                                <nav:PostControl Tapped="PostControl_Tapped"/>
+                                <nav:BloggerControl 
+                                    Style="{StaticResource FavoriteBloggerControl}" 
+                                    RightTapped="CategoryControl_RightTapped"/>
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>
-                </SemanticZoom.ZoomedInView>
+                </DataTemplate>
+            </HubSection>
 
-                <SemanticZoom.ZoomedOutView>
-                    <GridView x:Name="gv_SimplePosts" Tapped="gv_SimplePosts_Tapped"
-                     SelectionMode="None" IsItemClickEnabled="True" Padding="20,0,0,0" >
+        <HubSection x:Uid="FavoriteSection3" x:Name="FavoritePost" Margin="-15">
+            <HubSection.Header>
+                <TextBlock Style="{StaticResource Win8CategoryTitleFont}" Foreground="{ThemeResource Win8CNBlogsThemeColor}" Padding="20,0,0,0">
+                        <Run Text="&#xE160;" FontFamily="Segoe UI Symbol"/>
+                        <Run x:Uid="FavoriteHubSectionHeaderBlog" Text="博文"/>
+                </TextBlock>
+            </HubSection.Header>
+            <DataTemplate>
+                    <GridView x:Name="gv_FavoritePosts" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="True" 
+                              Padding="0,10,0,0"
+                              ItemsSource="{Binding Source={StaticResource Posts}}"
+                              ItemClick="gv_FavoritePosts_ItemClick">
                         <GridView.ItemTemplate>
                             <DataTemplate>
-                                <nav:PostControl Style="{StaticResource ResourceKey=SimplePostControl}"/>
-                            </DataTemplate>
+                                <nav:PostControl 
+                                    Style="{StaticResource SimplePostControl}"
+                                    RightTapped="CategoryControl_RightTapped"/>
+                        </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>
-                </SemanticZoom.ZoomedOutView>
-            </SemanticZoom>
-        </Grid>
-    </Grid>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
 
     <Page.BottomAppBar>
         <CommandBar Style="{StaticResource Win8AppbarStyle}">
-            <AppBarButton x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>
-            <AppBarButton x:Name="btn_ScrollToTop" Icon="Previous" Label="回到开始" Click="btn_ScrollToTop_Click"/>
-            <AppBarButton x:Name="btn_ZoomChange" Icon="Zoom" Label="视图缩放" Click="btn_ZoomChange_Click"/>
+            <AppBarButton x:Uid="AppButton_Refresh" x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>
+            <AppBarButton x:Uid="AppButton_GoToCategory" x:Name="btn_GotoCategory" Icon="AllApps" Label="分类收藏" Click="btn_GotoCategory_Click"/>
+            <AppBarButton x:Uid="AppButton_GoToBlogger" x:Name="btn_GotoBlogger" Icon="Contact" Label="博主收藏" Click="btn_GotoBlogger_Click"/>
+            <AppBarButton x:Uid="AppButton_GoToBlog" x:Name="btn_GotoPost" Icon="Page" Label="博文收藏" Click="btn_GotoPost_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 

@@ -17,6 +17,7 @@ namespace CNBlogs
     public sealed class PostControl : Control
     {
         private Grid mainPostGrid;
+        private Grid avatarGrid;
         private Button naviButton;
         private Storyboard storyBoard;
         private TextBlock favoriteIcon;
@@ -42,6 +43,15 @@ namespace CNBlogs
                 this.mainPostGrid = this.GetTemplateChild("MainGrid") as Grid;
             }
         }
+
+        private void GetAvatarControl()
+        {
+            if (this.avatarGrid == null)
+            {
+                this.avatarGrid = this.GetTemplateChild("AvatarGrid") as Grid;
+            }
+        }
+
         private void GetAttributionControl()
         {
             if (this.attributionControl == null)
@@ -151,11 +161,33 @@ namespace CNBlogs
                 }
             }
 
+            //if(post.Author == null)
+            //{
+            //    GetAvatarControl();
+            //    if(avatarGrid!=null)
+            //    {
+            //        avatarGrid.Visibility = Visibility.Collapsed;
+            //    }
+            //}
+            //else if(post.Author.Avatar==null)
+            //{
+            //    GetAvatarControl();
+            //    if (avatarGrid != null)
+            //    {
+            //        avatarGrid.Visibility = Visibility.Collapsed;
+            //    }
+            //}
+
             base.OnApplyTemplate();
         }
 
         private void SetFavoriteStatus()
         {
+            GetSummaryControl();
+            if (this.mainPostGrid != null)
+            {
+                this.mainPostGrid.Opacity = 1;
+            } 
             GetTextBlockControl();
             if(this.favoriteIcon != null)
             {

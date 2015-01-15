@@ -9,4 +9,5 @@ for (var i = 0; i < args.length; i++) {
         pwidth = Math.round(+decodeURIComponent(pair[1]));
     }
 }
-document.write('<meta name="viewport" content="width=' + pwidth + ', height=' + pheight + ', , initial-scale=1.0">');
+document.write('<meta name="viewport" content="width=' + pwidth + ', height=' + pheight + ', initial-scale=0.5,  minimum-scale=0.5">');
+

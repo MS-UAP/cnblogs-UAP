@@ -1,42 +1,447 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>	
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>1.3</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BestTitle.Text" xml:space="preserve">
+    <value>精华</value>
+  </data>
+  <data name="BestTitleComment.Text" xml:space="preserve">
+    <value>10日内推荐排行</value>
+  </data>
+  <data name="BloggerHomePage.Content" xml:space="preserve">
+    <value>博主主页</value>
+  </data>
+  <data name="BloggerInfoTitle.Text" xml:space="preserve">
+    <value>博主信息</value>
+  </data>
+  <data name="BloggerRecCount.Text" xml:space="preserve">
+    <value>20位随机推荐的明星博主</value>
+  </data>
+  <data name="BloggerTitle.Text" xml:space="preserve">
+    <value>博主</value>
+  </data>
+  <data name="BloggerTitleComment.Text" xml:space="preserve">
+    <value>明星博主推荐</value>
+  </data>
+  <data name="CategoryPostCount.Text" xml:space="preserve">
+    <value>博客园服务器只提供近20条数据</value>
+  </data>
+  <data name="CategoryTitle.Text" xml:space="preserve">
+    <value>分类</value>
+  </data>
+  <data name="CategoryTitleComment.Text" xml:space="preserve">
+    <value>博文分类索引</value>
+  </data>
+  <data name="ColumnTitle.Text" xml:space="preserve">
+    <value>栏目</value>
+  </data>
+  <data name="FavoriteTitle.Text" xml:space="preserve">
+    <value>收藏</value>
+  </data>
+  <data name="FavoriteTitleComment.Text" xml:space="preserve">
+    <value>我的收藏</value>
+  </data>
+  <data name="HomeTitle.Text" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="HomeTitleComment.Text" xml:space="preserve">
+    <value>今日最新博客</value>
+  </data>
+  <data name="HotTitle.Text" xml:space="preserve">
+    <value>热门</value>
+  </data>
+  <data name="HotTitleComment.Text" xml:space="preserve">
+    <value>2日内阅读排行</value>
+  </data>
+  <data name="NewsTitle.Text" xml:space="preserve">
+    <value>新闻</value>
+  </data>
+  <data name="NewsTitleComment.Text" xml:space="preserve">
+    <value>今日IT新闻</value>
+  </data>
+  <data name="NewYearTitle.Text" xml:space="preserve">
+    <value>新年</value>
+  </data>
+  <data name="SettingFontSize.Text" xml:space="preserve">
+    <value>拖动滑块改变正文字体大小</value>
+  </data>
+  <data name="Title.Text" xml:space="preserve">
+    <value>博客园</value>
+  </data>
+  <data name="BestTitle.FontSize" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="BloggerTitle.FontSize" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="CategoryTitle.FontSize" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="FavoriteTitle.FontSize" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="HomeTitle.FontSize" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="HotTitle.FontSize" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="NewsTitle.FontSize" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="AppButton_BloggerInfo.Label" xml:space="preserve">
+    <value>博主信息</value>
+  </data>
+  <data name="AppButton_FavoriteBlog.Label" xml:space="preserve">
+    <value>收藏博文</value>
+  </data>
+  <data name="AppButton_FavoriteBolgger.Label" xml:space="preserve">
+    <value>收藏博主</value>
+  </data>
+  <data name="AppButton_FavoriteCategory.Label" xml:space="preserve">
+    <value>收藏此类</value>
+  </data>
+  <data name="AppButton_GoToBlog.Label" xml:space="preserve">
+    <value>博文收藏</value>
+  </data>
+  <data name="AppButton_GoToBlogger.Label" xml:space="preserve">
+    <value>博主收藏</value>
+  </data>
+  <data name="AppButton_GoToCategory.Label" xml:space="preserve">
+    <value>分类收藏</value>
+  </data>
+  <data name="AppButton_GoToStart.Label" xml:space="preserve">
+    <value>回到开始</value>
+  </data>
+  <data name="AppButton_OriginalLink.Label" xml:space="preserve">
+    <value>原文链接</value>
+  </data>
+  <data name="AppButton_Refresh.Label" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="AppButton_UnFavoriteBlog.Label" xml:space="preserve">
+    <value>取消收藏</value>
+  </data>
+  <data name="AppButton_UnFavoriteBolgger.Label" xml:space="preserve">
+    <value>取消收藏</value>
+  </data>
+  <data name="AppButton_UnFavoriteCategory.Label" xml:space="preserve">
+    <value>取消收藏</value>
+  </data>
+  <data name="AppButton_Zoom.Label" xml:space="preserve">
+    <value>视图缩放</value>
+  </data>
+  <data name="CommentTextblock.Text" xml:space="preserve">
+    <value>评论</value>
+  </data>
+  <data name="CommentTextblock_Status2.Text" xml:space="preserve">
+    <value>收起</value>
+  </data>
+  <data name="CommentHeader.Text" xml:space="preserve">
+    <value>评论</value>
+  </data>
+  <data name="CommentPlaceholder.Text" xml:space="preserve">
+    <value>目前还没有评论！</value>
+  </data>
+  <data name="FavoriteHubSectionHeaderBlog.Text" xml:space="preserve">
+    <value>博文</value>
+  </data>
+  <data name="FavoriteHubSectionHeaderBlogger.Text" xml:space="preserve">
+    <value>博主</value>
+  </data>
+  <data name="FavoriteHubSectionHeaderCategory.Text" xml:space="preserve">
+    <value>分类</value>
+  </data>
+  <data name="NewsPostSource.Text" xml:space="preserve">
+    <value>来自：</value>
+  </data>
+  <data name="SettingPane_Item_About" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="SettingPane_Item_Privacy" xml:space="preserve">
+    <value>隐私声明</value>
+  </data>
+  <data name="SettingsFlyout_About.Title" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="SettingsFlyout_About_Text1.Text" xml:space="preserve">
+    <value>博客园</value>
+  </data>
+  <data name="SettingsFlyout_About_Text2.Text" xml:space="preserve">
+    <value>Universal App 客户端</value>
+  </data>
+  <data name="SettingsFlyout_About_Text3.Content" xml:space="preserve">
+    <value>给个好评</value>
+  </data>
+  <data name="SettingsFlyout_About_Text4.Text" xml:space="preserve">
+    <value>本应用为Universal App的示例应用，使用WindowsRT SDK开发。</value>
+  </data>
+  <data name="SettingsFlyout_About_Text5.Text" xml:space="preserve">
+    <value>在Windows 8.1和Windows Phone 8.1上各有一个同名应用同时发布，两者共用一套底层代码。</value>
+  </data>
+  <data name="TimeConverter_DayBeforeYesterday" xml:space="preserve">
+    <value>前天</value>
+  </data>
+  <data name="TimeConverter_Recent" xml:space="preserve">
+    <value>分钟前</value>
+  </data>
+  <data name="TimeConverter_Today" xml:space="preserve">
+    <value>今天</value>
+  </data>
+  <data name="TimeConverter_Yesterday" xml:space="preserve">
+    <value>昨天</value>
+  </data>
+  <data name="BloggerControl_PostCount.Text" xml:space="preserve">
+    <value>博文数量: </value>
+  </data>
+  <data name="BloggerControl_UpdateTime.Text" xml:space="preserve">
+    <value>最近更新: </value>
+  </data>
+  <data name="ContextButton_Unfavorite" xml:space="preserve">
+    <value>取消收藏</value>
+  </data>
+  <data name="Notify_FavoriteBlog" xml:space="preserve">
+    <value>收藏博文成功</value>
+  </data>
+  <data name="Notify_FavoriteBlogger" xml:space="preserve">
+    <value>收藏博主成功</value>
+  </data>
+  <data name="Notify_FavoriteCategory" xml:space="preserve">
+    <value>收藏分类成功</value>
+  </data>
+  <data name="Notify_UnFavoriteBlog" xml:space="preserve">
+    <value>已取消收藏博文</value>
+  </data>
+  <data name="Notify_UnFavoriteBlogger" xml:space="preserve">
+    <value>已取消收藏博主</value>
+  </data>
+  <data name="Notify_UnFavoriteCategory" xml:space="preserve">
+    <value>已取消收藏分类</value>
+  </data>
+  <data name="BloggerInfoButton.Label" xml:space="preserve">
+    <value>博主信息</value>
+  </data>
+  <data name="CommentButton.Label" xml:space="preserve">
+    <value>查看评论</value>
+  </data>
+  <data name="DayModeText" xml:space="preserve">
+    <value>日间模式</value>
+  </data>
+  <data name="FavoriteBlogButton.Label" xml:space="preserve">
+    <value>收藏博文</value>
+  </data>
+  <data name="FavoriteBloggerButton.Label" xml:space="preserve">
+    <value>收藏博主</value>
+  </data>
+  <data name="FavoriteBloggerText" xml:space="preserve">
+    <value>博主</value>
+  </data>
+  <data name="FavoriteBlogText" xml:space="preserve">
+    <value>博文</value>
+  </data>
+  <data name="FavoriteCategoryText" xml:space="preserve">
+    <value>分类</value>
+  </data>
+  <data name="FontSizeButton.Label" xml:space="preserve">
+    <value>调整字号</value>
+  </data>
+  <data name="HappyContent.Text" xml:space="preserve">
+    <value>(本页展示UAP中的简单移动和动画)</value>
+  </data>
+  <data name="LightModeToggleSwitch.Header" xml:space="preserve">
+    <value>光线模式</value>
+  </data>
+  <data name="LightModeToggleSwitch.OffContent" xml:space="preserve">
+    <value>日间模式</value>
+  </data>
+  <data name="LightModeToggleSwitch.OnContent" xml:space="preserve">
+    <value>夜间模式</value>
+  </data>
+  <data name="NightModeText" xml:space="preserve">
+    <value>夜间模式</value>
+  </data>
+  <data name="OneMoreButton.Label" xml:space="preserve">
+    <value>再看一次</value>
+  </data>
+  <data name="RefreshButton.Label" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="SettingButton.Label" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="SettingPageAbout.Text" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="SettingPageFontSize.Text" xml:space="preserve">
+    <value>字号</value>
+  </data>
+  <data name="SettingPageSystem.Text" xml:space="preserve">
+    <value>系统</value>
+  </data>
+  <data name="SourceLinkButton.Label" xml:space="preserve">
+    <value>原文链接</value>
+  </data>
+  <data name="SplashSubTitle.Text" xml:space="preserve">
+    <value>分享代码，改变世界</value>
+  </data>
+  <data name="ToTopButton.Label" xml:space="preserve">
+    <value>返回顶部</value>
+  </data>
+  <data name="CategoryTitleText" xml:space="preserve">
+    <value>分类</value>
+  </data>
+  <data name="CommentTextblockText_Status1" xml:space="preserve">
+    <value>评论</value>
+  </data>
+  <data name="CommentTextblockText_Status2" xml:space="preserve">
+    <value>收起</value>
+  </data>
+  <data name="TimeConverter_Recent_1" xml:space="preserve">
+    <value>分钟前</value>
+  </data>
+  <data name="HotTitleComment1.Text" xml:space="preserve">
+    <value>2日内阅读排行</value>
+  </data>
+  <data name="SettingPane_Item_Preference" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="SettingsFlyout_Preference.Title" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="SettingsFlyout_Preference_Reading_Title.Text" xml:space="preserve">
+    <value>阅读设置</value>
+  </data>
+  <data name="SettingsFlyout_Preference_Language.Header" xml:space="preserve">
+    <value>界面语言</value>
+  </data>
+  <data name="SettingsFlyout_Preference_Language_CHI.Content" xml:space="preserve">
+    <value>中文 Chinese</value>
+  </data>
+  <data name="SettingsFlyout_Preference_Language_ENG.Content" xml:space="preserve">
+    <value>英文 English</value>
+  </data>
+  <data name="SettingsFlyout_Preference_Language_Note.Text" xml:space="preserve">
+    <value>更改完语言需要重启应用才能完全生效。</value>
+  </data>
+  <data name="BestTitleComment_W8.Text" xml:space="preserve">
+    <value>10日内推荐排行</value>
+  </data>
+  <data name="BloggerTitleComment_W8.Text" xml:space="preserve">
+    <value>明星博主推荐</value>
+  </data>
 </root>

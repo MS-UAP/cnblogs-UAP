@@ -61,6 +61,9 @@ namespace CNBlogs.Pages
 
         private async void LoadData()
         {
+            //For favorite button display
+            await FavoriteCategoryDS.Instance.Refresh();
+
             this.DataContext = null;
             this.categoryDS = new CategoryPostDS(category);
             this.categoryDS.OnLoadMoreStarted += TitleControl.DS_OnLoadMoreStarted;
@@ -108,14 +111,34 @@ namespace CNBlogs.Pages
         /// and <see cref="GridCS.Common.NavigationHelper.SaveState"/>.
         /// The navigation parameter is available in the LoadState method 
         /// in addition to page state preserved during an earlier session.
+        /// 
+        Windows.ApplicationModel.Resources.ResourceLoader loader = new Windows.ApplicationModel.Resources.ResourceLoader();
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                Logger.LogAgent.GetInstance().WriteLog(this.GetType().ToString());
+            }
             this.category = e.Parameter as Category;
             //change the topic
-            this.TitleControl.TitleContent = "分类 - " + category.Name;
+            this.TitleControl.Text = loader.GetString("CategoryTitleText") + " - " + category.Name;
             this.LoadData();
+        }
+
+        private void UpdateUI()
+        {
+            if(FavoriteCategoryDS.Instance.Items.Any(i => i.Item.Id == category.Id))
+            {
+                this.btn_Favorite.Visibility = Visibility.Collapsed;
+                this.btn_UnFavorite.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                this.btn_Favorite.Visibility = Visibility.Visible;
+                this.btn_UnFavorite.Visibility = Visibility.Collapsed;
+            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -196,19 +219,32 @@ namespace CNBlogs.Pages
         {
             try
             {
-                //var latestPostId = "";
-                //if (this.categoryDS.Count > 0)
-                //{
-                //    latestPostId = this.categoryDS.First().ID;
-                //}
+                var latestPostId = "";
+                if (this.categoryDS.Count > 0)
+                {
+                    latestPostId = this.categoryDS.First().ID;
+                }
 
-                //await FavoriteCategoryDS.Instance.Follow(this.category, latestPostId);
+                await FavoriteCategoryDS.Instance.Follow(this.category, latestPostId);
 
-                notifyBlock.ShowMessage("已添加收藏");
+                notifyBlock.ShowMessage(loader.GetString("Notify_FavoriteCategory"));
+                UpdateUI();
             }
             catch (Exception)
             {
             }
+        }
+
+        private async void btn_UnFavorite_Click(object sender, RoutedEventArgs e)
+        {
+            await FavoriteCategoryDS.Instance.Remove(new FavoriteItem<Category>() { Item = this.category });
+            notifyBlock.ShowMessage(loader.GetString("Notify_UnFavoriteCategory"));
+            UpdateUI();
+        }
+
+        private void CommandBar_Opened(object sender, object e)
+        {
+            this.UpdateUI();
         }
     }
 }

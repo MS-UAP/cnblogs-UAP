@@ -12,13 +12,13 @@
     RequestedTheme="Light"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource CNBlogsBackColor}">
+    <Grid Background="{ThemeResource Win8CNBlogsBackColor}">
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <nav:PageTitleControl x:Name="TitleControl" TitleContent="热门阅读排行" Margin="50,0,0,0"/>
+        <nav:PageTitleControl x:Uid="HotTitleComment1" x:Name="TitleControl" Margin="50,0,0,0"/>
 
         <Grid Grid.Row="1">
             <SemanticZoom x:Name="sz_HotPosts" 
@@ -51,9 +51,9 @@
 
     <Page.BottomAppBar>
         <CommandBar Style="{StaticResource Win8AppbarStyle}">
-            <AppBarButton x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>
-            <AppBarButton x:Name="btn_ScrollToTop" Icon="Previous" Label="回到开始" Click="btn_ScrollToTop_Click"/>
-            <AppBarButton x:Name="btn_ZoomChange" Icon="Zoom" Label="视图缩放" Click="btn_ZoomChange_Click"/>
+            <AppBarButton x:Uid="AppButton_Refresh" x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>
+            <AppBarButton x:Uid="AppButton_GoToStart" x:Name="btn_ScrollToTop" Icon="Previous" Label="回到开始" Click="btn_ScrollToTop_Click"/>
+            <AppBarButton x:Uid="AppButton_Zoom" x:Name="btn_ZoomChange" Icon="Zoom" Label="视图缩放" Click="btn_ZoomChange_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 

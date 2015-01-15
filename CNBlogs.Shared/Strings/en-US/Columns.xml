@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Columns>
+  <Column>
+    <Icon></Icon>
+    <Name>Hot</Name>
+    <Desc>2 Days Hot Blog</Desc>
+    <Page>CNBlogs.HotPostsPage</Page>
+  </Column>
+  
+  <Column>
+    <Icon></Icon>
+    <Name>Best</Name>
+    <Desc>10 Days Best Blog</Desc>
+    <Page>CNBlogs.BestPostsPage</Page>
+  </Column>
+  
+  <Column>
+    <Icon></Icon>
+    <Name>Blogger</Name>
+    <Desc>20 Star Bloggers</Desc>
+    <Page>CNBlogs.BestBloggersPage</Page>
+  </Column>
+ 
+  <Column>
+    <Icon></Icon>
+    <Name>Category</Name>
+    <Desc>10 Blog Categories</Desc>
+    <Page>CNBlogs.CategoriesPage</Page>
+  </Column>
+
+  <Column>
+    <Icon>⛄</Icon>
+    <Name>Happy</Name>
+    <Desc>Happy New Year</Desc>
+    <Page>CNBlogs.EasterEggPage</Page>
+  </Column>-->
+</Columns>

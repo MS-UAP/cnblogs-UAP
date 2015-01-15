@@ -159,3 +159,50 @@ blockquote {
 ul,  ol {
     font-size: 0.7em;
 }
+
+h1{
+    font-size:1.5em;
+}
+
+.h2{
+    font-size:1.4em;
+}
+
+.h3{
+    font-size:1.3em;
+}
+
+.h4{
+    font-size:1.2em;
+}
+
+.info{
+    margin-top:0.5em;
+}
+
+.info .title{
+    color:#ccc;
+    font-size:1.1em;
+}
+
+.info .author a{
+        text-decoration: none;
+            color:#ccc;
+
+}
+
+.info  .author a img{
+    border:1px solid gray;
+    border-radius:5px;
+            float:left;
+width:1.5em;
+height:1.5em;
+}
+
+.info .author a span{
+    font-size:1em;
+    clear:left;
+    margin-left:5px;
+line-height:1.5em;
+
+}

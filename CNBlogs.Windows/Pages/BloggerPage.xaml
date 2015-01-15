@@ -12,7 +12,7 @@
     RequestedTheme="Light"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource Win8CNBlogsBackColor}">
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
@@ -34,10 +34,10 @@
 
             <Grid Grid.Column="1" Height="60" Width="60">
                 <TextBlock Text="" FontFamily="Segoe UI Symbol" FontSize="48" HorizontalAlignment="Center" 
-                           VerticalAlignment="Center" Foreground="{ThemeResource CNBlogsThemeLightColor}"
+                           VerticalAlignment="Center" Foreground="{ThemeResource Win8CNBlogsThemeLightColor}"
                            Margin="0,0,0,-10"/>
                 <Rectangle x:Name="AuthorAvatar"
-                    StrokeThickness="2" Stroke="{ThemeResource CNBlogsLineColor}" RadiusX="10" RadiusY="10" >
+                    StrokeThickness="2" Stroke="{ThemeResource Win8CNBlogsLineColor}" RadiusX="10" RadiusY="10" >
                     <Rectangle.Fill>
                         <ImageBrush ImageSource="{Binding Avatar}"/>
                     </Rectangle.Fill>
@@ -76,13 +76,16 @@
                 </SemanticZoom.ZoomedOutView>
             </SemanticZoom>
         </Grid>
+        <nav:NotifyBlock x:Name="notifyBlock" Grid.ColumnSpan="99" Grid.RowSpan="99" />
     </Grid>
     
     <Page.BottomAppBar>
-        <CommandBar Style="{StaticResource Win8AppbarStyle}">
-            <AppBarButton x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>
-            <AppBarButton x:Name="btn_ScrollToTop" Icon="Previous" Label="回到开始" Click="btn_ScrollToTop_Click"/>
-            <AppBarButton x:Name="btn_ZoomChange" Icon="Zoom" Label="视图缩放" Click="btn_ZoomChange_Click"/>
+        <CommandBar Style="{StaticResource Win8AppbarStyle}" Opened="CommandBar_Opened">
+            <AppBarButton x:Uid="AppButton_Refresh" x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>
+            <AppBarButton x:Uid="AppButton_GoToStart" x:Name="btn_ScrollToTop" Icon="Previous" Label="回到开始" Click="btn_ScrollToTop_Click"/>
+            <AppBarButton x:Uid="AppButton_Zoom" x:Name="btn_ZoomChange" Icon="Zoom" Label="视图缩放" Click="btn_ZoomChange_Click"/>
+            <AppBarButton x:Uid="AppButton_FavoriteBolgger" x:Name="btn_AuthorFavorite" Icon="Favorite" Label="收藏博主" Click="btn_AuthorFavorite_Click"/>
+            <AppBarButton x:Uid="AppButton_UnFavoriteBlog" x:Name="btn_AuthorUnFavorite" Icon="UnFavorite" Label="取消收藏" Click="btn_AuthorUnFavorite_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 

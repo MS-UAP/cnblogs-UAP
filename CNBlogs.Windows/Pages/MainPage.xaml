@@ -10,13 +10,7 @@
     RequestedTheme="Light"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <!--<Grid.Background>
-            <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                <GradientStop Color="#FF90BED9" Offset="0"/>
-                <GradientStop Color="#FFCAB7D0" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>-->
+    <Grid Background="{ThemeResource Win8CNBlogsBackColor}">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
@@ -29,7 +23,8 @@
         </Grid.RowDefinitions>
 
         <!--TITLE PART-->
-        <nav:PageTitleControl x:Name="TitleControl" Grid.Row="0" TitleContent="今日最新博客" Margin="50,0,0,0"/>
+        <!--<nav:PageTitleControl x:Uid="HomeTitleComment" x:Name="TitleControl" Grid.Row="0" TitleContent="今日最新博客" Margin="50,0,0,0"/>-->
+        <nav:PageTitleControl x:Uid="HomeTitleComment" x:Name="TitleControl" Grid.Row="0" Margin="50,0,0,0"/>
 
         <!--CONTENT PART-->
         <Grid Grid.Row="1">
@@ -62,9 +57,9 @@
 
     <Page.BottomAppBar>
         <CommandBar Style="{StaticResource Win8AppbarStyle}">
-            <AppBarButton x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>
-            <AppBarButton x:Name="btn_ScrollToTop" Icon="Previous" Label="回到开始" Click="btn_ScrollToTop_Click"/>
-            <AppBarButton x:Name="btn_ZoomChange" Icon="Zoom" Label="视图缩放" Click="btn_ZoomChange_Click"/>
+            <AppBarButton x:Uid="AppButton_Refresh" x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>
+            <AppBarButton x:Uid="AppButton_GoToStart" x:Name="btn_ScrollToTop" Icon="Previous" Label="回到开始" Click="btn_ScrollToTop_Click"/>
+            <AppBarButton x:Uid="AppButton_Zoom" x:Name="btn_ZoomChange" Icon="Zoom" Label="视图缩放" Click="btn_ZoomChange_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 

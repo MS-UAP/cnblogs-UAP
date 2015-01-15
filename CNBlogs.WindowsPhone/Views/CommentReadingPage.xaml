@@ -35,7 +35,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <ProgressBar x:Name="pb_Top" IsIndeterminate="True" VerticalAlignment="Top"/>
-        <TextBlock Grid.Row="0" Text="评论" Style="{StaticResource PageTitleFont}"/>
+        <TextBlock Grid.Row="0" x:Uid="CommentHeader" Style="{StaticResource PageTitleFont}"/>
         <TextBlock Grid.Row="0" x:Name="tb_CommentCount" Style="{StaticResource PageSubTitleFont}" HorizontalAlignment="Right">
             <TextBlock.Projection>
                 <PlaneProjection/>
@@ -54,8 +54,7 @@
     
     <Page.BottomAppBar>
         <CommandBar>
-            <!--<AppBarButton x:Name="btn_Refresh" Label="刷新" Icon="Sync" Click="btn_Refresh_Click" />-->
-            <AppBarButton x:Name="btn_ScrollToTop" Label="回到顶部" Click="btn_ScrollToTop_Click">
+            <AppBarButton x:Name="btn_ScrollToTop" x:Uid="ToTopButton" Label="回到顶部" Click="btn_ScrollToTop_Click">
                 <AppBarButton.Icon>
                     <FontIcon Glyph="&#xE11C;"/>
                 </AppBarButton.Icon>

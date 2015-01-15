@@ -24,7 +24,7 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
-    <Grid Background="{ThemeResource CNBlogsBackColor}">
+    <Grid Background="{ThemeResource Win8CNBlogsBackColor}">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
@@ -39,7 +39,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <nav:PageTitleControl x:Name="TitleControl" TitleContent="博文分类" Margin="50,0,0,0"/>
+        <!--<nav:PageTitleControl x:Uid="CategoryTitleComment" x:Name="TitleControl" Text="博文分类索引" Margin="50,0,0,0"/>-->
+        <nav:PageTitleControl x:Uid="CategoryTitleComment" x:Name="TitleControl" Margin="50,0,0,0"/>
 
         <SemanticZoom Grid.Row="1"
                       x:Name="sz_Category"
@@ -93,8 +94,8 @@
 
     <Page.BottomAppBar>
         <CommandBar Style="{StaticResource Win8AppbarStyle}">
-            <AppBarButton x:Name="btn_ScrollToTop" Icon="Previous" Label="回到开始" Click="btn_ScrollToTop_Click"/>
-            <AppBarButton x:Name="btn_ZoomChange" Icon="Zoom" Label="视图缩放" Click="btn_ZoomChange_Click"/>
+            <AppBarButton x:Uid="AppButton_GoToStart" x:Name="btn_ScrollToTop" Icon="Previous" Label="回到开始" Click="btn_ScrollToTop_Click"/>
+            <AppBarButton x:Uid="AppButton_Zoom" x:Name="btn_ZoomChange" Icon="Zoom" Label="视图缩放" Click="btn_ZoomChange_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 

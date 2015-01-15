@@ -154,7 +154,7 @@
 
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource Win8CNBlogsBackColor}">
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
@@ -177,7 +177,7 @@
         <ProgressRing x:Name="pr_Loading" 
                       Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center" 
                       IsActive="True"
-                      Foreground="{ThemeResource CNBlogsThemeColor}"
+                      Foreground="{ThemeResource Win8CNBlogsThemeColor}"
                       Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"></ProgressRing>
 
         <Grid x:Name="WebViewGrid" Grid.Row="1" Grid.Column="1" Margin="0,0,20,30" >
@@ -186,38 +186,36 @@
 
         <Button x:Name="CommentButton" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" 
                 RenderTransformOrigin="0.5,0.5"
-                Width="80" Height="80" 
-                Background="{ThemeResource CNBlogsThemeColor}" Foreground="{ThemeResource CNBlogsBackColor}"
+                Width="110" Height="60" 
+                Background="{ThemeResource Win8CNBlogsThemeColor}" Foreground="{ThemeResource Win8CNBlogsBackColor}"
                 Language="zh-Hans"
                 Click="CommentButton_Click">
             <Button.RenderTransform>
                 <TranslateTransform x:Name="buttonTrans" X="400"/>
             </Button.RenderTransform>
-                    <TextBlock TextWrapping="Wrap" 
+            <TextBlock x:Uid="CommentTextblock"
                        Style="{ThemeResource Win8PostAbstractionFont}" 
-                       >
-                评
-                论
-                    </TextBlock>
+                       Text="评论">
+            </TextBlock>
         </Button>
-        <Grid Grid.Row="0" Grid.Column="2" Background="{ThemeResource CNBlogsBackColor}"
+        <Grid Grid.Row="0" Grid.Column="2" Background="{ThemeResource Win8CNBlogsBackColor}"
               >
             <Grid.RenderTransform>
                 <TranslateTransform x:Name="commentTitleTrans" X="0"/>
             </Grid.RenderTransform>
-            <TextBlock Text="评论"  Style="{StaticResource Win8PageSubTitleFont}" VerticalAlignment="Center" Margin="10"/>
+            <TextBlock x:Uid="CommentHeader" Text="评论"  Style="{StaticResource Win8PageSubTitleFont}" VerticalAlignment="Center" Margin="10"/>
             <TextBlock x:Name="tb_CommentCount" Text="0/0" 
                        Style="{StaticResource Win8PageSubTitleFont}" FontSize="24" 
                        HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0"/>
         </Grid>
 
-        <Border Grid.Row="1" Grid.Column="2" BorderThickness="1,0,0,0" BorderBrush="{ThemeResource CNBlogsLineColor}"
+        <Border Grid.Row="1" Grid.Column="2" BorderThickness="1,0,0,0" BorderBrush="{ThemeResource Win8CNBlogsLineColor}"
                 x:Name="CommentBorder">
             <Border.RenderTransform>
                     <TranslateTransform x:Name="commentBorderTrans" X="0"/>
             </Border.RenderTransform>
-            <Grid Background="{ThemeResource CNBlogsBackColor}">
-                <TextBlock x:Name="tb_Message" Text="目前还没有评论!" FontSize="24" Foreground="Gray" Grid.Row="1" Grid.Column="2" Visibility="Collapsed" Margin="10,10,0,0"/>
+            <Grid Background="{ThemeResource Win8CNBlogsBackColor}">
+                <TextBlock x:Uid="CommentPlaceholder" x:Name="tb_Message" Text="目前还没有评论!" FontSize="24" Foreground="Gray" Grid.Row="1" Grid.Column="2" Visibility="Collapsed" Margin="10,10,0,0"/>
                 <ListView x:Name="lv_Comments" SelectionMode="None" Margin="0,20">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -239,10 +237,13 @@
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar Style="{StaticResource Win8AppbarStyle}">
-            <AppBarButton x:Name="btn_OriginalLink" Icon="Link" Label="原文链接" Click="btn_OriginalLink_Click"/>
-            <AppBarButton x:Name="btn_Favorite" Icon="Favorite" Label="收藏" Click="btn_Favorite_Click"/>
-            <AppBarButton x:Name="btn_UnFavorite" Icon="UnFavorite" Label="取消收藏" Click="btn_UnFavorite_Click"/>
+        <CommandBar Style="{StaticResource Win8AppbarStyle}" Opened="CommandBar_Opened">
+            <AppBarButton x:Uid="AppButton_FavoriteBlog" x:Name="btn_Favorite" Icon="Favorite" Label="收藏博文" Click="btn_Favorite_Click"/>
+            <AppBarButton x:Uid="AppButton_UnFavoriteBlog" x:Name="btn_UnFavorite" Icon="UnFavorite" Label="取消收藏" Click="btn_UnFavorite_Click"/>
+            <AppBarButton x:Uid="AppButton_OriginalLink" x:Name="btn_OriginalLink" Icon="Link" Label="原文链接" Click="btn_OriginalLink_Click"/>
+            <AppBarButton x:Uid="AppButton_BloggerInfo" x:Name="btn_BloggerInfo" Icon="ContactInfo" Label="博主信息" Click="btn_BloggerInfo_Click"/>
+            <!--<AppBarButton x:Name="btn_AuthorFavorite" Icon="Favorite" Label="收藏作者" Click="btn_AuthorFavorite_Click"/>
+            <AppBarButton x:Name="btn_AuthorUnFavorite" Icon="UnFavorite" Label="取消收藏作者" Click="btn_AuthorUnFavorite_Click"/>-->
         </CommandBar>
     </Page.BottomAppBar>
 

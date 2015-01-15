@@ -14,30 +14,14 @@ namespace CNBlogs
         ListView lvDetail;
         Storyboard sbShow, sbHide;
 
-        public int Count
-        {
-            get
-            {
-                if (lvDetail != null)
-                {
-                    return this.lvDetail.Items.Count;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
-
-        public FavoriteGroup(ListView lv, Storyboard sb_show, Storyboard sb_hide)
+        public FavoriteGroup(ListView lv)
         {
             this.lvDetail = lv;
-            this.sbHide = sb_hide;
-            this.sbShow = sb_show;
+            CreateStoryboard();
             this.sbHide.Completed += sbHide_Completed;
         }
 
-        void sbHide_Completed(object sender, object e)
+        private void sbHide_Completed(object sender, object e)
         {
             this.lvDetail.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
@@ -56,5 +40,31 @@ namespace CNBlogs
                 this.sbHide.Begin();
             }
         }
+
+        private void CreateStoryboard()
+        {
+            // show listview in 1 second
+            DoubleAnimation daShow = new DoubleAnimation();
+            daShow.From = 0;
+            daShow.To = 1;
+            daShow.Duration = new Windows.UI.Xaml.Duration(TimeSpan.FromSeconds(1));
+
+            this.sbShow = new Storyboard();
+            sbShow.Children.Add(daShow);
+            Storyboard.SetTarget(daShow, this.lvDetail);
+            Storyboard.SetTargetProperty(daShow, "Opacity");
+
+            // hide listview in 1 second
+            DoubleAnimation daHide = new DoubleAnimation();
+            daHide.From = 1;
+            daHide.To = 0;
+            daHide.Duration = new Windows.UI.Xaml.Duration(TimeSpan.FromSeconds(1));
+
+            this.sbHide = new Storyboard();
+            sbHide.Children.Add(daHide);
+            Storyboard.SetTarget(daHide, this.lvDetail);
+            Storyboard.SetTargetProperty(daHide, "Opacity");
+        }
+
     }
 }

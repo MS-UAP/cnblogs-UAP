@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using CNBlogs.DataHelper;
 using CNBlogs.DataHelper.DataModel;
 using CNBlogs.DataHelper.Function;
 using CNBlogs.DataHelper.CloudAPI;
@@ -103,8 +104,15 @@ namespace CNBlogs.Pages
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                Logger.LogAgent.GetInstance().WriteLog(this.GetType().ToString());
+            }
             try
             {
+                //for favorite button display
+                await FavoriteAuthorDS.Instance.Refresh();
+
                 navigationHelper.OnNavigatedTo(e);
 
                 this.commentsCount = string.Empty;
@@ -115,6 +123,10 @@ namespace CNBlogs.Pages
                     this.post = e.Parameter as Post;
                     this.Title = this.post.Title;
                     this.Author = post.Author;
+                    if (this.Author.Avatar == null)
+                    {
+                        SearchAuthorInfo();
+                    }
                     this.commentsCount = post.CommentsCount;
                     CNBlogs.DataHelper.CloudAPI.PostContentDS pcDS = new DataHelper.CloudAPI.PostContentDS(post.ID);
                     if (await pcDS.LoadRemoteData())
@@ -153,6 +165,30 @@ namespace CNBlogs.Pages
                 this.Title = ex.Message;
             }
         }
+
+        private async void SearchAuthorInfo()
+        {
+            try
+            {
+                var bloggerTask = await APIWrapper.Instance.SearchBloggerAsync(this.Author.Name);
+                if (bloggerTask.IsSuccess)
+                {
+                    if (bloggerTask.Result.Entries.Count > 0)
+                    {
+                        if (bloggerTask.Result.Entries.Any(i => i.Id.Equals(this.Author.Uri)))
+                        {
+                            int index = bloggerTask.Result.Entries.FindIndex(i => i.Id.Equals(this.Author.Uri));
+                            this.Author.Avatar = bloggerTask.Result.Entries[index].Avatar;
+                            this.Author.BlogApp = bloggerTask.Result.Entries[index].BlogApp;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
         private void UpdateUI()
         {
             //favorite
@@ -166,6 +202,18 @@ namespace CNBlogs.Pages
                 btn_Favorite.Visibility = Visibility.Visible;
                 btn_UnFavorite.Visibility = Visibility.Collapsed;
             }
+
+            ////favorite author
+            //if(FavoriteAuthorDS.Instance.Items.Any(i => i.Item.Uri == Author.Uri))
+            //{
+            //    btn_AuthorFavorite.Visibility = Visibility.Collapsed;
+            //    btn_AuthorUnFavorite.Visibility = Visibility.Visible;
+            //}
+            //else
+            //{
+            //    btn_AuthorFavorite.Visibility = Visibility.Visible;
+            //    btn_AuthorUnFavorite.Visibility = Visibility.Collapsed;
+            //}
         }
 
         async void commentDS_OnLoadMoreCompleted(int count)
@@ -218,6 +266,11 @@ namespace CNBlogs.Pages
 
         private void currentBlogger_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
+            GoToBloggerPage();
+        }
+
+        private void GoToBloggerPage()
+        {
             Author currentAuthor = currentBlogger.DataContext as Author;
             Blogger blogger = new Blogger()
             {
@@ -235,17 +288,19 @@ namespace CNBlogs.Pages
             }
         }
 
+        Windows.ApplicationModel.Resources.ResourceLoader loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
         private async void btn_Favorite_Click(object sender, RoutedEventArgs e)
         {
             await this.post.AsFavorite();
-            notifyBlock.ShowMessage("已添加收藏");
+            notifyBlock.ShowMessage(loader.GetString("Notify_FavoriteBlog"));
             UpdateUI();
         }
 
         private async void btn_UnFavorite_Click(object sender, RoutedEventArgs e)
         {
             await this.post.UnFavorite();
-            notifyBlock.ShowMessage("已删除收藏");
+            notifyBlock.ShowMessage(loader.GetString("Notify_UnFavoriteBlog"));
             UpdateUI();
         }
 
@@ -290,7 +345,7 @@ namespace CNBlogs.Pages
                 Sb_CommentShownVIew.Begin();
                 isCommentTemperarorilyShown = false;
             }
-            CommentButton.Content = isCommentTemperarorilyShown ? "收起" : "评论";
+            CommentButton.Content = isCommentTemperarorilyShown ? loader.GetString("CommentTextblockText_Status2") : loader.GetString("CommentTextblockText_Status1");
         }
 
         private void SetPageVisualStatus(double pageWidth)
@@ -305,7 +360,7 @@ namespace CNBlogs.Pages
                 Sb_CommentShownVIew.Begin();
                 isCommentTemperarorilyShown = false;
             }
-            CommentButton.Content = isCommentTemperarorilyShown ? "收起" : "评论";
+            CommentButton.Content = isCommentTemperarorilyShown ? loader.GetString("CommentTextblockText_Status2") : loader.GetString("CommentTextblockText_Status1");
         }
 
 
@@ -322,7 +377,7 @@ namespace CNBlogs.Pages
                 Sb_CommentTemperaroryShown.Begin();
             }
             isCommentTemperarorilyShown = !isCommentTemperarorilyShown;
-            CommentButton.Content = isCommentTemperarorilyShown ? "收起" : "评论";
+            CommentButton.Content = isCommentTemperarorilyShown ? loader.GetString("CommentTextblockText_Status2") : loader.GetString("CommentTextblockText_Status1");
         }
 
         private void wv_Post_GotFocus(object sender, RoutedEventArgs e)
@@ -331,7 +386,7 @@ namespace CNBlogs.Pages
             {
                 Sb_CommentHidden.Begin(); 
                 isCommentTemperarorilyShown = !isCommentTemperarorilyShown;
-                CommentButton.Content = isCommentTemperarorilyShown ? "收起" : "评论";
+                CommentButton.Content = isCommentTemperarorilyShown ? loader.GetString("CommentTextblockText_Status2") : loader.GetString("CommentTextblockText_Status1");
             }
         }
 
@@ -341,6 +396,30 @@ namespace CNBlogs.Pages
                 pageTitle.FontSize = 24;
             else if (titleLength > 40)
                 pageTitle.FontSize = 20;
+        }
+
+        private async void btn_AuthorFavorite_Click(object sender, RoutedEventArgs e)
+        {
+            await FavoriteAuthorDS.Instance.Follow(this.Author);
+            notifyBlock.ShowMessage(loader.GetString("Notify_FavoriteBlogger"));
+            UpdateUI();
+        }
+
+        private void btn_AuthorUnFavorite_Click(object sender, RoutedEventArgs e)
+        {
+            FavoriteAuthorDS.Instance.Remove(new FavoriteItem<Author>() { Item = this.Author });
+            notifyBlock.ShowMessage(loader.GetString("Notify_FavoriteBlogger"));
+            UpdateUI();
+        }
+
+        private void CommandBar_Opened(object sender, object e)
+        {
+            UpdateUI();
+        }
+
+        private void btn_BloggerInfo_Click(object sender, RoutedEventArgs e)
+        {
+            GoToBloggerPage();
         }
     }
 }

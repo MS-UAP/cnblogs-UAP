@@ -23,11 +23,13 @@
 
         <ProgressBar x:Name="pb_Top" IsIndeterminate="True" VerticalAlignment="Top"/>
 
-        <local:PageTitleControl Grid.Row="0" x:Name="control_PageTitle" TitleContent="热门"/>
+        <local:PageTitleControl Grid.Row="0" x:Name="control_PageTitle" x:Uid="HotTitle"/>
+        <!--<local:PageTitleControl Grid.Row="0" x:Name="control_PageTitle"/>-->
 
         <ListView x:Name="lv_HotPosts" Grid.Row="1" Background="{ThemeResource CNBlogsBackColor}">
             <ListView.Header>
-                <local:ListViewHeaderControl Content="2日内阅读排行"/>
+                <local:ListViewHeaderControl x:Uid="HotTitleComment"/>
+                <!--<local:ListViewHeaderControl/>-->
             </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -39,14 +41,14 @@
 
     <Page.BottomAppBar>
         <CommandBar x:Name="appbar" ClosedDisplayMode="Minimal" Visibility="Collapsed">
-            <AppBarButton x:Name="btn_Refresh" Label="刷新" Icon="Sync" Click="btn_Refresh_Click"/>
-            <AppBarButton x:Name="btn_Top" Label="返回顶部" Click="btn_Top_Click" >
+            <AppBarButton x:Name="btn_Refresh" x:Uid="RefreshButton" Label="刷新" Icon="Sync" Click="btn_Refresh_Click"/>
+            <AppBarButton x:Name="btn_Top" x:Uid="ToTopButton" Label="返回顶部" Click="btn_Top_Click" >
                 <AppBarButton.Icon>
                     <FontIcon Glyph="&#xE11C;"/>
                 </AppBarButton.Icon>
             </AppBarButton>
             <AppBarButton x:Name="btn_NightMode" Icon="View" Label="{Binding Converter={StaticResource NightModeLabelConverter}, Path=NightModeTheme}" Click="btn_NightMode_Click"/>
-            <AppBarButton x:Name="btn_Setting" Label="设置" Icon="Setting" Click="btn_Setting_Click"/>
+            <AppBarButton x:Name="btn_Setting" x:Uid="SettingButton" Label="设置" Icon="Setting" Click="btn_Setting_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 

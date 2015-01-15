@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Windows.ApplicationModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -8,6 +9,25 @@ namespace CNBlogs.FunctionHelper
 {
     public static class Functions
     {
+        static Windows.ApplicationModel.Resources.ResourceLoader loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
+        public static string LoadResourceString(string resourceName)
+        {
+            string str = loader.GetString(resourceName);
+            return str;
+        }
+
+
+        public static string GetVersionString()
+        {
+            string appVersion = string.Format("{0}.{1}.{2}.{3}",
+                Package.Current.Id.Version.Major,
+                Package.Current.Id.Version.Minor,
+                Package.Current.Id.Version.Build,
+                Package.Current.Id.Version.Revision);
+            return appVersion;
+        }
+
         public static void btn_NightMode_Click(Page page)
         {
             CNBlogs.DataHelper.DataModel.CNBlogSettings setting = CNBlogs.DataHelper.DataModel.CNBlogSettings.Instance;

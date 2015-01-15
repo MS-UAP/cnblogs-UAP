@@ -48,16 +48,16 @@
 
             <PivotItem Margin="0" Tag="setting">
                 <PivotItem.Header>
-                    <TextBlock Style="{StaticResource PivotTitleFont}" Text="设置" />
+                    <TextBlock Style="{StaticResource PivotTitleFont}" x:Uid="SettingPageSystem" />
                 </PivotItem.Header>
                 <StackPanel Orientation="Vertical" Margin="20">
-                    <ToggleSwitch x:Name="ts_LightMode" Header="光线模式" OffContent="日间模式" OnContent="夜间模式" IsOn="{Binding NightModeTheme, Mode=TwoWay}" Toggled="ts_LightMode_Toggled"/>
+                    <ToggleSwitch x:Name="ts_LightMode" x:Uid="LightModeToggleSwitch" IsOn="{Binding NightModeTheme, Mode=TwoWay}" Toggled="ts_LightMode_Toggled"/>
                 </StackPanel>
             </PivotItem>
 
             <PivotItem Margin="0" Tag="fontSize">
                 <PivotItem.Header>
-                    <TextBlock Style="{StaticResource PivotTitleFont}" Text="字号"></TextBlock>
+                    <TextBlock Style="{StaticResource PivotTitleFont}" x:Uid="SettingPageFontSize"></TextBlock>
                 </PivotItem.Header>
                 <Grid>
 
@@ -67,7 +67,7 @@
                         <RowDefinition Height="50"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <local:ListViewHeaderControl Grid.Row="0" Content="拖动滑块改变正文字体大小"/>
+                    <local:ListViewHeaderControl Grid.Row="0" x:Uid="SettingFontSize"/>
 
                     <Rectangle Grid.Row="1"
                                Canvas.ZIndex="100"
@@ -80,7 +80,7 @@
 
             <PivotItem Margin="0" Tag="about">
                 <PivotItem.Header>
-                    <TextBlock Style="{StaticResource PivotTitleFont}" Text="关于" />
+                    <TextBlock Style="{StaticResource PivotTitleFont}" x:Uid="SettingPageAbout" />
                 </PivotItem.Header>
                 <StackPanel Margin="20" HorizontalAlignment="Center">
                     <Image x:Name="image_Logo" Height="100" Margin="0,20" Source="ms-appx:///Assets/Logo.100.Blue.png" Opacity="0">
@@ -89,14 +89,14 @@
                         </Image.Projection>
                     </Image>
                     <StackPanel x:Name="sp_aboutContent" Opacity="0">
-                        <TextBlock Margin="0,10" HorizontalAlignment="Center" Style="{StaticResource SettingPageTextHeader}" Text="博客园" />
-                        <TextBlock HorizontalAlignment="Center" Style="{StaticResource SettingPageTextHeader}" Text="Windows Phone 客户端" FontSize="16"/>
+                        <TextBlock Margin="0,10" HorizontalAlignment="Center" Style="{StaticResource SettingPageTextHeader}" x:Uid="SettingsFlyout_About_Text1" />
+                        <TextBlock HorizontalAlignment="Center" Style="{StaticResource SettingPageTextHeader}" x:Uid="SettingsFlyout_About_Text2" FontSize="16"/>
                         <TextBlock x:Name="tb_Version" Text="1.0" HorizontalAlignment="Center" FontSize="14" Style="{StaticResource SettingPageTextHeader}"/>
                         <Image Source="ms-appx:///Assets/ms-uap.jpg" Width="80" Height="80" HorizontalAlignment="Center" Margin="0,10"/>
-                        <HyperlinkButton x:Name="btn_RateMe" Margin="0,40,0,10" Content="给个好评" Style="{StaticResource SettingPageHyperlinkButtonText}" HorizontalAlignment="Center" Click="btn_RateMe_Click"/>
+                        <HyperlinkButton x:Name="btn_RateMe" Margin="0,40,0,10" x:Uid="SettingsFlyout_About_Text3" Style="{StaticResource SettingPageHyperlinkButtonText}" HorizontalAlignment="Center" Click="btn_RateMe_Click"/>
                         <TextBlock Margin="30" FontSize="14" FontFamily="Segoe WP" TextWrapping="Wrap" Foreground="{ThemeResource CNBlogsSummaryColor}">
-                            <Run Text="本应用为Universal App的示例应用，使用WindowsRT SDK开发，支持Windows Phone 8.1。"/>
-                            <Run Text="还有一个同名应用同时发布在Windows 8.1上，两者共用一套底层代码。"/>
+                            <Run x:Uid="SettingsFlyout_About_Text4"/>
+                            <Run x:Uid="SettingsFlyout_About_Text5"/>
                         </TextBlock>
 
                     </StackPanel>

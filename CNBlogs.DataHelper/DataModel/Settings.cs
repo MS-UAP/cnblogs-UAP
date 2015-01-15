@@ -23,6 +23,7 @@ namespace CNBlogs.DataHelper.DataModel
         const string SettingKeyFormat_Follow_Category = "follow_category_{0}";
         const string SettingKeyFormat_Follow_Author = "follow_author_{0}";
         const string SettingKey_FontSize = "cnblog_font_size";
+        const string SettingKey_UILanguage = "cnblog_ui_language";
 
         public double FontSize
         {
@@ -33,6 +34,19 @@ namespace CNBlogs.DataHelper.DataModel
             }
             set {
                 settings.Values[SettingKey_FontSize] = value ;
+            }
+        }
+
+        public string UILanguage
+        {
+            get
+            {
+                var value = settings.Values[SettingKey_UILanguage];
+                return value == null ? "zh-CN" : value.ToString();
+            }
+            set
+            {
+                settings.Values[SettingKey_UILanguage] = value.ToString();
             }
         }
 
@@ -69,7 +83,7 @@ namespace CNBlogs.DataHelper.DataModel
         {
             var key = string.Format(SettingKeyFormat_Follow_Category, categoryId);
 
-            return this.settings.Values.ContainsKey(key) ? this.roaming.Values[key] as string : string.Empty;
+            return this.settings.Values.ContainsKey(key) ? this.settings.Values[key] as string : string.Empty;
         }
 
         /// <summary>
@@ -88,7 +102,7 @@ namespace CNBlogs.DataHelper.DataModel
         {
             var key = string.Format(SettingKeyFormat_Follow_Author, authorId);
 
-            return this.settings.Values.ContainsKey(key) ? this.roaming.Values[key] as string : string.Empty;
+            return this.settings.Values.ContainsKey(key) ? this.settings.Values[key] as string : string.Empty;
         }
 
         /// <summary>

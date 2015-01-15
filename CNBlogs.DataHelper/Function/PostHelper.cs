@@ -147,21 +147,12 @@ namespace CNBlogs.DataHelper.Function
 
         public async static Task<List<Column>> GetColumns()
         {
-            var categoriesContent = await FileIO.ReadTextAsync(await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Data/Columns.xml")));
+            var categoriesContent = await FileIO.ReadTextAsync(await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Strings/Columns.xml")));
 
             var collection = Functions.Deserlialize<ColumnCollection>(categoriesContent);
 
             return collection.Columns;
         }
-
-        //public async static Task<List<Favorite>> GetFavorites()
-        //{
-        //    var categoriesContent = await FileIO.ReadTextAsync(await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Data/Favorites.xml")));
-
-        //    var collection = Functions.Deserlialize<FavoriteCollection>(categoriesContent);
-
-        //    return collection.Favorites;
-        //}
 
         public async static Task<Category> GetCategory(string id)
         {

@@ -21,14 +21,13 @@
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar x:Name="cmdBar" ClosedDisplayMode="Minimal" FontFamily="Global User Interface">
-            <AppBarButton x:Name="btn_Comment" Icon="Comment" Label="{Binding _commentButtonLabel}" Click="btn_Comment_Click"/>
-            <AppBarButton x:Name="btn_Favorite" Icon="Favorite" Label="收藏博文" Click="btn_Favorite_Click" />
-            <AppBarButton x:Name="btn_Source" Label="原文链接" Icon="Link" Click="btn_Source_Click"/>
-            <AppBarButton x:Name="btn_Author" Label="博主信息" Click="btn_Author_Click" Icon="ContactInfo"/>
+        <CommandBar x:Name="cmdBar" ClosedDisplayMode="Minimal">
+            <AppBarButton x:Name="btn_Comment" Icon="Comment" x:Uid="CommentButton" Label="查看评论" Click="btn_Comment_Click"/>
+            <AppBarButton x:Name="btn_FontSize" Icon="FontSize" x:Uid="FontSizeButton" Label="调整字号" Click="btn_FontSize_Click" />
+            <AppBarButton x:Name="btn_Favorite" Icon="Favorite" x:Uid="FavoriteBlogButton" Label="收藏博文" Click="btn_Favorite_Click" />
+            <AppBarButton x:Name="btn_Source" Label="原文链接" x:Uid="SourceLinkButton" Icon="Link" Click="btn_Source_Click"/>
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:Name="btn_Setting" Label="设置" Icon="Setting" Click="btn_Setting_Click"/>
-                <AppBarButton x:Name="btn_FavAuthor" Label="收藏博主" Click="btn_FavAuthor_Click"></AppBarButton>
+                <AppBarButton x:Name="btn_Author" x:Uid="BloggerInfoButton" Label="博主信息" Click="btn_Author_Click" Icon="ContactInfo"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

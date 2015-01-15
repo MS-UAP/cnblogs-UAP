@@ -41,34 +41,48 @@ namespace CNBlogs
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                Logger.LogAgent.GetInstance().WriteLog(this.GetType().ToString());
+            }
+
             var file = "ms-appx-web:///HTML/sample.html#width={0}&height={1}";
-
             this.wv_sample.DOMContentLoaded += wv_sample_DOMContentLoaded;
-
             // set slider value
             this.slider_fontsize.Value = CNBlogSettings.Instance.FontSize;
 
-            _isDomReady = false;
+            this._isDomReady = false;
             string width = Window.Current.Bounds.Width.ToString();
             string height = Window.Current.Bounds.Height.ToString();
             this.wv_sample.Navigate(new Uri(string.Format(file, width, height)));
+
+            if (e.Parameter != null && e.Parameter is SettingPagePivotItemTags)
+            {
+                SettingPagePivotItemTags tag = (SettingPagePivotItemTags)e.Parameter;
+                switch(tag)
+                {
+                    case SettingPagePivotItemTags.System:
+                        this.pivot_Main.SelectedIndex = 0;
+                        break;
+                    case SettingPagePivotItemTags.FontSize:
+                        this.pivot_Main.SelectedIndex = 1;
+                        break;
+                    case SettingPagePivotItemTags.About:
+                        this.pivot_Main.SelectedIndex = 2;
+                        break;
+                }
+            }
         }
 
         async void wv_sample_DOMContentLoaded(WebView sender, WebViewDOMContentLoadedEventArgs args)
         {
             _isDomReady = true;
 
-            var newSize = CNBlogSettings.Instance.FontSize / 100;
+            var newSize = CNBlogSettings.Instance.FontSize / 100 + 1;
 
             await this.wv_sample.InvokeScriptAsync("changeFontSize", new[] { newSize.ToString() });
 
-
-            string appVersion = string.Format("{0}.{1}.{2}.{3}",
-                    Package.Current.Id.Version.Major,
-                    Package.Current.Id.Version.Minor,
-                    Package.Current.Id.Version.Build,
-                    Package.Current.Id.Version.Revision);
-            this.tb_Version.Text = appVersion;
+            this.tb_Version.Text = FunctionHelper.Functions.GetVersionString();
         }
 
         bool _isDomReady = false;
@@ -111,7 +125,7 @@ namespace CNBlogs
         {
             if (_isDomReady)
             {
-                var newSize = e.NewValue / 100;
+                var newSize = e.NewValue / 100+1;
 
                 await this.wv_sample.InvokeScriptAsync("changeFontSize", new[] { newSize.ToString() });
 

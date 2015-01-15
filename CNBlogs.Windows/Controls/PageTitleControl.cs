@@ -18,10 +18,10 @@ namespace CNBlogs
         public ProgressBar pb_Top;
         public TextBlock tb_Count;
 
-        public string TitleContent
+        public string Text
         {
-            get { return (string)GetValue(TitleContentProperty); }
-            set { SetValue(TitleContentProperty, value); }
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
         }
 
         private void GetProgressBarControl(string pb_name)
@@ -43,8 +43,8 @@ namespace CNBlogs
 
 
         // Using a DependencyProperty as the backing store for TitleContent.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TitleContentProperty =
-            DependencyProperty.Register("TitleContent", typeof(string), typeof(PageTitleControl), new PropertyMetadata("title"));
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(PageTitleControl), new PropertyMetadata("title"));
 
 
         public PageTitleControl()

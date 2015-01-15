@@ -106,6 +106,10 @@ namespace CNBlogs.Pages
             {
                 navigationHelper.OnNavigatedTo(e);
 
+                if (e.NavigationMode == NavigationMode.New)
+                {
+                    Logger.LogAgent.GetInstance().WriteLog(this.GetType().ToString());
+                }
                 this.commentsCount = string.Empty;
                 var pageFile = string.Empty;
 
@@ -204,6 +208,8 @@ namespace CNBlogs.Pages
             SetPageVisualStatus(e);
         }
 
+        Windows.ApplicationModel.Resources.ResourceLoader loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
         private void SetPageVisualStatus(SizeChangedEventArgs e)
         {
             if (e.NewSize.Width < 1366)
@@ -216,7 +222,7 @@ namespace CNBlogs.Pages
                 Sb_CommentShownVIew.Begin();
                 isCommentTemperarorilyShown = false;
             }
-            CommentButton.Content = isCommentTemperarorilyShown ? "收起" : "评论";
+            CommentButton.Content = isCommentTemperarorilyShown ? loader.GetString("CommentTextblockText_Status2") : loader.GetString("CommentTextblockText_Status1");
         }
 
         private void SetPageVisualStatus(double pageWidth)
@@ -231,7 +237,7 @@ namespace CNBlogs.Pages
                 Sb_CommentShownVIew.Begin();
                 isCommentTemperarorilyShown = false;
             }
-            CommentButton.Content = isCommentTemperarorilyShown ? "收起" : "评论";
+            CommentButton.Content = isCommentTemperarorilyShown ? loader.GetString("CommentTextblockText_Status2") : loader.GetString("CommentTextblockText_Status1");
         }
 
 
@@ -248,7 +254,7 @@ namespace CNBlogs.Pages
                 Sb_CommentTemperaroryShown.Begin();
             }
             isCommentTemperarorilyShown = !isCommentTemperarorilyShown;
-            CommentButton.Content = isCommentTemperarorilyShown ? "收起" : "评论";
+            CommentButton.Content = isCommentTemperarorilyShown ? loader.GetString("CommentTextblockText_Status2") : loader.GetString("CommentTextblockText_Status1");
         }
 
         private void wv_Post_GotFocus(object sender, RoutedEventArgs e)
@@ -257,7 +263,7 @@ namespace CNBlogs.Pages
             {
                 Sb_CommentHidden.Begin(); 
                 isCommentTemperarorilyShown = !isCommentTemperarorilyShown;
-                CommentButton.Content = isCommentTemperarorilyShown ? "收起" : "评论";
+                CommentButton.Content = isCommentTemperarorilyShown ? loader.GetString("CommentTextblockText_Status2") : loader.GetString("CommentTextblockText_Status1");
             }
         }
 

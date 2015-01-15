@@ -18,7 +18,7 @@ namespace CNBlogs.DataHelper.CloudAPI
         {
             this.Items = new ObservableCollection<FavoriteItem<Category>>();
             this.Icon = "";
-            this.Title = "分类";
+            this.Title = Functions.LoadResourceString("FavoriteCategoryText");
         }
 
         public static FavoriteCategoryDS Instance

@@ -100,11 +100,16 @@ namespace CNBlogs.Pages
         {
             navigationHelper.OnNavigatedTo(e);
 
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                Logger.LogAgent.GetInstance().WriteLog(this.GetType().ToString());
+            }
+
             this.blogger = e.Parameter as Blogger;
             // for listview binding
-            this.Author = new Author() { Avatar = this.blogger.Avatar, Name = this.blogger.Name };
+            this.Author = new Author() { Avatar = this.blogger.Avatar, Name = this.blogger.Name, Uri = "http://www.cnblogs.com/" + this.blogger.BlogApp + "/" };
             AuthorAvatar.DataContext = this.Author;
-            TitleControl.TitleContent = this.Author.Name;
+            TitleControl.Text = this.Author.Name;
 
             this.authorDS = new AuthorPostsDS(this.blogger.BlogApp);
             this.authorDS.OnLoadMoreStarted += TitleControl.DS_OnLoadMoreStarted;
@@ -112,6 +117,8 @@ namespace CNBlogs.Pages
             this.gv_AuthorPosts.ItemsSource = this.authorDS;
             this.gv_SimplePosts.ItemsSource = this.authorDS;
             this.DataContext = this.authorDS;
+
+            UpdateUI();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -185,6 +192,41 @@ namespace CNBlogs.Pages
             catch (Exception)
             {
             }
+        }
+        private void UpdateUI()
+        {
+            //favorite author
+            if (FavoriteAuthorDS.Instance.Items.Any(i => i.Item.Uri == Author.Uri))
+            {
+                btn_AuthorFavorite.Visibility = Visibility.Collapsed;
+                btn_AuthorUnFavorite.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btn_AuthorFavorite.Visibility = Visibility.Visible;
+                btn_AuthorUnFavorite.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        Windows.ApplicationModel.Resources.ResourceLoader loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
+        private async void btn_AuthorFavorite_Click(object sender, RoutedEventArgs e)
+        {
+            await FavoriteAuthorDS.Instance.Follow(this.Author);
+            notifyBlock.ShowMessage(loader.GetString("Notify_FavoriteBlogger"));
+            UpdateUI();
+        }
+
+        private void btn_AuthorUnFavorite_Click(object sender, RoutedEventArgs e)
+        {
+            FavoriteAuthorDS.Instance.Remove(new FavoriteItem<Author>() { Item = this.Author });
+            notifyBlock.ShowMessage(loader.GetString("Notify_UnFavoriteBlogger"));
+            UpdateUI();
+        }
+
+        private void CommandBar_Opened(object sender, object e)
+        {
+            UpdateUI();
         }
     }
 }

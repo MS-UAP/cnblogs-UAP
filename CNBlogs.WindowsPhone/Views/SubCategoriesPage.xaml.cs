@@ -102,6 +102,11 @@ namespace CNBlogs
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                Logger.LogAgent.GetInstance().WriteLog(this.GetType().ToString());
+            }
+
             this.navigationHelper.OnNavigatedTo(e);
             this.category = e.Parameter as Category;
             this.LoadData();
@@ -116,7 +121,7 @@ namespace CNBlogs
 
         private void LoadData()
         {
-            this.control_PageTitle.TitleContent = this.category.Name;    
+            this.control_PageTitle.Text = this.category.Name;    
             this.lv_SubCategory.ItemsSource = this.category.SubCategories;
             this.control_PageTitle.SubTitleContent = this.category.SubCategories.Count.ToString();
         }

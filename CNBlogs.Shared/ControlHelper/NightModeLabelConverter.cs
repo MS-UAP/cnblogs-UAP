@@ -12,11 +12,11 @@ namespace CNBlogs.ControlHelper
             bool bValue = (bool)value;
             if (bValue)
             {
-                return "日间模式";
+                return FunctionHelper.Functions.LoadResourceString("DayModeText");
             }
             else
             {
-                return "夜间模式";
+                return FunctionHelper.Functions.LoadResourceString("NightModeText");
             }
         }
 

@@ -55,9 +55,9 @@
 				Source="ms-appx:///Assets/Logo.100.White.png" />
 
             <StackPanel Grid.Row="1" Orientation="Vertical">
-                <TextBlock Margin="0,50,0,0" HorizontalAlignment="Center" Text="博客园" FontSize="36" Foreground="{ThemeResource CNBlogsThemeRedColor}"/>
+                <TextBlock Margin="0,50,0,0" HorizontalAlignment="Center" x:Uid="Title" Text="博客园" FontSize="36" Foreground="{ThemeResource CNBlogsThemeRedColor}"/>
                 <TextBlock Text="cnblogs.com" FontSize="18" Foreground="LightGray" HorizontalAlignment="Center"/>
-                <TextBlock HorizontalAlignment="Center" Margin="0,40,0,0" FontSize="24"	Foreground="#ff69e8d7" Text="分享代码，改变世界" />
+                <TextBlock HorizontalAlignment="Center" Margin="0,40,0,0" FontSize="24"	Foreground="#ff69e8d7" x:Uid="SplashSubTitle" Text="分享代码，改变世界" />
             </StackPanel>
         </Grid>
 
@@ -67,15 +67,11 @@
             <Pivot x:Name="pivot_Main" SelectionChanged="pivot_Main_SelectionChanged">
                 <PivotItem Margin="0" Tag="home">
                     <PivotItem.Header>
-                        <!--<StackPanel Orientation="Horizontal" Height="48">
-                            <TextBlock Style="{StaticResource PivotTitleFont}" Text="首页" />
-                            <TextBlock x:Name="tb_HomeTag" Text="{Binding Count}" FontSize="16" Margin="0,2,0,0"/>
-                        </StackPanel>-->
-                        <local:TitleWithNumberControl x:Name="tn_Home" TitleContent="首页"/>
+                        <local:TitleWithNumberControl x:Name="tn_Home" x:Uid="HomeTitle"/>
                     </PivotItem.Header>
-                    <ListView x:Name="lv_HomePosts" FontFamily="Global User Interface">
+                    <ListView x:Name="lv_HomePosts">
                         <ListView.Header>
-                            <local:ListViewHeaderControl Content="今日最新博客"/>
+                            <local:ListViewHeaderControl x:Uid="HomeTitleComment"/>
                         </ListView.Header>
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -87,15 +83,11 @@
 
                 <PivotItem Margin="0" Tag="news">
                     <PivotItem.Header>
-                        <!--<StackPanel Orientation="Horizontal" Height="48">
-                            <TextBlock Style="{StaticResource PivotTitleFont}" Text="新闻" />
-                            <TextBlock x:Name="tb_NewsTag" Text="{Binding Count}" FontSize="16" Margin="0,2,0,0"/>
-                        </StackPanel>-->
-                        <local:TitleWithNumberControl x:Name="tn_News" TitleContent="新闻"/>
+                        <local:TitleWithNumberControl x:Name="tn_News" x:Uid="NewsTitle"/>
                     </PivotItem.Header>
                     <ListView x:Name="lv_News" IsItemClickEnabled="True" ItemClick="lv_News_ItemClick">
                         <ListView.Header>
-                            <local:ListViewHeaderControl Content="今日IT新闻"/>
+                            <local:ListViewHeaderControl x:Uid="NewsTitleComment"/>
                         </ListView.Header>
                         <ListView.ItemTemplateSelector>
                             <ControlHelper:NewsControlTemplateSelector
@@ -107,11 +99,7 @@
 
                 <PivotItem Margin="0" Tag="column">
                     <PivotItem.Header>
-                        <!--<StackPanel Orientation="Horizontal" Height="48">
-                            <TextBlock Style="{StaticResource PivotTitleFont}" Text="栏目" />
-                            <TextBlock x:Name="tb_ColumnTag" Text="{Binding Count}" FontSize="16" Margin="0,2,0,0"/>
-                        </StackPanel>-->
-                        <local:TitleWithNumberControl x:Name="tn_Column" TitleContent="栏目"/>
+                        <local:TitleWithNumberControl x:Name="tn_Column" x:Uid="ColumnTitle" />
                     </PivotItem.Header>
 
                     <ListView x:Name="lv_Column" IsItemClickEnabled="True" ItemClick="lv_Column_ItemClick">
@@ -131,7 +119,7 @@
 
                 <PivotItem Margin="0" Tag="favorite">
                     <PivotItem.Header>
-                        <local:TitleWithNumberControl x:Name="tn_Favorite" TitleContent="收藏"/>
+                        <local:TitleWithNumberControl x:Name="tn_Favorite" x:Uid="FavoriteTitle"/>
                     </PivotItem.Header>
                     <ScrollViewer x:Name="sv_Favorite">
                         <StackPanel Orientation="Vertical" Margin="20,10">
@@ -142,18 +130,6 @@
                                         <local:FavoriteCategoryControl FlyoutBase.AttachedFlyout="{StaticResource mf_focus}" Holding="category_Holding"/>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
-                                <ListView.Resources>
-                                    <Storyboard x:Name="sb_lv1_show">
-                                        <DoubleAnimation Storyboard.TargetName="lv_category"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         From="0" To="1" Duration="0:0:1"/>
-                                    </Storyboard>
-                                    <Storyboard x:Name="sb_lv1_hide">
-                                        <DoubleAnimation Storyboard.TargetName="lv_category"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         From="1" To="0" Duration="0:0:1"/>
-                                    </Storyboard>
-                                </ListView.Resources>
                             </ListView>
 
                             <local:FavoriteGroupControl x:Name="fgc_Author" Tapped="sp_author_Tapped" Margin="0,10"/>
@@ -163,18 +139,6 @@
                                         <local:FavoriteAuthorControl FlyoutBase.AttachedFlyout="{StaticResource mf_focus}" Holding="author_Holding"/>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
-                                <ListView.Resources>
-                                    <Storyboard x:Name="sb_lv2_show">
-                                        <DoubleAnimation Storyboard.TargetName="lv_author"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         From="0" To="1" Duration="0:0:1"/>
-                                    </Storyboard>
-                                    <Storyboard x:Name="sb_lv2_hide">
-                                        <DoubleAnimation Storyboard.TargetName="lv_author"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         From="1" To="0" Duration="0:0:1"/>
-                                    </Storyboard>
-                                </ListView.Resources>
                             </ListView>
 
                             <local:FavoriteGroupControl x:Name="fgc_Post" Tapped="sp_blog_Tapped" Margin="0,10"/>
@@ -184,18 +148,6 @@
                                         <local:PostControl Tapped="PostControl_Tapped" FlyoutBase.AttachedFlyout="{StaticResource mf_focus}" Holding="post_Holding"/>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
-                                <ListView.Resources>
-                                    <Storyboard x:Name="sb_lv3_show">
-                                        <DoubleAnimation Storyboard.TargetName="lv_blog"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         From="0" To="1" Duration="0:0:1"/>
-                                    </Storyboard>
-                                    <Storyboard x:Name="sb_lv3_hide">
-                                        <DoubleAnimation Storyboard.TargetName="lv_blog"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         From="1" To="0" Duration="0:0:1"/>
-                                    </Storyboard>
-                                </ListView.Resources>
                             </ListView>
 
                         </StackPanel>
@@ -213,14 +165,14 @@
 
     <Page.BottomAppBar>
         <CommandBar x:Name="cmdBar" ClosedDisplayMode="Minimal" Visibility="Collapsed">
-            <AppBarButton x:Name="btn_Refresh" Label="刷新" Icon="Sync" Click="btn_Refresh_Click"/>
-            <AppBarButton x:Name="btn_Top" Label="返回顶部" Click="btn_Top_Click" >
+            <AppBarButton x:Name="btn_Refresh" x:Uid="RefreshButton" Icon="Sync" Click="btn_Refresh_Click"/>
+            <AppBarButton x:Name="btn_Top" x:Uid="ToTopButton" Label="返回顶部" Click="btn_Top_Click" >
                 <AppBarButton.Icon>
                     <FontIcon Glyph="&#xE11C;"/>
                 </AppBarButton.Icon>
             </AppBarButton>
             <AppBarButton x:Name="btn_NightMode" Icon="View" Label="{Binding Converter={StaticResource NightModeLabelConverter}, Path=NightModeTheme}" Click="btn_NightMode_Click"/>
-            <AppBarButton x:Name="btn_Setting" Label="设置" Icon="Setting" Click="btn_Setting_Click"/>
+            <AppBarButton x:Name="btn_Setting" x:Uid="SettingButton" Icon="Setting" Click="btn_Setting_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 
