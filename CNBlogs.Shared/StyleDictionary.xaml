@@ -156,6 +156,12 @@
         <Setter Property="Foreground" Value="{ThemeResource CNBlogsThemeColor}"/>
     </Style>
 
+    <Style x:Key="NotificationBarFont" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe WP"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="{ThemeResource CNBlogsBackColor}"/>
+    </Style>
+    
     <Style x:Key="Win8PageTitleFont" TargetType="TextBlock">
         <Setter Property="Language" Value="zh-Hans"/>
         <Setter Property="FontFamily" Value="Microsoft Yahei UI Light"/>

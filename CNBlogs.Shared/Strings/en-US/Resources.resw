@@ -443,4 +443,22 @@
   <data name="BloggerTitleComment_W8.Text" xml:space="preserve">
     <value>Featured Bloggers</value>
   </data>
+  <data name="ShareTitlePrefixText" xml:space="preserve">
+    <value>Blog Share:  </value>
+  </data>
+  <data name="ShareContentPrefixText" xml:space="preserve">
+    <value>Share a blog from CNBlog: </value>
+  </data>
+  <data name="ShareContentAuthor" xml:space="preserve">
+    <value>By </value>
+  </data>
+  <data name="ShareContentSummary" xml:space="preserve">
+    <value>Summary: </value>
+  </data>
+  <data name="ShareBlogButton.Label" xml:space="preserve">
+    <value>Share Blog</value>
+  </data>
+  <data name="SettingsFlyout_About_Text6.Content" xml:space="preserve">
+    <value>Welcome to our blog.</value>
+  </data>
 </root>

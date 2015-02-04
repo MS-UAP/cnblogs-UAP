@@ -77,6 +77,7 @@
             </SemanticZoom>
         </Grid>
         <nav:NotifyBlock x:Name="notifyBlock" Grid.ColumnSpan="99" Grid.RowSpan="99" />
+        <nav:AppCommandsCalloutButton/>
     </Grid>
     
     <Page.BottomAppBar>

@@ -72,7 +72,8 @@
             </Button>
         </StackPanel>
 
-        <StackPanel  x:Name="NarrowLayout"
+        <ScrollViewer x:Name="NarrowLayout" VerticalScrollMode="Disabled" ZoomMode="Disabled" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+            <StackPanel  
         Orientation="Horizontal" Background="{ThemeResource Win8CNBlogsThemeColor}" Loaded="StackPanel_Loaded">
             <Image Source="ms-appx:///Assets/Logo.png" Height="80" Width="80" HorizontalAlignment="Center" />
             <Button Style="{StaticResource Win8TopAppBarButton}" Tag="CNBlogs.MainPage" Click="NavButton_Click" Padding="10,20" FontSize="24" Width="90">
@@ -139,5 +140,6 @@
                 </Button.Content>
             </Button>
         </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>

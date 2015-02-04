@@ -90,7 +90,8 @@
                     </GridView>
                 </SemanticZoom.ZoomedInView>
             </SemanticZoom>
-        </Grid>
+        <nav:AppCommandsCalloutButton/>
+    </Grid>
 
     <Page.BottomAppBar>
         <CommandBar Style="{StaticResource Win8AppbarStyle}">

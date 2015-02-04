@@ -1,0 +1,4 @@
+MainPackage=C:\My Projects\ThirdPartyApps\CNBlogs\CNBlogs.WindowsPhone\bin\Release\CNBlogs.WindowsPhone_1.4.0.0_Bundle\CNBlogs.WindowsPhone_1.4.0.0_AnyCPU.appx
+SymbolPackage=C:\My Projects\ThirdPartyApps\CNBlogs\CNBlogs.WindowsPhone\AppPackages\CNBlogs.WindowsPhone_1.4.0.0_Test\CNBlogs.WindowsPhone_1.4.0.0_AnyCPU.appxsym
+ResourcePack=C:\My Projects\ThirdPartyApps\CNBlogs\CNBlogs.WindowsPhone\bin\Release\CNBlogs.WindowsPhone_1.4.0.0_Bundle\CNBlogs.WindowsPhone_1.4.0.0_language-en.appx
+ResourcePack=C:\My Projects\ThirdPartyApps\CNBlogs\CNBlogs.WindowsPhone\bin\Release\CNBlogs.WindowsPhone_1.4.0.0_Bundle\CNBlogs.WindowsPhone_1.4.0.0_scale-100.appx

@@ -189,5 +189,17 @@ namespace CNBlogs
             {
             }
         }
+
+        private void HyperlinkButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (this.TopAppBar != null)
+            {
+                this.TopAppBar.IsOpen = true;
+            }
+            if (this.BottomAppBar != null)
+            {
+                this.BottomAppBar.IsOpen = true;
+            }
+        }
     }
 }

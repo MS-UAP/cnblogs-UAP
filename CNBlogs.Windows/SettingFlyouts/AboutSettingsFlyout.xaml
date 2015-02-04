@@ -10,7 +10,7 @@
     IconSource="Assets/Logo.100.Blue.png"
     Title="关于"
     RequestedTheme="Light"
-    HeaderBackground="#FF297ACD"
+    HeaderBackground="{ThemeResource Win8CNBlogsThemeColor}"
     d:DesignWidth="346">
     
     <SettingsFlyout.Resources>

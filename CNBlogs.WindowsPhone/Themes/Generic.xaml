@@ -391,5 +391,71 @@
         </Setter>
     </Style>
 
+    <Style TargetType="local:NotificationBar">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:NotificationBar">
+                    <Grid x:Name="mainGrid"
+                        Width="1920" Height="60" VerticalAlignment="Top" HorizontalAlignment="Center"
+                          Background="{ThemeResource CNBlogsSummaryColor}" Visibility="Collapsed">
+                        <Grid.RenderTransform>
+                            <TranslateTransform x:Name="GridTrans" Y="-60"></TranslateTransform>
+                        </Grid.RenderTransform>
+
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Style="{ThemeResource NotificationBarFont}"
+                                   x:Name="tb_Notify">
+                        </TextBlock>
+
+                        <Grid.Resources>
+
+                            <Storyboard x:Name="tb_Notify_in">
+                                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="mainGrid" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                    <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <Visibility>Visible</Visibility>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="00:03:00">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <Visibility>Collapsed</Visibility>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                </ObjectAnimationUsingKeyFrames>
+
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="GridTrans"
+                                Storyboard.TargetProperty="Y"
+                                BeginTime="0:0:0">
+                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.00" Value="-60"/>
+                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.10" Value="-38"/>
+                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.20" Value="-22"/>
+                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.30" Value="-10"/>
+                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.40" Value="-3"/>
+                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.50" Value="0"/>
+                                    <SplineDoubleKeyFrame  KeyTime="00:00:02.50" Value="0"/>
+                                    <SplineDoubleKeyFrame  KeyTime="00:00:02.60" Value="-3"/>
+                                    <SplineDoubleKeyFrame  KeyTime="00:00:02.70" Value="-10"/>
+                                    <SplineDoubleKeyFrame  KeyTime="00:00:02.80" Value="-22"/>
+                                    <SplineDoubleKeyFrame  KeyTime="00:00:02.90" Value="-38"/>
+                                    <SplineDoubleKeyFrame  KeyTime="00:00:03.00" Value="-60"/>
+                                </DoubleAnimationUsingKeyFrames>
+
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="mainGrid"
+                                Storyboard.TargetProperty="Opacity"
+                                BeginTime="0:0:0">
+                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.00" Value="0"/>
+                                    <SplineDoubleKeyFrame  KeyTime="00:00:00.50" Value="0.9"/>
+                                    <SplineDoubleKeyFrame  KeyTime="00:00:02.50" Value="0.9"/>
+                                    <SplineDoubleKeyFrame  KeyTime="00:00:03.00" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+
+                        </Grid.Resources>
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 </ResourceDictionary>

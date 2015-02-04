@@ -20,7 +20,11 @@ using CNBlogs.DataHelper.Function;
 using Windows.System;
 using CNBlogs.DataHelper.CloudAPI;
 using CNBlogs.DataHelper;
-// The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
+using Windows.ApplicationModel.DataTransfer;
+using Windows.Storage.Streams;
+using System.Text;
+using Windows.UI.Notifications; 
+using Windows.Data.Xml.Dom; 
 
 namespace CNBlogs
 {
@@ -45,6 +49,7 @@ namespace CNBlogs
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
 
         /// <summary>
@@ -114,43 +119,47 @@ namespace CNBlogs
             }
 
             this.navigationHelper.OnNavigatedTo(e);
-            var pageFile = string.Empty;
-            if (!CNBlogs.DataHelper.DataModel.CNBlogSettings.Instance.NightModeTheme)
-            {
-                pageFile = "ms-appx-web:///HTML/post_day.html#width={0}&height={1}";
-                this.wv_WebContent.DefaultBackgroundColor = Windows.UI.Colors.White;
-            }
-            else
-            {
-                pageFile = "ms-appx-web:///HTML/post_night.html#width={0}&height={1}";
-                this.wv_WebContent.DefaultBackgroundColor = Windows.UI.Colors.Black;
-            }
 
-            if (e.Parameter is Post)
+            if (e.NavigationMode != NavigationMode.Back)
             {
-                this.post = e.Parameter as Post;
-                this.Author = post.Author;
-                this.commentsCount = post.CommentsCount;
-                CNBlogs.DataHelper.CloudAPI.PostContentDS pcDS = new DataHelper.CloudAPI.PostContentDS(post.ID);
-                if (await pcDS.LoadRemoteData())
+                var pageFile = string.Empty;
+                if (!CNBlogs.DataHelper.DataModel.CNBlogSettings.Instance.NightModeTheme)
                 {
-                    // combine author part to add to content
-                    var authorElement = string.Format(AUTHOR_PART_FORMAT,
-                        this.post.Title,
-                        this.Author == null ? string.Empty : this.Author.Uri,
-                        this.Author == null ? string.Empty : this.Author.Name,
-                        this.Author == null || string.IsNullOrWhiteSpace(this.Author.Avatar) ?
-                            string.Empty : string.Format("<img src='{0}' />", this.Author.Avatar));
-
-                    content = authorElement + pcDS.Content;
+                    pageFile = "ms-appx-web:///HTML/post_day.html#width={0}&height={1}";
+                    this.wv_WebContent.DefaultBackgroundColor = Windows.UI.Colors.White;
+                }
+                else
+                {
+                    pageFile = "ms-appx-web:///HTML/post_night.html#width={0}&height={1}";
+                    this.wv_WebContent.DefaultBackgroundColor = Windows.UI.Colors.Black;
                 }
 
-                UpdateUI();
+                if (e.Parameter is Post)
+                {
+                    this.post = e.Parameter as Post;
+                    this.Author = post.Author;
+                    this.commentsCount = post.CommentsCount;
+                    CNBlogs.DataHelper.CloudAPI.PostContentDS pcDS = new DataHelper.CloudAPI.PostContentDS(post.ID);
+                    if (await pcDS.LoadRemoteData())
+                    {
+                        // combine author part to add to content
+                        var authorElement = string.Format(AUTHOR_PART_FORMAT,
+                            this.post.Title,
+                            this.Author == null ? string.Empty : this.Author.Uri,
+                            this.Author == null ? string.Empty : this.Author.Name,
+                            this.Author == null || string.IsNullOrWhiteSpace(this.Author.Avatar) ?
+                                string.Empty : string.Format("<img src='{0}' />", this.Author.Avatar));
 
-                string width = Window.Current.Bounds.Width.ToString();
-                string height = Window.Current.Bounds.Height.ToString();
+                        content = authorElement + pcDS.Content;
+                    }
 
-                this.wv_WebContent.Navigate(new Uri(string.Format(pageFile, width, height)));
+                    UpdateUI();
+
+                    string width = Window.Current.Bounds.Width.ToString();
+                    string height = Window.Current.Bounds.Height.ToString();
+
+                    this.wv_WebContent.Navigate(new Uri(string.Format(pageFile, width, height)));
+                }
             }
         }
 
@@ -172,14 +181,12 @@ namespace CNBlogs
 
                 // fill post content using javascript
                 await this.wv_WebContent.InvokeScriptAsync("setContent", new[] { content });
-
             }
             catch (Exception ex)
             {
                 // invoke script may cause exception
                 System.Diagnostics.Debug.WriteLine("exception when set post content", ex.Message);
             }
-
             FunctionHelper.Functions.RefreshUIOnDataLoaded(this.pb_Top, this.cmdBar);
         }
 
@@ -253,13 +260,35 @@ namespace CNBlogs
         private async void btn_Favorite_Click(object sender, RoutedEventArgs e)
         {
             await FavoritePostDS.Instance.AddFavPost(this.post);
-            await Functions.ShowMessage("收藏博文成功");
+            ShowNotificationBar(loader.GetString("Notify_FavoriteBlog"));
+        }
+
+        private void ShowNotificationBar(string content)
+        {
+            XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText01);
+            XmlNodeList toastTextElements = toastXml.GetElementsByTagName("text");
+            toastTextElements[0].AppendChild(toastXml.CreateTextNode(content));
+            IXmlNode toastNode = toastXml.SelectSingleNode("/toast");
+            ((XmlElement)toastNode).SetAttribute("duration", "short");
+            XmlElement audio = toastXml.CreateElement("audio");
+            audio.SetAttribute("silent", "true");
+            toastNode.AppendChild(audio);
+            ToastNotification toast = new ToastNotification(toastXml);
+            toast.ExpirationTime = DateTimeOffset.UtcNow.AddSeconds(1);
+            toast.Tag = "NOTI";
+            toast.Dismissed += toast_Dismissed;
+            ToastNotificationManager.CreateToastNotifier().Show(toast);
+        }
+
+        void toast_Dismissed(ToastNotification sender, ToastDismissedEventArgs args)
+        {
+            ToastNotificationManager.History.Remove("NOTI");
         }
 
         private async void btn_FavAuthor_Click(object sender, RoutedEventArgs e)
         {
             await FavoriteAuthorDS.Instance.Follow(this.Author);
-            await Functions.ShowMessage("收藏博主成功");
+            ShowNotificationBar(loader.GetString("Notify_FavoriteBlogger")); 
         }
 
         private void btn_FontSize_Click(object sender, RoutedEventArgs e)
@@ -270,5 +299,31 @@ namespace CNBlogs
         #endregion
 
         private const string AUTHOR_PART_FORMAT = "<div class='info'><h2 class='title'>{0}</h2><div class='author'><a href='{1}'>{3}<span>{2}</span></a></div></div>";
+
+        private void btn_Share_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterForShare();
+            Windows.ApplicationModel.DataTransfer.DataTransferManager.ShowShareUI();
+        }
+
+        Windows.ApplicationModel.Resources.ResourceLoader loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
+        private void RegisterForShare()
+        {
+            DataTransferManager dataTransferManager = DataTransferManager.GetForCurrentView();
+            dataTransferManager.DataRequested += new TypedEventHandler<DataTransferManager, DataRequestedEventArgs>(this.ShareHtmlHandler);
+        }
+
+        private void ShareHtmlHandler(DataTransferManager sender, DataRequestedEventArgs e)
+        {
+                DataRequest request = e.Request;
+                request.Data.Properties.Title = loader.GetString("ShareTitlePrefixText") + this.post.Title;
+                request.Data.Properties.Description = this.post.Summary;
+                string summaryText = (this.post.Author != null ? loader.GetString("ShareContentAuthor") + this.post.Author.Name : "") + "\n"
+                    + loader.GetString("ShareContentSummary")               
+                    + (this.post.Summary.Length > 50 ? this.post.Summary.Substring(0, 50) : this.post.Summary) + "\n"
+                    + this.post.Link.Href;
+            request.Data.SetText(summaryText);
+        }
     }
 }

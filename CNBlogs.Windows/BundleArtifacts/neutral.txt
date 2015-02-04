@@ -1,0 +1,4 @@
+MainPackage=C:\My Projects\ThirdPartyApps\CNBlogs\CNBlogs.Windows\bin\Release\CNBlogs.Windows_1.2.0.1_Bundle\CNBlogs.Windows_1.2.0.1_AnyCPU.appx
+SymbolPackage=C:\My Projects\ThirdPartyApps\CNBlogs\CNBlogs.Windows\AppPackages\CNBlogs.Windows_1.2.0.1_Test\CNBlogs.Windows_1.2.0.1_AnyCPU.appxsym
+ResourcePack=C:\My Projects\ThirdPartyApps\CNBlogs\CNBlogs.Windows\bin\Release\CNBlogs.Windows_1.2.0.1_Bundle\CNBlogs.Windows_1.2.0.1_scale-140.appx
+ResourcePack=C:\My Projects\ThirdPartyApps\CNBlogs\CNBlogs.Windows\bin\Release\CNBlogs.Windows_1.2.0.1_Bundle\CNBlogs.Windows_1.2.0.1_scale-180.appx

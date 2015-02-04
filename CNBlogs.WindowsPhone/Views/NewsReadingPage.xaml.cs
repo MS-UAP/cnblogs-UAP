@@ -43,6 +43,7 @@ namespace CNBlogs
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
 
         /// <summary>
@@ -113,34 +114,38 @@ namespace CNBlogs
             }
 
             this.navigationHelper.OnNavigatedTo(e);
-            var pageFile = string.Empty;
-            if (!CNBlogs.DataHelper.DataModel.CNBlogSettings.Instance.NightModeTheme)
+            if (e.NavigationMode != NavigationMode.Back)
             {
-                pageFile = "ms-appx-web:///HTML/news_day.html#width={0}&height={1}";
-                this.wv_WebContent.DefaultBackgroundColor = Windows.UI.Colors.White;
-            }
-            else
-            {
-                pageFile = "ms-appx-web:///HTML/news_night.html#width={0}&height={1}";
-                this.wv_WebContent.DefaultBackgroundColor = Windows.UI.Colors.Black;
-            }
 
-            if (e.Parameter is News)
-            {
-                this.news = e.Parameter as News;
-                this.commentsCount = news.CommentsCount;
-                CNBlogs.DataHelper.CloudAPI.NewsContentDS ncDS = new DataHelper.CloudAPI.NewsContentDS(news.ID);
-                if (await ncDS.LoadRemoteData())
+                var pageFile = string.Empty;
+                if (!CNBlogs.DataHelper.DataModel.CNBlogSettings.Instance.NightModeTheme)
                 {
-                    //this.wv_Post.NavigateToString(ncDS.News.Content);
-                    // add title to news
-                    content = "<h2 class='title'>" + this.news.Title + "</h2>" + ncDS.News.Content;
+                    pageFile = "ms-appx-web:///HTML/news_day.html#width={0}&height={1}";
+                    this.wv_WebContent.DefaultBackgroundColor = Windows.UI.Colors.White;
                 }
-                this.UpdateUI();
-                string width = Window.Current.Bounds.Width.ToString();
-                string height = Window.Current.Bounds.Height.ToString();
+                else
+                {
+                    pageFile = "ms-appx-web:///HTML/news_night.html#width={0}&height={1}";
+                    this.wv_WebContent.DefaultBackgroundColor = Windows.UI.Colors.Black;
+                }
 
-                this.wv_WebContent.Navigate(new Uri(string.Format(pageFile, width, height)));
+                if (e.Parameter is News)
+                {
+                    this.news = e.Parameter as News;
+                    this.commentsCount = news.CommentsCount;
+                    CNBlogs.DataHelper.CloudAPI.NewsContentDS ncDS = new DataHelper.CloudAPI.NewsContentDS(news.ID);
+                    if (await ncDS.LoadRemoteData())
+                    {
+                        //this.wv_Post.NavigateToString(ncDS.News.Content);
+                        // add title to news
+                        content = "<h2 class='title'>" + this.news.Title + "</h2>" + ncDS.News.Content;
+                    }
+                    this.UpdateUI();
+                    string width = Window.Current.Bounds.Width.ToString();
+                    string height = Window.Current.Bounds.Height.ToString();
+
+                    this.wv_WebContent.Navigate(new Uri(string.Format(pageFile, width, height)));
+                }
             }
         }
 
@@ -172,7 +177,7 @@ namespace CNBlogs
                 System.Diagnostics.Debug.WriteLine("exception when set post content", ex.Message);
             }
 
-            FunctionHelper.Functions.RefreshUIOnDataLoaded(this.pb_Top, null);
+            FunctionHelper.Functions.RefreshUIOnDataLoaded(this.pb_Top, this.cmdBar);
         }
 
         private void UpdateUI()

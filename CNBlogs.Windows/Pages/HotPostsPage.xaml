@@ -47,6 +47,7 @@
                 </SemanticZoom.ZoomedOutView>
             </SemanticZoom>
         </Grid>
+        <nav:AppCommandsCalloutButton/>
     </Grid>
 
     <Page.BottomAppBar>

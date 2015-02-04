@@ -9,17 +9,29 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.IO;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Notifications;
 using NotificationsExtensions.TileContent;
 using Windows.Storage;
 using System.IO.Compression;
 using Windows.Storage.Streams;
+using Windows.System.Profile;
+using Windows.UI.Notifications;
 
 namespace CNBlogs.DataHelper.Function
 {
     public static class Functions
     {
         static Windows.ApplicationModel.Resources.ResourceLoader loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
+        public static string GetUniqueDeviceId()
+        {
+            HardwareToken ht = Windows.System.Profile.HardwareIdentification.GetPackageSpecificToken(null);
+            var id = ht.Id;
+            var dataReader = Windows.Storage.Streams.DataReader.FromBuffer(id);
+            byte[] bytes = new byte[id.Length];
+            dataReader.ReadBytes(bytes);
+            string s = BitConverter.ToString(bytes);
+            return s.Replace("-", "");
+        }
 
         public static string LoadResourceString(string resourceName)
         {

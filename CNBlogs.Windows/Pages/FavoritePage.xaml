@@ -19,9 +19,10 @@
         <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </Page.Resources>
 
+    <Grid>
     <Hub Grid.Row="1" Background="{ThemeResource Win8CNBlogsBackColor}" x:Name="FavoriteHub">
             <Hub.Header>
-            <nav:PageTitleControl x:Uid="FavoriteTitleComment" x:Name="TitleControl" Style="{StaticResource PageTitleWithoutCountControl}" Margin="10,-35,0,0"/>
+            <nav:PageTitleControl x:Uid="FavoriteTitleComment" x:Name="TitleControl" Style="{StaticResource PageTitleWithoutCountControl}" Margin="10,-35,0,0" HorizontalContentAlignment="Stretch"/>
             </Hub.Header>
             <HubSection x:Uid="FavoriteSection1" x:Name="FavoriteCategory" Margin="-15">
                 <HubSection.Header>
@@ -98,7 +99,9 @@
                 </DataTemplate>
             </HubSection>
         </Hub>
-
+        <nav:AppCommandsCalloutButton/>
+    </Grid>
+    
     <Page.BottomAppBar>
         <CommandBar Style="{StaticResource Win8AppbarStyle}">
             <AppBarButton x:Uid="AppButton_Refresh" x:Name="btn_Refresh" Icon="Sync" Label="刷新" Click="btn_Refresh_Click"/>

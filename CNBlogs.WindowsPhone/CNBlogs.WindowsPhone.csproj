@@ -19,7 +19,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
@@ -108,6 +108,7 @@
     <Compile Include="Controls\FavoriteAuthorControl.cs" />
     <Compile Include="Controls\FavoriteCategoryControl.cs" />
     <Compile Include="HelpClass\SettingPagePivotItemTags.cs" />
+    <Compile Include="Controls\NotificationBar.cs" />
     <Compile Include="Views\EasterEggPage.xaml.cs">
       <DependentUpon>EasterEggPage.xaml</DependentUpon>
     </Compile>

@@ -6,7 +6,7 @@
 
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Default">
-            <x:String x:Key="ProgressBarIndeterminateForegroundThemeBrush">#FFa9d6f2</x:String>
+            <!--<x:String x:Key="ProgressBarIndeterminateForegroundThemeBrush">#FFa9d6f2</x:String>-->
             <SolidColorBrush x:Key="AppBarItemPointerOverBackgroundThemeBrush" Color="#21FFFFFF" />
             <SolidColorBrush x:Key="AppBarItemPointerOverForegroundThemeBrush" Color="#FFFFFFFF" />
             <SolidColorBrush x:Key="AppBarItemForegroundThemeBrush" Color="White"/>
@@ -889,16 +889,21 @@
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="1"/>
+                        </Grid.RowDefinitions>
 
                         <Image Grid.Column="0" Source="ms-appx:///Assets/Logo.100.blue.png" Height="80" Width="80" VerticalAlignment="Center"/>
                         <StackPanel Grid.Column="2" Orientation="Vertical" VerticalAlignment="Center">
                             <TextBlock x:Uid="Title" Text="博客园" Style="{StaticResource Win8PageTitleFont}" VerticalAlignment="Bottom"/>
                             <TextBlock Text=" cnblogs.com " Style="{StaticResource Win8PageTitleAttributionFont}" VerticalAlignment="Top" Margin="0,-10,0,0"/>
                         </StackPanel>
-                        <TextBlock Grid.Column="4" Text="{TemplateBinding Text}" Style="{StaticResource Win8PageSubTitleFont}" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="5" Text="{TemplateBinding Text}" Style="{StaticResource Win8PageSubTitleFont}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        <Canvas Grid.Row="1" Grid.ColumnSpan="99" Width="5000"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

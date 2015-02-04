@@ -121,9 +121,11 @@
       <RootProperty Name="Style" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalContentAlignment" />
       <RootProperty Name="Text" />
     </RootType>
     <RootType FullName="CNBlogs.NotifyBlock" />
+    <RootType FullName="CNBlogs.AppCommandsCalloutButton" />
     <RootType FullName="Windows.UI.Xaml.Controls.SemanticZoom">
       <RootProperty Name="ZoomedInView" />
       <RootProperty Name="ZoomedOutView" />
@@ -225,8 +227,8 @@
     <RootType FullName="Windows.UI.Xaml.Documents.Run">
       <RootProperty Name="Text" />
       <RootProperty Name="FontFamily" />
-      <RootProperty Name="FontStretch" />
       <RootProperty Name="Foreground" />
+      <RootProperty Name="FontStretch" />
     </RootType>
     <RootType FullName="CNBlogs.BloggerControl">
       <RootProperty Name="Style" />
@@ -353,12 +355,12 @@
     </RootType>
     <RootType FullName="CNBlogs.Pages.TestPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.SettingsFlyout">
-      <RootProperty Name="IconSource" />
-      <RootProperty Name="Title" />
-      <RootProperty Name="RequestedTheme" />
       <RootProperty Name="HeaderBackground" />
-      <RootProperty Name="Resources" />
+      <RootProperty Name="Title" />
       <RootProperty Name="Content" />
+      <RootProperty Name="IconSource" />
+      <RootProperty Name="RequestedTheme" />
+      <RootProperty Name="Resources" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="VerticalAlignment" />
@@ -372,6 +374,15 @@
       <RootProperty Name="Visibility" />
       <RootEvent Name="Loaded" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
+      <RootProperty Name="VerticalScrollBarVisibility" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="VerticalScrollMode" />
+      <RootProperty Name="ZoomMode" />
+      <RootProperty Name="HorizontalScrollBarVisibility" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Documents.LineBreak" />
+    <RootType FullName="CNBlogs.PrivacyStatementsSettingsFlyout" />
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
       <RootProperty Name="Height" />
       <RootProperty Name="Margin" />
@@ -394,7 +405,6 @@
       <RootProperty Name="RequestedTheme" />
       <RootProperty Name="Content" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Documents.LineBreak" />
     <RootType FullName="CNBlogs.FlatNavigationControl" />
     <RootType FullName="CNBlogs.Pages.BestBloggersPage" />
     <RootType FullName="CNBlogs.Pages.BestPostsPage" />
@@ -461,6 +471,9 @@
       <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="CNBlogs.ControlHelper.TimeCountDownConverter" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Canvas">
+      <RootProperty Name="Width" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Ellipse">
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
@@ -471,6 +484,7 @@
       <RootProperty Name="Visibility" />
       <RootProperty Name="Fill" />
       <RootProperty Name="UseLayoutRounding" />
+      <RootProperty Name="Clip" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
       <RootProperty Name="IsIndeterminate" />
@@ -491,12 +505,18 @@
       <RootProperty Name="AvatarHeight" />
       <RootProperty Name="Margin" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.HyperlinkButton">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Content" />
+      <RootEvent Name="Tapped" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Visibility" />
     <RootType FullName="Windows.UI.Xaml.Controls.SymbolIcon">
       <RootProperty Name="Symbol" />
       <RootProperty Name="Foreground" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListViewItem" />
-    <RootType FullName="Windows.UI.Xaml.Controls.HyperlinkButton" />
   </Roots.RootTypes>
 </Roots>

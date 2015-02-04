@@ -1,6 +1,6 @@
 <XamlCompilerSaveState>
   <ReferenceAssemblyList>
-    <ReferenceAssembly PathName="e:\wp\cnblogs\cnblogs.shared\external\logger.dll" HashGuid="392fd13c-fe2a-1c87-df12-d0011ba371d8" />
-    <ReferenceAssembly PathName="e:\wp\cnblogs\notificationsextensions\bin\x86\debug\notificationsextensions.winmd" HashGuid="293656e9-efe5-9c8b-b8ae-6e474d698bb4" />
+    <ReferenceAssembly PathName="e:\github\cnblogs-uap\cnblogs.shared\external\logger.dll" HashGuid="392fd13c-fe2a-1c87-df12-d0011ba371d8" />
+    <ReferenceAssembly PathName="e:\github\cnblogs-uap\notificationsextensions\bin\x86\debug\notificationsextensions.winmd" HashGuid="293656e9-efe5-9c8b-b8ae-6e474d698bb4" />
   </ReferenceAssemblyList>
 </XamlCompilerSaveState>

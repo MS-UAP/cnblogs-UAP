@@ -1,13 +1,16 @@
-﻿using CNBlogs.DataHelper.Function;
+﻿using CNBlogs.DataHelper.DataModel;
+using CNBlogs.DataHelper.Function;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.PushNotifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -16,6 +19,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using Windows.Web.Http;
 #if WINDOWS_APP
 using Windows.UI.ApplicationSettings;
 #endif
@@ -96,6 +100,11 @@ namespace CNBlogs
 
                 rootFrame.ContentTransitions = null;
                 rootFrame.Navigated += this.RootFrame_FirstNavigated;
+
+
+
+
+
 #endif
 
                 Init();
@@ -112,7 +121,7 @@ namespace CNBlogs
             // Ensure the current window is active
             Window.Current.Activate();
 
-            
+
 
 #if WINDOWS_APP
             // Add commands to the settings pane
@@ -128,20 +137,13 @@ namespace CNBlogs
                 new AboutSettingsFlyout().Show());
                 args.Request.ApplicationCommands.Add(about);
 
-                var privacy = new SettingsCommand("PrivacyStatements", loader.GetString("SettingPane_Item_Privacy"), GetPrivacyPolicyAsync);
+                var privacy = new SettingsCommand("PrivacyStatements", loader.GetString("SettingPane_Item_Privacy"), (handler) =>
+                new PrivacyStatementsSettingsFlyout().Show());
                 args.Request.ApplicationCommands.Add(privacy);
 
             };
 #endif
         }
-
-
-#if WINDOWS_APP
-        private async void GetPrivacyPolicyAsync(Windows.UI.Popups.IUICommand command)
-        {
-            await Windows.System.Launcher.LaunchUriAsync(new Uri("http://www.microsoft.com/privacystatement/zh-cn/core/default.aspx"));
-        }
-#endif
 
         private async void Init()
         {
@@ -151,7 +153,86 @@ namespace CNBlogs
 #endif
 #if WINDOWS_PHONE_APP
             Logger.LogAgent.GetInstance().Register("MS-UAP", "CNBlogs-WP8.1");
+
+#if DEBUG
+            try
+            {
+                channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+                channel.PushNotificationReceived += OnPushNotification;
+
+                // check if this uri changed since last time, update to server if yes
+
+                if (!string.Equals(CNBlogSettings.Instance.NotificationUri, channel.Uri))
+                {
+                    CNBlogSettings.Instance.NotificationUri = channel.Uri;
+
+                    var server = "http://172.22.117.114/wns/api/uri";
+
+                    // get fav authors
+                    var authors = await FollowHelper.GetFollowedAuthors();
+
+                    var parameters = new List<KeyValuePair<string, string>>();
+
+                    parameters.Add(new KeyValuePair<string, string>("uuid", Functions.GetUniqueDeviceId()));
+                    parameters.Add(new KeyValuePair<string, string>("uri", Uri.EscapeUriString(channel.Uri)));
+
+                    foreach (var author in authors)
+                    {
+                        var blogApp = !string.IsNullOrWhiteSpace(author.BlogApp) ? author.BlogApp : Functions.ParseBlogAppFromURL(author.Uri);
+
+                        parameters.Add(new KeyValuePair<string, string>("favAuthors", blogApp));
+                    }
+
+                    var categories = await FollowHelper.GetFollowedCategories();
+
+                    foreach (var category in categories)
+                    {
+                        parameters.Add(new KeyValuePair<string, string>("favCategories", category.Href));
+                    }
+
+                    var content = new HttpFormUrlEncodedContent(parameters);
+                    var request = new HttpRequestMessage(HttpMethod.Post, new Uri(server));
+                    request.Content = content;
+
+                    var client = new HttpClient();
+
+                    var response = await client.SendRequestAsync(request);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+
 #endif
+
+#endif
+        }
+        PushNotificationChannel channel = null;
+        string content = null;
+        private void OnPushNotification(PushNotificationChannel sender, PushNotificationReceivedEventArgs e)
+        {
+            String notificationContent = String.Empty;
+
+            switch (e.NotificationType)
+            {
+                case PushNotificationType.Badge:
+                    notificationContent = e.BadgeNotification.Content.GetXml();
+                    break;
+
+                case PushNotificationType.Tile:
+                    notificationContent = e.TileNotification.Content.GetXml();
+                    break;
+
+                case PushNotificationType.Toast:
+                    notificationContent = e.ToastNotification.Content.GetXml();
+                    break;
+
+                case PushNotificationType.Raw:
+                    notificationContent = e.RawNotification.Content;
+                    break;
+            }
+
+            e.Cancel = true;
         }
 
 #if WINDOWS_PHONE_APP

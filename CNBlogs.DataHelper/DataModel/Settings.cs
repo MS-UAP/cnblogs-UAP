@@ -25,15 +25,30 @@ namespace CNBlogs.DataHelper.DataModel
         const string SettingKey_FontSize = "cnblog_font_size";
         const string SettingKey_UILanguage = "cnblog_ui_language";
 
+        const string SettingKey_LastNotificationUri = "cnblog_notification_uri";
+
+        public string NotificationUri
+        {
+            get
+            {
+                return settings.Values.ContainsKey(SettingKey_LastNotificationUri) ? settings.Values["SettingKey_LastNotificationUri"] as string : string.Empty;
+            }
+            set
+            {
+                settings.Values[SettingKey_LastNotificationUri] = value;
+            }
+        }
+
         public double FontSize
         {
             get
             {
                 var value = settings.Values[SettingKey_FontSize];
-                return value == null ? 100  : (double)value ;
+                return value == null ? 100 : (double)value;
             }
-            set {
-                settings.Values[SettingKey_FontSize] = value ;
+            set
+            {
+                settings.Values[SettingKey_FontSize] = value;
             }
         }
 

@@ -94,6 +94,7 @@
                         <TextBlock x:Name="tb_Version" Text="1.0" HorizontalAlignment="Center" FontSize="14" Style="{StaticResource SettingPageTextHeader}"/>
                         <Image Source="ms-appx:///Assets/ms-uap.jpg" Width="80" Height="80" HorizontalAlignment="Center" Margin="0,10"/>
                         <HyperlinkButton x:Name="btn_RateMe" Margin="0,40,0,10" x:Uid="SettingsFlyout_About_Text3" Style="{StaticResource SettingPageHyperlinkButtonText}" HorizontalAlignment="Center" Click="btn_RateMe_Click"/>
+                        <HyperlinkButton x:Name="btn_OurBlog" Margin="0,0,0,10" x:Uid="SettingsFlyout_About_Text6" Style="{StaticResource SettingPageHyperlinkButtonText}" NavigateUri="http://www.cnblogs.com/ms-uap/"  HorizontalAlignment="Center"/>
                         <TextBlock Margin="30" FontSize="14" FontFamily="Segoe WP" TextWrapping="Wrap" Foreground="{ThemeResource CNBlogsSummaryColor}">
                             <Run x:Uid="SettingsFlyout_About_Text4"/>
                             <Run x:Uid="SettingsFlyout_About_Text5"/>

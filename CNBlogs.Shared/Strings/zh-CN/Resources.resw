@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -443,5 +442,23 @@
   </data>
   <data name="BloggerTitleComment_W8.Text" xml:space="preserve">
     <value>明星博主推荐</value>
+  </data>
+  <data name="ShareTitlePrefixText" xml:space="preserve">
+    <value>分享文章：</value>
+  </data>
+  <data name="ShareContentPrefixText" xml:space="preserve">
+    <value>分享来自博客园的文章：</value>
+  </data>
+  <data name="ShareContentAuthor" xml:space="preserve">
+    <value>作者：</value>
+  </data>
+  <data name="ShareContentSummary" xml:space="preserve">
+    <value>摘要：</value>
+  </data>
+  <data name="ShareBlogButton.Label" xml:space="preserve">
+    <value>分享博文</value>
+  </data>
+  <data name="SettingsFlyout_About_Text6.Content" xml:space="preserve">
+    <value>欢迎访问我们的博客</value>
   </data>
 </root>

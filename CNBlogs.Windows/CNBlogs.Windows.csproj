@@ -126,6 +126,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\AppCommandsCalloutButton.cs" />
     <Compile Include="Controls\CategoryControl.cs" />
     <Compile Include="Controls\AuthorControl.cs" />
     <Compile Include="Controls\NotifyBlock.cs" />
@@ -146,6 +147,9 @@
     </Compile>
     <Compile Include="Pages\TestPage.xaml.cs">
       <DependentUpon>TestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SettingFlyouts\PrivacyStatementsSettingsFlyout.xaml.cs">
+      <DependentUpon>PrivacyStatementsSettingsFlyout.xaml</DependentUpon>
     </Compile>
     <Compile Include="SettingFlyouts\AboutSettingsFlyout.xaml.cs">
       <DependentUpon>AboutSettingsFlyout.xaml</DependentUpon>
@@ -240,6 +244,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\TestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SettingFlyouts\PrivacyStatementsSettingsFlyout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

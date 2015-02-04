@@ -26,7 +26,7 @@
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar ClosedDisplayMode="Minimal" FontFamily="Global User Interface">
+        <CommandBar x:Name="cmdBar"  ClosedDisplayMode="Minimal"  FontFamily="Global User Interface" Visibility="Collapsed">
             <AppBarButton x:Name="btn_Comment" x:Uid="CommentButton" Icon="Comment" Label="评论" Click="btn_Comment_Click"/>
             <AppBarButton x:Name="btn_FontSize" x:Uid="FontSizeButton" Icon="FontSize" Label="调整字号" Click="btn_FontSize_Click" />
             <AppBarButton x:Name="btn_Source" x:Uid="SourceLinkButton" Label="原文链接" Icon="Link" Click="btn_Source_Click"/>

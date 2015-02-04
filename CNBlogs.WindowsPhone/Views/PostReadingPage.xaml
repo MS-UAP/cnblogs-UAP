@@ -18,16 +18,18 @@
     <Grid>
         <ProgressBar x:Name="pb_Top" IsIndeterminate="True" VerticalAlignment="Top"/>
         <WebView Grid.Row="1" x:Name="wv_WebContent" DOMContentLoaded="wv_WebContent_DOMContentLoaded" NavigationStarting="wv_WebContent_NavigationStarting" DefaultBackgroundColor="White"/>
+        <local:NotificationBar x:Name="notifyBlock" Grid.ColumnSpan="99" Grid.RowSpan="99" />
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar x:Name="cmdBar" ClosedDisplayMode="Minimal">
+        <CommandBar x:Name="cmdBar" ClosedDisplayMode="Minimal" Visibility="Collapsed">
             <AppBarButton x:Name="btn_Comment" Icon="Comment" x:Uid="CommentButton" Label="查看评论" Click="btn_Comment_Click"/>
             <AppBarButton x:Name="btn_FontSize" Icon="FontSize" x:Uid="FontSizeButton" Label="调整字号" Click="btn_FontSize_Click" />
             <AppBarButton x:Name="btn_Favorite" Icon="Favorite" x:Uid="FavoriteBlogButton" Label="收藏博文" Click="btn_Favorite_Click" />
             <AppBarButton x:Name="btn_Source" Label="原文链接" x:Uid="SourceLinkButton" Icon="Link" Click="btn_Source_Click"/>
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Name="btn_Author" x:Uid="BloggerInfoButton" Label="博主信息" Click="btn_Author_Click" Icon="ContactInfo"/>
+                <AppBarButton x:Name="btn_Share"  x:Uid="ShareBlogButton" Label="分享博文" Click="btn_Share_Click" Icon="ReShare"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

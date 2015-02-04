@@ -17,6 +17,7 @@ using CNBlogs.DataHelper;
 using CNBlogs.DataHelper.DataModel;
 using CNBlogs.DataHelper.Function;
 using CNBlogs.DataHelper.CloudAPI;
+using Windows.ApplicationModel.DataTransfer;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
@@ -159,6 +160,7 @@ namespace CNBlogs.Pages
                 //Set UI
                 this.SetTitleFont(pageTitle.Text.Length);
                 UpdateUI();
+                RegisterForShare();
             }
             catch (Exception ex)
             {
@@ -420,6 +422,23 @@ namespace CNBlogs.Pages
         private void btn_BloggerInfo_Click(object sender, RoutedEventArgs e)
         {
             GoToBloggerPage();
+        }
+        private void RegisterForShare()
+        {
+            DataTransferManager dataTransferManager = DataTransferManager.GetForCurrentView();
+            dataTransferManager.DataRequested += new TypedEventHandler<DataTransferManager, DataRequestedEventArgs>(this.ShareHtmlHandler);
+        }
+
+        private void ShareHtmlHandler(DataTransferManager sender, DataRequestedEventArgs e)
+        {
+            DataRequest request = e.Request;
+            request.Data.Properties.Title = loader.GetString("ShareTitlePrefixText") + this.post.Title;
+            request.Data.Properties.Description = this.post.Summary;
+            string summaryText = (this.post.Author != null ? loader.GetString("ShareContentAuthor") + this.post.Author.Name : "") + "\n"
+                + loader.GetString("ShareContentSummary")
+                + (this.post.Summary.Length > 50 ? this.post.Summary.Substring(0, 50) : this.post.Summary) + "\n"
+                + this.post.Link.Href;
+            request.Data.SetText(summaryText);
         }
     }
 }

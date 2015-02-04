@@ -18,6 +18,8 @@ using Windows.UI.Xaml.Navigation;
 using CNBlogs.DataHelper.CloudAPI;
 using CNBlogs.DataHelper.DataModel;
 using CNBlogs.DataHelper.Function;
+using Windows.Data.Xml.Dom;
+using Windows.UI.Notifications;
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace CNBlogs
@@ -196,8 +198,31 @@ namespace CNBlogs
             }
 
             await FavoriteCategoryDS.Instance.Follow(this.Category, latestPostId);
-            await Functions.ShowMessage("收藏分类成功");
+            ShowNotificationBar(loader.GetString("Notify_FavoriteCategory"));
         }
 
+        Windows.ApplicationModel.Resources.ResourceLoader loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
+        private void ShowNotificationBar(string content)
+        {
+            XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText01);
+            XmlNodeList toastTextElements = toastXml.GetElementsByTagName("text");
+            toastTextElements[0].AppendChild(toastXml.CreateTextNode(content));
+            IXmlNode toastNode = toastXml.SelectSingleNode("/toast");
+            ((XmlElement)toastNode).SetAttribute("duration", "short");
+            XmlElement audio = toastXml.CreateElement("audio");
+            audio.SetAttribute("silent", "true");
+            toastNode.AppendChild(audio);
+            ToastNotification toast = new ToastNotification(toastXml);
+            toast.ExpirationTime = DateTimeOffset.UtcNow.AddSeconds(1);
+            toast.Tag = "NOTI";
+            toast.Dismissed += toast_Dismissed;
+            ToastNotificationManager.CreateToastNotifier().Show(toast);
+        }
+
+        void toast_Dismissed(ToastNotification sender, ToastDismissedEventArgs args)
+        {
+            ToastNotificationManager.History.Remove("NOTI");
+        }
     }
 }

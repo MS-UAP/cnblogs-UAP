@@ -185,7 +185,7 @@
 
         <Button x:Name="CommentButton" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" 
                 RenderTransformOrigin="0.5,0.5"
-                Width="110" Height="60" 
+                Width="105" Height="40" 
                 Background="{ThemeResource Win8CNBlogsThemeColor}" Foreground="{ThemeResource Win8CNBlogsBackColor}"
                 Language="zh-Hans"
                 Click="CommentButton_Click">
@@ -224,6 +224,7 @@
                 </ListView>
             </Grid>
         </Border>
+        <nav:AppCommandsCalloutButton Grid.ColumnSpan="99"/>
     </Grid>
 
     <Page.BottomAppBar>
